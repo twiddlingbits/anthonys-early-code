@@ -9,6 +9,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+#include <Afxwin.h>
+#include "WinTrs80.h"
+
 /////////////////////////////////////////////////////////////////////////////
 // CChildView window
 
@@ -34,7 +37,8 @@ public:
 // Implementation
 public:
 	virtual ~CChildView();
-	CFont		m_font;
+	class CWinTrs80Thread* m_trs80_thread;
+	CTrs80Configurator m_trs80_config;
 
 	// Generated message map functions
 protected:
@@ -45,6 +49,12 @@ protected:
 	afx_msg void OnCaptureChanged(CWnd *pWnd);
 	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
+	afx_msg void OnDropFiles(HDROP hDropInfo);
+	afx_msg BOOL OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct);
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnDestroy();
+	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

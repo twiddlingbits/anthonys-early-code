@@ -2,11 +2,10 @@
 //
 
 #include "stdafx.h"
-#include "TRS80Emu.h"
+#include <afxcview.h>
+#include "MainApp.h"
 
 #include "MainFrm.h"
-
-#include "Trs80Core.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -16,8 +15,6 @@ static char THIS_FILE[] = __FILE__;
 
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame
-
-IMPLEMENT_DYNAMIC(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	//{{AFX_MSG_MAP(CMainFrame)
@@ -106,3 +103,9 @@ BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO*
 	return CFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
+void CMainFrame::ActivateFrame(int nCmdShow) 
+{
+	// TODO: Add your specialized code here and/or call the base class
+	
+	CFrameWnd::ActivateFrame(nCmdShow);
+}

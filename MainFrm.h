@@ -17,19 +17,19 @@ class CMainFrame : public CFrameWnd
 public:
 	CMainFrame();
 protected: 
-	DECLARE_DYNAMIC(CMainFrame)
-
 // Attributes
 public:
-
 // Operations
 public:
 
 // Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CMainFrame)
+	public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
+	virtual void ActivateFrame(int nCmdShow = -1);
+	protected:
 	//}}AFX_VIRTUAL
 
 // Implementation

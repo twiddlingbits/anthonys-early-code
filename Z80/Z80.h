@@ -14,7 +14,7 @@
 #define Z80_H
 
                                /* Compilation options:       */
-/* #define DEBUG */            /* Compile debugging version  */
+#define DEBUG             /* Compile debugging version  */
 #define LSB_FIRST              /* Compile for low-endian CPU */
 /* #define MSB_FIRST */        /* Compile for hi-endian CPU  */
 

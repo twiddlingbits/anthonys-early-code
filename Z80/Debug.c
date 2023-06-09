@@ -12,9 +12,11 @@
 /**     changes to this file.                               **/
 /*************************************************************/
 
+#include "Z80.h"
+
 #ifdef DEBUG
 
-#include "Z80.h"
+
 
 #include <stdio.h>
 #include <ctype.h>
@@ -313,12 +315,18 @@ byte DebugZ80(Z80 *R)
   
   char  buf[256];
   extern void TraceHack(char *);
+  static long kkk = 0;
 
   DAsm(S,R->PC.W);
   for(J=0,I=R->AF.B.l;J<8;J++,I<<=1) T[J]=I&0x80? Flags[J]:'.';
   T[8]='\0';
 
-  sprintf
+	sprintf(buf,"%05x   %04x ",kkk++, R->PC.W);
+	TraceHack(buf);
+	TraceHack(S);
+	TraceHack("\n");
+
+ /* sprintf
   (buf,
     "AF:%04X HL:%04X DE:%04X BC:%04X PC:%04X SP:%04X IX:%04X IY:%04X\n",
     R->AF.W,R->HL.W,R->DE.W,R->BC.W,R->PC.W,R->SP.W,R->IX.W,R->IY.W
@@ -333,6 +341,7 @@ byte DebugZ80(Z80 *R)
   );
     
   TraceHack(buf);
+  */
 
 return 1; // REMOVE, MFC TEMP FIX
   while(1)
