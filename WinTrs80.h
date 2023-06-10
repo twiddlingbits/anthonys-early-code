@@ -30,6 +30,7 @@ public:
 	virtual unsigned char* PeekKeyStatus();
 	virtual __int64 GetHostElapsedTime();
 	virtual void ResetHostElapsedTime();
+	virtual void AboutToSleep();
 
 protected:
 	// Implementation functions

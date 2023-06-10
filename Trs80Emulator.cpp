@@ -1,14 +1,17 @@
 //
 // Portable C++ Trs80 Emulator
-// (c) 2000 Anthony J. Wood
+// (c) 2002 Anthony J. Wood
 // ajw@best.com
 //
-// 4/02/2000
+// 1/26/2002
 
 #include "stdafx.h"
 #include "Trs80Emulator.h"
 
 //!!! TO DO
+// Paint() happens in a seperate thread from main drawing,  yet GDI can only be called from one t
+//    thread at a time.
+// clean up dd objects on destruction of view
 // New boot modes defined in CConfigurator need finishing implementing (need more rom's and dsk images)
 // Improve user interface:  Allow user settings of configurator & software library
 // FDD Code barly working:  Clean it up.
@@ -39,7 +42,6 @@ CTrs80Emulator::CTrs80Emulator()
 	m_load_cmd_transfer_addr=LOAD_NO_XFER_ADDR;
 	m_display_on = TRUE;
 	m_suspend_execution = FALSE;
-	m_delay_count = 0x1000;					//~ speed for 500MHZ P3
 	m_int_status = 0;
 	m_int_clocks = 0;
 
@@ -66,7 +68,7 @@ void CTrs80Emulator::Boot(CTrs80Configurator* config)
 	m_config = config;
 
 	// Reset the Z80
-	m_R.IPeriod=100;
+	m_R.IPeriod=1000;
 	ResetZ80();
 
 	// clear memory to zero
@@ -662,7 +664,7 @@ word CTrs80Emulator::LoopZ80()
 	else
 	{
 		//
-		// The following code will throttle the speed back via a busy delay loop
+		// The following code will throttle the speed back via Sleep()'s
 		// so the at simulated z80 speed matches the speed this PC is running at
 		//
 		short new_clocks;
@@ -685,23 +687,16 @@ word CTrs80Emulator::LoopZ80()
 		elapsed_sys_time = GetHostElapsedTime();
 
 		if (elapsed_sys_time < elapsed_z80_time)
-			m_delay_count ++;
-		else
-			m_delay_count --;
+		{
+			unsigned long time_delta;
 
-		if (m_delay_count < 0)
-		{
-			m_delay_count = 0;
-		}
-		else
-		{
-			long do_nothing = 0;
-			for (long i=0; i < m_delay_count; i++)
+			time_delta = (unsigned long)(elapsed_z80_time - elapsed_sys_time);
+			if ( time_delta >= TRS80_SLEEP_TIME*1000)
 			{
-				do_nothing ++ ; do_nothing --;
+				AboutToSleep();	// notify parent
+				::Sleep(time_delta/1000);
 			}
 		}
-
 
 		if (m_fdd->ClockTick(new_clocks)==TRS80_DEVRET_TRIG_INT)
 		{

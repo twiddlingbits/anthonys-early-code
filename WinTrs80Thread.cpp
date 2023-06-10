@@ -24,9 +24,9 @@ END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 
-CWinTrs80Thread::CWinTrs80Thread(CWnd *client_wnd, CWinTrs80Thread** ptr, CTrs80Configurator *config)
+CWinTrs80Thread::CWinTrs80Thread(CChildView *client_wnd, CWinTrs80Thread** ptr, CTrs80Configurator *config)
 {
-	m_client_hwnd = client_wnd->m_hWnd;
+	m_view = client_wnd;
 	m_ptr_to_me = ptr;
 	m_config = config;
 }
@@ -40,17 +40,19 @@ CWinTrs80Thread::~CWinTrs80Thread()
 
 BOOL CWinTrs80Thread::InitInstance()
 {
+	HDC hdc;
 
-	SetThreadPriority(THREAD_PRIORITY_BELOW_NORMAL);
+	SetThreadPriority(THREAD_PRIORITY_TIME_CRITICAL);
 
-	m_cdc.Attach(::GetDC(m_client_hwnd));
+	m_view->lpDDSBack->GetDC(&hdc);
+	m_cdc.Attach(hdc);
 	m_trs80.AttachCDC(&m_cdc);
 
 	m_trs80.Boot(m_config);
 
 	m_trs80.DetachCDC();
-	::ReleaseDC(m_client_hwnd, m_cdc.m_hDC);
 	m_cdc.Detach();
+	m_view->lpDDSBack->ReleaseDC(hdc); 
 
 	// avoid entering standard message loop by returning FALSE
 	return FALSE;

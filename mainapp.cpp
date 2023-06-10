@@ -48,6 +48,11 @@ CMainApp theApp;
 
 BOOL CMainApp::InitInstance()
 {
+	DDSURFACEDESC       ddsd; 
+	LPDIRECTDRAWCLIPPER pcClipper;
+    HRESULT             ddrval; 
+
+
 	AfxEnableControlContainer();
 
 	// Standard initialization
@@ -64,7 +69,7 @@ BOOL CMainApp::InitInstance()
 	// Change the registry key under which our settings are stored.
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization.
-	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
+	SetRegistryKey(_T("TRS80 EMU 3"));
 
 
 	// To create the main window, this code creates a new frame window
@@ -85,13 +90,16 @@ BOOL CMainApp::InitInstance()
 
 	CClientDC dc(&pFrame->m_wndView);	// client DC
 
-	CWinTrs80::GetDisplaySize(&dc, &size);
+	CWinTrs80::GetDisplaySize(&dc, &size);  // width & height, in pixels, of draw area (no framing)
 
-	pFrame->m_wndView.GetWindowRect(rect);
+	pFrame->m_wndView.GetWindowRect(rect);	// get entire window size (display area + boarders)
 	rect.SetRect(rect.left, 
 			 	 rect.top, 
 				 rect.left+size.cx, 
 				 rect.top+size.cy);
+
+	// Remember the client wndow (display) coordinates relative to the screen for direct draw use
+	pFrame->m_wndView.m_direct_draw_into_rect = rect;
 
 	//CalcWindowRect(frame_rect);  Doesnt work (too small), I Don't know why
 	::AdjustWindowRectEx(rect, pFrame->GetStyle(), TRUE, pFrame->GetExStyle());
@@ -104,7 +112,84 @@ BOOL CMainApp::InitInstance()
 	pFrame->ShowWindow(SW_SHOW);
 	pFrame->UpdateWindow();
 
+    /* 
+     * Set up direct draw objects
+     */ 
+    ddrval = DirectDrawCreate( NULL, &pFrame->m_wndView.lpDD, NULL ); 
+    if( ddrval == DD_OK ) 
+    { 
+
+		// Get exclusive mode 
+		ddrval = pFrame->m_wndView.lpDD->SetCooperativeLevel( pFrame->m_wndView.m_hWnd, DDSCL_NORMAL); 
+		if(ddrval == DD_OK ) 
+		{ 
+			 
+			// Create the primary surface
+			ZeroMemory( &ddsd, sizeof( ddsd ) );
+			ddsd.dwSize         = sizeof( ddsd );
+			ddsd.dwFlags        = DDSD_CAPS;
+			ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
+
+			ddrval = pFrame->m_wndView.lpDD->CreateSurface( &ddsd, &pFrame->m_wndView.lpDDSPrimary, NULL ); 
+			if(ddrval == DD_OK ) 
+			{
+				// Create the backbuffer surface
+				ddsd.dwFlags        = DDSD_CAPS | DDSD_WIDTH | DDSD_HEIGHT;    
+				ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN;
+				ddsd.dwWidth        = pFrame->m_wndView.m_direct_draw_into_rect.Width();
+				ddsd.dwHeight       = pFrame->m_wndView.m_direct_draw_into_rect.Height();
+
+				ddrval = pFrame->m_wndView.lpDD->CreateSurface( &ddsd, &pFrame->m_wndView.lpDDSBack, NULL ); 
+				if(ddrval == DD_OK ) 
+				{
+					// Erase the background
+					DDBLTFX ddbltfx;
+					ZeroMemory( &ddbltfx, sizeof(ddbltfx) );
+					ddbltfx.dwSize      = sizeof(ddbltfx);
+					ddbltfx.dwFillColor = RGB(0,0,0);
+					pFrame->m_wndView.lpDDSBack->Blt( NULL, NULL, NULL, DDBLT_COLORFILL, &ddbltfx );
+
+
+					ddrval = pFrame->m_wndView.lpDD->CreateClipper( 0, &pcClipper, NULL ); 
+					if(ddrval == DD_OK ) 
+					{
+
+						ddrval = pcClipper->SetHWnd( 0, pFrame->m_wndView.m_hWnd );
+						if(ddrval == DD_OK ) 
+						{
+							ddrval = pFrame->m_wndView.lpDDSPrimary->SetClipper( pcClipper );
+						}
+						pcClipper->Release();
+					}
+				}
+			}
+
+		} 
+    } 
+ 
+	if(ddrval != DD_OK ) 
+	{
+		char buf[256];
+
+		wsprintf(buf, "Direct Draw Init Failed (%08lx)\n", ddrval ); 
+		TRACE0(buf);
+
+		if( pFrame->m_wndView.lpDD != NULL ) 
+		{ 
+			if( pFrame->m_wndView.lpDDSPrimary != NULL ) 
+			{ 
+				pFrame->m_wndView.lpDDSPrimary->Release(); 
+				pFrame->m_wndView.lpDDSPrimary = NULL; 
+			} 
+			pFrame->m_wndView.lpDD->Release(); 
+			pFrame->m_wndView.lpDD = NULL; 
+		} 
+		return FALSE;
+	}
+
+
 	return TRUE;
+
 }
 
 /////////////////////////////////////////////////////////////////////////////

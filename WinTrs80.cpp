@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "MainApp.h"
+#include "ChildView.h"
+#include "MainFrm.h"
 #include "WinTrs80.h"
 
 #ifdef _DEBUG
@@ -197,6 +199,7 @@ void CWinTrs80::DrawChar(CDC* dc, unsigned short offset, unsigned char value)
 				value &= (~64);		// BIT6 = NOT (BIT5 OR BIT7)
 		}
 		dc->TextOut(x, y, (char *)&value, 1);
+		::GdiFlush();
 	}
 }
 
@@ -276,3 +279,24 @@ __int64 CWinTrs80::GetHostElapsedTime()
 	return elapsed_sys_time;
 }
 
+//
+// Draw into the back buffer but once each sleep (nominally 10ms), update the display
+//
+
+void CWinTrs80::AboutToSleep()
+{
+	extern CMainApp theApp;
+	CChildView *view;
+	HRESULT ddrval; 
+	HDC hdc;
+
+	view = (CChildView *)&(((CMainFrame *)theApp.m_pMainWnd)->m_wndView);\
+
+	view->lpDDSBack->ReleaseDC(*m_dc); 
+	m_dc->Detach();
+
+	ddrval = view->lpDDSPrimary->Blt(&view->m_direct_draw_into_rect, view->lpDDSBack, NULL, DDBLT_WAIT, NULL );
+
+	view->lpDDSBack->GetDC(&hdc);
+	m_dc->Attach(hdc);
+}

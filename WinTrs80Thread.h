@@ -8,6 +8,7 @@
 //
 
 #include "WinTrs80.h"
+#include "childview.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CWinTrs80Thread thread
@@ -18,7 +19,7 @@ public:
 //	DECLARE_DYNCREATE(CWinTrs80Thread)
 	DECLARE_DYNAMIC(CWinTrs80Thread)
 
-	CWinTrs80Thread(CWnd *client_wnd, CWinTrs80Thread**, CTrs80Configurator *config);
+	CWinTrs80Thread(CChildView *client_wnd, CWinTrs80Thread**, CTrs80Configurator *config);
 	void Paint(CDC*);
 	void SetCharUp(unsigned char c, unsigned char oem);
 	void SetCharDown(unsigned char c, unsigned char oem);
@@ -26,7 +27,7 @@ public:
 	void GetDisplaySize(CDC *dc, CSize *size);
 
 private:
-	HWND m_client_hwnd;
+	CChildView* m_view;
 	CWinTrs80 m_trs80;
 	CDC m_cdc;
 	CWinTrs80Thread** m_ptr_to_me;

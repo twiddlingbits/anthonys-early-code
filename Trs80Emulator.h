@@ -80,6 +80,7 @@ protected:	// Must be over ridden with system specific IO
 	virtual unsigned char* PeekKeyStatus() = NULL;
 	virtual __int64 GetHostElapsedTime() = NULL;
 	virtual void ResetHostElapsedTime() = NULL;
+	virtual void AboutToSleep() = NULL;
 
 public:
 	// Overrides of Z80 virtual functions
@@ -101,7 +102,6 @@ private:
 	bool m_suspend_execution;
 	__int64 m_total_clocks;		// how many z80 cycles have elapsed since code started running?
 	__int64 m_int_clocks;		// how many z80 cycles since last "heartbeat" int?
-	long m_delay_count;			// delay loop counter used to sync z80 speed with acutal speed
 	unsigned char m_int_status;
 	CTrs80FddSimple m_the_floppy;
 	CTrs80Fdd m_null_fdd;
@@ -129,6 +129,8 @@ private:
 #define TRS80_KEY_DOWN	26
 #define TRS80_KEY_LEFT	24
 #define TRS80_KEY_RIGHT	25
+
+#define TRS80_SLEEP_TIME	10		// how many miliseconds to sleep
 
 
 #endif

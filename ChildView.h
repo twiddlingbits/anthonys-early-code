@@ -10,6 +10,7 @@
 #endif // _MSC_VER > 1000
 
 #include <Afxwin.h>
+#include <ddraw.h> 
 #include "WinTrs80.h"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -39,6 +40,10 @@ public:
 	virtual ~CChildView();
 	class CWinTrs80Thread* m_trs80_thread;
 	CTrs80Configurator m_trs80_config;
+	CRect m_direct_draw_into_rect;
+	LPDIRECTDRAW            lpDD;           // DirectDraw object 
+	LPDIRECTDRAWSURFACE     lpDDSPrimary;   // DirectDraw primary surface 
+	LPDIRECTDRAWSURFACE     lpDDSBack;      // DirectDraw back surface 
 
 	// Generated message map functions
 protected:
