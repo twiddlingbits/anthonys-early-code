@@ -1,0 +1,185 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TRS80Emu - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/InstantTrs80.res" /d "_DEBUG" /d "_AFXDLL" "D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\InstantTrs80.rc"" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFA.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/InstantTrs80.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\ChildView.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataAsteroid.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataGermany.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataLdosDsk.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataLibrary.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataModIRom.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataNewDos80Dsk.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataQuest.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\DataTime.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\LibraryDlg.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\MainApp.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\MainFrm.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Trs80Configurator.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Trs80Emulator.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Trs80Fdd.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\WinTrs80.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\WinTrs80Thread.cpp"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Z80C.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFA.tmp" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFB.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/InstantTrs80.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFB.tmp" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFC.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Z80\Debug.c"
+"D:\My Documents\Anthony's Documents\MyProjects\TRS80Emu_2.0\Z80\Z80.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFC.tmp" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFD.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/AWSoftware.pdb" /debug /machine:I386 /out:"Debug/AWSoftware.exe" /pdbtype:sept 
+".\Debug\ChildView.obj"
+".\Debug\DataAsteroid.obj"
+".\Debug\DataGermany.obj"
+".\Debug\DataLdosDsk.obj"
+".\Debug\DataLibrary.obj"
+".\Debug\DataModIRom.obj"
+".\Debug\DataNewDos80Dsk.obj"
+".\Debug\DataQuest.obj"
+".\Debug\DataTime.obj"
+".\Debug\LibraryDlg.obj"
+".\Debug\MainApp.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Trs80Configurator.obj"
+".\Debug\Trs80Emulator.obj"
+".\Debug\Trs80Fdd.obj"
+".\Debug\WinTrs80.obj"
+".\Debug\WinTrs80Thread.obj"
+".\Debug\Z80C.obj"
+".\Debug\Debug.obj"
+".\Debug\Z80.obj"
+".\Debug\InstantTrs80.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ChildView.cpp
+DataAsteroid.cpp
+DataGermany.cpp
+DataLdosDsk.cpp
+DataLibrary.cpp
+DataModIRom.cpp
+DataNewDos80Dsk.cpp
+DataQuest.cpp
+DataTime.cpp
+LibraryDlg.cpp
+MainApp.cpp
+MainFrm.cpp
+Trs80Configurator.cpp
+Trs80Emulator.cpp
+Trs80Fdd.cpp
+WinTrs80.cpp
+WinTrs80Thread.cpp
+Z80C.cpp
+Generating Code...
+Compiling...
+Debug.c
+Z80.c
+Generating Code...
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codes.h(377) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(326) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(394) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(53) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(64) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(75) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(86) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(97) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(108) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(119) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(130) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(166) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(167) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(177) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(178) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(332) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(333) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(334) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(335) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(336) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(337) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(338) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(422) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(348) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(348) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(53) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(64) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(75) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(86) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(97) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(108) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(119) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(130) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(166) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(167) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(177) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(178) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(332) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(333) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(334) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(335) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(336) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(337) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codesxx.h(338) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(450) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(371) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\z80.c(371) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\codes.h(377) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\my documents\anthony's documents\myprojects\trs80emu_2.0\z80\debug.c(296) : warning C4761: integral size mismatch in argument; conversion supplied
+Linking...
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFF.tmp" with contents
+[
+/nologo /o"Debug/InstantTrs80.bsc" 
+".\Debug\StdAfx.sbr"
+".\Debug\ChildView.sbr"
+".\Debug\DataAsteroid.sbr"
+".\Debug\DataGermany.sbr"
+".\Debug\DataLdosDsk.sbr"
+".\Debug\DataLibrary.sbr"
+".\Debug\DataModIRom.sbr"
+".\Debug\DataNewDos80Dsk.sbr"
+".\Debug\DataQuest.sbr"
+".\Debug\DataTime.sbr"
+".\Debug\LibraryDlg.sbr"
+".\Debug\MainApp.sbr"
+".\Debug\MainFrm.sbr"
+".\Debug\Trs80Configurator.sbr"
+".\Debug\Trs80Emulator.sbr"
+".\Debug\Trs80Fdd.sbr"
+".\Debug\WinTrs80.sbr"
+".\Debug\WinTrs80Thread.sbr"
+".\Debug\Z80C.sbr"
+".\Debug\Debug.sbr"
+".\Debug\Z80.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSPFF.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+AWSoftware.exe - 0 error(s), 49 warning(s)
+</pre>
+</body>
+</html>
