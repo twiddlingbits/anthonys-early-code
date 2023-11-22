@@ -12,7 +12,7 @@ When we returned to Houston from the Hague I worked out a deal with my dad to bu
 ## Micro Adventure System
 
 ## Boot -n- Copy
-[Boot -n- Copy ReadMe](.\TRS-80\boot-n-copy\readme.md)
+[Boot -n- Copy ReadMe](./TRS-80/boot-n-copy/readme.md)
 
 ## Quest for FIre
 
