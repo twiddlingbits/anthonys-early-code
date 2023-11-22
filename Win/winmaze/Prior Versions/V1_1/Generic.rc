@@ -1,0 +1,137 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MAZEMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Maze"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW
+        MENUITEM "&Options...",                 IDM_OPTIONS
+        MENUITEM "Print...",                    IDM_PRINT
+        MENUITEM "&Exit",                       IDM_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About Maze...",              IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUTBOX DIALOG DISCARDABLE  22, 17, 144, 75
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "About Maze"
+FONT 8, "System"
+BEGIN
+    CTEXT           "Written By",-1,0,5,144,8
+    CTEXT           "Anthony J. Wood",-1,0,14,144,8
+    CTEXT           "Version 1.1 (32 bit)",-1,0,34,144,8
+    DEFPUSHBUTTON   "OK",IDOK,53,59,32,14,WS_GROUP
+END
+
+MAZEOPTIONS DIALOG DISCARDABLE  17, 22, 276, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Maze Options"
+FONT 8, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,219,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,220,25,50,14
+    SCROLLBAR       IDC_HCELLSIZE,12,20,153,13
+    GROUPBOX        "Horizontal Cell Size",IDC_STATIC,8,6,188,34
+    SCROLLBAR       IDC_VCELLSIZE,11,59,153,13
+    GROUPBOX        "VerticalCell Size",IDC_STATIC,8,45,188,34
+    SCROLLBAR       IDC_SPEED,11,100,153,13
+    GROUPBOX        "Solve Speed",IDC_STATIC,8,86,188,34
+END
+
+PRINTDLGBOX DIALOG DISCARDABLE  17, 22, 112, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE
+FONT 8, "System"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,30,38,50,14
+    LTEXT           "Printing...",IDC_STATIC,42,12,37,13
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+MAZEICON                ICON    DISCARDABLE     "MAZE.ICO"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

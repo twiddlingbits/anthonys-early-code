@@ -1,0 +1,4 @@
+FROM LIB:c.o+"maze.o"
+TO "maze"
+LIB LIB:lc.lib LIB:amiga.lib
+
