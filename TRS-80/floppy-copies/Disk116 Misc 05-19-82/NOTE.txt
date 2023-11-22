@@ -1,0 +1,3 @@
+2/3/98
+start.bas is 0 len on original disk as well as here
+vidtex.cmd is o len (but 12 grans allocated??) on original disk

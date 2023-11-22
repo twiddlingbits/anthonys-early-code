@@ -1,0 +1,590 @@
+00100 ;*** Boot -n- Copy ***
+00110 ;(C) Copyright 1983 Anthony Wood
+00120 ;8-3-83
+00130         ORG     4300H
+00140         DI
+00150         LD      SP,4300H
+00160         LD      HL,INTRO
+00170         CALL    PRINT
+00180         LD      HL,DES
+00190         CALL    PRINT
+00200         LD      HL,FILES
+00210 CPY     LD      DE,BUFFER       ;PUT FILENAME IN BUFFER
+00220 CLP     LD      A,(HL)
+00230         LD      (DE),A
+00240         CP      10
+00250         INC     HL
+00260         INC     DE
+00270         JR      NZ,CLP
+00280         DEC     DE
+00290         LD      A,0DH
+00300         LD      (DE),A
+00310         PUSH    HL
+00320         CALL    BCPY
+00330         POP     HL
+00340         LD      A,(HL)
+00350         CP      0DH
+00360         JP      Z,KEY
+00370         PUSH    HL
+00380         LD      HL,NXTF
+00390         CALL    PRINT
+00400         CALL    40H
+00410         POP     HL
+00420         JR      CPY
+00430 BCPY    LD      HL,MAIN
+00440         LD      (AT),HL          ;BUFFER LOC
+00450         XOR     A
+00460         LD      (GCOUNT),A
+00470         LD      A,1
+00480         LD      (37E1H),A        ;SELET DRIVE
+00490         LD      HL,BUFFER
+00500         CALL    PACK             ;CREATE DOS PASS
+00510         LD      B,11
+00520         LD      C,0              ;ZERO HASH REG
+00530         LD      DE,FNAME
+00540 HLOOP   LD      A,(DE)
+00550         INC     DE              ;GET CHAR TO HASH
+00560         XOR     C
+00570         RLCA
+00580         LD      C,A
+00590         DJNZ    HLOOP           ;HASH WHOLE FILE
+00600         LD      A,C
+00610         OR      A
+00620         JP      NZ,DONE
+00630         INC     A
+00640 DONE    LD      (HASH),A
+00650         CALL    RHASH
+00660 SRCH    LD      A,(HASH)
+00670         CALL    LKHT            ;READ HIT TABLE
+00680         JR      NZ,CHK          ;GO IF ITEM FOUND
+00690         LD      HL,FNF
+00700         CALL    PRINT
+00710 KEY     LD      HL,RBO
+00720         CALL    PRINT
+00730         CALL    49H
+00740         JP      0
+00750 CHK     XOR     A
+00760         LD      (BC),A          ;DO NOT FIND THIS AGAIN
+00770         LD      D,17            ;DIRECTORY
+00780         LD      BC,DBUFF
+00790         PUSH    HL
+00800         CALL    READ
+00810         POP     HL
+00820         JP      NZ,DSKERR
+00830         LD      BC,DBUFF+5
+00840         ADD     HL,BC           ;HL=LOC OF ADDRESS  
+00850         LD      DE,FNAME
+00860         LD      B,11
+00870 CMP     LD      A,(DE)
+00880         CP      (HL)
+00890         JR      NZ,SRCH
+00900         INC     DE
+00910         INC     HL
+00920         DJNZ    CMP
+00930         LD      DE,10H
+00940         XOR     A
+00950         SBC     HL,DE
+00960         LD      DE,DCB
+00970         LD      BC,32
+00980         LDIR                    ;PUT DIR ENTRY INTO DCB
+00990         LD      HL,DCB+22       ;GAP START
+01000         LD      BC,MAIN         ;PUT PROGRAM HERE
+01010 NXTGLP  LD      A,(HL)
+01020         CP      0FFH
+01030         JR      Z,WRITE
+01040         CP      0FE
+01050         JR      Z,FXDE
+01060         LD      D,A
+01070         INC     HL
+01080         LD      A,(HL)
+01090         LD      E,0
+01100         CP      20H
+01110         JR      C,ZERO
+01120         LD      E,5
+01130         SUB     20H
+01140 ZERO    INC     A
+01150         PUSH    BC
+01160         LD      B,A
+01170         LD      A,(GCOUNT)
+01180         ADD     A,B
+01190         POP     BC
+01200         LD      (GCOUNT),A
+01210 ZLP     CALL    RGRAN           ;READ NEXT GRAN
+01220         DEC     A
+01230         JR      NZ,ZLP
+01240         INC     HL
+01250         JR      NXTGLP
+01260 FXDE    LD      HL,DIRERR
+01270         CALL    PRINT
+01280         JP      KEY
+01290 WRITE   LD      HL,MOUNT
+01300         CALL    PRINT
+01310         CALL    49H
+01320         LD      BC,GAT
+01330         LD      D,17
+01340         LD      E,0
+01350         CALL    READ
+01360         JP      NZ,DSKERR
+01370         CALL    RHASH
+01380         XOR     A
+01390         CALL    LKHT            ;SEARCH HIT FOR ENTRY
+01400         JR      NZ,DOKY
+01410         LD      HL,FDIR
+01420         CALL    PRINT
+01430         JP      KEY
+01440 DOKY    LD      A,(HASH)
+01450         LD      (BC),A          ;ENTER OUR FILE
+01460         LD      A,E
+01470         LD      (WRT),A
+01480         LD      (RELB),HL       ;SAVE RELETIVE BYTE
+01490         LD      HL,DCB+16H      ;PUT GLP HERE
+01500 PUTIT   PUSH    HL              ;SAVE
+01510         CALL    FREE
+01520         POP     HL
+01530 POK     LD      (HL),D
+01540         INC     HL
+01550         LD      A,(MASK)
+01560         OR      E
+01570         LD      (HL),A
+01580         INC     HL
+01590         PUSH    DE
+01600         PUSH    HL
+01610         CALL    GWRITE          ;WRITE THE GRANS
+01620         POP     HL
+01630         POP     DE
+01640         LD      A,(GCOUNT)
+01650         DEC     A
+01660         SUB     E
+01670         JR      Z,CLOSE
+01680         LD      (GCOUNT),A
+01690         PUSH    HL
+01700         LD      DE,1EH+DCB
+01710         XOR     A
+01720         SBC     HL,DE           ;DO WE NEED AN FXDE?
+01730         POP     HL
+01740         JR      NZ,PUTIT
+01750         LD      HL,NEED
+01760         CALL    PRINT
+01770         JP      KEY             ;MAKE THIS BETER LATER
+01780 CLOSE   LD      (HL),0FFH
+01790         INC     HL
+01800         LD      (HL),0FFH
+01810         LD      D,17            ;DIR TRK
+01820         LD      A,(WRT)         ;SECTOR
+01830         LD      E,A
+01840         LD      BC,DBUFF
+01850         CALL    READ            ;READ SECTOR TO UPDATE
+01860         JP      NZ,DSKERR
+01870         LD      DE,DBUFF
+01880         LD      HL,(RELB)       ;GET REL BYTE OF ENTRY
+01890         ADD     HL,DE
+01900         LD      DE,DCB
+01910         EX      DE,HL           ;MAKE HL SOURSE ,DE DES
+01920         LD      BC,32
+01930         LDIR
+01940         LD      BC,DBUFF                ;SOURCE TO WRITE
+01950         LD      D,17
+01960         LD      A,(WRT)         ;SECTOR
+01970         LD      E,A
+01980         CALL    WRTD            ;WRITE DIR SECTOR
+01990         JP      NZ,DSKERR
+02000 ;UPDATE GAT TABLE
+02010         LD      E,0
+02020         LD      BC,GAT
+02030         CALL    WRTD
+02040         JP      NZ,DSKERR
+02050 ;UPDATE HASH SECTOR
+02060         LD      HL,DBUFF
+02070         LD      DE,DBUFF+1
+02080         LD      (HL),0
+02090         LD      BC,255
+02100         LDIR
+02110         LD      HL,DBUFF
+02120         LD      DE,HIT          ;SOURCE
+02130         LD      C,8
+02140 UHLP1   LD      B,8
+02150 UHLP2   LD      A,(DE)
+02160         LD      (HL),A
+02170         INC     HL
+02180         INC     DE
+02190         DJNZ    UHLP2
+02200         PUSH    DE
+02210         LD      DE,18H
+02220         ADD     HL,DE
+02230         POP     DE
+02240         DEC     C
+02250         JR      NZ,UHLP1
+02260         LD      BC,DBUFF
+02270         LD      D,17
+02280         LD      E,1
+02290         CALL    WRTD
+02300         JP      NZ,DSKERR
+02310         LD      HL,OPC
+02320         CALL    PRINT
+02330         RET
+02340 ;FREE - SEARCH THE GAT TABLE FOR CONTINUOUS FREE
+02350 ;GRANUALS.  RETURNS THE FOLOWING FORMAT:
+02360 ;BEGINING TRACK - D REG
+02370 ;# OF CONTINUOUS SECTORS - E REG
+02380 ;(MASK) - THE MASK THAT WHEN OR'D TO E GIVES STARTING SEC
+02390 ;BY USING BIT 5:
+02400 ;5=0 1ST GRAN ASSIGNED; 5=1 2ND GRAN ASSINGNED (SEC 5)
+02410 ;BITS 0-4 HOLDS # ASSIGNED GRANS MINUS 1
+02420 FREE    LD      HL,GAT  ;CURRENT GAT POINTER
+02430 GTOP    LD      A,(HL)
+02440         CP      0FFH            ;FULL?
+02450         JP      Z,FULL          ;JUMP IF NOT FREE
+02460         LD      DE,GAT
+02470         XOR     A
+02480         PUSH    HL
+02490         SBC     HL,DE
+02500         LD      A,L
+02510         POP     HL
+02520         LD      (TRKS),A
+02530         LD      D,(HL)
+02540         LD      A,0FFH
+02550         LD      (HL),A
+02560         LD      A,D
+02570         CP      0FCH            ;BOTH FREE?
+02580         JR      NZ,FN1
+02590         LD      A,2             ;2 GRANS
+02600         LD      (SCNT),A        ;PUT
+02610         XOR     A               ;START AT SEC 0
+02620         LD      (MASK),A
+02630         JR      MAINL
+02640 FN1     CP      0FEH            ;ONLY FIRST GRAN FREE
+02650         JR      NZ,FN2
+02660         XOR     A
+02670         LD      (MASK),A
+02680         LD      A,1
+02690         LD      (SCNT),A
+02700 FNDTRK  LD      A,(TRKS)
+02710         LD      D,A
+02720         LD      A,(SCNT)
+02730         DEC     A
+02740         LD      E,A
+02750         RET                     ;RET WITH TRK IN D
+02760 FN2     CP      0FDH            ;ONLY 2ND GRAN FREE
+02770         JR      Z,FN3
+02780 GERR    LD      HL,BGT
+02790         CALL    PRINT
+02800         JP      KEY
+02810 FN3     LD      A,20H
+02820         LD      (MASK),A
+02830         LD      A,1
+02840         LD      (SCNT),A
+02850 MAINL   LD      A,(SCNT)
+02860         LD      D,A
+02870         LD      A,(GCOUNT)
+02880         CP      D
+02890         JR      Z,FNDTRK
+02900         DEC     D
+02910         CP      D
+02920         JR      NZ,MAINL2
+02930         LD      A,0FDH
+02940         LD      (HL),A
+02950         LD      A,(SCNT)
+02960         DEC     A
+02970         LD      (SCNT),A
+02980         JR      FNDTRK
+02990 MAINL2  INC     HL
+03000         LD      A,(HL)
+03010 SKP     CP      0FCH
+03020         JR      NZ,FN4
+03030         LD      D,2
+03040         LD      A,(SCNT)
+03050         ADD     A,D
+03060         LD      (SCNT),A
+03070         LD      A,0FF
+03080         LD      (HL),A
+03090         JR      MAINL
+03100 FN4     CP      0FEH
+03110         JR      NZ,FN5
+03120         LD      A,(SCNT)
+03130         LD      D,1
+03140         ADD     A,D
+03150         LD      (SCNT),A
+03160         LD      A,0FFH
+03170         LD      (HL),A
+03180         JP      FNDTRK
+03190 FN5     CP      0FDH
+03200         JR      Z,FNDTRK
+03210         CP      0FFH
+03220         JR      NZ,GERR
+03230         JR      FNDTRK
+03240 FULL    INC     HL
+03250         LD      DE,GAT+45
+03260         PUSH    HL
+03270         XOR     A
+03280         SBC     HL,DE
+03290         POP     HL
+03300         JP      NZ,GTOP
+03310         LD      HL,DFUL
+03320         CALL    PRINT
+03330         JP      KEY
+03340 ;GWRITE - WRITE E CONTIUOUS GRANS , TRK D
+03350 GWRITE  LD      B,E
+03360         INC     B
+03370         XOR     A
+03380 MULT5   ADD     A,5
+03390         DJNZ    MULT5
+03400         LD      E,0
+03410         LD      B,A
+03420         LD      A,(MASK)
+03430         CP      20H
+03440         JR      NZ,GO
+03450         LD      E,5
+03460 GO      PUSH    BC
+03470         LD      BC,(AT)
+03480         CALL    WRTN
+03490         LD      (AT),BC
+03500         POP     BC
+03510         JP      NZ,DSKERR
+03520         INC     E
+03530         LD      A,E
+03540         CP      10
+03550         JR      Z,GO2
+03560 GO3     DJNZ    GO
+03570         RET
+03580 GO2     LD      E,0
+03590         INC     D
+03600         JR      GO3
+03610 WRTD    PUSH    BC
+03620         LD      A,1
+03630         LD      (37E1H),A
+03640         CALL    TRY2
+03650         POP     HL
+03660         RET     Z
+03670         LD      B,H
+03680         LD      C,L             ;TRY SECOND TIME ON ERROR
+03690 TRY2    LD      (37EEH),DE      ;SET TRK & SECTOR
+03700         LD      HL,37ECH        ;COMMAND REG
+03710         LD      (HL),1BH        ;SEEK WITH LARGE DELAY
+03720         EX      (SP),HL
+03730         EX      (SP),HL
+03740         EX      (SP),HL
+03750         EX      (SP),HL         ;DIGEST COMAND
+03760 WAIT2   LD      A,(HL)
+03770         RRCA                    ;WAIT TILL DSK READY
+03780         JR      C,WAIT2
+03790 COM     LD      (HL),0A9H       ;READ BYTE COMAND
+03800         PUSH    DE
+03810         LD      DE,37EFH        ;DATA REGISTER
+03820         EX      (SP),HL
+03830         EX      (SP),HL         ;DELAY
+03840         JR      DOIT2
+03850 AGAIN2  RRCA                    ;TEST FOR SEC END OR ERR
+03860         JR      NC,FIN2
+03870 DOIT2   LD      A,(HL)          ;GET STATUS
+03880         BIT     01,A            ;DRQ TEST
+03890         JR      Z,AGAIN2                ;NOT READY. TEST FOR ERR
+03900         LD      A,(BC)
+03910         LD      (DE),A          ;GET AND SAVE DATA
+03920         INC     BC              ;NEXT LOC TO SAVE DATA
+03930         JR      DOIT2
+03940 FIN2    LD      A,(HL)          ;RESTORE STATUS
+03950         AND     1CH             ;TEST FOR THE 3 ERRORS
+03960         POP     DE              ;RESTORE TRK & SEC
+03970         RET     Z               ;RET IF NORMAL END
+03980         LD      (HL),0D0H       ;FOURCE INTERUPT
+03990         RET
+04000 WRTN    LD      A,0A8H          ;WRITE TO NORMAL TRK
+04010         LD      (COM+1),A
+04020         CALL    WRTD
+04030         LD      A,0A9H
+04040         LD      (COM+1),A       ;RESTORE
+04050         RET
+04060 ;LKHT   SEARCH HIT TABLE FOR "A"
+04070 ;ON EXIT: E=REL DIR SECTOR, BC=ADDRS IN MEM OF HASH
+04080 ;HL=REL BYTE LOC IN SETOR E OF HASH
+04090 LKHT    LD      HL,HIT
+04100         LD      D,A             ;VALUE TO LOOK FOR
+04110         LD      E,8
+04120         LD      C,0
+04130 HALP    LD      B,8
+04140 HALP2   LD      A,(HL)
+04150         CP      D
+04160         JR      Z,ADRS
+04170         INC     HL
+04180         DJNZ    HALP2
+04190         LD      A,20H
+04200         ADD     A,C
+04210         LD      C,A
+04220         DEC     E
+04230         JR      NZ,HALP
+04240         RET
+04250 ADRS    LD      A,10D
+04260         SUB     B
+04270         LD      B,0
+04280         LD      E,A
+04290         PUSH    BC
+04300         PUSH    HL
+04310         POP     BC
+04320         POP     HL
+04330         OR      0FF
+04340         RET
+04350 ;PACK   TAKES A PASSWORD AND PUTS IN BLANKS
+04360 PACK    LD      DE,FNAME+1
+04370         PUSH    HL
+04380         LD      HL,FNAME
+04390         LD      BC,10
+04400         LD      A,20H
+04410         LD      (HL),A
+04420         LDIR
+04430         POP     HL
+04440         LD      DE,FNAME
+04450 LP      LD      A,(HL)
+04460         CP      0DH
+04470         RET     Z
+04480         CP      '/'
+04490         JR      NZ,NOEXT
+04500         LD      DE,FNAME+7
+04510         JR      NOEXT2
+04520 NOEXT   LD      (DE),A
+04530 NOEXT2  INC     HL
+04540         INC     DE
+04550         JR      LP
+04560 ;RHASH  -  READ HIT TABLE
+04570 RHASH   LD      D,17
+04580         LD      E,1
+04590         LD      BC,DBUFF
+04600         CALL    READ
+04610         JR      NZ,DSKERR
+04620         LD      DE,HIT
+04630         LD      HL,DBUFF
+04640         LD      C,8
+04650 HLP1    LD      B,8
+04660 HLP2    LD      A,(HL)
+04670         LD      (DE),A
+04680         INC     HL
+04690         INC     DE
+04700         DJNZ    HLP2
+04710         PUSH    DE
+04720         LD      DE,18H
+04730         ADD     HL,DE
+04740         POP     DE
+04750         DEC     C
+04760         JR      NZ,HLP1
+04770         RET
+04780 PRINT   LD      A,(HL)
+04790         CALL    33H
+04800         CP      0
+04810         RET     Z
+04820         CP      0DH
+04830         RET     Z
+04840         INC     HL
+04850         JR      PRINT
+04860 DSKERR  LD      HL,DIO
+04870         CALL    PRINT
+04880         JP      KEY
+04890 ;RGRAN  - READ NEXT GRANUAL INTO (BC). ON ENTRY:
+04900 ;D= STARTING TRK#, E=STARTING SEC #
+04910 RGRAN   PUSH    AF              ;SAVE
+04920         PUSH    HL              ;SAVE
+04930 NOPE    CALL    READ
+04940         JR      NZ,DSKERR
+04950         INC     E
+04960         LD      A,E
+04970         CP      5
+04980         JR      Z,DONE2
+04990         CP      10
+05000         JR      NZ,NOPE
+05010 CLR     LD      E,0
+05020         INC     D               ;GO TO NEXT TRACK
+05030 DONE2   POP     HL
+05040         POP     AF
+05050         RET
+05060 ;SECTOR READ.
+05070 ;ON ENTRY --> D=TRACK, E=SECTOR, BC=MEM LOC TO PUT SECTOR
+05080 READ    PUSH    BC
+05090         LD      A,1
+05100         LD      (37E1H),A
+05110         CALL    TRY
+05120         POP     HL
+05130         RET     Z
+05140         LD      B,H
+05150         LD      C,L             ;TRY SECOND TIME ON ERROR
+05160 TRY     LD      (37EEH),DE      ;SET TRK & SECTOR
+05170         LD      HL,37ECH        ;COMMAND REG
+05180         LD      (HL),1BH        ;SEEK WITH LARGE DELAY
+05190         EX      (SP),HL
+05200         EX      (SP),HL
+05210         EX      (SP),HL
+05220         EX      (SP),HL         ;DIGEST COMAND
+05230 WAIT    LD      A,(HL)
+05240         RRCA                    ;WAIT TILL DSK READY
+05250         JR      C,WAIT
+05260         LD      (HL),88H        ;READ BYTE COMAND
+05270         PUSH    DE
+05280         LD      DE,37EFH        ;DATA REGISTER
+05290         EX      (SP),HL
+05300         EX      (SP),HL         ;DELAY
+05310         JR      DOIT
+05320 AGAIN   RRCA                    ;TEST FOR SEC END OR ERR
+05330         JR      NC,FIN
+05340 DOIT    LD      A,(HL)          ;GET STATUS
+05350         BIT     01,A            ;DRQ TEST
+05360         JR      Z,AGAIN         ;NOT READY. TEST FOR ERR
+05370         LD      A,(DE)
+05380         LD      (BC),A          ;GET AND SAVE DATA
+05390         INC     BC              ;NEXT LOC TO SAVE DATA
+05400         JR      DOIT
+05410 FIN     LD      A,(HL)          ;RESTORE STATUS
+05420         AND     1CH             ;TEST FOR THE 3 ERRORS
+05430         POP     DE              ;RESTORE TRK & SEC
+05440         RET     Z               ;RET IF NORMAL END
+05450         LD      (HL),0D0H       ;FOURCE INTERUPT
+05460         RET
+05470 INTRO   DEFM    'Boot-N-Copy   (C) Copyright 1983 Anthony Wood'
+05480         DEFB    0DH
+05490 DES     DEFM    'The following files are to be copyed:'
+05500         DEFB    10
+05510 FILES   DEFM    'COMPAC/CMD'
+05520         DEFB    10
+05530         DEFM    'GRAPH/TAB'
+05540         DEFB    10
+05550         DEFM    'XFER/CMD'
+05560         DEFB    10
+05570         DEFB    0DH
+05580 RBO     DEFM    'Press <Enter> to re-boot'
+05590         DEFB    13
+05600 FNF     DEFM    'File not in directory!'
+05610         DEFB    13
+05620 DIO     DEFM    'Disk error!'
+05630         DEFB    0DH
+05640 DIRERR  DEFM    'Sorry, this file contains an extended directory entry.'
+05650         DEFB    0DH
+05660 GCOUNT  DEFB    0
+05670 FDIR    DEFM    'Directory full!'
+05680         DEFB    0DH
+05690 MOUNT   DEFM    'Insert the destination disk and press <Enter>.'
+05700         DEFB    0DH
+05710 BGT     DEFM    'Bad GAT table! Operation aborted!'
+05720         DEFB    0DH
+05730 NEED    DEFM    'Directory overflow. An FXDE is needed, but I do not'
+05740         DEFB    10
+05750         DEFM    'know how to create one.  You need to create a disk that'
+05760         DEFB    10
+05770         DEFM    'has a longer segment of continuous granuals.'
+05780          DEFB   0DH
+05790 OPC     DEFM    'File saved to disk.'
+05800         DEFB    0DH
+05810 DFUL    DEFM    'Disk full.'
+05820         DEFB    0DH
+05830 NXTF    DEFM    'Insert source disk and press <Enter>.'
+05840         DEFB    0DH
+05850 BUFFER  DEFS    20
+05860 DBUFF   DEFS    256
+05870 HIT     DEFS    64
+05880 FNAME   DEFS    11
+05890 HASH    DEFS    1
+05900 DCB     DEFS    32
+05910 GAT     DEFS    256
+05920 WRT     DEFB    1
+05930 RELB    DEFS    2
+05940 MASK    DEFS    1
+05950 SCNT    DEFS    1
+05960 TRKS    DEFS    1
+05970 AT      DEFS    2
+05980 MAIN    DEFS    1
+05990         END     4300H

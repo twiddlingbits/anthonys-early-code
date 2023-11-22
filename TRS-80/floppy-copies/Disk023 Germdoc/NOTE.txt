@@ -1,0 +1,4 @@
+2/2/98
+This disk was labled "BAD DISK" and when trying to read 
+the last file "Solution.txt", "Parity Error on Read" 
+happened at the beginning of the file.
