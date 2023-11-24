@@ -7,15 +7,6 @@ To solve this issue, I wrote Boot -n- Copy in Z-80 assembly.  After assembling (
 
 I wrote boot-n-copy for use with my "AW Software" diskettes.
 
-# AW Software
-While in high school (1979 to 1983) I started my first company AW Software.  I created two products for the TRS-80 microcomputer I tried to sell � Compac and Germany 1942.    Compac was  a "smart terminal" program that let users log into online BBS (the predecessor to the internet).  Compac also implemented multiple file transfer protocols (like xmodem) to allow users to transfer files to each other.  
-
-The coolest file transfer protocol I added to Compac was one I invented that allowed full-duplex file exchange.  So you could, you know, pirate software with a modem at twice the normal rate.  The second was Germany 1942, a text adventure.   Both were available on cassette tape or 5.25� Floppy Diskette.   
-
-AW Software was not particularly successful, I sold one copy of Compac.  The software was pretty good, but I was in high school and didn�t know much about marketing or selling software.
-
-Anthony Wood
-November 2023
 
 # Converting .ASM EDTASM to text files -- Notes to Self
 These .ASM files saved by EDTASM appeared to be normal ascii text, except each line has a line number with the high bit set in each byte of the line number.   I used a windows hex editor to mask the high bit of the first 5 bytes of each line, which converts the line number to ascii.  I then used notepad++ to cut the line numbers, set the tabs to 8, and then converted the tabs to spaces.  I then then pasted the line numbers back into the start of the columns.  This was needed because edtasm appears to have set the tab stops to start after the line numbers.  

@@ -1,0 +1,4 @@
+FROM LIB:c.o+"x.o"
+TO "x"
+LIB LIB:lc.lib LIB:amiga.lib
+

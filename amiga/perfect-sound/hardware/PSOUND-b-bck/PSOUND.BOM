@@ -1,0 +1,32 @@
+                                              Revised: September 25, 1991
+PERFECT SOUND                                 Revision: 3
+Bill Of Materials            September   25, 1991     14:07:29     Page    1
+
+ Item  Quantity  Reference                 Part            
+________________________________________________________
+
+    1       1    C1                        10UF            
+    2       1    C2                        100PF           
+    3       2    C3,C5                     47UF            
+    4       4    C4,C6,C11,C12             .1UF            
+    5       4    C7,C8,C9,C10              1UF             
+    6       2    D1,D2                     1N4148          
+    7       1    J1                        CONNECTOR DB25  
+    8       2    J2,J3                     RCA JACK        
+    9       1    J4                        PHONEJACK       
+   10       1    Q1                        2N3904          
+   11       1    R1                        100K            
+   12       6    R2,R8,R9,R10,R16,R17      10K             
+   13       1    R3                        100             
+   14       2    R4,R12                    6.2K            
+   15       1    R5                        1K              
+   16       1    R6                        470K            
+   17       1    R7                        3.3K            
+   18       1    R11                       3K              
+   19       1    R13                       12K             
+   20       1    R14                       24K             
+   21       1    R15                       47K             
+   22       1    U1                        AD7575          
+   23       1    U2                        74HC191         
+   24       2    U3,U4                     4066            
+   25       1    U5                        LM358           

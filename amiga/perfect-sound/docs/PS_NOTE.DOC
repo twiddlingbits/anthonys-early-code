@@ -1,0 +1,37 @@
+
+
+PERFECT SOUND TECHNICAL NOTE
+
+All Digitizers Don't Sound A Like
+
+At first glance, the many different Amiga samplers might seem similar. In reality, they are quite different.  And, often, price doesn't relates to performance.
+
+When evaluating an Amiga sound digitizer, there are several key questions you should consider:
+
+1. Is it Stereo or Mono?
+
+Stereo samplers have two line level inputs and allow you to take advantage of the Amiga's multi voice playback.
+
+2. Is there a built in Mic preamp?
+
+Microphones generate very low level voltages.  In order to plug in a mic directly, a sound digitizer must have a built in preamplifier.
+
+3. Is there a Sample and Hold circuit?
+
+Many samplers do not include a Sample and Hold.  With out it, the input sound changes during the sampling time.  The result is slight distortion.
+
+4. Is the sampling rate set with hardware or software?
+
+Almost all Amiga sound digitizers use software methods to set their sampling rates.  This results in samples that "jitter."  The samples are not all exactly equal distance apart. The result is a slight distortion.  To avoid this problem, a sampler must use a hardware based clock to precisely time the samples.
+
+5. How is the input gain adjusted?
+
+Since the audio signals being sent to a sound digitizer vary wildly, it is important that there be some method of changing the gain of these signals.  Sound samplers vary wildly on how this is accomplished.  On some, their is no control.  On many, you must adjust a control on the sound digitizer every time you wish to adjust the gain.  On Perfect Sound, the gain adjustment is digital allowing you to change it from your keyboard.
+
+6. Is the power supply regulated?
+
+Many samplers get their power from the parallel port.  On the A500, this supply is very noise.  To stop this noise from getting into the samples, the digitizer must regulate the power supply.
+
+As you can see, there are many factors that can affect sound digitizer performance.  When evaluating a sampler, all of these features should be considered, along with the price.  At the time of this writing, Perfect Sound was the only sampler to provide Stereo, mic jack, sample and hold, hardware sampling clock, digital gain, and power supply regulation.  With a list price of $99.95 it is one of the least expensive sampler on the market.
+
+

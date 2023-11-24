@@ -1,0 +1,5 @@
+FROM LIB:c.o "studioplay.o"
+TO "studioplay"
+LIB /studio16/Source/studio/studiostub.o LIB:sc.lib LIB:amiga.lib
+ADDSYM
+
