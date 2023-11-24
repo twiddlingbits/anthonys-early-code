@@ -1,31 +1,31 @@
-# Anthony J. Wood's Code History
-This repository contains much of the coding projects I wrote since I learned to program until recent times. Most of them you can run with Emulators or on Windows.  I have separate repos for more contemporary projects.
+# Anthony J. Wood's Code Archive
+Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejeciton/acceptance letters.
 
 # PDP-11
-While attending the American School of the Hague in 8th grade I taught myself to program using thier old PDP-11 and wrote my first game: "Battle Star Galactica" [Readme](./pdp-11/readme.md)
+While attending 8th grade at the American School of the Hague I taught myself to program using their PDP-11 and wrote my first game: "Battle Star Galactica" [Readme](./pdp-11/readme.md)
 
 # TRS-80
-When we returned to Houston from the Hague I worked out a deal with my dad to buy a 'microcomputer'.  I would pay half (cutting neighbors grass), and he would pay half.   He found two used ones at work for sale -- an Apple II and a TRS-80.  I am not sure why, but i picked the TRS-80.  During high school I went through phases where I programmed, and when I didn't.  Initially the TRS-80 did note have floppy disk drives - software was saved to cassette tape.  At some point, my dad got me floppy  disk drives and a printer!  Also at one point I 'blew up' my TRS-80 while attaching a sound board I designed (which obviously didn't work correctly.)  Later I did get it work and sold one extra to my best friend at the time John Bruner.  That broken TRS-80 was expensive to fix and set me back a while.  During this time i also started my first 'company' - AW Software.  Here are the main programs I wrote.
+Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
 
-
-   - "The Endless Tomb" [[ReadMe](./TRS-80/tomb/readme.md) or [Play on Windows](./Win/basic-classics/ReadMe.txt)]
-   - "Space Taxi"
-   - "Micro Adventure System" ReadMe
-   - "Boot -n- Copy" [ReadMe](./TRS-80/boot-n-copy/readme.md)
-   - "Quest for Fire" [ReadMe](./TRS-80/quest-for-fire/readme.md)
-   - "Compac" ReadMe
-   - "Germany 1942" ReadMe
+   - The Endless Tomb [ReadMe](./TRS-80/tomb/readme.md) | [TOMB.BAS](./TRS-80/tomb/tomb.bas.txt) | [Rejection](./scans/1981-7-20-creative-computing-tomb.jpg) |  [Play on Windows](./Win/basic-classics/ReadMe.txt)
+   - Space Taxi
+   - Micro Adventure System ReadMe
+   - Ruins at Time's Edge [Rejection](./scans/1983-estimate-cload-ruins-at-times-edge.jpg)
+   - Boot -n- Copy [ReadMe](./TRS-80/boot-n-copy/readme.md)
+   - Quest for Fire [ReadMe](./TRS-80/quest-for-fire/readme.md)
+   - Compac ReadMe | [AWSoftware](./awsoftware/readme.md)
+   - Germany 1942 ReadMe | [AWSoftware](./awsoftware/readme.md)
 
 # Commodore 64
-While in high school I went to a TRS-80 microcomputer user group meeting where they demoed a Commodore 64.  It was amazing, with color graphics and games that looked as good as those in the arcades.   I soon purchased a C-64 as well as the 1541 disk drive (more grass cutting money, and perhaps some from Burger King).  I mostly wrote BASIC software, but at least one had a 6502 machine code subroutine.  I also managed to sell some of my software to computer magazines w(which back then would publish software in the magazine.)
+Towards the end of high school I [purchased the super-cool Commodore 64](./aw-microcomputer-history.md) and wrote the following.
 
-   - "Lunar Lander" [ReadMe](./C64/Lunar%20Lander%20Ahoy%201983/readme.md)
-   - Space Hunt
-   - Renumber
-   - Faster 64
+   - Lunar Lander [ReadMe](./C64/lunar-lander/readme.md) | [Article PDF with Source](./C64/lunar-lander/ahoy-april-1984-lunar-lander.pdf)
+   - Space Hunt [Readme](//C64/space-hunt/readme.md) | [Article PDF with Source](./C64/space-hunt/space-hunt-ahoy-april-1985.pdf)
+   - Renumber [Readme](./C64/renumber/readme.md) |  [Article PDF with Source](./C64/renumber/renumber-ahoy-july-1984.pdf)
+   - Faster 64 [Readme](./C64/faster64/) | [Article PDF](./C64/faster64/faster64-ahoy-april-1985.pdf)
    - Banner [Readme](./C64/banner/readme.md)
-   - 1541 Zip
-   - STerm
+   - 1541 Zip [Readme](./C64/1541zip/readme.md)
+   - STerm 64 [Manual](./scans/1984-sterm64-instructions.pdf) | [Rejection](./scans/1984-9-7-broderbund-sterm64.jpg)
 
 
 # Amiga
@@ -38,6 +38,10 @@ While in high school I went to a TRS-80 microcomputer user group meeting where t
    - AW Basic
    - Classic Basic Games
    - TRS-80 Emulator
- - 
+
+# macromedia flash
+   - Space Invaders
+
+- 
 
 

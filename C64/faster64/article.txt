@@ -1,0 +1,117 @@
+Increase the speed of your BASIC programs 
+by 10 to 45 percent with 
+
+FASTER 64
+
+
+By Anthony Wood 
+
+
+Faster 64 is a utility for the Commodore 64 that 
+analyzes the use of variables in a BASIC pro- 
+gram while it runs. It tells you how often each 
+variable in the program is accessed. By defin- 
+ing your most often used variables first, BASIC does 
+not have to search as far for them, thus speeding up your 
+program. For some programs, this speed increase can 
+be considerable. 
+
+Faster 64 is a machine language program. Since it is 
+slow and inconvenient to use a BASIC program to POKE 
+in a machine language program, we have created a spe- 
+cial ML listing of Faster 64. To enter Faster 64, refer 
+to the Flankspeed instructions on page 94. Once entered 
+and SAVEd you need only enter 'LOAD "FASTER 
+64", 8, 1' (tape users, 'LOAD "FASTER 64", 1,1') when 
+you wish to load the program. To initialize it, you also 
+have to type 'SYS 49152'. This should be done after you 
+first LOAD it or after you press RUN STOP/RESTORE. 
+After you key in the enclosed program, Faster 64, you 
+should save it before you run it. Once you have saved 
+it, LOAD it and type SYS 49152, and you should see 
+the message "Faster 64 working." 
+
+USING FASTER 64 
+
+Load Faster 64 and initialize it. When you see the mes- 
+sage "Faster 64 working," enter the following line: 
+
+Q=0:A=0:A(1)=A(2)+A(3):Z$="FRED" 
+
+<RETURN> 
+
+The following should appear: 
+A() 3 ,Q 1, A 1,Z$ 1 
+
+This means the array A was referenced 3 times and 
+the variables Q, A, and Z$ were each referenced 1 time. 
+The variables referenced the most are listed first. 
+
+Key in this short program to test Faster 64 some more: 
+
+NEW 
+
+10 DIM A(20) 
+
+20 FOR Y=l TO 20 
+
+30 A(Y)=A(Y)+1 
+
+40 NEXT 
+
+RUN it. You should get the message: 
+
+
+
+Y 41, A() 40 
+
+
+
+This means that the array A( ) was referenced 40 times, 
+and the variable Y 41 times. Notice that a FOR-NEXT 
+loop only references its index once. This is because the 
+FOR-NEXT loop stores the address of its index variable. 
+It does not have to keep looking it up. It will, however, 
+look up the index in every loop if you enter 'NEXT Y' 
+instead of just 'NEXT.' 
+
+You should be aware that the variable TI will not work 
+with Faster 64; it causes a syntax error. 
+
+To use Faster 64 on one of your programs, load Fast- 
+er 64 and initialize it. Note that you might have to enter 
+"NEW" after you load Faster 64, to prevent the "out of 
+memory" error. This is a bug in the Commodore BASIC 
+ROM. Now load your program. Run your program all 
+the way through. After your program is finished, its vari- 
+ables will be listed in numerical order. Suppose that you 
+run your program, and you get the following display 
+from Faster 64: 
+
+X 2131, Z 511, P() 200, FQ154, X$ 100, 
+D 2 
+
+To initialize the variables in the correct order, you 
+would enter a line at the beginning of your program like 
+this: 
+
+1 DIM P(100),F(100) 
+
+2 X=0:Z=0:X$="":D=0 
+
+This puts your variables in the most efficient order. No- 
+tice that the arrays are on a separate line. 
+
+You should look out for certain exceptions. For ex- 
+ample, suppose you find out that the variable A$ is ref- 
+erenced 4000 times. It might not be best to define it first, 
+if it is not at a place in your program where speed is 
+important. For example, suppose A$ appears in this line: 
+
+1000 GET A$:IFA$OCHR$(13)THEN1000 
+
+You can see that AS is in a loop waiting for a return. 
+Since it is used in a wait loop, you can define A$ last 
+because speed is not important— defining it first would 
+just slow down the search for more critical variables. □ 
+SEE PROGRAM LISTING ON PAGE 106 
