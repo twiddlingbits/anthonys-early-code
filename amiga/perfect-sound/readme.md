@@ -1,5 +1,5 @@
 # Perfect Sound
-This folder contains the source code, orcad schematic, amiga disk images (for use in an emulator), and pictures of the Perfect Sound 8-bit digitizer hardware and software.
+This folder contains the source code, orcad schematic, amiga disk images (for use in an amiga emulator), and pictures of the Perfect Sound 8-bit digitizer hardware and software.
 
 Perfect Sound was a stereo 8-bit sound sampler (also known as a sound digitizer) for the Commodore Amiga Computer.  The Amiga was the first computer that could play stereo 8 bit audio, but there was no way to record it.  Perfect Sound let you record and edit audio files.
 
