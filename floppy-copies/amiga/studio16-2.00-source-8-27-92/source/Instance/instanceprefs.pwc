@@ -1,0 +1,18 @@
+
+static struct NewWindow NewPrefWin = {
+	177,54,	/* window XY origin relative to TopLeft of screen */
+   PREF_WIND_WIDTH,
+   PREF_WIND_HEIGHT,
+	0,1,	/* detail and block pens */
+	CLOSEWINDOW,	/* IDCMP flags */
+   ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+	NULL,	/* first gadget in gadget list */
+	NULL,	/* custom CHECKMARK imagery */
+	"Display Mode",	/* window title */
+	NULL,	/* custom screen pointer */
+	NULL,	/* custom bitmap */
+	80,50,	/* minimum width and height */
+	-1,-1,	/* maximum width and height */
+	CUSTOMSCREEN	/* destination screen type */
+};
+

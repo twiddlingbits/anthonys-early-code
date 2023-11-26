@@ -1,0 +1,176 @@
+#include <exec/types.h>
+#include <exec/exec.h>
+#include <libraries/dos.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include "/include/studio16.h"
+#include "/include/iff8svx.h"
+
+void QuickSplit();
+void SkipChunk();
+
+/************************************************/
+/** 8SVX filter.  Called by studio/LoadSamp() ***/
+/************************************************/
+
+Load8SVX(in,sp)
+long in;
+struct SampleFilePointer *sp;
+{
+char *AllocMem();
+int len,oldlen;
+ULONG k,x,tm;
+int e1;
+UWORD z;
+static char line[80];
+UBYTE comp=0;
+UBYTE *lmem;
+char *tmem;
+struct Disk_Samp *s;
+ULONG flag=0;
+
+s=sp->disksamp;
+
+if(4!=Read(in,&k,4)) return(BAD_IFF);
+
+if (k!=FORM) 
+	{
+	Seek(in,-4L,OFFSET_CURRENT);			 /** backup to call point **/
+	return(STDERR_UNKNOWN_FILE_FORMAT);
+	}
+
+if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	 /* skip length */
+
+if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	 /* get form type */
+
+if (x!=SVX)
+	{
+	Seek(in,-12L,OFFSET_CURRENT);		 /** backup to call point **/
+	return(STDERR_UNKNOWN_FILE_FORMAT);
+	}
+
+s->type=RIGHT;
+tm=0;
+
+while(tm!=BODY)
+	{
+	if(4!=Read(in,(char *)&tm,4)) return(BAD_IFF);	 /* get chunk type */
+
+	switch(tm)
+		{
+		case CHAN:
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);
+			if (x!=4) return(BAD_IFF);  /* Bad Size */
+			if(4!=Read(in,(char *)&s->type,4)) return(BAD_IFF);
+			if (s->type!=STEREO && s->type!=RIGHT && s->type!=LEFT) s->type=RIGHT;
+		break;
+
+		case VHDR:
+			flag=1;
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);  /* should be 20, length of VHDR */
+			if (x!=20) return(BAD_IFF);
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	/* oneshot:should be length of sample */
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	/* repeat */
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	/* cycles */
+			if(2!=Read(in,(char *)&z,2)) return(BAD_IFF);	/* get samples per second */
+			if(1!=Read(in,(char *)&x,1)) return(BAD_IFF);	
+			if(1!=Read(in,(char *)&comp,1)) return(BAD_IFF);/* Compression */
+			if(4!=Read(in,(char *)&x,4)) return(BAD_IFF);	/* volume */
+
+			s->parms.rate=z;
+			s->parms.filter3db=z/2;
+			s->parms.volume=ZERO_DB;
+
+			if (comp==1) sprintf(line,"Compressed 8SVX IFF at %d samples per second",z);
+			else sprintf(line,"8SVX IFF at %d samples per second",z);
+			telluser(line,0,0);
+		break;
+
+		case BODY:
+			if (!flag) return(BAD_IFF);
+			if(4!=Read(in,(char *)&len,4)) return(BAD_IFF);
+			if (s->type==STEREO) len=len/2;
+
+			if (comp==1) {oldlen=len;len=(len-2)*2;}
+
+			len=fix_len(len);
+			if (0==(lmem=AllocMem(len,0))) return(OUT_OF_MEMORY);
+
+			if (comp==1) e1=CRead(in,lmem,oldlen);	  /* read in sample */
+			else e1=Read(in,lmem,len);		  /* read in sample */
+			if (e1==-1) return(READ_ERROR);
+
+			if(0==(tmem = AllocMem(len*2, 0))) {FreeMem(lmem,len);return(OUT_OF_MEMORY);}
+
+			QuickSplit(tmem,lmem,len);
+			if (len!=SampleWrite(sp, tmem, len))
+				{
+				FreeMem(tmem, len*2);
+				FreeMem(lmem,len);
+				return(WRITE_ERROR);
+				}
+
+			FreeMem(tmem, len*2);
+			FreeMem(lmem,len);
+		break;
+
+		default:
+			SkipChunk(in);
+		break;
+		}
+	}
+
+return(NO_ERROR);
+}
+
+/**********************************************************/
+/** force a length to be even by increasing the length one if needed **/
+
+/**********************************************************/
+
+void QuickSplit(tmem,lmem,len)
+short tmem[];
+char lmem[];
+int len;
+{
+int i;
+for (i=0; i < len; i++) tmem[i] = lmem[i]<<8;
+}
+
+/**********************************************************/
+
+/****************************/
+/* compresed data read    ***/
+/****************************/
+
+CRead(fp,data,len)
+int fp;
+register int len;
+register char *data;
+{
+BYTE x,d;
+register LONG i,j;
+BYTE buf[512];
+static short delta[16]={-34,-21,-13,-8,-5,-3,-2,-1,0,1,2,3,5,8,13,21};
+
+Read(fp,&d,1);	/* skip padding */
+Read(fp,&x,1);	/* get inital value */
+
+len=len-2;
+if (Read(fp,buf,min(512,len))==-1) return(-1);
+j=0;
+for (i=0;i<len;i++) 
+	{
+	*data=x+delta[15&(buf[j]>>4)];
+	x=*data++;
+	*data=x+delta[buf[j++]&15];
+	x=*data++;
+	if (j==512) 
+		{
+		j=0;
+		if (Read(fp,buf,min(512,(len-i-1)))==-1) return(-1);
+		}
+	}
+return(0);
+}
+

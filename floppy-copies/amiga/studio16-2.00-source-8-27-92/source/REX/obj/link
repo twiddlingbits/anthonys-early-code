@@ -1,0 +1,1 @@
+blink lib:cback.o WITH objlist TO studio16:Utilities/Studio16REXX LIB lib:lcnb.lib + lib:amiga.lib SC SD NODEBUG

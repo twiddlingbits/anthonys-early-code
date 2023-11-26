@@ -1,0 +1,15 @@
+static struct NewWindow NewWindow = {
+   200,
+   15,
+   400,
+   175,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW,
+   ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   "AW's PM", /** TITLE **/
+   0,0,
+   40,20,640,200,
+   WBENCHSCREEN
+   };

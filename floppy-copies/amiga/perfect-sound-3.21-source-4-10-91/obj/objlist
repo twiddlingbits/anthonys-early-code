@@ -1,0 +1,13 @@
+FROM  _main.o,about.o,add.o,allocate.o,alter.o,cread.o,cwrite.o,*
+deallocate.o,digitize.o,drawline.o,even.o,flip.o,frags.o,*
+getint.o,getslot.o,graph.o,level.o,listen.o,*
+loadilbm.o,loadit.o,loadsamp.o,menus.o,*
+move.o,msg.o,nomem.o,openscr.o,pickslot.o,play.o,powr.o,pr.o,*
+putname.o,putxy.o,saveiff.o,savesamp.o,skip.o,tochan.o,waitkey.o,*
+ratetoss.o,toperiod.o,*
+telluser.o,*
+filter.o, openlibraries.o, lp_filter.o,*
+new_right.o, new_left.o, new_stereo.o, new_loop_section.o,*
+new_monleft.o, new_monright.o,*
+mix_samples.o,mem_type.o, real_echo.o, real_delay.o, isfast.o, resample.o,*
+getstr.o, getsamprate.o, asf.o, filerequest.o, save_par.o

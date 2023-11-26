@@ -1,0 +1,6 @@
+.Key fl1,fl2,fl3
+;
+LC:lc -qdf0: -f -ad -b -M -Lf echo comb proc do_menu IFFRoutines disk mainsed40 subsed40 subsed240 goodsed graph
+
+; NOTE you must still link in getfile.o and safeclose.o
+

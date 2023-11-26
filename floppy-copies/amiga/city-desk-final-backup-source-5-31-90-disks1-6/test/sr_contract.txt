@@ -1,0 +1,128 @@
+[cj][times 18]SunRize Industries
+[nocj][cj]Hardware License Agreement
+
+
+[nocj][times 12,lj,hyphenoff,leading 14pt,sentspace 3pt]Subject to acceptance as shown by the signatures of the parties affixed hereto, SunRize Industries ("SI"), agrees to market Hardware Product ("Hardware Product" is defined as the Amiga version of the "Img Scan" image scanner hardware and any improvements made to the "Img Scan" hardware) for SEYMOR-RADIX, ("Vendor"), located at 4320 Main St. Dallas, TX 75226, on the following terms and conditions:
+
+1. [un]Distribution Rights:[p]
+
+During the term hereof, Vendor grants to SI the exclusive right to market, manufacture and distribute the Hardware Product of Vendor, in the Amiga market.
+
+2. [un]Term:[p]
+
+A. This Agreement shall continue in full force and effect for a period of three (3) years and will thereafter be renewed automatically for additional periods of one (1) year unless cancelled or terminated as set forth below.
+
+B. This Agreement may be terminated by thirty (30) days written notice by either party, which termination shall take effect at the next renewal date of the Agreement. In the event of a breach or omission with respect to any term, condition, or covenant requiring any action as provided in this agreement, the nonbreaching party may in its sole discretion terminate this Agreement, provided that no such termination shall be effected unless the nonbreaching party first gives the other party thirty (30) days prior written notice of its intent to terminate and unless the breaching party fails to cure the violation giving rise to the nonbreaching party's rights to terminate prior to the expiration of such thirty (30) day period. If either party terminates or breaches this Agreement, or if the agreement expires, SI has the right to sell it's inventory of Hardware Products until its supply is depleted provided it continues to pay royalties to Vendor pursuant to the terms of this agreement.
+
+[nobreak]3. [un]Price and Payment[p]
+
+A. Vendor shall be paid a royalty of 15% of the gross sales of Hardware Product. Of the royalties paid to vendor, one half (50%) is payment for [break]consulting and support provided by Vendor during the term of this agreement, and one half (50%) is paid for the license of Hardware Product.
+
+B. Vendor shall be paid a $2,500.00 fee upon signing of the Agreement by both parties.
+
+C. Vendor shall be paid a $1,000.00 fee within fifteen (15) days from the first ship date.
+
+D. Vendor shall be paid $4,000.00 advance on royalties within (15) days from the first ship date.
+
+E. Royalty payments will be due 30 days after the close of each month.
+
+F. SI agrees to a minimum sales guarantee of fifteen hundred (1500) units of Hardware Products over the first eight (8) months period beginning with the first ship date.
+
+4. [un]Deliverables[p]
+
+A. Vendor agrees to deliver the following no later than the dates specified below:
+
+[tabset 4.4"][un]Deliverables[p]@[un]Due Date[p]
+
+1) Camera ready PC board Artwork of the Hardware Products@March 13, 1989
+2) Part and Supplier Lists of the Hardware Products@March 13, 1989
+3) Img Scan Packaging Color Separations and Artwork@March 13, 1989
+4) Source code of the Atari ST version of Img Scan software@March 13, 1989
+
+5. [un]Product Quality and Support:[p]
+
+A. Vendor agrees to promptly inform SI of any known defects or operational errors in the Hardware Products. Defective Hardware Products are defined as Hardware Products with defects in any of the following areas: design, operation, documentation, and/or other materials.
+
+B. SI agrees to perform manual design and fabrication, disc duplication, Hardware assembly, advertising, shipment of products, and dissemination of product information.
+
+
+6. [un]Manufacturing Rights:[p]
+
+Vendor hereby grants SI the right to manufacture Hardware Product under the following terms and conditions:
+
+A. Vendor agrees to cooperate fully with SI in establishing SI's manufacturing capabilities, including without limitation by delivering to SI all master copies of packaging, documentation, software and other associated materials necessary to manufacture complete product and by consulting with SI and any third party manufacturer used by SI in the manufacturing process.
+
+B. Vendor hereby grants to SI the right to modify the product packaging and associated materials. SI will acknowledge Vendor's trademarks.
+
+C. SI will acknowledge the name of Hardware Product's designer in the manual shipped with Hardware Product.
+
+D. SI will write a software driver for the Amiga version of the Hardware Product. All intellectual property rights for software written by SI for use with Hardware Product will be owned by SI.
+
+7. [un]Confidentiality:[p]
+
+SI and Vendor agree to hold the terms and conditions of this agreement in confidence during the period of SI's distribution of Vendor's Hardware Products and for 10 years thereafter.
+
+SI agrees to hold confidential any "Hardware Product information," as defined below, supplied by Vendor to SI.
+
+"Hardware Product information" is all information which Vendor discloses to SI concerning Hardware Product. However, the following classes of information are specifically excluded from this definition of "Hardware Product information":
+
+A. Information which is available to the public at the time it is 
+disclosed by Vendor,
+B. Information which becomes available to the public without a breach of this agreement,
+C. Information which SI already possesses at the time it is disclosed by Vendor, as evidenced by SI's written records, and
+D. Information which is internally developed by SI independently of and wholly without knowledge of the biomass information.
+
+SI will not disclose Hardware Product information to any third party unless authorized by Vendor in writing or such disclosure is necessary for a third party to perform manufacturing or marketing functions for SI.
+
+8. [un]Liability:[p]
+
+Vendor agrees to indemnify, hold harmless and defend SI from any and all claims, defense costs, judgments and other expenses arising out of or on account of:
+
+A. alleged failure of Hardware Product caused because of design error;
+
+B. alleged infringement or violation of any trademark, copyright, trade secret, patent, or other proprietary right, with respect to the Hardware Products;
+
+C. alleged unfair trade practice, trade libel or misrepresentation based on any promotional material, packaging, documentation, or other materials provided by Vendor with respect to Hardware Product.
+
+D. SI's exercise of its rights under this license.
+
+Vendor's obligation to indemnify is conditioned on SI's notifying Vendor promptly of any claim as to which indemnification will be sought and providing Vendor reasonable cooperation in the defense and settlement thereof. Vendor agrees that SI may withhold from any payments due Vendor amounts that SI deems reasonable security for Vendor's indemnification obligations under this Agreement, provided that SI deposits any such amounts into an interest bearing escrow account. In the case of an infringement claim, and at Vendor's option, Vendor will: (i) procure a license from any claimant with respect to the disputed Hardware Products that will enable SI to continue marketing the Hardware Products; or (ii) modify the Hardware Products so as to make it noninfringing, or (iii) buy back at cost SI's inventory.
+
+[nobreak]10. [un]Notice:[p]
+
+Any notices required to be given by either party to the other shall be [break]deemed given if in writing and actually delivered or deposited in the United States mail in registered or certified mail form with return receipt requested, postage prepaid and addressed to the party to be notified at the address set forth below. Notices shall be sent to the address for each party listed below unless that party notifies the other party of a change of address by certified or registered mail, return receipt requested, whereupon notices will be sent to the new address.
+
+11. [un]Agreement[p]
+
+This Agreement contains all the agreements, understandings, representations, conditions, warranties and covenants between the parties hereto and is governed by the laws in the state of Texas. The terms and condition of this Agreement will apply to each order shipped hereunder, and the terms of the applicable purchase order or sales order will not alter or supplement the terms hereof.
+
+12. [un]Attorney's Fees:[p]
+
+In the event any litigation is brought by either party in connection with this Agreement, the prevailing party will be entitled to recover from the other party all the costs, attorney's fees and other expenses incurred by such prevailing party in the litigation.
+
+13. [un]Force Majeure:[p]
+
+A. If performance by either party hereto or any part of their respective obligations under this Agreement is prevented, hindered, delayed or otherwise made impracticable by reasons of strike, floods, fires, accidents, earthquakes, riots, explosions, wars, hostilities, acts of government, custom barriers or taxes, export or import control regulations, import surcharges or other causes of a like or different character beyond the control of either party, they shall be excused from such performance during the continuance of any such contingency up to a maximum period of one hundred and eighty (180) days whereupon the party suffering the damage or loss as the case may be as a result of the force majeure shall be entitled to terminate this Agreement upon giving thirty (30) days notice to that effect.
+
+15. [un]Terms for Cancellation[p]
+
+This agreement may be canceled by SI at any time notwithstanding any previous agreement, if the Hardware Product design fails to perform in what SI judges to be a reasonable manner.
+
+16. [un]Copyright Enforcement[noun]
+
+Vendor agrees to apply for a US copyright for Hardware Product's printed circuit board, and to enforce its ownership of the copyright. As part of this enforcement, Vendor will use legal action to halt any infringement of the Vendor's copyright if such infringement can not be halted through other means.  If such infringement is not halted in 30 days, and Vendor has taken no leagal action to halt such infringement, SI's obligation to pay royalties under this agreement ends.
+
+
+
+
+[tabset 3.0"]
+Seymor-Radix@SunRize Industries
+4230 Main St.@3801 Old College Rd.
+Dallas, TX 75226@Bryan, TX 77801
+[def hline '[un] [hskip 2.5"] [noun]']
+[def hline2 '[un] [hskip 5.0"] [noun]']
+By:[hline]@By:[hline2]
+
+Title:[hline]@Title:[hline2]
+
+Date:[hline]@Date:[hline2]

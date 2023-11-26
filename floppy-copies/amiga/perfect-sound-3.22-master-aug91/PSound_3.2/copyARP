@@ -1,0 +1,11 @@
+echo "I am copying 'arp.library' into your libs: directory"
+echo "and 'show' into your c: directory (for Quick_Help)."
+echo "This is needed if you boot from a hard disk or your"
+echo "own workbench disk.  The CLI commands I am executing are:"
+echo ""
+echo "           COPY PSound_3.2:libs/arp.library libs:arp.library"
+copy PSound_3.2:libs/arp.library to libs:arp.library
+echo "           COPY PSound_3.2:c/show c:show:"
+copy Psound_3.2:c/show c:show
+PSound_3.2:c/mywait
+

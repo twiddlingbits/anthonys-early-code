@@ -1,0 +1,15 @@
+static struct NewWindow NewWindowStructure1 = {
+   200,50,   /* window XY origin relative to TopLeft of screen */
+   205,100,   /* window width and height */
+   BLACK,WHITE,   /* detail and block pens */
+   NEWSIZE|CLOSEWINDOW,   /* IDCMP flags */
+   WINDOWCLOSE+WINDOWDRAG+WINDOWDEPTH+ACTIVATE+NOCAREREFRESH+WINDOWSIZING,   /* other window flags */
+   NULL,   /* first gadget in gadget list */
+   NULL,   /* custom CHECKMARK imagery */
+   "Instance",   /* window title */
+   NULL,   /* custom screen pointer */
+   NULL,   /* custom bitmap */
+   95,64,   /* minimum width and height */
+   -1,-1,   /* maximum width and height */
+   CUSTOMSCREEN   /* destination screen type */
+};

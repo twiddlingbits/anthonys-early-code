@@ -1,0 +1,143 @@
+lc -ocdo: getint.c
+lc -ocdo: oldtextconv.c
+lc -ocdo: _main.c
+lc -ocdo: new_load_ilbm.c
+lc -ocdo: erase_page.c
+lc -ocdo: serial.c
+lc -ocdo: loadfonts.c
+lc -ocdo: dragwindowbox.c
+lc -ocdo: telluser.c
+lc -ocdo: openlibraries.c
+lc -ocdo: auto_hyphenate.c
+lc -ocdo: text.c
+lc -ocdo: move_link.c
+lc -ocdo: invert.c
+lc -ocdo: makedisplay.c
+lc -ocdo: erase_obj_image.c
+lc -ocdo: get_block.c
+lc -ocdo: clip.c
+lc -ocdo: filerequest.c
+lc -ocdo: initdefaultpage.c
+lc -ocdo: get_box.c
+lc -ocdo: -f expr.c
+lc -ocdo: objstuff.c
+lc -ocdo: ps_driver.c
+lc -ocdo: overlap.c
+lc -ocdo: -ad opentoolbox.c
+lc -ocdo: initdefstate.c
+lc -ocdo: -ad -b0 newpointer.c
+lc -ocdo: newscreen.c
+lc -ocdo: format.c
+lc -ocdo: deleteview.c
+lc -ocdo: saveobject.c
+lc -ocdo: -ad grid_options.c
+lc -ocdo: reflowchain.c
+lc -ocdo: getclick.c
+lc -ocdo: viewmonitor.c
+lc -ocdo: loadsets.c
+lc -ocdo: itemlist.c
+lc -ocdo: printonly.c
+lc -ocdo: setonoff.c
+lc -ocdo: -ad get_new_mag.c
+lc -ocdo: -ad sizemode.c
+lc -ocdo: setdefport.c
+lc -ocdo: drawbox.c
+lc -ocdo: drawrule.c
+lc -ocdo: verifypick.c
+lc -ocdo: -ad gray_convert_options.c
+lc -ocdo: getstr.c
+lc -ocdo: get_screen_data.c
+lc -ocdo: pop_to_cursor.c
+lc -ocdo: print_page.c
+lc -ocdo: setdeffont.c
+lc -ocdo: expand_window.c
+lc -ocdo: savepage.c
+lc -ocdo: free_graphic_data.c
+lc -ocdo: picktool.c
+lc -ocdo: -ad openskull.c
+lc -ocdo: initwptable.c
+lc -ocdo: -ad pointer_options.c
+lc -ocdo: hp_driver.c
+lc -ocdo: symtab.c
+lc -ocdo: findwindow.c
+lc -ocdo: -ad flow_options.c
+lc -ocdo: move_page.c
+lc -ocdo: dup_block.c
+lc -ocdo: whatpage.c
+lc -ocdo: newstr.c
+lc -ocdo: showstat.c
+lc -ocdo: font_msg.c
+lc -ocdo: delete_page.c
+lc -ocdo: textconv.c
+lc -ocdo: drawtext.c
+lc -ocdo: cut_page.c
+lc -ocdo: outline_window.c
+lc -ocdo: -f show_coord.c
+lc -ocdo: createtextobj.c
+lc -ocdo: podummy.c
+lc -ocdo: setptr.c
+lc -ocdo: laserpage.c
+lc -ocdo: removepage.c
+lc -ocdo: last_page.c
+lc -ocdo: dupgraphic.c
+lc -ocdo: createview.c
+lc -ocdo: fonts.c
+lc -ocdo: getline.c
+lc -ocdo: outlineobjects.c
+lc -ocdo: opena2024.c
+lc -ocdo: resvar.c
+lc -ocdo: menus.c
+lc -ocdo: selectfont.c
+lc -ocdo: main.c
+lc -ocdo: coord_window.c
+lc -ocdo: dragbox.c
+lc -ocdo: -ad cdprefs.c
+lc -ocdo: draw_columns.c
+lc -ocdo: hp_font_setup.c
+lc -ocdo: prefio.c
+lc -ocdo: check_page.c
+lc -ocdo: aboutcd.c
+lc -ocdo: safeclose.c
+lc -ocdo: readhp.c
+lc -ocdo: assign_fonts.c
+lc -ocdo: freedata.c
+lc -ocdo: last_message.c
+lc -ocdo: openlaserfonts.c
+lc -ocdo: set_default_state.c
+lc -ocdo: show_info.c
+lc -ocdo: lineopts.c
+lc -ocdo: get_fixed_pt.c
+lc -ocdo: germ_menus.c
+lc -ocdo: coord.c
+lc -ocdo: screen.c
+lc -ocdo: macro.c
+lc -ocdo: add.c
+lc -ocdo: cheapedit.c
+lc -ocdo: setmenus.c
+lc -ocdo: copyobject.c
+lc -ocdo: crop.c
+lc -ocdo: readps.c
+lc -ocdo: add_link.c
+lc -ocdo: -ad new_obj_options.c
+lc -ocdo: printpage.c
+lc -ocdo: size.c
+lc -ocdo: showobjstat.c
+lc -ocdo: -ad text_options.c
+lc -ocdo: -f updatemargins.c
+lc -ocdo: fontsize.c
+lc -ocdo: psdriver.c
+lc -ocdo: -b0 getfile.c
+lc -ocdo: -ad open_page.c
+lc -ocdo: pref_driver.c
+lc -ocdo: -ad print_doc.c
+lc -ocdo: draw_page.c
+lc -ocdo: -f cmd.c
+lc -ocdo: getptr.c
+lc -ocdo: flowtext.c
+lc -ocdo: dither.c
+lc -ocdo: translate.c
+lc -ocdo: attach_text.c
+lc -ocdo: load_macros.c
+lc -ocdo: break_chain.c
+lc -ocdo: connect_chain.c
+lc -ocdo: process_text_lines.c

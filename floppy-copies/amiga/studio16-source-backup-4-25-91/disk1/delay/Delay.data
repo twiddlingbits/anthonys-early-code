@@ -1,0 +1,154 @@
+#define LISTCOLORS {BROWN,DARK_BROWN,WHITE,BROWN,LIGHT_BROWN,WHITE,BLACK}	
+#define KNOBCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,LIGHT_BROWN,BLACK,BLACK}
+#define BUTNCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,LIGHT_BLUE,BLACK,BLACK}
+#define DROPCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,BROWN,WHITE,BLACK}
+static struct GadgetColors colors = {
+	LISTCOLORS,
+	KNOBCOLORS,
+	BUTNCOLORS,
+	BUTNCOLORS,
+	LISTCOLORS,
+	DROPCOLORS};
+
+#define bx	16
+#define spc	18
+#define szz	12
+#define lx	8
+#define rx	400
+
+static struct NewWindow Delay_NewWindow = {
+   (640-548)>>1,
+   15,
+   408,
+   144,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW,
+   REPORTMOUSE|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   " Demo Delay, which is not finished!", /** TITLE **/
+   0,0,
+   40,20,640,200,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void MIXfunc();
+static struct NewSlider MIXgad=
+	{NULL,					/* *next (gadget) */
+	lx,bx+spc*5,rx,bx+spc*5+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	MIXfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	128,1,64,				/* list_size | show_size | top */
+	7*8+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void FEEDBACKfunc();
+static struct NewSlider FEEDBACKgad=
+	{&MIXgad,					/* *next (gadget) */
+	lx,bx+spc*4,rx,bx+spc*4+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	FEEDBACKfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	129,1,64,				/* list_size | show_size | top */
+	12*8+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct knob *Buffknob;
+static void Bufffunc();
+static struct NewSlider Buffgad=
+	{&FEEDBACKgad,					/* *next (gadget) */
+	lx,bx+spc*3,rx,bx+spc*3+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	Bufffunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	256,1,255,					/* list_size | show_size | top */
+	8*10+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void GAINfunc();
+static struct NewSlider GAINgad=
+	{&Buffgad,				/* *next (gadget) */
+	lx,bx+spc*0,rx,bx+spc*0+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	GAINfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	16,1,14,				/* list_size | show_size | top */
+	7*8+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void AUTOFILTfunc();
+static struct NewButton AUTOFILTbutton = 
+	{&GAINgad,				/* *next (gadget) */
+	101,bx+spc*6,201,bx+spc*6+szz,			/* Box x1,y1,x2,y2 */
+	BUTN_TOGGLE|BUTN_COOL,			/* Flags */
+	AUTOFILTfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	"Auto Filter"};					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void MONITORfunc();
+static struct NewButton MONITORbutton = 
+	{&AUTOFILTbutton,				/* *next (gadget) */
+	14,bx+spc*6,90,bx+spc*6+szz,					/* Box x1,y1,x2,y2 */
+	BUTN_TOGGLE|BUTN_COOL,			/* Flags */
+	MONITORfunc,					/* Call Function */
+	NULL,						/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	"Delay"};					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct slider *FREQknob;
+static void FREQfunc();
+static struct NewSlider FREQgad=
+	{&MONITORbutton,				/* *next (gadget) */
+	lx,bx+spc*1,rx,bx+spc*1+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	FREQfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	28,1,26,				/* list_size | show_size | top */
+	8*12+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct slider *RATEknob;
+static void RATEfunc();
+static struct NewSlider RATEgad=
+	{&FREQgad,					/* *next (gadget) */
+	lx,bx+spc*2,rx,bx+spc*2+szz,				/* Box x1,y1,x2,y2 */
+	SLIDER_ARROWS|SLIDER_COOL|FREE_HORIZ,	/* Flags */
+	RATEfunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	0,					/* id */
+	NULL,					/* *gad_ptr */
+	600,1,550,					/* list_size | show_size | top */
+	8*10+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

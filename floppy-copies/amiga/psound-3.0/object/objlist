@@ -1,0 +1,9 @@
+FROM  _main.o,aboutps.o,add.o,allocate.o,alter.o,cread.o,cwrite.o,*
+deallocate.o,digitize.o,drawline.o,even.o,flip.o,frags.o,*
+getfile.o,getint.o,getslot.o,graph.o,level.o,listen.o,*
+loadilbm.o,loadit.o,loadsamp.o,main.o,makegadgets.o,menus.o,*
+move.o,msg.o,nomem.o,openscr.o,pickslot.o,play.o,powr.o,pr.o,*
+putname.o,putxy.o,saveiff.o,savesamp.o,skip.o,tochan.o,waitkey.o,*
+safeclose.o,ratetoss.o,toperiod.o,drawwindow.o,*
+newgadgets.o,drawarrows.o,telluser.o
+

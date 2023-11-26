@@ -1,0 +1,7 @@
+openlibraries.o,edit.o,menus.o,getint.o,refresh_edit_win.o,graph.o,*
+even.o,newrate.o,setrange.o,scale.o,dclips.o,non_dest_edit.o,*
+dprintf.o,graphasm.o,add.o,editprefs.o,askuserpastetype.o,*
+//open/obj/show_error.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,
+//interfacelib/interfacestub.o

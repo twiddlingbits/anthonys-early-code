@@ -1,0 +1,4 @@
+openlibraries.o,instance.o,editinstance.o,instanceprefs.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,*
+prog:interfacelib/interfacestub.o

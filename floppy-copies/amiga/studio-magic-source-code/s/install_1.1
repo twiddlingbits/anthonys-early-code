@@ -1,0 +1,59 @@
+copy c:delete ram:
+copy c:copy ram:
+copy c:echo ram:
+copy c:cd ram:
+copy c:relabel ram:
+cd ram:
+echo "This procedure takes a standard WorkBench disk and"
+echo "creates a bootable compiler system disk."
+echo " "
+echo "This process involves deleting demo programs and non-essential"
+echo "files from the WorkBench disk to make room for the C Compiler"
+echo "files. PLEASE USE A COPY OF THE WORKBENCH DISK. Don't leave"
+echo "the original WorkBench disk in the internal drive during"
+echo "this procedure!"
+echo " "
+echo "Standard AmigaDOS file copies are used for this procedure."
+echo "Running this on a single drive system may involve numerous"
+echo "disk swaps"
+echo " "
+echo "Please insert a copy of the WorkBench disk in the internal drive"
+echo "and press return..." 
+echo "It will become Compiler Disk #1...."
+echo ?
+relabel df0: New_C_Disk1
+delete New_C_Disk1:demos all
+delete New_C_Disk1:demos.info
+delete New_C_Disk1:utilities all
+delete New_C_Disk1:utilities.info
+delete New_C_Disk1:fonts all
+delete New_C_Disk1:clock#?
+delete New_C_Disk1:c/edit
+delete New_C_Disk1:c/say
+delete New_C_Disk1:devs/printers/#?
+copy C_Disk#1:c/lc    New_C_Disk1:c
+copy C_Disk#1:c/lc1   New_C_Disk1:c
+copy C_Disk#1:c/lc2   New_C_Disk1:c
+copy C_Disk#1:c/blink New_C_Disk1:c
+copy C_Disk#1:c/omd   New_C_Disk1:c
+copy C_Disk#1:c/oml   New_C_Disk1:c
+copy C_Disk#1:c/asm   New_C_Disk1:c
+copy "C_Disk#1:on Lattice C"      New_C_Disk1:
+copy "C_Disk#1:on Lattice C.info" New_C_Disk1:
+copy C_Disk#1:read.me             New_C_Disk1:
+copy C_Disk#1:system/cli.info     New_C_Disk1:system
+copy C_Disk#1:devs/system-configuration New_C_Disk1:devs
+copy C_Disk#1:s/startup-sequence        New_C_Disk1:s
+copy C_Disk#1:s/install_hd              New_C_Disk1:s
+copy C_Disk#1:setdate                   New_C_Disk1:
+echo "Finished setting up the new C Disk #1"
+echo "Please remove the old Disk #1 before proceeding"
+echo " "
+echo ? 
+relabel New_C_Disk1: C_Disk#1
+delete ram:copy 
+delete ram:echo 
+delete ram:cd 
+delete ram:relabel 
+delete ram:delete 
+echo "finished......end of procedure."

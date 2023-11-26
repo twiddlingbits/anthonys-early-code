@@ -1,0 +1,146 @@
+
+
+static struct IntuiText IText1 = {
+   BLACK,BLACK,JAM1,   /* front and back text pens, drawmode and fill byte */
+   5,3,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Close",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget close = {
+   NULL,   /* next gadget */
+   210,87,   /* origin XY of hit box relative to window TopLeft */
+   50,14,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   NULL,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText1,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+
+static struct IntuiText IText2 = {
+   BLACK,BLACK,JAM1,   /* front and back text pens, drawmode and fill byte */
+   5,3,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Open",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget open = {
+   &close,   /* next gadget */
+   160,87,   /* origin XY of hit box relative to window TopLeft */
+   43,14,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   NULL,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText2,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+
+static struct IntuiText IText3 = {
+   BLACK,BLACK,JAM1,   /* front and back text pens, drawmode and fill byte */
+   5,3,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Cue",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget cue = {
+   &open,   /* next gadget */
+   111,87,   /* origin XY of hit box relative to window TopLeft */
+   43,14,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   NULL,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText3,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+
+static struct IntuiText IText4 = {
+   BLACK,BLACK,JAM1,   /* front and back text pens, drawmode and fill byte */
+   5,3,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Edit",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget edit = {
+   &cue,   /* next gadget */
+   60,87,   /* origin XY of hit box relative to window TopLeft */
+   43,14,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   NULL,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText4,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+
+static struct IntuiText IText5 = {
+   BLACK,BLACK,JAM1,   /* front and back text pens, drawmode and fill byte */
+   5,3,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Play",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget PLAYgad = {
+   &edit,   /* next gadget */
+   11,87,   /* origin XY of hit box relative to window TopLeft */
+   43,14,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   NULL,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText5,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+#define GadgetList1 PLAYgad
+
+static struct NewWindow NewWindowStructure1 = {
+   167,43,   /* window XY origin relative to TopLeft of screen */
+   275,106,   /* window width and height */
+   BLACK,WHITE,   /* detail and block pens */
+   MENUPICK+MOUSEMOVE+MOUSEBUTTONS+GADGETUP+CLOSEWINDOW,   /* IDCMP flags */
+   WINDOWDRAG+WINDOWDEPTH+WINDOWCLOSE+ACTIVATE+NOCAREREFRESH,   /* other window flags */
+   &PLAYgad,   /* first gadget in gadget list */
+   NULL,   /* custom CHECKMARK imagery */
+   "Open Sample List",   /* window title */
+   NULL,   /* custom screen pointer */
+   NULL,   /* custom bitmap */
+   5,5,   /* minimum width and height */
+   640,200,   /* maximum width and height */
+   CUSTOMSCREEN   /* destination screen type */
+};
+
+
+/* end of PowerWindows source generation */

@@ -1,0 +1,122 @@
+#define LISTCOLORS {0,1,2,0,3,1,2}
+#define KNOBCOLORS {0,2,1,0,3,1,1}
+#define BUTNCOLORS {0,2,1,0,3,1,1}
+#define DROPCOLORS {0,2,1,0,3,1,1}
+static struct GadgetColors colors = {
+	LISTCOLORS,
+	KNOBCOLORS,
+	BUTNCOLORS,
+	BUTNCOLORS,
+	LISTCOLORS,
+	DROPCOLORS};
+
+static struct NewWindow NewWind = {
+   10,
+   11,
+   400,
+   120,
+   0,
+   1,
+   CLOSEWINDOW,
+   ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   " Install Studio 16 ", /** TITLE **/
+   0,0,
+   104,32,640,400,
+   WBENCHSCREEN
+   };
+
+
+static struct NewWindow HelpWind = {
+   130,
+   124,
+   510,
+   76,
+   0,
+   1,
+   CLOSEWINDOW|NEWSIZE,
+   WINDOWCLOSE|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWSIZING,
+   0,0,
+   " Install Studio 16 Help ", /** TITLE **/
+   0,0,
+   100,70,999,999,
+   WBENCHSCREEN
+   };
+
+static char *entries[] =
+	{
+	"HELP INSTALLING STUDIO 16",
+	"--------------------------",
+	"Follow these step by step directions to install",
+	"Studio 16 to your hard disk."
+	" ",
+	"1) Boot your computer as you normally would.",
+	" ",
+	"2) Select the Install.hd icon on the Studio 16 Disk.",
+	" ",
+	"3) Select the device you want to install Studio 16 on.",
+	"   This is done by selecting one of the items in the",
+	"   list in the upper portion of the window.  You should",
+	"   select the volume name of the hard disk partition",
+	"   that you keep your programs on.  Select it now.",
+	" ",
+	"4) Select the 'BEGIN INSTALL' gadget.",
+	" ",
+	"5) Wait.",
+	" ",
+	"6) If you feel you have made a mistake, hit the",
+	"   'Abort!!' button and try again.",
+	""
+	};
+
+static struct NewList HelpList = {
+   	NULL,10,15,500,70,LIST_COOL|HIDE_GADGET,NULL,
+	0,&colors,0,0,0, entries,NULL,0};
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct NewList DEVlist = {
+	NULL,
+	10,15,390,70,
+	LIST_COOL|LIST_SINGLESELECT|MANUAL_XOR|LIST_SORTED,
+	NULL,/*FUNC*/
+	0,&colors,0,0,0, NULL, NULL,-1};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void AbortFunc();
+struct NewButton ABORTbutton = 
+	{&DEVlist,				/* *next (gadget) */
+	310,90,390,100,			/* Box x1,y1,x2,y2 */
+	MANUAL_XOR|BUTN_COOL|BUTN_TOGGLE,				/* Flags */
+	AbortFunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"ABORT!!"};				/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void HelpFunc();
+struct NewButton HELPbutton = 
+	{&ABORTbutton,				/* *next (gadget) */
+	310,75,390,85,			/* Box x1,y1,x2,y2 */
+	MANUAL_XOR|BUTN_COOL|BUTN_TOGGLE,				/* Flags */
+	HelpFunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"HELP!"};				/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void InstallFunc();
+struct NewButton INSTALLbutton = 
+	{&HELPbutton,				/* *next (gadget) */
+	10,75,300,100,			/* Box x1,y1,x2,y2 */
+	MANUAL_XOR|BUTN_COOL,				/* Flags */
+	InstallFunc,				/* Call Function */
+	NULL,					/* user_data */
+	&colors,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"BEGIN INSTALL"};				/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

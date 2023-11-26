@@ -1,0 +1,4 @@
+FROM obj/readkey.o, obj/openlibs.o, obj/nwin.o, obj/screen.o
+
+
+

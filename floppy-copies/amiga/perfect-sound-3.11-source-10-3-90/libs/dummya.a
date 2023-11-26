@@ -1,0 +1,134 @@
+   SECTION text
+   XDEF   _LibraryName,_LibraryId,_SysBase
+   
+   XREF   _CInit
+   XREF   _LibOpen
+   XREF   _LibClose
+   XREF   _LibExpunge
+   XREF   _LibReserved
+   XREF   _ps_monitor
+   XREF   _ps_record
+   XREF   _real_echo
+   XREF   _real_delay
+   XREF   _inc_gain
+   XREF   _dec_gain
+   XREF   _set_plot_point
+   XREF   _query_digi_type
+   XREF   _round_ss
+   XREF   _set_vid_clock
+   XREF   _get_sample
+Start:   clr.l   d0
+   rts
+   
+InitDesc:   dc.w   $4AFC
+      dc.l   InitDesc
+      dc.l   EndCode
+      dc.b   0
+      dc.b   1
+      dc.b   9
+      dc.b   0
+      dc.l   _LibraryName
+      dc.l   _LibraryId
+      dc.l   Init
+_LibraryName   dc.b   'psound.library',0
+_LibraryId   dc.b   'psound.library © Copyright 1990 Anthony J. Wood',13,10,0
+   ds.w   0
+Funcs:
+   dc.w   $4EF9
+   dc.l   _get_sample
+   dc.w   $4EF9
+   dc.l   _set_vid_clock
+   dc.w   $4EF9
+   dc.l   _round_ss
+   dc.w   $4EF9
+   dc.l   _query_digi_type
+   dc.w   $4EF9
+   dc.l   _set_plot_point
+   dc.w   $4EF9
+   dc.l   _dec_gain
+   dc.w   $4EF9
+   dc.l   _inc_gain
+   dc.w   $4EF9
+   dc.l   _real_delay
+   dc.w   $4EF9
+   dc.l   _real_echo
+   dc.w   $4EF9
+   dc.l   _ps_record
+   dc.w   $4EF9
+   dc.l   _ps_monitor
+   dc.w   $4EF9
+   dc.l   ALibReserved
+   dc.w   $4EF9
+   dc.l   ALibExpunge
+   dc.w   $4EF9
+   dc.l   ALibClose
+   dc.w   $4EF9
+   dc.l   ALibOpen
+
+lib:   dc.l   0
+   dc.l   0
+   dc.b   9
+   dc.b   0
+   dc.l   _LibraryName
+   dc.b   6
+   dc.b   0
+   dc.w   90
+   dc.w   40
+   dc.w   1
+   dc.w   1
+   dc.l   _LibraryId
+   dc.l   0
+   dc.w   0
+
+_seglist   dc.l   0
+
+Init:
+   move.l   a6,_SysBase
+;   move.l   a0,_seglist
+   lea   lib,a1
+   move.l   a1,-(sp)
+   jsr   _CInit
+   addq.l   #4,sp
+   rts
+
+ALibOpen:
+   move.l   d0,-(sp)
+   move.l   a6,-(sp)
+   jsr   _LibOpen
+   addq.l   #8,sp
+   rts
+   
+ALibClose:
+   move.l   a6,-(sp)
+   jsr   _LibClose
+   addq.l   #4,sp
+   rts
+
+ALibExpunge:
+   move.l   a6,-(sp)
+   jsr   _LibExpunge
+   addq.l   #4,sp
+   rts
+   
+ALibReserved:
+   clr.l   d0
+   rts
+EndCode:
+   SECTION   __MERGED
+   
+   xdef   __oserr,__OSERR,__FPERR,__SIGFPE
+   xdef   __SIGINT,__ONERR,__ONEXIT,__ONBREAK,__ECS
+   xdef   __ProgramName
+
+_SysBase   dc.l   0
+__oserr:
+__OSERR   dc.l   0
+__FPERR   dc.l   0
+__SIGFPE   dc.l   0
+__SIGINT   dc.l   0
+__ONERR   dc.l   0
+__ONEXIT   dc.l   0
+__ONBREAK   dc.l   0
+__ECS      dc.l   0
+__ProgramName   dc.l   0
+   END

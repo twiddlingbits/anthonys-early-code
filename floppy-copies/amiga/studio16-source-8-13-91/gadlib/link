@@ -1,0 +1,1 @@
+blink LIB:c.o+main.o+inhandler.o+gadlib.o+newgetstr.o TO "main" LIB LIB:lc.lib LIB:amiga.lib

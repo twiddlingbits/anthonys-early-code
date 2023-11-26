@@ -1,0 +1,197 @@
+static UBYTE UNDOBUFFER[40];
+
+static UBYTE in_ptSIBuff[40];
+static struct StringInfo in_ptSInfo = {
+   in_ptSIBuff,   /* buffer where text will be edited */
+   UNDOBUFFER,   /* optional undo buffer */
+   0,   /* character position in buffer */
+   40,   /* maximum number of characters to allow */
+   0,   /* first displayed character buffer position */
+   0,0,0,0,0,   /* Intuition initialized and maintained variables */
+   0,   /* Rastport of gadget */
+   0,   /* initial value for integer gadgets */
+   NULL   /* alternate keymap (fill in if you set the flag) */
+};
+
+static SHORT BorderVectors1[] = {
+   0,0,
+   95,0,
+   95,9,
+   0,9,
+   0,0
+};
+static struct Border Border1 = {
+   -2,-1,   /* XY origin relative to container TopLeft */
+   3,0,JAM1,   /* front pen, back pen and drawmode */
+   5,   /* number of XY vectors */
+   BorderVectors1,   /* pointer to XY vectors */
+   NULL   /* next border in list */
+};
+
+static struct IntuiText IText1 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   -56,0,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "In Pt:",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget in_pt = {
+   NULL,   /* next gadget */
+   77,28,   /* origin XY of hit box relative to window TopLeft */
+   92,8,   /* hit box width and height */
+   0,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   STRGADGET,   /* gadget type flags */
+   (APTR)&Border1,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText1,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   (APTR)&in_ptSInfo,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+static USHORT chip ImageData1[] = {
+   0xFFFF,0xFC00,0xE000,0x0000,0xE000,0x0000,0xE000,0x0000,
+   0xE000,0x0000,0xE000,0x0000,0xE000,0x0000,0xE000,0x0000,
+   0xE000,0x0000,0xE000,0x0000,0xE000,0x0000,0xC000,0x0000,
+   0x0000,0x0000,0x1FFF,0xF800,0x1E07,0xF800,0x1F07,0x3800,
+   0x1C77,0x9800,0x19FF,0x9800,0x13FF,0x3800,0x13DC,0x7800,
+   0x19C1,0xF800,0x1FC0,0xF800,0x1FFF,0xF800,0x0000,0x0000,
+   0x0000,0x0200,0x0000,0x0600,0x0000,0x0600,0x0000,0x0600,
+   0x0000,0x0600,0x0000,0x0600,0x0000,0x0600,0x0000,0x0600,
+   0x0000,0x0600,0x0000,0x0600,0x0000,0x0600,0x3FFF,0xFE00
+};
+
+static struct Image Image1 = {
+   0,0,   /* XY origin relative to container TopLeft */
+   23,12,   /* Image width and height in pixels */
+   3,   /* number of bitplanes in Image */
+   ImageData1,   /* pointer to ImageData */
+   0x0007,0x0000,   /* PlanePick and PlaneOnOff */
+   NULL   /* next Image structure */
+};
+
+static struct Gadget mix_mode = {
+   &in_pt,   /* next gadget */
+   22,40,   /* origin XY of hit box relative to window TopLeft */
+   23,12,   /* hit box width and height */
+   GADGIMAGE,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   BOOLGADGET,   /* gadget type flags */
+   (APTR)&Image1,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   NULL,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   NULL,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+static UBYTE descriptionSIBuff[40];
+static struct StringInfo descriptionSInfo = {
+   descriptionSIBuff,   /* buffer where text will be edited */
+   UNDOBUFFER,   /* optional undo buffer */
+   0,   /* character position in buffer */
+   40,   /* maximum number of characters to allow */
+   0,   /* first displayed character buffer position */
+   0,0,0,0,0,   /* Intuition initialized and maintained variables */
+   0,   /* Rastport of gadget */
+   0,   /* initial value for integer gadgets */
+   NULL   /* alternate keymap (fill in if you set the flag) */
+};
+
+static SHORT BorderVectors2[] = {
+   0,0,
+   280,0,
+   280,9,
+   0,9,
+   0,0
+};
+static struct Border Border2 = {
+   -2,-1,   /* XY origin relative to container TopLeft */
+   3,0,JAM1,   /* front pen, back pen and drawmode */
+   5,   /* number of XY vectors */
+   BorderVectors2,   /* pointer to XY vectors */
+   NULL   /* next border in list */
+};
+
+static struct IntuiText IText2 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   -48,0,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Memo:",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct Gadget description = {
+   &mix_mode,   /* next gadget */
+   69,15,   /* origin XY of hit box relative to window TopLeft */
+   277,8,   /* hit box width and height */
+   SELECTED,   /* gadget flags */
+   RELVERIFY,   /* activation flags */
+   STRGADGET,   /* gadget type flags */
+   (APTR)&Border2,   /* gadget border or image to be rendered */
+   NULL,   /* alternate imagery for selection */
+   &IText2,   /* first IntuiText structure */
+   NULL,   /* gadget mutual-exclude long word */
+   (APTR)&descriptionSInfo,   /* SpecialInfo structure */
+   NULL,   /* user-definable data */
+   NULL   /* pointer to user-definable data */
+};
+
+#define GadgetList1 description
+
+static struct IntuiText IText6 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   20,85,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Offset: 00:00",   /* pointer to text */
+   NULL   /* next IntuiText structure */
+};
+
+static struct IntuiText IText5 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   20,75,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Loop Count: 01",   /* pointer to text */
+   &IText6   /* next IntuiText structure */
+};
+
+static struct IntuiText IText4 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   20,65,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Fade Out Time: 00:00   100% to 0%",   /* pointer to text */
+   &IText5   /* next IntuiText structure */
+};
+
+static struct IntuiText IText3 = {
+   1,0,JAM1,   /* front and back text pens, drawmode and fill byte */
+   20,55,   /* XY origin relative to container TopLeft */
+   NULL,   /* font pointer or NULL for default */
+   "Fade In Time: 00:00    0% to 100%",   /* pointer to text */
+   &IText4   /* next IntuiText structure */
+};
+
+#define IntuiTextList1 IText3
+
+static struct NewWindow NewWindowStructure1 = {
+   113,52,   /* window XY origin relative to TopLeft of screen */
+   370,103,   /* window width and height */
+   BLACK,WHITE,   /* detail and block pens */
+   GADGETUP+CLOSEWINDOW+ACTIVEWINDOW,   /* IDCMP flags */
+   WINDOWDRAG+WINDOWDEPTH+WINDOWCLOSE+ACTIVATE+NOCAREREFRESH,   /* other window flags */
+   &description,   /* first gadget in gadget list */
+   NULL,   /* custom CHECKMARK imagery */
+   "Edit Cue Event",   /* window title */
+   NULL,   /* custom screen pointer */
+   NULL,   /* custom bitmap */
+   5,5,   /* minimum width and height */
+   640,200,   /* maximum width and height */
+   CUSTOMSCREEN   /* destination screen type */
+};
+
+
+/* end of PowerWindows source generation */

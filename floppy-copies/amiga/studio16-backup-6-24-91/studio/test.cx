@@ -1,0 +1,16 @@
+#include "/include/studio16.h"
+struct studioBase *studioBase=0;
+
+main()
+{
+printf("size of studiobase=%d\n",sizeof(struct studioBase));
+printf("size of Library=%d\n",sizeof(struct Library));
+studioBase=(struct studioBase *)OpenLibrary("studio.library",0);
+printf("studiobase=%x\n",studioBase);
+if (studioBase) {
+	StandardEnviroment();
+printf("screen %x win %x\n",studioBase->screen,studioBase->back_window);
+	Delay(60);
+	CloseLibrary(studioBase);
+	}
+}

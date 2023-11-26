@@ -1,0 +1,254 @@
+"Official" Studio 16 events
+===========================
+
+Format of an event name:
+
+<1>_<2>_<3>
+
+<1>
+Always "SE" meaning "studio event"
+
+<2>
+Always "INFO" or "CMD" to specify whether this event is
+a "command" asking for a task to be performed (eg. SE_CMD_PLAY_SAMPLE)
+or "information" (eg. SE_INFO_SAMPLE_CREATED)
+
+<3>
+Always a description of the command or information.  Commands should have
+the format verb_direct object (eg. SE_CMD_PLAY_SAMPLE) and info should have the
+format direct object_verb (past tense generally) eg. SE_INFO_SAMPLE_CREATED.  Info
+can also just contain a noun.  Eg. SE_INFO_HILO.
+------------------------------------------------------------------
+
+SE_CMD_EDIT_SAMPLE 
+
+arg 1: struct Disk_Samp *
+
+Broadcast this if you want the edit module to edit a sample.  Off course
+the edit module must be loaded for anything to happen.
+------------------------------------------------------------------
+
+SE_INFO_SAMPLE_CREATED 
+
+arg 1: struct Disk_Samp *
+
+CreateSample() broadcasts this message whenever it is invoked to
+create a new sample.
+-----------------------------------------------------------------
+
+SE_INFO_SAMPLE_DELETED
+
+arg1: struct Disk_Samp *
+
+This event is broadcast by DeleteSample() whenever invoked.
+Event though a pointer is xmited, it does not point to a
+valid sample since the sample has been deleted.
+-----------------------------------------------------------------
+
+SE_INFO_MODULE_ADDED
+
+arg1: struct Module *
+
+This event is broadcast by AddModule() whenever invoked.
+-----------------------------------------------------------------
+
+SE_INFO_MODULE_DELETED
+
+arg1: struct Module *
+
+This event is broadcast by DeleteModule() whenever invoked.
+-----------------------------------------------------------------
+
+SE_CMD_SELECT_MODULE
+
+arg1: struct Module *
+
+This event is sent to a module when the user wishes to open that
+module's main window.  All modules with a window that can be opened
+or closed should monitor for this message and open its window
+when received.
+-----------------------------------------------------------------
+
+SE_CMD_KILL_MODULE
+
+arg 1: struct Module *
+
+This event is sent (via SendMsg sometimes) to a module when the user
+wishes to unload the module from memory.  All modules must look for
+this message and unload themselves from memory when received
+(usually via exit(0))
+cd aw:-----------------------------------------------------------------
+
+SE_INFO_EVENT_COUNT
+
+arg 1: int (type of event that has changed)
+arg 2: int (new count of modules listening to event)
+
+To receive this event a module uses the "NotifyMeOnCount(type, module)"
+studio.library call.  You will receive this event once immediately
+after the call is made and then once whenever the number of modules
+listening to Event with ID of "type" changes.
+
+An example module that would use this event is a smpte monitor.
+By monitoring SE_INFO_EVENT_COUNT, the smpte mon could quit
+transmitting smpte events when no one is listening to them.  This
+cuts down on the amount of message traffic (and in the case of
+the AD1012, interrupts.  It turns off SMPTE interrupts when no
+one is listening for them.)
+
+-----------------------------------------------------------------
+
+SE_INFO_HILO
+
+arg 1: struct HLinfo *
+
+struct HLchan {
+ char high;
+ char low;
+ };
+
+struct HLinfo
+ {
+ struct HLchan input;
+ struct HLchan output;
+ struct HLchan chan[4];
+ } HLinfo;
+
+This event is broadcast by card handlers for use by meter modules.
+HILO info is sent approximately 23 times per second.  HLchan.high
+is the largest sample seen by a particular channel in the last 1/23
+of a second.  HLchan.low is the smallest sample seen in the last 1/23
+of a second.
+-----------------------------------------------------------------
+
+SE_CMD_SET_CHANNEL_VOLUME 
+
+Broadcast this event to change the volume of a particular channel.
+
+arg 1: int channel number
+arg 2: int (volume [0  - 0xFFFF] (off -> max on)
+arg 3: struct Module * (sending module)
+arg 4: struct AudioHandler * ????????????
+-----------------------------------------------------------------
+
+SE_CMD_STOP_PLAYING
+
+arg1: struct PlayingSample *
+
+This stop's playback of a particular AudioHandler/channel # combo
+-----------------------------------------------------------------
+
+SE_INFO_BLOCK_PLAYED
+
+arg 1: struct PlayingSample *
+-----------------------------------------------------------------
+
+SE_INFO_RECORD_DATA 
+
+-----------------------------------------------------------------
+
+SE_INFO_CHANNEL_DONE
+
+arg 1: struct PlayingSample *
+
+-----------------------------------------------------------------
+
+SE_CMD_PLAY_SAMPLE
+
+arg 1: struct Disk_Samp * (sample to play)
+arg 2: int (starting sample index)
+arg 3: int (length to play) 
+arg 4: ChanKey * to playon or NULL for any
+
+Broadcast this event when you wish to play a sample.  The DiskIO
+module usually listens for this event and starts the playback.
+-----------------------------------------------------------------
+
+SE_CMD_PRELOAD_SAMPLE
+
+arg 1: struct Module * (module requesting preload)
+arg 2: struct Disk_Samp * (sample to preload)
+arg 3: int (starting sample index)
+arg 4: int (length to play)
+arg 5: int (number of times to loop sample)
+
+This event tells DiskIO to preload data for a specified sample.
+By preloading data, the actual start playing command will be
+almost immediate.
+
+An SE_CMD_TRIGGER_PLAYBACK is used to start the sample playing.
+After the requested PRELOAD is complete, a message SE_INFO_PRELOAD
+event is broadcast by diskio.
+-----------------------------------------------------------------
+    
+SE_CMD_TRIGGER_PLAYBACK
+
+arg 1: struct PlayingSample *   (play this sample)
+
+This event starts playback immediately of a previously preloaded sample.
+
+You must set PlayingSample.key before broadcasting the trigger
+event.  You get the pointer to PlaySample, monitor for
+SE_INFO_PRELOAD_DONE messages.
+
+example:
+
+ps->key = AllocChan(NULL, -1);
+if (ps->key) 
+ BroadcastEventParms(se_cmd_trigger_playback, ps, 0,0,0,0,0);
+else
+ BroadcastEventParms(se_info_chan_done, ps,0,0,0,0,0);
+
+Or better yet, allocate the channel before you preload the data.
+That way you don't have to worry about sending an SE_INFO_CHAN_DONE
+since handler's always send this message once the triggered
+sound is finished.
+
+If you send a TRIGGER command to a channel that is still playing,
+the next sound will
+start when the previously playing
+sample finishes.  The handler will try to make the
+transition seamless.  The first word in the queued
+sample will start 1/(sampling rate) after the last
+word in the previously queued sample finishes.
+
+-----------------------------------------------------------------
+
+SE_INFO_PRELOAD_DONE
+
+arg 1: struct PlayingSample *
+
+This event is broadcast by diskio when preload request has been completed.
+You should wait for this message before actually sending the TRIGGER
+event.
+
+-----------------------------------------------------------------
+
+SE_INFO_SMPTE
+
+arg 1: struct TimeCode *
+
+This event is broadcast by handlers capable of generating smpte
+time code every frame change.
+
+-----------------------------------------------------------------
+SE_CMD_STOP_ALL_PLAYBACK
+
+no arguments
+
+This command can be transmitted to cancel playback of all current
+playing channels in the system.  For example, clicking the "play"
+gadget in "openlist" with no selected samples will broadcast
+this event.
+
+-----------------------------------------------------------------
+
+SE_CMD_RECORD_SAMPLE
+
+-----------------------------------------------------------------
+SE_CMD_STOP_RECORDING 
+-----------------------------------------------------------------
+SE_CMD_BEGIN_RECORDING
+-----------------------------------------------------------------
+SE_INFO_RECORD_DATA
+-----------------------------------------------------------------

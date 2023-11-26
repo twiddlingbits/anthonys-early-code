@@ -1,0 +1,4 @@
+FROM LIB:c.o+"ptrexamp.o"
+TO "ptrexamp"
+LIB LIB:lc.lib LIB:amiga.lib
+

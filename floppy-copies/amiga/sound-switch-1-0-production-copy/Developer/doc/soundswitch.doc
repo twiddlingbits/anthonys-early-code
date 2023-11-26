@@ -1,0 +1,763 @@
+TABLE OF CONTENTS
+
+soundswitch.library/--rexxhost--
+soundswitch.library/ssw_AddMonitor
+soundswitch.library/ssw_AttemptLockBase
+soundswitch.library/ssw_CloseUnit
+soundswitch.library/ssw_GetChannelGain
+soundswitch.library/ssw_GetChannelTrim
+soundswitch.library/ssw_GetMeterInfo
+soundswitch.library/ssw_GetUnitInfo
+soundswitch.library/ssw_LockBase
+soundswitch.library/ssw_ObtainHardware
+soundswitch.library/ssw_OpenUnit
+soundswitch.library/ssw_ReleaseHardware
+soundswitch.library/ssw_RemoveMonitor
+soundswitch.library/ssw_RexxHost
+soundswitch.library/ssw_SetChannelGain
+soundswitch.library/ssw_SetChannelTrim
+soundswitch.library/ssw_SetMode
+soundswitch.library/ssw_TestUnit
+soundswitch.library/ssw_UnlockBase
+soundswitch.library/--rexxhost--             soundswitch.library/--rexxhost--
+
+    HOST INTERFACE
+	soundswitch.library provides an ARexx function host interface that
+	enables ARexx programs to take advantage of the features of the
+	SoundSwitch Audio Mixer.  The functions provided by the interface
+	are directly related to the library functions described in this
+	document, with the differences mostly being in the way in which
+	they are called.
+ 
+	The function host library vector is located at offset -30 from
+	the library. This is the value you provide to ARexx in the
+	AddLib() function call.
+ 
+   FUNCTIONS
+	ssw_CloseUnit( UNIT/A )
+	ssw_GetChannelGain( UNIT/A,CHANNEL/N )
+	ssw_GetChannelTrim( UNIT/A,CHANNEL/N )
+	ssw_GetMeterInfo( UNIT/A,CHANNEL/N )
+	ssw_GetUnitInfo( UNIT/A )
+	ssw_Help( COMMAND )
+	ssw_OpenUnit( UNITNUM/N,FLAGS/N )
+	ssw_SetChannelGain( UNIT/A,CHANNEL/N,GAIN/N )
+	ssw_SetChannelTrim( UNIT/A,CHANNEL/N,TRIM/N )
+	ssw_SetMode( UNIT/A,MASK/N/A,BITS/N/A )
+	ssw_TestUnit( UNIT/A )
+
+   EXAMPLE
+	/* soundswitch.rexx */
+	PARSE ARG action arg1 arg2 arg3 .
+	OPTIONS RESULTS
+
+	/* Load the soundswitch.library as a function library */
+	IF ~SHOW('L','soundswitch.library') THEN
+	   CALL ADDLIB('soundswitch.library',1,-30)
+
+	IF arg1 == "" THEN arg1 = "8"
+	IF arg2 == "" THEN arg2 = "192"
+
+	SELECT
+	   WHEN action == "GETGAIN" THEN DO
+	      operation  = "'ssw_GetChannelGain'"
+	      parameters = arg1
+	      rvaldesc   = "Gain:"
+	   END
+	
+	   WHEN action == "GETTRIM" THEN DO
+	      operation  = "'ssw_GetChannelTrim'"
+	      parameters = arg1
+	      rvaldesc   = "Trim:"
+	   END
+	
+	   WHEN action == "GETMETERINFO" THEN DO
+	      operation  = "'ssw_GetMeterInfo'"
+	      parameters = arg1 "," arg2
+	      rvaldesc   = "Meter:"
+	   END
+	
+	   WHEN action == "GETUNITINFO" THEN DO
+	      operation  = "'ssw_GetUnitInfo'"
+	      parameters = ""
+	      rvaldesc   = "UnitInfo:"
+	   END
+	
+	   WHEN action == "SETGAIN" THEN DO
+	      operation  = "'ssw_SetChannelGain'"
+	      parameters = arg1 "," arg2
+	      rvaldesc   = ""
+	   END
+
+	   WHEN action == "SETTRIM" THEN DO
+	      operation  = "'ssw_SetChannelTrim'"
+	      parameters = arg1 "," arg2
+	      rvaldesc   = ""
+	   END
+	
+	   WHEN action == "STEREO" THEN DO
+	      operation  = "'ssw_SetMode'"
+	      parameters = "1, 1"
+	      rvaldesc   = ""
+	   END
+	
+	   WHEN action == "MONO" THEN DO
+	      operation  = "'ssw_SetMode'"
+	      parameters = "1, 0"
+	      rvaldesc   = ""
+	   END
+	
+	   OTHERWISE DO
+	      operation = ""
+	      SAY "Usage:"
+	      SAY "  rx soundswitch <action> <arg1> <arg2>"
+	   END
+	END
+	
+	IF operation ~= "" THEN DO
+	   unit = ssw_OpenUnit()
+	
+	   IF parameters == "" THEN parameters = unit
+	   ELSE                     parameters = unit "," parameters
+
+	   operation = "rval =" operation||"(" parameters ")"
+	
+	   INTERPRET operation
+	
+	   IF rvaldesc ~= "" THEN DO
+	      SAY rvaldesc rval
+	   END
+	
+	   call ssw_CloseUnit unit
+	END
+	
+	EXIT
+
+soundswitch.library/ssw_AddMonitor         soundswitch.library/ssw_AddMonitor
+
+   NAME   
+	ssw_AddMonitor -- Add a notification request to a mixer unit
+
+   SYNOPSIS
+	monitor = ssw_AddMonitor( unit, name, flags, priority, callback )
+	D0                        A0    A1    D0     D1        A2
+
+	struct ssw_MonitorHook * ssw_AddMonitor(
+	                          APTR, STRPTR, ULONG, BYTE, (void (*)()) );
+
+   FUNCTION
+	This function is used to add a notification callback to a
+	mixer unit.
+
+   INPUTS
+	unit     = a unit pointer obtained from ssw_OpenUnit()
+	name     = name of the monitoring user
+	flags    = specific things to watch for
+	priority = priority of monitoring user (-128 to +127)
+	callback = pointer to a function to invoke when something changes
+
+   RESULT
+	monitor  = a monitor hook structure
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_RemoveMonitor()
+
+soundswitch.library/ssw_AttemptLockBaseoundswitch.library/ssw_AttemptLockBase
+
+   NAME   
+	ssw_AttemptLockBase -- Try to obtain access to SoundSwitchBase resources
+
+   SYNOPSIS
+	success = ssw_AttemptLockBase( )
+	D0
+
+	ULONG ssw_AttemptLockBase( void );
+
+   FUNCTION
+	This function tries to obtain exclusive access to the SoundSwitchBase
+	resources.  If the resources are already in use, this function
+	will return FALSE.  If the exclusive access is obtained, this
+	function will return TRUE.  Access to SoundSwitchBase is arbitrated
+	by a SignalSemaphore.  Each call to this function must be matched
+	by a call to ssw_UnlockBase().
+
+   INPUTS
+	none.
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_LockBase(), ssw_UnlockBase(), exec.library/AttemptSemaphore()
+
+soundswitch.library/ssw_CloseUnit           soundswitch.library/ssw_CloseUnit
+
+   NAME   
+	ssw_CloseUnit -- Release access to a mixer unit
+
+   SYNOPSIS
+	ssw_CloseUnit( unit )
+	               A0
+
+	void ssw_CloseUnit( APTR );
+
+   FUNCTION
+	Closes the specified mixer unit.
+
+   INPUTS
+	unit = a unit pointer obtained from ssw_OpenUnit()
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_OpenUnit()
+
+soundswitch.library/ssw_GetChannelGain soundswitch.library/ssw_GetChannelGain
+
+   NAME   
+	ssw_GetChannelGain -- Get the gain level for a mixer channel
+
+   SYNOPSIS
+	dBgain = ssw_GetChannelGain( unit, channel_num )
+	D0                           A0    D0
+
+	LONG ssw_GetChannelGain( APTR, ULONG );
+
+   FUNCTION
+	This function is used to inquire about the gain level for
+	a mixer channel.
+
+   INPUTS
+	unit        = a unit pointer obtained from ssw_OpenUnit()
+	channel_num = a mixer channel to get the gain level.
+
+   RESULT
+	dBgain      = the gain level for the specified channel in
+	              increments of 1/2 dB.
+
+	              Maximum: %1111 1111, $FF, 255 = +31.5 dB
+	              Unity:   %1100 0000, $C0, 192 =   0.0 dB
+	              Minimum: %0000 0001, $01,   1 = -95.5 dB
+	              Off:     %0000 0000, $00,   0 = -oo   dB
+
+   EXAMPLE
+
+   NOTES
+	This function may be called from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+	ssw_GetChannelTrim()
+
+soundswitch.library/ssw_GetChannelTrim soundswitch.library/ssw_GetChannelTrim
+
+   NAME   
+	ssw_GetChannelTrim -- Get the trim level for a mixer channel
+
+   SYNOPSIS
+	dBtrim = ssw_GetChannelTrim( unit, channel_num )
+	D0                           A0    D0
+
+	LONG ssw_GetChannelTrim( APTR, ULONG );
+
+   FUNCTION
+	This function is used to inquire about the trim level for
+	a mixer channel.
+
+   INPUTS
+	unit        = a unit pointer obtained from ssw_OpenUnit()
+	channel_num = a mixer channel to get the trim level.
+
+   RESULT
+	dBtrim      = the trim level for the specified channel in
+	              increments of 1/2 dB.
+
+	              Maximum: %0111 1111, $7F, +127 = +63.5 dB
+	              Unity:   %0000 0000, $00,    0 =   0.0 dB
+	              Minimum: %1000 0000, $81, -127 = -63.5 dB
+
+   EXAMPLE
+
+   NOTES
+	This function may be called from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+	ssw_GetChannelGain()
+
+soundswitch.library/ssw_GetMeterInfo     soundswitch.library/ssw_GetMeterInfo
+
+   NAME   
+	ssw_GetMeterInfo -- Get the meter level for a mixer channel
+
+   SYNOPSIS
+	level = ssw_GetMeterInfo( unit, channel_num )
+	D0                        A0    D0
+
+	ULONG ssw_GetMeterInfo( APTR, ULONG );
+
+   FUNCTION
+	This function is used to get the current meter level
+	for a mixer channel.
+
+   INPUTS
+	unit        = a unit pointer obtained from ssw_OpenUnit()
+	channel_num = a mixer channel to adjust the trim.
+
+   RESULT
+	level       = a meter level
+
+   EXAMPLE
+
+   NOTES
+	This function performs hardware arbitration.
+	Do *NOT* call this function from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+
+soundswitch.library/ssw_GetUnitInfo       soundswitch.library/ssw_GetUnitInfo
+
+   NAME   
+	ssw_GetUnitInfo -- Get the configuration information for this unit
+
+   SYNOPSIS
+	errorcode = ssw_GetUnitInfo( unit, unitinfo )
+	D0                           A0    A1
+
+	LONG ssw_GetUnitInfo( APTR, struct ssw_UnitInfo * );
+
+   FUNCTION
+	This function is used to get the configuration information from
+	a mixer unit.
+
+   INPUTS
+	unit      = a unit pointer obtained from ssw_OpenUnit()
+	unitinfo  = pointer to a ssw_UnitInfo structure to fill in.
+
+   RESULT
+	errorcode = error value specifying the cause of the
+	   failure to get the unit information.
+
+   EXAMPLE
+
+   NOTES
+	This function may be called from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+
+soundswitch.library/ssw_LockBase             soundswitch.library/ssw_LockBase
+
+   NAME   
+	ssw_LockBase -- Obtain exclusive access to SoundSwitchBase resources
+
+   SYNOPSIS
+	ssw_LockBase( )
+
+	void ssw_LockBase( void );
+
+   FUNCTION
+	This function obtains exclusive access to the SoundSwitchBase
+	resources.  If the resources are already in use, this call
+	will block until they become available.  Access to SoundSwitchBase
+	is arbitrated by a SignalSemaphore.  Each call to this function
+	must be matched by a call to ssw_UnlockBase().
+
+   INPUTS
+	none.
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+	Because this function may be required to Wait() for the
+	resources to become available, this function should
+	*NOT* be called from interrupt code.
+
+   BUGS
+
+   SEE ALSO
+	ssw_AttemptLockBase(), ssw_UnlockBase()
+	exec.library/ObtainSemaphore()
+
+soundswitch.library/ssw_ObtainHardware soundswitch.library/ssw_ObtainHardware
+
+   NAME   
+	ssw_ObtainHardware -- Take control of the shared hardware
+
+   SYNOPSIS
+	ssw_ObtainHardware( )
+
+	void ssw_ObtainHardware( void );
+
+   FUNCTION
+	This function will take control of the shared hardware
+	resources used for communicating with the mixer hardware.
+	A "nesting count" is incremented each time this function
+	is called.  Every call to this function must be matched
+	by a call to ssw_ReleaseHardware().
+
+   INPUTS
+	none.
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+	Because this function may be required to Wait() for the
+	hardware resources to become available, this function
+	should *NOT* be called from interrupt code.
+
+   BUGS
+
+   SEE ALSO
+	ssw_ReleaseHardware()
+
+soundswitch.library/ssw_OpenUnit             soundswitch.library/ssw_OpenUnit
+
+   NAME   
+	ssw_OpenUnit -- Gain access to a mixer unit
+
+   SYNOPSIS
+	error = ssw_OpenUnit( unitnum, flags, unitptr )
+	D0                    D0       D1     A0
+
+	LONG ssw_OpenUnit( LONG, ULONG, APTR * );
+
+   FUNCTION
+	Opens the specified mixer unit using the specified flags.
+
+   INPUTS
+	unitnum = ordinal mixer unit number (0-3)
+	flags   = SSWUF_EXCLUSIVE or NULL.
+	unitptr = pointer to an APTR where the unit pointer will be stored.
+
+   RESULT
+	errorcode = error value specifying the cause of the
+	   failure to open the requested unit.  If the unit
+	   was successfully opened, this value will be SSWERR_NOERROR.
+
+   EXAMPLE
+
+   NOTES
+	ssw_TestUnit() is called the first time a mixer unit is opened.
+
+   BUGS
+
+   SEE ALSO
+	ssw_CloseUnit()
+
+soundswitch.library/ssw_ReleaseHardwareoundswitch.library/ssw_ReleaseHardware
+
+   NAME   
+	ssw_ReleaseHardware -- Give up control of the shared hardware
+
+   SYNOPSIS
+	ssw_ReleaseHardware( )
+
+	void ssw_ReleaseHardware( void );
+
+   FUNCTION
+	This function will give up control of the shared hardware
+	resources used for communicating with the mixer hardware.
+	A "nesting count" is decremented each time this function
+	is called.  When the nesting count reaches 0, control of
+	the hardware is released.
+
+   INPUTS
+	none.
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_ObtainHardware()
+
+soundswitch.library/ssw_RemoveMonitor   soundswitch.library/ssw_RemoveMonitor
+
+   NAME   
+	ssw_RemoveMonitor -- Remove a notification request from a mixer unit
+
+   SYNOPSIS
+	ssw_RemoveMonitor( monitor )
+	                   A0
+
+	void ssw_RemoveMonitor( struct ssw_MonitorHook * );
+
+   FUNCTION
+	This function is used to remove a notification callback from a
+	mixer unit.
+
+   INPUTS
+	monitor = a monitor hook structure obtained from ssw_AddMonitor()
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_AddMonitor()
+
+soundswitch.library/ssw_RexxHost             soundswitch.library/ssw_RexxHost
+
+   NAME   
+	ssw_RexxHost -- SoundSwitch ARexx function library interface
+
+   SYNOPSIS
+	result:string = ssw_RexxHost( rexxmsg )
+	D0    :A0                     A0
+
+	LONG:STRPTR ssw_RexxHost( struct RexxMsg * );
+
+   FUNCTION
+	This is the soundswitch.library's REXX function library interface
+ 
+   INPUTS
+	rexxmsg      = pointer to a RexxMsg to process.
+
+   RESULT
+	result = 
+	string = 
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+
+soundswitch.library/ssw_SetChannelGain soundswitch.library/ssw_SetChannelGain
+
+   NAME   
+	ssw_SetChannelGain -- Set the gain level for a mixer channel
+
+   SYNOPSIS
+	errorcode = ssw_SetChannelGain( unit, channel_num, dBgain )
+	D0                              A0    D0           D1
+
+	LONG ssw_SetChannelGain( APTR, ULONG, LONG );
+
+   FUNCTION
+	This function is used to set the gain level for a mixer
+	channel.  If there are any users monitoring for changes
+	in gain level, they will be notified of the change.
+
+   INPUTS
+	unit        = a unit pointer obtained from ssw_OpenUnit()
+	channel_num = a mixer channel to adjust the gain.
+	dBgain      = the gain level for the specified channel in
+	              increments of 1/2 dB.
+
+	              Maximum: %1111 1111, $FF, 255 = +31.5 dB
+	              Unity:   %1100 0000, $C0, 192 =   0.0 dB
+	              Minimum: %0000 0001, $01,   1 = -95.5 dB
+	              Off:     %0000 0000, $00,   0 = -oo   dB
+
+   RESULT
+	errorcode = error value specifying the cause of the
+	   failure to set the gain.
+
+   EXAMPLE
+
+   NOTES
+	If unit is operating in "stereo lock" mode, any gain changes
+	made to a left channel will also be made to the corresponding
+	right channel.
+
+	This function does *NOT* handle hardware arbitration.
+	You must have already called ssw_ObtainHardware() before
+	calling this function.
+
+	This function may be called from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+	ssw_SetChannelTrim(), ssw_SetMode()
+
+soundswitch.library/ssw_SetChannelTrim soundswitch.library/ssw_SetChannelTrim
+
+   NAME   
+	ssw_SetChannelTrim -- Set the trim level for a mixer channel
+
+   SYNOPSIS
+	errorcode = ssw_SetChannelTrim( unit, channel_num, dBtrim )
+	D0                              A0    D0           D1
+
+	LONG ssw_SetChannelTrim( APTR, ULONG, LONG );
+
+   FUNCTION
+	This function is used to set the trim level for a mixer
+	channel.  If there are any users monitoring for changes
+	in trim level, they will be notified of the change.
+
+   INPUTS
+	unit        = a unit pointer obtained from ssw_OpenUnit()
+	channel_num = a mixer channel to adjust the trim.
+	dBtrim      = the trim level for the specified channel in
+	              increments of 1/2 dB.
+
+	              Maximum: %0111 1111, $7F, +127 = +63.5 dB
+	              Unity:   %0000 0000, $00,    0 =   0.0 dB
+	              Minimum: %1000 0000, $81, -127 = -63.5 dB
+
+   RESULT
+	errorcode = error value specifying the cause of the
+	   failure to set the trim.
+
+   EXAMPLE
+
+   NOTES
+	If unit is operating in "stereo lock" mode, any trim changes
+	made to a left channel will also be made to the corresponding
+	right channel.
+
+	This function does *NOT* handle hardware arbitration.
+	You must have already called ssw_ObtainHardware() before
+	calling this function.
+
+	This function may be called from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+	ssw_SetChannelGain(), ssw_SetMode()
+
+soundswitch.library/ssw_SetMode               soundswitch.library/ssw_SetMode
+
+   NAME   
+	ssw_SetMode -- Set the operating mode for a mixer unit.
+
+   SYNOPSIS
+	old_mode = ssw_SetMode( unit, mode_mask, mode_bits )
+	D0                      A0    D0         D1
+
+	ULONG ssw_SetMode( APTR, ULONG, ULONG );
+
+   FUNCTION
+	This function is used to set the operating mode for the
+	mixer unit.  Currently, the only operating mode is the
+	STEREO_LOCK mode.  When a mixer is operating in "locked"
+	mode, any gain or trim settings on a left channel will be
+	duplicated in the matching right channel.
+
+   INPUTS
+	unit      = a unit pointer obtained from ssw_OpenUnit()
+	mode_mask = the set of mode settings to be affected.
+	mode_bits = the new mode values for the mode settings
+	            specified in the 'mode_mask' variable.
+
+   RESULT
+	old_mode  = previous mode value settings.
+
+   EXAMPLE
+
+   NOTES
+	This function performs hardware arbitration.
+	Do *NOT* call this function from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+
+soundswitch.library/ssw_TestUnit             soundswitch.library/ssw_TestUnit
+
+   NAME   
+	ssw_TestUnit -- Test access to a mixer unit
+
+   SYNOPSIS
+	errorcode = ssw_TestUnit( unit )
+	D0                        A0
+
+	LONG ssw_TestUnit( APTR );
+
+   FUNCTION
+	Test the specified mixer unit for comm link integrity.
+
+   INPUTS
+	unit = a unit pointer obtained from ssw_OpenUnit()
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+	This function performs hardware arbitration.
+	Do *NOT* call this function from an interrupt.
+
+   BUGS
+
+   SEE ALSO
+
+soundswitch.library/ssw_UnlockBase         soundswitch.library/ssw_UnlockBase
+
+   NAME   
+	ssw_UnlockBase -- Release access to SoundSwitchBase resources
+
+   SYNOPSIS
+	ssw_UnlockBase( )
+
+	void ssw_UnlockBase( void );
+
+   FUNCTION
+	This function releases exclusive access to the SoundSwitchBase
+	resources.
+
+   INPUTS
+	none.
+
+   RESULT
+	none.
+
+   EXAMPLE
+
+   NOTES
+
+   BUGS
+
+   SEE ALSO
+	ssw_LockBase(), ssw_AttemptLockBase()
+	exec.library/ReleaseSemaphore()
+
+

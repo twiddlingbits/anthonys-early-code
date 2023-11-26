@@ -1,0 +1,6 @@
+failat 20
+LibTool -cmo gluenoend.asm libtool.fd
+join FILE gluenoend.asm end.txt TO gadlibstub.asm
+a68k gadlibstub.asm
+a68k  libtool.src -olibtool.o
+echo "!!!!! CHANGE libtool.src SO IT ALWAYS EXPUNGE?"

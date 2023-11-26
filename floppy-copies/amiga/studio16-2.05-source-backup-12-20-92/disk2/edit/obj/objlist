@@ -1,0 +1,8 @@
+openlibraries.o,edit.o,refresh_edit_win.o,graph.o,*
+newrate.o,setrange.o,scale.o,dclips.o,non_dest_edit.o,*
+graphasm.o,add.o,askuserpastetype.o,menus.o,*
+fft.o,dest_edit.o,echo.o,echoblock.o,resample.o,genreq.o,*
+displayoffset.o,regions.o,rmenus.o,Sum64.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,
+//interfacelib/interfacestub.o

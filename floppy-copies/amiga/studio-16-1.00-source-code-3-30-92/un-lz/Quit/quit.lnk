@@ -1,0 +1,4 @@
+FROM LIB:c.o+"quit.o"
+TO "quit"
+LIB LIB:lc.lib LIB:amiga.lib
+

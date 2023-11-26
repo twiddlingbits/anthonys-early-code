@@ -1,0 +1,218 @@
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static void ADDfunc();
+static void DELETEfunc();
+static void Updatefunc();
+void OnOfffunc();
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct NewButton OnOffbut = 
+	{NULL,					/* *next (gadget) */
+	20,20,100,100,				/* Box x1,y1,x2,y2 */
+	BUTN_COOL|MANUAL_XOR|BUTN_TOGGLE,			/* Flags */
+	OnOfffunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,					/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	NULL};					/* *text */
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+struct NewBox SampleName = 
+	{
+	&OnOffbut,				/* next */
+	257,113,264+8*17,114+11,/* box_x1 box_y1 box_x2 box_y2 */
+	BOX_COOL|BOX_NORENDER|TEXT_ONLY_FILE_NAME,	/* flags */
+	NULL,				/* Function */
+	0,				/* UserData */
+	NULL,			/* Color Struct */
+	0,				/* id */
+	0,				/* notifyme */
+	0,				/* gad_ptr */
+	0				/*initial value */
+	};
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void EditEntry();
+struct list *CueL;
+static struct NewList CueList = {
+	&SampleName,10,15,300,70,LIST_COOL|HIDE_GADGET|LIST_SORTED|LIST_SINGLESELECT|LIST_USEKEYS,
+	EditEntry,0,NULL,0,0,0,NULL,NULL,0};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+UBYTE UNDOBUFFER[STUDIO16_MAX_PATH_SIZE];
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+UBYTE SG_Remark[40];
+struct StringInfo RemarkGadSInfo = {
+	SG_Remark,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	40,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+
+struct Gadget RemarkGad = {
+	NULL,	/* next gadget */
+	405+8,114,	/* origin XY of hit box relative to window TopLeft */
+	160,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&RemarkGadSInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+UBYTE SG_SampName[STUDIO16_MAX_PATH_SIZE] = "Untitled";
+struct StringInfo NameGadSInfo = {
+	SG_SampName,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	STUDIO16_MAX_PATH_SIZE,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+
+struct Gadget NameGad = {
+	&RemarkGad,	/* next gadget */
+	261,114,	/* origin XY of hit box relative to window TopLeft */
+	8*17,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&NameGadSInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+UBYTE SG_Volume[5] = " +0";
+struct StringInfo VolumeGadSInfo = {
+	SG_Volume,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	4,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+struct Gadget VolumeGad = {
+	&NameGad,	/* next gadget */
+	205+16,114,	/* origin XY of hit box relative to window TopLeft */
+	8*5+1,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&VolumeGadSInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+UBYTE Gadget2SIBuff[12] =
+	"10:00:00:00";
+struct StringInfo Gadget2SInfo = {
+	Gadget2SIBuff,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	12,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+struct Gadget Gadget2 = {
+	&VolumeGad,	/* next gadget */
+	109,114,	/* origin XY of hit box relative to window TopLeft */
+	8*12,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY+STRINGCENTER,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&Gadget2SInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+UBYTE SG_StartTime[13] ="00:00:01:00";
+struct StringInfo StartTimeGadSInfo = {
+	SG_StartTime,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	12,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+struct Gadget StartTimeGad = {
+	&VolumeGad,	/* next gadget */
+	13,114,	/* origin XY of hit box relative to window TopLeft */
+	8*13+1,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&StartTimeGadSInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct NewWindow NewWind = {
+   10,
+   11,
+   600,
+   100,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE|GADGETDOWN|GADGETUP,
+   WINDOWSIZING|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+ NULL /* &StartTimeGad*/,0,
+   "Cue List", /** TITLE **/
+   0,0,
+   450,70,1024,1024,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

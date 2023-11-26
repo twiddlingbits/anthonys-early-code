@@ -1,0 +1,39 @@
+lc -ocdo: -b0 erase.c
+lc -ocdo: -b0 menuwin.c
+lc -ocdo: -b0 -ad scnreq.c
+lc -ocdo: -b0 printxandy.c
+lc -ocdo: -b0 draw.c
+lc -ocdo: -b0 kitget.c
+lc -ocdo: -b0 initbitmap.c
+lc -ocdo: -b0 disgraphic.c
+lc -ocdo: -b0 magwin.c
+lc -ocdo: -b0 pattern.c
+lc -ocdo: -b0 undo.c
+lc -ocdo: -b0 graphscreen.c
+lc -ocdo: -b0 setbox.c
+lc -ocdo: -b0 circle.c
+lc -ocdo: -b0 tomscreen.c
+lc -ocdo: -b0 setcolors.c
+lc -ocdo: -b0 line.c
+lc -ocdo: -b0 nwin.c
+lc -ocdo: -b0 putbm2.c
+lc -ocdo: -b0 -ad blkwht.c
+lc -ocdo: -b0 editmenu.c
+lc -ocdo: -b0 box.c
+lc -ocdo: -b0 -ad rotget.c
+lc -ocdo: -b0 loadbrush.c
+lc -ocdo: -b0 -ad graphed.c
+lc -ocdo: -b0 changechecks.c
+lc -ocdo: -b0 printmode.c
+lc -ocdo: -b0 rotate.c
+lc -ocdo: -b0 maged.c
+lc -ocdo: -b0 clearmess.c
+lc -ocdo: -b0 endstuff.c
+lc -ocdo: -b0 flip.c
+lc -ocdo: -b0 savebrush.c
+lc -ocdo: -b0 putbm.c
+lc -ocdo: -b0 -ad openkit.c
+lc -ocdo: -b0 -ad flipget.c
+lc -ocdo: -b0 cleanup.c
+lc -ocdo: -b0 resize.c
+

@@ -1,0 +1,180 @@
+.. City Desk User's Guide: Section4.CD
+.. This section contains the following:
+..    -Overview of the menus
+..    -The Working Page
+..    -Getting Started with Text Files
+..    -Getting Started with Graphic Files
+..
+.. Copyright 1987 by
+.. MicroSearch
+.. 9896 S.W. Freeway
+.. Houston, TX 77074
+.. (713) 988 2818
+..
+.eh=Page #//City Desk User's Guide
+.oh=City Desk Tutorial//Page #
+Section 4City Desk Tutorial 
+
+Overview of the Menus
+
+C‚i‚t‚y‚ ‚D‚e‚s‚k‚ is mouse and menu driven. All menus are accessed by simply pointing and holding down  the RIGHT mouse button.
+A short description of each of the main menus is shown below. If you need a more thorough explanation of each of the options in a menu, please see the Reference Guide.
+
+
+           MAIN MENU HERE
+
+
+At the top of the screen you will see a bar that reads "City Desk." By pointing at that bar and holding down  the RIGHT mouse button, you will find five (5) separate options. Each of these menus is decribed below:
+
+     P‚R‚O‚J‚E‚C‚T‚ -- The function of PROJECT is to handle the loading and saving of text or graphics on disk and printing of the page to an output device.
+
+     E‚D‚I‚T‚ -- The EDIT menu allows you to format the page and/or text. The EDIT menu also provides a small editor and a special option for inverting graphics.
+
+     P‚R‚E‚F‚E‚R‚E‚N‚C‚E‚S‚ -- The PREFERENCES menu contains many functions. These functions include options such as loading and saving the default text or page format, choosing the current printer type, printer resolution.
+
+     G‚R‚I‚D‚ -- Turning on the grid option is useful for lining up text or lines on the page. This option forces all objects to be separated at regular intervals.
+
+     T‚O‚O‚L‚B‚O‚X‚ -- Puts the toolbox window on top of or behind all the other window on the screen.
+
+C‚i‚t‚y‚ ‚D‚e‚s‚k‚'s screen view is composed of four items: a clipboard, a trashcan, a toolbox and a working page window.
+A short description of each of the items in this screen is given below.
+     SCREEN PICTURE
+
+
+The Clipboard
+The clipboard is a place where you can put any object termporarily for use later. This is the background screen, behind all the pages.
+
+
+The Trashcan
+The trashcan gets rid of any undesirable objects. This trashcan is represented by a skull with two crossed bones.
+
+
+The Toolbox
+The Toolbox is a means of providing you everything you need to layout a page. Some tools have a two-mouse button option. The left mouse button in all cases selects the tool. The right mouse button in some tools calls up the appropiate default options requester. These tools are described in a later section of this manual.
+
+
+T‚h‚e‚ ‚W‚o‚r‚k‚i‚n‚g‚ ‚P‚a‚g‚e‚
+C‚i‚t‚y‚ ‚D‚e‚s‚k‚ provides you with a "what you see is what you get"  page window that serves as a guide for placing text or graphics just as if you were cutting and pasting text and figures on an actual sheet of paper.
+
+   Let's follow a clockwise description of this window:
+   Located at the top left hand corner is the CLOSE_GADGET symbol. This item indicates "close the current page." 
+   Next to the CLOSE_GADGET is the window's drag bar or title page. The current page number is indicated in this bar. To move the window to a different place on the screen , point to the drag bar and hold down the left mouse button. Move the window to the desired location the screen and release the button.
+
+   At the top right corner you will find two gadgets: the FRONT and BACK gadgets. The FRONT box moves this window on top of all other windows on the screen, while the BACK gadget puts this window behind all others. 
+   There are also front and back gadgets at the top right corner of the screen, but they serve a slightly different purpose. They send the entire C‚i‚t‚y‚ ‚D‚e‚s‚k‚ screen to the front or back. With these gadgets you can get back to Workbench without leaving C‚i‚t‚y‚ ‚D‚e‚s‚k‚.
+   
+    On the right side of the window you will find a slider that will position the screen view up or down on the page. 
+    At the bottom right hand corner is the RESIZE symbol. This will enlarge or shrink this page window.
+    Located in the bottom of the window is another slider which moves the screen view to the left or right of the current page.
+    Finally in the center of the window is the actual page  originally containing two blank columns. This is your guide for page layout.
+
+
+G‚e‚t‚t‚i‚n‚g‚ ‚S‚t‚a‚r‚t‚e‚d‚ ‚w‚i‚t‚h‚ ‚T‚e‚x‚t‚ ‚F‚i‚l‚e‚s‚
+C‚i‚t‚y‚ ‚D‚e‚s‚k‚ will load any normal Amiga text file. Text files created from popular word processors such as Scribble!  and editors like EDIT and ED store files.
+
+
+  Defining the Page Format
+By default, C‚i‚t‚y‚ ‚D‚e‚s‚k‚ gives you a page with two columns of text. The defaults for margins, gutter size, and others are given below:
+
+  right margin   ‚0‚.‚5‚0‚ ‚          num of columns   ‚2‚ ‚ ‚ ‚
+  left margin    ‚0‚.‚5‚0‚ ‚          column gutter   ‚0‚.‚5‚0‚ ‚
+  top margin     ‚0‚.‚5‚0‚ ‚          Draw Rules ?    ‚N‚O‚ ‚ ‚ ‚
+  bottom margin  ‚0‚.‚5‚0‚ ‚          Outline Page ?  ‚N‚O‚ ‚ ‚ ‚
+
+You may change any of these defaultsin either temporarily or permanently. To change these sizes temporarily (for the current session only) point to the "OPEN-PAGE" tool and click the right mouse gadget. Point and click the desired gaget. Type the new number. Point to the "OK" gadget and click the left mouse button to exit and save the modifications. 
+
+Saving the Page Format on Disk
+    To alter the page format permanently, pull the "EDIT PAGE FORMAT" option from the Edit menu. Make your corrections. Now pull the "SAVE ..." option from Preferences to store the new changes. Next time you run C‚i‚t‚y‚ ‚D‚e‚s‚k‚ your corrections become the new page format.
+
+
+Loading text in C‚i‚t‚y‚ ‚D‚e‚s‚k‚
+
+To load a text file, select "LOAD TEXT" from the PROJECT menu. You will soon see a listing of all files stored in the current directory. 
+  If you need to change drives or directories (also called drawers) click the drawer gadget and enter the new directory name.
+  The slider located on the right side of the text file window will move you up or down the listing of files.
+  To choose a file, simply point to it and click the left mouse button.
+  Click the "OK" gadget to submit the file to C‚i‚t‚y‚ ‚D‚e‚s‚k‚.
+  C‚i‚t‚y‚ ‚D‚e‚s‚k‚ provides sample articles for you to get started right away. Simply change the drawer name to "TEXT." 
+
+
+Placing text on the page
+  After the file is loaded, notice that the arrow pointer changed to the word "T‚E‚X‚T‚." This indicates that you have some text waiting to be placed on the page.
+  By positioning this "T‚E‚X‚T‚" pointer to the desired location on a window and clicking the left mouse button you will begin to see the actual text flowing onto the page.
+
+
+What if the text is longer than one page ?
+   Many documents are longer than a page of text. To take care of of this matter, follow the steps outlined below.
+   step 1. Point to the PAGE tool and click the left mouse button
+   step 2. Open a new page by .
+   step 3. When a new page appears, point and click the last block of text placed on the previous page.
+   step 4. The arrow pointer reads "T‚E‚X‚T‚." This indicates that more text is waiting to be placed.
+   step 5. You are ready to continue flowing the rest of the text by positioning the pointer and pressing the left mouse button.
+
+
+Altering the default font.
+  C‚i‚t‚y‚ ‚D‚e‚s‚k‚ supplies a default font for all text if you have not specified one. This font is t‚o‚p‚a‚z‚ ‚8‚. All text loaded will have the appearance of this font, unless otherwise specified in the text itself. You may alter this font in two ways: from the requester or by imbedding a typesetting command in the text.
+   Two more options are available when changing fonts from the requester: changing fonts temporarily or changing fonts permanently.
+    To alter fonts temporarily (for the current session only) point to the "ABC" tool in the toolbox and click the right mouse button.  You will not be able to save your corrections using this option.
+
+Saving the Text Attributes on Disk
+ For permanent modifications in the text format, choose the "EDIT TEXT ATTRIBUTES" option from Edit. After making your corrections, pull the "SAVE..." option from the Preferences menu to store the new defaults on disk. 
+    When making these corrections, the arrow pointer prompts you to PICK the block of text to be altered. Simply click the desired block and make the changes.
+    In either case, the following requester will appear:
+
+
+
+          TEXT FORMAT window
+
+
+
+  In this window, justification types are abbreviated as  the following letters:
+      L   (left justification)
+      R   (right justfication)
+      C   (center justification)
+      F   (filled justification)
+
+Typestyles (or character attributes) are abbreviated as follows:
+      C   (compressed). Valid on laser fonts only
+      B   (boldface)
+      U   (underlined)
+      I   (italic)
+
+Other items available for alteration are leading, magnification, and space stretch. 
+
+To change fonts, click the "NEWFONT" gadget. The window "Select a Font" will pop up. Choose a font directory and then a font size. Click the "OK" gadget to submit the new font. Now click the "OK" gadget to exit the "FORMAT TEXT." The "CANCEL" gadget omits all changes.
+
+
+Editing with C‚i‚t‚y‚ ‚D‚e‚s‚k‚
+  C‚i‚t‚y‚ ‚D‚e‚s‚k‚ provides some limited editing of text. The tool labeled "ABC" allows you to enter a maximum of eighty (80) characters in a single line of text. This is useful for figure or table captions and headings.
+
+  The "USE CHEAP EDITOR" option from the EDIT menu allows you to make corrections in your text. This option prompts you to  PICK the block of text to be edited. The edit mode presents  the text as one long line. Use the slider or cursor movement keys to move right or left of the line. Use the DEL key or backspace to delete characters. Insertion of characters is automatic. Click the "OK" gadget to store all corrections  and exit the edit mode. "CANCEL" ignores all changes.
+
+
+
+Graphic files
+  Graphic files stored in the standard IFF format  are loaded in much the same  way as text file. The "LOAD GRAPHIC" item  from the PROJECT menu displays a window with files contained in the current directory.
+  If you need to change drives or directories, point and click the drawer box and enter the new directory name.
+
+
+Clip Art
+  C‚i‚t‚y‚ ‚D‚e‚s‚k‚ supplies you with a library of around 50+ graphics (or clip art) so you can get started right away. A complete listing of these pictures can be found in the Appendix.
+  C‚i‚t‚y‚ ‚D‚e‚s‚k‚'s sample clip art is stored on the directory "CLIP ART." Remember that the slider on the right side of the window moves up or down the list of files. 
+
+
+Loading graphics
+  Once in the "LOAD GRAPHIC" requester, point to the filename containing the graphic and click its name, then click the "OK" gadget.
+
+
+Placing graphics on the page
+  When the graphic is loaded, you will notice that the arrow pointer changes its form to the word "P‚I‚C‚T‚." This indicates that a picture is waiting to be placed on a page.
+  Move this pointer to anywhere on the windows and click the left mouse button. The graphic should appear.
+
+
+What if the graph is too big ?
+  Later in this tutorial we will discuss how to resize text and graphics using tools from the toolbox. If you are curious, select the "RESIZE" symbol from the toolbox using the left mouse button. Try making a few changes.
+
+
+Inverting Graphics                       
+   A special option available in C‚i‚t‚y‚ ‚D‚e‚s‚k‚ is  "Invert Graphic" pulled from the EDIT menu. This is like taking the negative of a photograph that turns black to white or white to black.
+   Inverting a graphic is useful to give the picture a background against the page.
+ 

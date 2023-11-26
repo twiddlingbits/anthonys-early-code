@@ -1,0 +1,138 @@
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void GadFunc();
+void OKGadFunc();
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct NewButton but[2] = 
+{
+	{NULL,				/* *next (gadget) */
+	0,0,0,0,				/* Box x1,y1,x2,y2 */
+	BUTN_COOL|MANUAL_XOR,			/* Flags */
+	OKGadFunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,					/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"OK"},					/* *text */
+
+	{&but[0],				/* *next (gadget) */
+	0,0,0,0,				/* Box x1,y1,x2,y2 */
+	BUTN_COOL|MANUAL_XOR,			/* Flags */
+	GadFunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,					/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"ABORT"},					/* *text */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void FileFunc();
+static struct NewList FILElist = {
+	&but[1],
+	8,16,191,61,
+	LIST_COOL|LIST_SINGLESELECT|MANUAL_XOR|LIST_SORTED,
+	FileFunc,	/*FUNC*/
+	0,NULL,0,0,0, NULL, NULL,-1};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+void PathFunc();
+static struct NewList PATHlist = {
+	&FILElist,
+	200,16,290,61,
+	LIST_COOL|LIST_SINGLESELECT|MANUAL_XOR|LIST_SORTED,
+	PathFunc,	/*FUNC*/
+	0,NULL,0,0,0, NULL, NULL,-1};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+struct StringInfo PathSInfo = {
+	NULL,	/* buffer where text will be edited */
+	NULL,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	STUDIO16_MAX_PATH_SIZE,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+struct Gadget PathStGad = {
+	NULL,	/* next gadget */
+	58,100,	/* origin XY of hit box relative to window TopLeft */
+	8*12,8,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&PathSInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+struct StringInfo FileSInfo = {
+	NULL,		/* buffer where text will be edited */
+	NULL,	/* optional undo buffer */
+	0,		/* character position in buffer */
+	50,		/* maximum number of characters to allow */
+	0,		/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,		/* Rastport of gadget */
+	0,		/* initial value for integer gadgets */
+	NULL		/* alternate keymap (fill in if you set the flag) */
+};
+
+struct Gadget FileStGad = {
+	&PathStGad,	/* next gadget */
+	58,114,		/* origin XY of hit box relative to window TopLeft */
+	8*12,8,		/* hit box width and height */
+	NULL,		/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	NULL,		/* gadget border or image to be rendered */
+	NULL,		/* alternate imagery for selection */
+	NULL,		/* first IntuiText structure */
+	NULL,		/* gadget mutual-exclude long word */
+	(APTR)&FileSInfo,	/* SpecialInfo structure */
+	NULL,		/* user-definable data */
+	NULL		/* pointer to user-definable data */
+};
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct NewWindow NewWind = {
+   -1,
+   -1,
+   300,
+   130,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE|GADGETUP,
+   ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE|WINDOWSIZING,
+   0,0,
+   "File Request", /** TITLE **/
+   0,0,
+   124,92,510,1024,
+   CUSTOMSCREEN
+   };
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

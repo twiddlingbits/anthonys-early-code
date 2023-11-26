@@ -1,0 +1,56 @@
+
+Manual for AdventurePro language.
+
+
+v:word,word,word,...,word
+
+   Signifys verb.  If the present inputted verb is one of the words following  v: , flow proceeds. If not, nothing is executed until the next  v: .  This command overrides everything else.
+
+vend
+
+   Ends verb logic.  Flow will always proceed normally from this point.  This command overrides everything else.
+
+n:word,word,word,...,word
+
+   Signifys noun.  If the present inputted noun is one of the words following  n: , flow proceeds. If not, nothing is executed until the next  n: .  This command overrides everything else except verb logic.
+
+nend
+
+   Ends noun logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb logic.
+
+a:word,word,word,...,word
+
+   Signifys adjective.  If the present inputted adjective is one of the words following  a: , flow proceeds. If not, nothing is executed until the next  a: .  This command overrides everything else except verb and noun logic.
+
+aend
+
+   Ends adjective logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb and noun logic.
+
+p:word,word,word,...,word
+
+   Signifys prep. object.  If the present inputted prep. object is one of the words following  p: , flow proceeds. If not, nothing is executed until the next  p: .  This command only overrides if (conditional) logic.
+
+poend
+
+   Ends prep. object logic.  Flow will always proceed normally from this point. This command only overrides if logic.
+
+if variable=(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+
+   Basic conditional statement.  While the number to the left of the = must always be a variable, all of the others can be either a variable or a number.  if true, flow proceeds normally.  If false, it skips to the next  else  or  endif  statement.  Nesting is supported.  The spacing is critical in this command.  The equal sign must have no spaces on either side of it.  Between all other operators and variables, one space is necessary.
+  e.g. :
+             if pig=6 * albert - nova
+             if ralph=minivan + center / 1362
+
+if variable<(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+ and
+if variable>(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+
+   These are exactly the same as the above  if=  command, except that the conditionals are different.
+
+if RM$ noun
+
+else
+
+   This command directly reverses the condition(true or false) of the preceeding if command.  It will not work with verb, noun, adj., or prep.obj. logic.
+
+

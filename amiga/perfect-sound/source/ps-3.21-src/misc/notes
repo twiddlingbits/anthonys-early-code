@@ -1,0 +1,20 @@
+
+sample speed requester
+sample name requester would put d's
+menu gets screwed up sometimes when looping (disable menus when looping.
+   or playing..?)
+Need more cancel butons & escape key
+Range with no range set, someitmes takes entire sample as range
+mayby change recrod to white?
+help screen
+variable distance when clicking on the zoom graphs (2, 10 )
+Edit zommed in graph
+
+* 9/24/90
+
+need to add one to GRAPH_Y
+R & L doesnt change zoomed graphs! just main
+Need to be able to edit in zoomed mode
+Disable menus when doing LP filter
+
+read dir & data registers and restore upon entry/exitmonitor&record

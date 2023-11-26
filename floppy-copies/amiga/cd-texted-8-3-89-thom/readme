@@ -1,0 +1,16 @@
+
+
+
+
+The files in the source directory should be recompiled and linked into
+your system.  Some files, like "safeclose.c" are copies of yours.
+
+
+Call like this:
+
+texted(screen pointer, string pointer or null, starting location within
+       string, x,y,h,w of text window, pointer to status integer);
+
+texted returns a pointer to the return string, never your original string.
+
+

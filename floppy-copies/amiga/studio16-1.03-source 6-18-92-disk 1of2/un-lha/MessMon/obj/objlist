@@ -1,0 +1,4 @@
+em.o+openlibraries.o+prefs.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o
+prog:interfacelib/interfacestub.o

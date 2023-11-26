@@ -1,0 +1,4 @@
+FROM LIB:c.o+"StudioStop.o"+/studio/studiostub.o
+TO "StudioStop"
+LIB LIB:lc.lib LIB:amiga.lib
+SD NODEBUG

@@ -1,0 +1,2 @@
+echo "Changing Perfect Sound text to ENGLISH..."
+copy eng_ps.txt ps.txt

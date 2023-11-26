@@ -1,0 +1,5 @@
+openlibraries.o,open.o,*
+add.o,menus.o,convertsamp.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,*
+prog:interfacelib/interfacestub.o

@@ -1,0 +1,2 @@
+handler.o,openlibraries.o,hanasm.o,hilo.o,smpte.o,*
+//studio/studiostub.o

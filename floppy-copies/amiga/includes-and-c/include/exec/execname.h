@@ -1,0 +1,1 @@
+#define EXECNAME "exec.library"

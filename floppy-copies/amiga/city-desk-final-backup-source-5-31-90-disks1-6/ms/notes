@@ -1,0 +1,62 @@
+<<--------------- Bugs to Fix (before 10-24-88) --------------->>
+
+- could eliminate memeory buffer on HP dither
+- Add dingbats fonts
+- pref "box obj" draws vertical lines a little to long
+- INV flag doesn't work on line objects
+- when close last window, menus don't work till you click on something
+
+<<------------ Wanted Features (after 10-24-88) -------------->>
+
+- add greeking text
+- add global macro text file that saves with preferences
+- make outline dash printer drivers work
+- make mag tool allow you to click on area to mag to?
+- be able to enter obj x,y pos directly when editing obj characteristics
+- page sizes other than 8.5 X 11.  Landscape.
+- make copies 3 digit not 2
+- assign objects a layer priority
+- speed up hp graphic dload
+- program to convert old cd to new cd
+- texteditor: if no changes, note on close window
+- change wording "move stamped obj" "effect stamped obj"
+- change ser: to aux:
+- make copy page keep links togeter?
+
+<<--------------- Bugs to Fix (after 10-24-88) --------------->>
+
+- either take out or make work outline page options
+- Aspect ration for b&w diagonal lines has changed slightly?
+- change about & add dedication?
+- remove print in savepage after a while (11-8-88)
+- make sure croped graphics print correctly
+- graphed, busy doesn't go away when cutting brush... give thom newpointer
+- sliders real sluggish (cd window prop gadgets)
+- cancel in assign menu doesn't cancel
+- when copying, group & other info not copied
+
+<<--- Mike's bugs --->>
+
+* Open file requester appears on workbench screen
+integer option for graphics
+when text doesn't fit after resize wants resize not text icon
+* 24 pin driver runs out of memory not, didn't use to
+dotted lines don't print correctly
+landscape? or rotate text?
+wants to change font directroy on the fly
+edit page format, why changing cb color?
+edit text puts cr at begining? hide it?
+Alternate char set doesn't work in Text editor
+open and close quotes "one & two" in alt char set as quotes
+Fragmenting memory problems
+
+<<----------------------- Misc Notes ------------------------->>
+
+- SOURCE SENT TO BOBBY ON 14-oct-88
+- get text in one location for CD2.0
+- SEND BOBBY A PSOUND
+
+paul schecter
+818 883 9700
+"moniterm" monitor, doing manual
+

@@ -1,0 +1,91 @@
+.. City Desk User's Manual, Section3.CD
+.. Copyright 1987 by MicroSearch.
+.. Written by SunRize Industries
+.. This section contains the following:
+..
+..  -Introduction
+..  -Introduction to Desktop Publishing
+..  -The Typesetting Advantage
+..
+Section 3Definition of Typesetting and Desktop Publishing
+
+This section introduces you to the concepts of desktop publishing and typesetting. It is intended to provide you some background on the idea behind desktop publishing and on the terminology of typesetting.
+
+
+Introduction to Desktop Publishing
+Anyone who has written a document whether on a typewriter or on a computer will remember how difficult and tedious it was to get that "special look," yet not quite accomplish it.
+   You have probably found yourself many times resizing figures at the copy center or producing another copy of the document to "see if it looks right" or perhaps wishing you had a better typewriter.
+   Or maybe you didn't have the tools: "I'm out of glue ... I can't find the scissors ... I need another copy ... "
+
+   And the list of problems can go on and on.
+
+   Nowadays, many of these small or big "bugs" are taken care of easily with "desktop publishing" programs.
+
+   The term "desktop publishing" refers to the ability of merging typeset text and graphics and arranging them in any way easily and quickly using a personal computer.
+   Many of these  desktop publishing programs rely on the use of windows, a mouse, a toolbox, and a little of imagination.
+
+   Most desktop publishing programs will provide for multiple windows. For example, C‚i‚t‚y‚ ‚D‚e‚s‚k‚ has three main windows: the clipboard, the working page window, and the toolbox.
+
+    Using the mouse is a way of writing and telling the system what to do next. For example: moving objects around the page requires the use of the mouse. The mouse can change forms depending upon the application: resizing, moving, cutting.
+
+    The toolbox is a way of giving you "an endless supply of glue" and "always having the scissors at your fingertips."
+Using tools from the toolbox is just a matter of selecting them using the mouse.
+     Imagination (or creation of the page) is all up to you.
+ 
+Advantages of Desktop Publishing
+Desktop Publishing offers many features and C‚i‚t‚y‚ ‚D‚e‚s‚k‚ is no exception. Some of these advantages are listed below:
+
+Compatibility - Many problems arise in systems that are not compatible with each other. For example: Using graphics form a different source. To save you from this headache, C‚i‚t‚y‚ ‚D‚e‚s‚k‚ supports the standard IFF format.
+
+Inexpensive - When you consider the cost of proffessional typesetting and the cost of resizing figures at the copy center, you will find that programs like C‚i‚t‚y‚ ‚D‚e‚s‚k‚ will do all these and more at a very affordable price.
+
+Typesetting - You have the control of typesetting your text. The use of different character fonts and different sizes of fonts in any part of your text is never a problem with C‚i‚t‚y‚ ‚D‚e‚s‚k‚. You can even load and print any bit-mapped foreign characters supplied in the A„m„i„g„a„ „E„n„h„a„n„c„e„r„ „S„o„f„t„w„a„r„e„ Manual, version 1.2.
+
+You - You control C‚i‚t‚y‚ ‚D‚e‚s‚k‚, don't let a desktop publishing program control you.
+
+Design - Design any type of page layout in any way that you can imagine.
+
+Easy - C‚i‚t‚y‚ ‚D‚e‚s‚k‚ is e„a„s„y„ „to use. Using C‚i‚t‚y‚ ‚D‚e‚s‚k‚ is just a matter of being able to move the mouse. And that's e„a„s„y„.„
+
+Speed - You will find yourself saving an enormous amount of time resizing, cutting and pasting text or figures and much much more.
+
+Now you hold the Key to success with C‚i‚t‚y‚ ‚D‚e‚s‚k‚, a desktop publishing program for the Amiga!
+
+Introduction to Typesetting
+
+The word "Typesetting" refers to the creation of text (or an image) and then transferring that image to an electronic device (such as a printer or a screen.) In this section we will discuss typesetting terminology only. Future sections will show you how to use typesetting control words and how to transfer this image to an electronic output device, namely the printer.
+  Throughout this manual  we mention various terms used in the typesetting industry. Some of these terms are given below. A glossary of terms can be found in the Appendix.
+
+f‚o‚n‚t‚ -- The font or typeface specifies the style of the characters or what the characters look like. Examples of different Amiga font names are diamond, emerald, sapphire.
+
+a‚t‚t‚r‚i‚b‚u‚t‚e‚ -- This term refers to the appearance of the characters. Common typestyles or attributes are:
+    italic -- slanted characters. Example: t„h„i„s„ „i„s„ „i„t„a„l„i„c„
+    boldface -- darker than normal characters. Example: this is
+                bold
+    plain  -- the normal appearance of characters.
+    underlined -- a line is drawn underneath each character.
+                  Example: t‚h‚i‚s‚ ‚i‚s‚ ‚u‚n‚d‚e‚r‚l‚i‚n‚e‚d‚.‚
+
+m‚a‚r‚g‚i‚n‚ -- The space between the edge of the page and the text. There are four kinds of margins: top, bottom, left, right.
+
+l‚e‚a‚d‚i‚n‚g‚ -- Vertical space between two lines. This distance is calculated from the baseline of one line to the baseline of the next.
+
+s‚p‚a‚c‚i‚n‚g‚ -- Similar to leading. Distance between lines is calculated from the bottom of one line to the top of the next. Note that leading and spacing are mutually exclusive.
+
+g‚u‚t‚t‚e‚r‚ -- Horizontal space between two columns of text. The distance between the right margin of the first block of text and the left margin of the second.
+
+j‚u‚s‚t‚i‚f‚i‚c‚a‚t‚i‚o‚n‚ -- There are four kinds of justification:
+    left -- text is placed against the left margin
+    right -- text is placed against the right margin
+    center -- Each line is centered between the left and right margins
+    fill -- both margins are straight and spaces are stretched to fill the extra room. If spaces get stretched too far, the spaces between characters will start to stretch too (to control this spacing refer to "space stretch.")
+
+i‚n‚d‚e‚n‚t‚a‚t‚i‚o‚n‚ -- Indentation indicates the amount of space from the left margin until the first line of a paragraph. Indentation causes text to be placed with respect to the left end of the output line. For example:
+         This line is indented by five spaces.
+     This line has no indentation.
+
+m‚a‚g‚n‚i‚f‚i‚c‚a‚t‚i‚o‚n‚ -- Shrinks or enlarges blocks of text or characters. C‚i‚t‚y‚ ‚D‚e‚s‚k‚ allows magnification in both the vertical and horizontal directions. This command is useful when the desired character size is not available in the current font.
+
+s‚p‚a‚c‚e‚ ‚s‚t‚r‚e‚t‚c‚h‚ -- A "space stretch" is used in conjuction with filled justification. This command indicates the amount that spaces can be stretched before the space between characters starts to be stretched. Space stretch can be defined in any unit of measure. C‚i‚t‚y‚ ‚D‚e‚s‚k‚ defaults to a size of 12 pt (twelve points.)
+
+    The next section of this manual is the C‚i‚t‚y‚ ‚D‚e‚s‚k‚ Tutorial. It is intended to acquiant you with the menus and tools available to you for creating the page layout.

@@ -1,0 +1,22 @@
+##base _SoundSwitchBase
+##bias 30
+##public
+ssw_RexxHost(rexxmsg)(a0)
+ssw_LockBase()()
+ssw_AttemptLockBase()()
+ssw_UnlockBase()()
+ssw_ObtainHardware()()
+ssw_ReleaseHardware()()
+ssw_OpenUnit(unitnum,flags,unitptr)(d0/d1/a0)
+ssw_CloseUnit(unit)(a0)
+ssw_TestUnit(unit)(a0)
+ssw_GetUnitInfo(unit,unitinfo)(a0/a1)
+ssw_AddMonitor(unit,name,flags,priority,callback)(a0/a1/d0/d1/a2)
+ssw_RemoveMonitor(monitorhook)(a0)
+ssw_SetMode(unit,mask,bits)(a0/d0/d1)
+ssw_SetChannelGain(unit,channel_num,dBgain)(a0/d0/d1)
+ssw_GetChannelGain(unit,channel_num)(a0/d0)
+ssw_SetChannelTrim(unit,channel_num,dBtrim)(a0/d0/d1)
+ssw_GetChannelTrim(unit,channel_num)(a0/d0)
+ssw_GetMeterInfo(unit,channel_num)(a0/d0)
+##end

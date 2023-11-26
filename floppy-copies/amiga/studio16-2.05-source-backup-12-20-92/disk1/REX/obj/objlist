@@ -1,0 +1,4 @@
+srx.o+openlibraries.o+rexxglue.o+minrexx.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o
+prog:interfacelib/interfacestub.o

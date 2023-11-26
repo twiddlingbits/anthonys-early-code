@@ -1,0 +1,18 @@
+static struct NewWindow NewWind = {
+   0,138,
+   640,62,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE,
+   WINDOWSIZING|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   "StudioEvent Monitor", /** TITLE **/
+   0,0,
+   100,22,1024,1024,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+

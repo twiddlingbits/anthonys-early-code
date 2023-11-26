@@ -1,0 +1,25 @@
+;
+; this script copies the necessary batch files to the system disk
+;     make - compile and link a C program
+;              "execute make <filename>"
+;     linka - link a previously compiled program
+;              "execute linka <filename>"
+;     lca - compile a program without linking (modify to include desired
+;           options)
+;              "execute lca <filename>"
+;
+copy Lattice_C:s/make SYS:s
+copy Lattice_C:s/linka SYS:s
+copy Lattice_C:s/lca SYS:s
+;
+; This script makes all the logical name assignments necessary to run the
+; C compiler and linker.
+;
+; these assignments need to be re-done whenever the system is reset. It is
+; recommended that these lines be added to the file SYS:s/startup-sequence.
+;
+assign LC: Lattice_C:c
+assign LINK: Lattice_C:c
+assign INCLUDE: Lattice_C:include
+assign LIB: Lattice_C:lib
+

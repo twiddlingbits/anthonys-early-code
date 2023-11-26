@@ -1,0 +1,209 @@
+[4;1mecho                    29-May-87 04:47:19  Hunk Section                Page 1-1[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+   0 <noname>      920 getfile.o        getfile  code            0    0
+   1 <noname>      470 getfile.o        getfile  data            0    0
+   2 <noname>       6c getfile.o        getfile  bss             0    0
+   3 <noname>       7c safeclose.o      safeclos code            0    0
+   4 <noname>      394 echo.o           echo.o   code            0    0
+   5 <noname>       34 echo.o           echo.o   datachip        0    0
+   6 <noname>      3fc comb.o           comb.o   code            0    0
+   7 <noname>       54 comb.o           comb.o   datachip        0    0
+   8 <noname>      290 proc.o           proc.o   code            0    0
+   9 <noname>       24 proc.o           proc.o   datachip        0    0
+  10 <noname>     1948 do_menu.o        do_menu. code            0    0
+  11 <noname>      388 do_menu.o        do_menu. datachip        0    0
+  12 <noname>      e7c IFFRoutines.o    iffrouti code            0    0
+  13 <noname>       f8 IFFRoutines.o    iffrouti datachip        0    0
+  14 <noname>       2c IFFRoutines.o    iffrouti bss             0    0
+  15 <noname>     177c disk.o           disk.o   code            0    0
+  16 <noname>      2c4 disk.o           disk.o   datachip        0    0
+  17 <noname>     28e0 mainsed40.o      mainsed4 code            0    0
+  18 <noname>      a94 mainsed40.o      mainsed4 datachip        0    0
+  19 <noname>     64fc mainsed40.o      mainsed4 bss             0    0
+  20 <noname>     11e0 subsed40.o       subsed40 code            0    0
+  21 <noname>       e0 subsed40.o       subsed40 data            0    0
+  22 <noname>       10 subsed40.o       subsed40 bss             0    0
+  23 <noname>     21f4 subsed240.o      subsed24 code            0    0
+  24 <noname>      240 subsed240.o      subsed24 datachip        0    0
+  25 <noname>       38 subsed240.o      subsed24 bss             0    0
+  26 <noname>     21cc goodsed.o        goodsed. code            0    0
+  27 <noname>       6c goodsed.o        goodsed. datachip        0    0
+  28 <noname>      cf4 graph.o          graph.o  code            0    0
+  29 <noname>       60 graph.o          graph.o  datachip        0    0
+  30 text         3a70 LIB:c.o          c.o      code            0    0
+                       LIB:lcmffp.lib   atol.o   code          234    0
+                       LIB:lcmffp.lib   fprintf. code          25c    0
+                       LIB:lcmffp.lib   fscanf.o code          2e8    0
+                       LIB:lcmffp.lib   printf.o code          4b4    0
+                       LIB:lcmffp.lib   ffptran. code          53c    0
+                       LIB:lcmffp.lib   cxffp.o  code          668    0
+                       LIB:lcmffp.lib   _pfmt.o  code          770    0
+                       LIB:lcmffp.lib   _sfmt.o  code         11bc    0
+                       LIB:lcmffp.lib   cxvffpd. code         17d4    0
+                       LIB:lcmffp.lib   cxferr.o code         1bf4    0
+                       LIB:lc.lib       fopen.o  code         1c24    0
+                       LIB:lc.lib       fread.o  code         1e50    0
+                       LIB:lc.lib       iabs.o   code         1ec4    0
+                       LIB:lc.lib       rand.o   code         1ee0    0
+                       LIB:lc.lib       _main.o  code         1f10    5
+                       LIB:lc.lib       _cxovf.o code         2170    0
+                       LIB:lc.lib       stcd_l.o code         2188    0
+                       LIB:lc.lib       open.o   code         2220    0
+                       LIB:lc.lib       fclose.o code         2428    0
+                       LIB:lc.lib       ungetc.o code         24a0    0
+                       LIB:lc.lib       stcu_d.o code         2548    0
+                       LIB:lc.lib       stpblk.o code         25f4    0
+[4;1mecho                    29-May-87 04:47:19  Hunk Section                Page 1-2[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:lc.lib       strncat. code         2620    0
+                       LIB:lc.lib       exit.o   code         266c    0
+                       LIB:lc.lib       cxovf.o  code         26d4    2
+                       LIB:lc.lib       _filbf.o code         273c    0
+                       LIB:lc.lib       dopen.o  code         2918    1
+                       LIB:lc.lib       dcreatx. code         2974    2
+                       LIB:lc.lib       dcreat.o code         29f4    1
+                       LIB:lc.lib       close.o  code         2a74    0
+                       LIB:lc.lib       strcmp.o code         2ad4    0
+                       LIB:lc.lib       strcat.o code         2af4    0
+                       LIB:lc.lib       cxbrk.o  code         2b0c    0
+                       LIB:lc.lib       _exit.o  code         2b6c    0
+                       LIB:lc.lib       _flsbf.o code         2bb8    0
+                       LIB:lc.lib       read.o   code         2f10    0
+                       LIB:lc.lib       movmem.o code         2f58    0
+                       LIB:lc.lib       strncpy. code         2f80    0
+                       LIB:lc.lib       dclose.o code         2f9c    1
+                       LIB:lc.lib       strlen.o code         2fc4    0
+                       LIB:lc.lib       memset.o code         2fd8    0
+                       LIB:lc.lib       memcpy.o code         2ff4    0
+                       LIB:lc.lib       stcd_i.o code         3020    0
+                       LIB:lc.lib       stcul_d. code         30b8    0
+                       LIB:lc.lib       stcl_o.o code         3114    0
+                       LIB:lc.lib       stcl_h.o code         3174    0
+                       LIB:lc.lib       strupr.o code         31d4    0
+                       LIB:lc.lib       _getbf.o code         3208    0
+                       LIB:lc.lib       write.o  code         3270    0
+                       LIB:lc.lib       dread.o  code         32dc    1
+                       LIB:lc.lib       isdigit. code         3338    0
+                       LIB:lc.lib       strcpy.o code         335c    0
+                       LIB:lc.lib       toupper. code         3370    0
+                       LIB:lc.lib       getmem.o code         3388    0
+                       LIB:lc.lib       dwrite.o code         348c    1
+                       LIB:lc.lib       lseek.o  code         34e8    0
+                       LIB:lc.lib       mem1.o   code         3530    2
+                       LIB:lc.lib       dseek.o  code         36f0    1
+                       LIB:lc.lib       chkufb.o code         37a4    0
+                       LIB:lc.lib       cxm33.o  code         3804    0
+                       LIB:lc.lib       cxd33.o  code         3824    0
+                       LIB:lc.lib       rlsmem.o code         38e8    0
+                       LIB:lc.lib       chkabort code         3a10    1
+  31 __MERGED      368 LIB:c.o          c.o      data            0    0
+                       LIB:lcmffp.lib   _pfmt.o  data           70    0
+                       LIB:lc.lib       rand.o   data           74    0
+                       LIB:lc.lib       _main.o  data           78    0
+                       LIB:lc.lib       tranbase data           a4    0
+                       LIB:lc.lib       dosbase. data           a8    0
+                       LIB:lc.lib       _fmode.o data           ac    0
+                       LIB:lc.lib       cxovf.o  data           b0    0
+                       LIB:lc.lib       _iomode. data          11c    0
+                       LIB:lc.lib       cxbrk.o  data          120    0
+                       LIB:lc.lib       ctype.o  data          1b0    0
+                       LIB:lc.lib       _iob.o   data          2b4    0
+[4;1mecho                    29-May-87 04:47:19  Hunk Section                Page 1-3[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:lc.lib       _flsbf.o data          31c    0
+                       LIB:lc.lib       stcl_h.o data          320    0
+                       LIB:lc.lib       bufsiz.o data          334    0
+                       LIB:lc.lib       dseek.o  data          338    0
+                       LIB:lc.lib       mstep.o  data          344    0
+                       LIB:lc.lib       _mneed.o data          348    0
+                       LIB:lc.lib       _ufbs.o  data          34c    0
+                       LIB:lc.lib       error.o  data          350    0
+                       LIB:lc.lib       _pool.o  data          354    0
+                       LIB:lcmffp.lib   fprintf. bss           368    0
+                       LIB:lcmffp.lib   fscanf.o bss           370    0
+                       LIB:lcmffp.lib   printf.o bss           374    0
+                       LIB:lc.lib       _main.o  bss           378    0
+                       LIB:lc.lib       mem1.o   bss           408    0
+                       LIB:lc.lib       _ufbs.o  bss           414    0
+  32 _BeginIO       14 LIB:amiga.lib    <noname> code            0    0
+  33 _NewList       14 LIB:amiga.lib    <noname> code            0    0
+  34 <noname>       e4 LIB:amiga.lib    <noname> code            0    0
+  35 dos_lib       144 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           1c    0
+                       LIB:amiga.lib    <noname> code           30    0
+                       LIB:amiga.lib    <noname> code           4c    0
+                       LIB:amiga.lib    <noname> code           68    0
+                       LIB:amiga.lib    <noname> code           78    0
+                       LIB:amiga.lib    <noname> code           88    0
+                       LIB:amiga.lib    <noname> code           a4    0
+                       LIB:amiga.lib    <noname> code           b8    0
+                       LIB:amiga.lib    <noname> code           d4    0
+                       LIB:amiga.lib    <noname> code           e8    0
+                       LIB:amiga.lib    <noname> code          104    0
+                       LIB:amiga.lib    <noname> code          120    0
+                       LIB:amiga.lib    <noname> code          130    0
+  36 exec_lib      1ec LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           10    0
+                       LIB:amiga.lib    <noname> code           20    0
+                       LIB:amiga.lib    <noname> code           30    0
+                       LIB:amiga.lib    <noname> code           40    0
+                       LIB:amiga.lib    <noname> code           58    0
+                       LIB:amiga.lib    <noname> code           70    0
+                       LIB:amiga.lib    <noname> code           84    0
+                       LIB:amiga.lib    <noname> code           98    0
+                       LIB:amiga.lib    <noname> code           ac    0
+                       LIB:amiga.lib    <noname> code           c4    0
+                       LIB:amiga.lib    <noname> code           d8    0
+                       LIB:amiga.lib    <noname> code           ec    0
+                       LIB:amiga.lib    <noname> code          100    0
+                       LIB:amiga.lib    <noname> code          114    0
+                       LIB:amiga.lib    <noname> code          128    0
+                       LIB:amiga.lib    <noname> code          13c    0
+                       LIB:amiga.lib    <noname> code          150    0
+                       LIB:amiga.lib    <noname> code          164    0
+                       LIB:amiga.lib    <noname> code          178    0
+                       LIB:amiga.lib    <noname> code          198    0
+[4;1mecho                    29-May-87 04:47:19  Hunk Section                Page 1-4[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:amiga.lib    <noname> code          1ac    0
+                       LIB:amiga.lib    <noname> code          1c0    0
+                       LIB:amiga.lib    <noname> code          1d4    0
+  37 graphics       70 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           1c    0
+                       LIB:amiga.lib    <noname> code           38    0
+                       LIB:amiga.lib    <noname> code           58    0
+  38 intuitio      1b4 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           1c    0
+                       LIB:amiga.lib    <noname> code           30    0
+                       LIB:amiga.lib    <noname> code           44    0
+                       LIB:amiga.lib    <noname> code           5c    0
+                       LIB:amiga.lib    <noname> code           74    0
+                       LIB:amiga.lib    <noname> code           8c    0
+                       LIB:amiga.lib    <noname> code           a4    0
+                       LIB:amiga.lib    <noname> code           b8    0
+                       LIB:amiga.lib    <noname> code           d4    0
+                       LIB:amiga.lib    <noname> code           f0    0
+                       LIB:amiga.lib    <noname> code          108    0
+                       LIB:amiga.lib    <noname> code          120    0
+                       LIB:amiga.lib    <noname> code          138    0
+                       LIB:amiga.lib    <noname> code          14c    0
+                       LIB:amiga.lib    <noname> code          180    0
+                       LIB:amiga.lib    <noname> code          19c    0
+  39 mathffp_       14 LIB:amiga.lib    <noname> code            0    0
+  40 mathtran      108 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           14    0
+                       LIB:amiga.lib    <noname> code           28    0
+                       LIB:amiga.lib    <noname> code           3c    0
+                       LIB:amiga.lib    <noname> code           50    0
+                       LIB:amiga.lib    <noname> code           64    0
+                       LIB:amiga.lib    <noname> code           78    0
+                       LIB:amiga.lib    <noname> code           8c    0
+                       LIB:amiga.lib    <noname> code           a0    0
+                       LIB:amiga.lib    <noname> code           b4    0
+                       LIB:amiga.lib    <noname> code           cc    0
+                       LIB:amiga.lib    <noname> code           e0    0
+                       LIB:amiga.lib    <noname> code           f4    0

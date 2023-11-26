@@ -1,0 +1,28 @@
+
+   Play8SVX 3.0                Mike Scalora                  PLink : SCARY
+
+   This MODULE is public domain.   Freely distributable as long as this 
+   notice stays in.
+
+   This program was originally uploaded to PeopleLink's Amiga Zone.  The 
+   Amiga Zone has well over 3000 members, and a library of thousands of 
+   public domain files.  If you're interested in joining us, call 
+      800-524-0100 (voice) 
+   or 800-826-8855 (modem).                                                 
+
+   Usage:   
+
+     This program will play one or more digitized sounds.  The digitized 
+     sounds must be in 8SVX IFF format.  Play8SVX plays the sounds at the 
+     same rate as specified in the VHDR chunk.
+
+   Syntax:  
+ 
+     PLAY8SVX filename [ filename ...]
+    
+   Comments and Bugs to:
+
+     PLink   :SCARY 
+     Internet:SCALOR01@SNYNEWBA.bitnet
+     CI$     :73717,2334   ( I look like a 73717,2334 don't I? :-)
+   

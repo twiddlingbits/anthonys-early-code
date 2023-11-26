@@ -1,0 +1,52 @@
+rem
+rem SunRize Demo #2
+rem
+
+   buf=1
+
+10 rem main loop starts here
+
+rem   load buf,"SunRizeDemo:f1":gosub 20
+rem   load buf,"SunRizeDemo:f2":gosub 30
+rem   load buf,"SunRizeDemo:f3":gosub 30
+   load buf,"SunRizeDemo:f3.2":gosub 20
+   load buf,"SunRizeDemo:f4":gosub 30
+   load buf,"SunRizeDemo:pvinfo":gosub 40
+   load buf,"SunRizeDemo:pvinfo2":gosub 40
+   load buf,"SunRizeDemo:mr2.hpic":gosub 20
+   load buf,"SunRizeDemo:boing1.lpic":gosub 20
+   load buf,"SunRizeDemo:tribble.hpic":gosub 20
+   load buf,"SunRizeDemo:trek1.pic":gosub 20
+   load buf,"SunRizeDemo:psinfo":gosub 20:pause 80
+   load buf,"SunRizeDemo:psinfo2":gosub 40
+   load buf,"SunRizeDemo:sminfo":gosub 40
+   load buf,"SunRizeDemo:sminfo2":gosub 40
+   load buf,"SunRizeDemo:awinfo":gosub 40
+   load buf,"SunRizeDemo:awinfo2":gosub 40
+   goto 10
+
+rem No effect... Just display a new picture
+
+20 display buf
+   buf = 3-buf
+   pause 40
+   return
+
+rem Fade fast
+
+30 fade 0,buf,0
+   display buf
+   fade 1,buf,0
+   buf=3-buf
+   pause 25
+   return
+
+rem Fade  slow
+
+40 fade 0,buf,0
+   display buf
+   fade 1,buf,0
+   buf=3-buf
+   pause 120
+   return
+

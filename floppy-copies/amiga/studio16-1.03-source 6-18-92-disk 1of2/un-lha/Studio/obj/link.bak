@@ -1,0 +1,1 @@
+blink with objlist TO "libs:studio.library" LIB LIB:lcnb.lib lib:amiga.lib +lib:debug.lib NODEBUG

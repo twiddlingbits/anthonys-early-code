@@ -1,0 +1,132 @@
+..City Desk User's Manual: Section5.CD
+.. This section contains the following:
+..
+..  -Cut and Paste: Text and Graphics
+..  -Thorough explanation of the tool box
+..  -Print it
+..  -Saving files
+..  -Exiting
+.
+.. This manual is copyright 1987 by
+..  MicroSearch,
+.. written by SunRize Industries, 1987.
+Section 5Cut and Paste: Text and Graphics
+
+  In the previous section we described the procedures for loading text and graphics by selecting the "LOAD TEXT" and "LOAD GRAPHIC" options from the PROJECT menu.
+   We also discussed how to place these items around the page.  This is the first step to cutting and pasting text and graphics with CÇiÇtÇyÇ ÇDÇeÇsÇkÇ.
+
+  Now let's use some of the tools provided to aid you in designing the style of your page.
+
+  The toolbox provides you eÑvÑeÑrÑyÑtÑhÑiÑnÑgÑ Ñyou need to layout text and graphics anywhere on a working page. Choosing a tool is accomplished by pointing to a tool and clicking the LEFT mouse button.
+
+  A description of each of these tools follows below:
+
+
+How to move objects among pages
+The HAND as a tool
+     Using the HAND is a little bit more powerful that using the arrow as a tool. The hand allows you to move objects from page to page or to and from the clipboard (the arrow does not.) 
+    Point to this item, click the left mouse button and move a couple of objects in and out of pages for practice.
+
+
+How to move objects within a page
+The ARROW pointer
+   The arrow tool works in a similar way as the hand, but the arrow is limited to moving objects only within the current page. The arrow is the default tool.
+   It is better to use the arrow than the hand within a page, since you cannot accidentally put the object on the wrong page. Also, the arrow allows you to move an object partially off the displayed portion of a page, while the hand would move it to the clipboard.
+
+
+How to enlarge and shrink objects
+The RESIZE tool
+   Many times you will encounter the problem of having text or graphics too big or too small to fit on the page. This is where the RESIZE tool comes in handy.
+   Point to this item, click the left mouse button and your pointer changes form to the RESIZE symbol. Now point to the item to be shrinked or enlarged and hold the left mouse button down. You will see a yellow border drawn around this object. Move the mouse some while holding the left mouse button down. This yellow rubber band  will enlarge or shrink according to the movements of the mouse. 
+   When you find the right size just let go of the left  mouse button.
+
+
+Where are the SCISSORS ?
+    Many times there is a need for cropping parts of a graph
+
+
+How to magnify a section of a page.
+The MAGNIFYING GLASS
+  The working page shows you a schematic of how the page will look like on print. If you need to read the text of see a graph in more detail, you will need a MAGNIFYING GLASS (not to be confused with the [mag m.n] command).
+    When manifying, you will find the working page window's sliders come in handy to move up or down, left or right the window view.
+    A magnification size of 1 is the default. Maximum magnification size is 7. Objects do not become clearly visible until a magnification size of 4 or 5 has been selected.
+
+
+How to enter text: Emergency headings, captions ...
+The ABC tool
+   Emergency figure captions, headings, titles, short lines, etc. are quickly accomplished with the ABC tool. You may enter up to eighty (80) characters of text in this window. Any of the valid typesetting control commands are allowed as well (i.e.: fonts, character styles, etc.)
+    If you need to modify text, select the "Use Cheap Editor" option pulled from the EDIT menu.
+
+
+How to open a new page.
+The OPEN-PAGE tool
+    Many documents are usually longer than a single page. CÇiÇtÇyÇ ÇDÇeÇsÇkÇ allows you to open as many pages as necessary (in sequential order), however performance becomes poor after opening more than three (3) pages at once.
+    Recall that moving objects among pages is done by using the hand as a tool.
+
+
+How to duplicate figures
+The 1->2 tool
+   Duplicating graphics is easily done with the 1->2 tool. You may duplicate as many figures as needed (no limit established.) 
+   Use the arrow or hand to move around the duplicated object.
+
+
+How to draw lines
+The LINE tool
+    Vertical or horizontal lines of any size, pattern or thickness are drawn using the LINE as a tool. This tool has a two-mouse button selection: clicking the left mouse button selects the tool so you can begin drawing lines (the default is a solid line), clicking the right mouse button brings up the LINE OPTIONS  
+requester.
+    To draw a line, place the line pointer in the desired origin and press the left mouse button. Keeping the mouse button down, drag the mouse in the desired direction (vertical or horizontal). When you find the right line size, just let go off the mouse button.
+
+
+How to draw boxes
+The BOX tool
+     This tool allows you to draw boxes for the purpose of highlighting and isolating objects on the page. When you select this tool, a pointer prompts you to PÅIÅCÅKÅ the object to contain the box. 
+
+
+
+  These are the ten basic tools that will aid you in cutting and pasting text and graphics in any layout you wish.
+
+
+A small hint: The RÑIÑGÑHÑTÑ mouse button selects the menus
+              The LÑEÑFÑTÑ mouse button selects the tools and gadgets
+
+
+
+Before you print...
+Before you get ready to print a hardcopy of your page layout, make sure that the correct printer and resolution is set.
+   The "PRINT OPTIONS" from the Preferences menu acknowledges CÇiÇtÇyÇ ÇDÇeÇsÇkÇ the type of printer you own. Resolution can be as low as 75 dpi (dots per inch) or as high as 300 dpi. The higher this number the better the quality. Resolution is valid on laser printers only. Resolution is set by pulling the "Laser Resolution" option from the Preferences menu.
+
+
+
+Print it!
+    Printing (or getting a hardcopy of the document) in CÇiÇtÇyÇ ÇDÇeÇsÇkÇ may be accomplished in two ways: 
+    a) print the current page only or
+    b) print the entire document.
+
+If you need a preview of how the current page looks in print then choose the "PRINT CURRENT PAGE" option. If you think you are ready to output the entire document to the printer, hold the right mouse button down and select the "PRINT ENTIRE DOCUMENT" option.
+   Both options are pulled from the PROJECT menu.
+
+
+
+SAVE my work!
+   The submenu "SAVE" or "SAVE AS..." stores your work on disk for later retrieval. Hold the right mouse button down and choose either one of these items from the PROJECT menu.
+   "SAVE AS..." prompts you to enter a new project name. New projects must choose this option to store the work on disk.
+   "SAVE" stores the project under the same filename. This selection replaces the old copy.
+    Next time you are ready to continue work on this project select the "OPEN..." option.
+
+
+Exiting City Desk
+    To exit CÇiÇtÇyÇ ÇDÇeÇsÇkÇ, hold the right mouse button down and select the "QUIT" option pulled from the PROJECT menu. 
+    But careful! Make sure that your work is saved before you exit or you may have to start all over again.
+
+
+Start from Scratch
+If you decide to start a new project without exiting CÇiÇtÇyÇ ÇDÇeÇsÇkÇ the "NEW" submenu from PROJECT cleans up all windows and starts you with a blank sheet of paper. This is like starting  from scratch.
+
+
+Using the Trashcan                       
+Sometimes you may find the need of throwing away objects out from the windows. CÇiÇtÇyÇ ÇDÇeÇsÇkÇ provides you with a trashcan in the form of a skull with two crossed bones. This trashcan is located in the lower left corner of the screen. Undesirable objects are erased from memory only, not from disk.
+     To throw an object, use the hand to drag the undesired item towards the trashcan and it will be incinerated !
+
+
+   This concludes the CÇiÇtÇyÇ ÇDÇeÇsÇkÇ Tutorial. The next section in this manual discusses the different typesetting commands and how these control words can be imbedded within your text for complete control of the typeset output.
+ 

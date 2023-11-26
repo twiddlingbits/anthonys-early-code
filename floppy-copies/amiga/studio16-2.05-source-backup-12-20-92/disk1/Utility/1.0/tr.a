@@ -1,0 +1,29 @@
+
+; Written By William Ware.
+
+
+	SECTION "trans",code
+	
+	xdef	_transfast
+
+_transfast		; a0 - source
+			; a1 - dest
+			; d0 - length
+
+		movem.l	d2-d3,-(sp)	; Save the registers
+		bra.s	2$		; jump into loop
+				
+	; start of loop
+1$		move.b	(a0)+,d1	; Upper byte
+		move.b	(a0)+,d2	; lower byte
+		move.b	d2,(a1)+	; Save lower
+		move.b	d1,(a1)+	; save upper
+		move.b	d2,(a1)+	; save lower again (other channel)
+		move.b	d1,(a1)+	; save upper again (other channel)
+2$		subq.l	#2,d0		; reduce size
+		bge.s	1$		; repeat
+		
+		movem.l	(sp)+,d2-d3	; restore the registers.
+		rts
+
+		END

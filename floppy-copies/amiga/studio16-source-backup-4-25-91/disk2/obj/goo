@@ -1,0 +1,5 @@
+copy ps.txt ram:
+copy /play8bit/play.exe ram:
+cd ram:
+
+

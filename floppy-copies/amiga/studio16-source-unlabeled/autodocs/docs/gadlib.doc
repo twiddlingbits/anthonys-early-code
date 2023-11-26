@@ -1,0 +1,580 @@
+
+(gadlib.c)		add_list_entry
+----------------------------------------------------------------------------
+NAME
+	add_list_entry -
+SYNOPSIS
+	
+	int add_list_entry(l, c, p)
+	
+	struct list *l;
+	char *c;
+	unsigned long p;
+FUNCTION
+	add's an item to a list structure
+INPUTS
+	l add item to this list
+	c text to add to list.  The text is copied, and you don't
+	  need to keep it after this call.
+   p user_data for this list item    
+      
+RESULTS
+	returns standard error code (NO_ERROR or OUT_OF_MEMORY)
+----------------------------------------------------------------------------
+
+(gadlib.c)		askuser
+----------------------------------------------------------------------------
+NAME
+	askuser -
+SYNOPSIS
+	
+	askuser(l1, l2,flags)
+	char *l1,*l2;
+	unsigned long flags;
+FUNCTION
+	displays a message and waits for OK or CANCEL to be clicked
+INPUTS
+	Pass two pieces of text. eg. 
+   askuser("Are you Sure","You want to quit?");
+   NULL is ok for text not being used.
+RESULTS
+	TRUE if user clicked OK
+   FALSE if user clicked CANCEL
+----------------------------------------------------------------------------
+
+(gadlib.c)		calc_slider_internals
+----------------------------------------------------------------------------
+NAME
+	calc_slider_internals -
+SYNOPSIS
+	
+	void calc_slider_internals(s,ns)
+	struct slider *s;
+	struct NewSlider *ns;
+
+FUNCTION
+	Recalculates a knob's x,y,width, and height based on
+	box_x and box_y's and AUTOKNOB.  Box_x and box_y may also
+	be affected if BORDER_3D is selected.
+	
+	Call calc_slider_internals() after you change box_x & box_y.
+	For example, if the user resizes your window you may wish
+	to change the size of a slider.  You can do this by altering
+	slider->box_x1 through slider->box_y2.  Then call 
+	calc_slider_internals(); followed by a call to refresh_gadget_chain()
+	or refresh_gadget.
+INPUTS
+	s  pointer to slider to recalc
+	ns pointer to a NewSlider struct.  ns.knob_width and ns.knob_height
+		are used.
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		create_gadget
+----------------------------------------------------------------------------
+NAME
+	create_gadget -
+SYNOPSIS
+	
+	struct GadgetHeader *create_gadget(w,ng)
+	struct Window *w;
+	struct NewGadgetHeader *ng;
+FUNCTION
+	adds a one gadgets to the gadget list
+INPUTS
+	w  pointer to window pointer this gadget should be in
+	ng pointer to a NewGadget structure describing the gadget
+RESULTS
+	returns a pointer to GadgetHeader struct added or
+	NULL if an error occured.
+----------------------------------------------------------------------------
+
+(gadlib.c)		create_gadget_chain
+----------------------------------------------------------------------------
+NAME
+	create_gadget_chain -
+SYNOPSIS
+	
+	struct GadgetHeader *create_gadget_chain(w,ng)
+	struct Window *w;
+	struct NewGadgetHeader *ng;
+FUNCTION
+	adds a list of gadgets to the gadget list
+INPUTS
+	w  pointer to window pointer this gadget should be in
+	ng pointer to first NewGadgetHeader structure in this chain
+RESULTS
+	returns a pointer (GadgetHeader *)to the last gadget added or
+	NULL if an error occured.
+----------------------------------------------------------------------------
+
+(gadlib.c)		delete_gadget
+----------------------------------------------------------------------------
+NAME
+	delete_gadget -
+SYNOPSIS
+	
+	void delete_gadget(g)
+	struct GadgetHeader *g;
+FUNCTION
+	deletes the specified gadget. Note, attached gadgets are
+	also deleted.  For example, deleting a list gadget will
+	delete a slider and two buttons.
+INPUTS
+	g pointer to GadgetHeader struct to delete (not NewGadget!)
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		delete_gadget_chain
+----------------------------------------------------------------------------
+NAME
+	delete_gadget_chain -
+SYNOPSIS
+	
+	void delete_gadget_chain(w)
+	struct Window *w;
+FUNCTION
+	delete's all gadgets in the specified window
+INPUTS
+	w  pointer to window 
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		delete_list_entry
+----------------------------------------------------------------------------
+NAME
+	delete_list_entry -
+SYNOPSIS
+	
+	void delete_list_entry(l, e)
+	
+	struct list *l;	/* list */
+	int e;   			/* entry index */
+FUNCTION
+	removes an entry from sturct *list.
+INPUTS
+	list, entry index (0 - list_size-1)
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		delete_list_entry_by_userdata
+----------------------------------------------------------------------------
+NAME
+	delete_list_entry_by_userdata-
+SYNOPSIS
+	
+	int delete_list_entry_by_userdata(l, ud)
+	struct list *l;
+	unsigned long ud;			/* match this to l->user_data */
+
+FUNCTION
+	Searches a list and delete's any entries that have user_data
+	set to the specified value.
+INPUTS
+	list, user_data
+RESULTS
+	int (count of entries that matched user_data)
+----------------------------------------------------------------------------
+
+(gadlib.c)		draw_button
+----------------------------------------------------------------------------
+NAME
+	draw_button -
+SYNOPSIS
+	
+	void draw_button(b,selected)  
+	
+	struct button *b;
+	int selected;
+FUNCTION
+	Renders a button and its associated text.
+INPUTS
+	b - button to render
+	selected - use selected or unselected colors? (TRUE or FALSE)
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		draw_indent
+----------------------------------------------------------------------------
+NAME
+	draw_indent -
+SYNOPSIS
+	
+	void draw_indent(rp, x1, y1, x2, y2, top_col, bot_col)
+	
+	struct RastPort *rp;
+	int x1,x2;
+	int y1,y2;
+	int top_col, bot_col;
+FUNCTION
+	draw's a "3D" looking box
+INPUTS
+	Pass upper left and lower right corners.  All paramaters
+   are inclusive
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		draw_knob
+----------------------------------------------------------------------------
+NAME
+	draw_knob -
+SYNOPSIS
+	
+	void draw_knob(k,color)
+	struct slider *k;
+	int color;
+FUNCTION
+	Redraws a knob's imagery.  The sliders hitbox is not updated.
+	Use this if you want to change the color of the knob, or you
+	have trashed the part of the knob's imagery.
+INPUTS
+	k - pointer to the slider that this knob is in
+	color - the new color for the knob
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		get_list_entry_
+----------------------------------------------------------------------------
+NAME
+      get_list_entry_ptr -
+SYNOPSIS
+	
+	struct list_entry *get_list_entry_ptr(l, e)
+	struct list *l;
+	int e;
+
+FUNCTION
+      given a list and entry number (int), this returns a pointer
+      to the list_entry structure
+INPUTS
+      pointer to the list the entry applies to
+      entry_num
+RESULTS
+   pointer to list_entry struct
+----------------------------------------------------------------------------
+
+(gadlib.c)		hide_gadget
+----------------------------------------------------------------------------
+NAME
+	hide_gadget -
+SYNOPSIS
+	
+	void hide_gadget(g)
+	struct GadgetHeader *g;
+
+FUNCTION
+	Sets the HIDE_GADGET flag in a gadget, and all its associated
+	gadgets.  Thus, a list gadget would also affect a slider and
+	two arrow buttons.
+	
+	When HIDE_GADGET is set, a gadget's imagery is never rendered
+	and the gadget can not be selected by the user.
+INPUTS
+	g - pointer to a gadget
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		init_gadlib
+----------------------------------------------------------------------------
+NAME
+	init_gadlib -
+SYNOPSIS
+	
+	BOOL init_gadlib()
+FUNCTION
+	Sets up gadget library's internal variables and launches task
+INPUTS
+	NONE
+RESULTS
+	returns TRUE if ok or FALSE if error
+----------------------------------------------------------------------------
+
+(gadlib.c)		LockGadLib
+----------------------------------------------------------------------------
+NAME
+	LockGadLib -
+SYNOPSIS
+	
+	void LockGadLib()
+FUNCTION
+	Obtain's a Semaphore lock on the gadlib's internal strucutres.
+	No gadlib access to internal structures or gadlib rendering
+	operations will occur while a lock is in place.
+INPUTS
+	NONE
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		move_knob
+----------------------------------------------------------------------------
+NAME
+	move_knob -
+SYNOPSIS
+	
+	void move_knob(k)
+	struct slider *k;
+FUNCTION
+	after changing a slider's top_element call this to move
+	the knob imgary
+INPUTS
+	k  pointer to a slider structure
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		QuickWindow
+----------------------------------------------------------------------------
+NAME
+	QuickWindow-
+SYNOPSIS
+	
+	struct Window *QuickWindow(c,x1,y1,x2,y2,idcmp,flags, screen, title)
+	
+	struct GadgetColors *c;
+	int x1,x2;
+	int y1,y2;
+	ULONG idcmp;					/* NewWindow.IDCMPFags */
+	ULONG flags;					/* NewWindow.Flags */
+	struct Screen *screen;		/* pointer to screen or NULL for active screen */
+	char *title;					/* NULL or pointer to title string **/
+
+FUNCTION
+	Opens a new window. Flags ACTIVATE,NOCAREREFRESH
+	are always set. A "3D" type border is drawn unless BORDERLESS
+	is set.
+INPUTS
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_button
+----------------------------------------------------------------------------
+NAME
+	refresh_button
+SYNOPSIS
+	
+	void refresh_button(b)
+	struct button *b;
+FUNCTION
+	refreshes a button's imagery.  Takes into account MANUAL_XOR flags
+	and BUTN_HIT.
+INPUTS
+	b - button to refresh
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_droplist
+----------------------------------------------------------------------------
+NAME
+	refresh_droplist-
+SYNOPSIS
+	
+	void refresh_droplist(d)
+	struct droplist *d;
+
+FUNCTION
+	redraw's a droplist's imagery
+INPUTS
+	d pointer to the droplist to refresh
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_gadget
+----------------------------------------------------------------------------
+NAME
+	refresh_gadget -
+SYNOPSIS
+	
+	void refresh_gadget(g)
+	struct GadgetHeader *g;
+FUNCTION
+	redraw's a gadget's imagery
+INPUTS
+	g  pointer to a GadgetHeader struct
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_gadget_chain
+----------------------------------------------------------------------------
+NAME
+	refresh_gadget_chain -
+SYNOPSIS
+	
+	void refresh_gadget_chain(w)
+	struct Window *w;
+FUNCTION
+	refresh's all gadgets in the specified window
+INPUTS
+	w  pointer to window 
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_knob
+----------------------------------------------------------------------------
+NAME
+	refresh_knob -
+SYNOPSIS
+	
+	void refresh_knob(k)  
+	
+	struct slider *k;
+FUNCTION
+	Redraws a knob's imagery & the hitbox where it can drag.
+	Call refresh_knob if you change the size of the knob or the
+	position of the knob and you want to display the new knob.
+	Since refresh_knob updates the hitbox (or slider area) of
+	the slider, the old knob will be erased.
+INPUTS
+	k pointer to the slider to redraw
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_list
+----------------------------------------------------------------------------
+NAME
+	refresh_list -
+SYNOPSIS
+	
+	void refresh_list(l)
+	struct list *l;
+FUNCTION
+	redraws a struct list's complete imagery.  This includes the
+	associated slider.
+INPUTS
+	l pointer to the list structure to update
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_list_text
+----------------------------------------------------------------------------
+NAME
+	refresh_list_text -
+SYNOPSIS
+	
+	void refresh_list_text(l)
+	struct list *l;
+FUNCTION
+	redraws a struct list's entries' text
+INPUTS
+	l pointer to the list structure to update
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_looplist
+----------------------------------------------------------------------------
+NAME
+	refresh_looplist-
+SYNOPSIS
+	
+	void refresh_looplist(ll)
+	struct looplist *ll;
+
+FUNCTION
+	redraw's a looplist's imagery
+INPUTS
+	ll pointer to the looplist to refresh
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		refresh_slider
+----------------------------------------------------------------------------
+NAME
+	refresh_slider -
+SYNOPSIS
+	
+	void refresh_slider(k)  
+	
+	struct slider *k;
+FUNCTION
+	Redraws a slider's imagery.  This includes it's 3D border, knob
+	and hitbox.  
+INPUTS
+	k pointer to the slider to redraw
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		rem_gadlib
+----------------------------------------------------------------------------
+NAME
+	rem_gadlib -
+SYNOPSIS
+	
+	void rem_gadlib()
+FUNCTION
+	removes gadget library task and memory
+INPUTS
+	NONE
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		show_gadget
+----------------------------------------------------------------------------
+NAME
+	show_gadget -
+SYNOPSIS
+	
+	void show_gadget(g)
+	struct GadgetHeader *g;
+
+FUNCTION
+	resets the HIDE_GADGET flag in a gadget, and all its associated
+	gadgets.  Thus, a list gadget would also affect a slider and
+	two arrow buttons.
+INPUTS
+	g - pointer to a gadget
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		telluser
+----------------------------------------------------------------------------
+NAME
+	telluser -
+SYNOPSIS
+	
+	void telluser(l1, l2,flags)
+	char *l1,*l2;
+	unsigned long flags;
+FUNCTION
+	displays a message and waits for OK to be clicked
+INPUTS
+	Pass two pieces of text. eg. telluser("warning:","diskerror");
+   NULL is ok for text not being used.
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(gadlib.c)		xor_button
+----------------------------------------------------------------------------
+NAME
+	xor_button - 
+SYNOPSIS
+	
+	void xor_button(b)
+	struct button *b;
+FUNCTION
+	Togles that state of BUTN_HIT as well as a button's imagery
+INPUTS
+	pointer to button gadget
+RESULTS
+	NONE
+----------------------------------------------------------------------------

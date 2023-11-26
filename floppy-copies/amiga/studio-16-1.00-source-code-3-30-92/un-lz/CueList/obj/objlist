@@ -1,0 +1,4 @@
+cl.o+primi.o+loadsave.o+playproc.o+openlibraries.o+smpte.o+signal.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o
+prog:interfacelib/interfacestub.o

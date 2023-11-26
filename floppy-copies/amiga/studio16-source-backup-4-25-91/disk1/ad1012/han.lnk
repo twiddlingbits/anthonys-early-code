@@ -1,0 +1,4 @@
+FROM handler.o+rp.o
+TO "play.exe"
+LIB LIB:lcnb.lib LIB:amiga.lib
+

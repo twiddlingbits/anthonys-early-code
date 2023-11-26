@@ -1,0 +1,20 @@
+.Key file,opt1,opt2,opt3
+;           Compile a C program                       Version 3.00
+;           Works with Lattice version 3.02 and above
+if not exists <file$t1>.c
+   echo "File <file$t1>.c does not exist.  Try again."
+   skip END
+   endif
+
+LC:lc <opt1> <opt2> <opt3> -iINCLUDE: -iINCLUDE:lattice/ <file$t1>
+if not exists "<file$t1>.o"
+   echo "Compile failed."
+   quit 20
+   endif
+
+echo "-- Linking...  <file$t1>.o to <file$t1>"
+LINK:alink FROM LIB:c.o+<file$t1>.o TO <file$t1> LIB LIB:lc.lib+LIB:amiga.lib MAP <file$t1>.map
+echo "-- done compiling and linking '<file$t1>'. --"
+LAB END
+date >df0:now
+

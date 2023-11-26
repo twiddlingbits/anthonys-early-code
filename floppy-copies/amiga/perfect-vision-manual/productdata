@@ -1,0 +1,19 @@
+Technical Discriptions
+
+
+Perfect Vision
+
+Perfect Vision is a real-time frame grabber which captures black-and-white images in 1/60 of a second.  The pictures are in 16 grey-scales and can be saved in IFF standard format for use in  other Amiga graphics programs.  Perfect Vision can capture color pictures from a video camera using color filters supplied with Perfect Vision.  Color pictures cannot be grabbed in real-time (instantly).  Perfect Vision supports 320 x 200 and 320 x 400 (interlaced) graphic modes.  It can do 32-color or 4096-color pictures.  Perfect Vision supports several graphic effects, including edge detection, image sharpening, and color tinting.
+
+The Perfect Vision hardware sits in a box about the size of an external disk drive, but only half as high.  It has its own power 
+supply, and connects to any of the Amiga computers through a standard "Centronics" printer cable.  The cable is not supplied with Perfect Vision. 
+
+
+Studio Magic
+
+Studio Magic is a sound effects processing program with MIDI sequencing and digitizing routines.  Sounds can be recorded with a Perfect Sound digitizer.  Sounds can be loaded and saved in IFF 
+format as raw sounds or IFF instruments.  Studio Magic uses a toolbox of 12 different effects, including flanges, echos, reverb, and pitch interpolation.  MIDI sequencing capabilities include recording, infinite overdubbing, keyboard split, 
+
+
+
+

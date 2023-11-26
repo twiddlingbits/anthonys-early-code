@@ -1,0 +1,269 @@
+//cave-in code//
+
+GRAPHIC
+
+ty:You are Mack the Miner Guy.
+ty:You are trapped because
+ty:of a cave in!
+ty:Find the way out!
+
+MAIN
+v:get,take,pick,grab,hold
+  n:dynamite
+    if RM$ noun
+      ty:careful!
+  n:glop,dynamite,lamp,lens,goba,gobb,gobc,gobd,gobe,gobf,gobg
+    if RM$ noun
+      ty:got it.
+      rm- noun
+      in+ noun
+      done
+  n:hardhat,hat
+    if RM$ hardhat
+      ty:You are now wearing it.
+      rm- hardhat
+      in+ hardhat
+      done
+  n:cart
+    if RM$ cart
+      ty:it seems light enough to drag.
+      rm- cart
+      in+ cart
+      done
+  nend
+  ty:You don't see that here!
+  done
+
+v:drop,lay,put
+  n:dynamite
+    if IN$ noun
+      ty:careful!
+      dynplace=room
+  n:glop,dynamite,hardhat,lamp,lens,goba,gobb,gobc,gobd,gobe,gobf,gobg
+    if IN$ noun
+      ty:dropped.
+      rm+ noun
+      in- noun
+      done
+  n:hat
+    if IN$ hardhat
+      ty:dropped.
+      rm+ hardhat
+      in- hardhat
+      done
+  n:cart
+    if IN$ cart
+      ty:you mean let go?  ok.
+      rm+ cart
+      in- cart
+      done
+  nend
+  ty:You aren't holding that!
+  done
+
+v:examine,search,explore,look
+  n:cave,tunnel,room,mine,around
+    if room=1
+      ty:The cave-in completely blocks the mine entrance.
+      ty:You can hear faint noises, which probably means
+      ty:they're trying to dig through to you.
+      ty:The noises are depressingly faint.
+      done
+    endif
+    if room=6
+      ty:There's nothing special here, but you can plainly
+      ty:hear the sound of rushing water.
+      done
+    endif
+    if room=2
+      if lensgot=0
+        lensgot=1
+        ty:You notice a gleam in the corner and
+        ty:bend down to see what caused it.
+        ty:   You see a magnifying lens here,
+        ty:left by your buddy George the Geologist.
+        rm+ lens
+        done
+      endif
+    endif
+    ty:you see nothing special here.
+    done
+
+v:wait
+  ty:Time passes...
+  done
+
+v:fill
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  ty:Time passes...
+  done
+
+v:dig,excavate,tunnel
+  ty:You have nothing to dig with!
+  done
+
+v:enter,board
+  n:cart
+    if room=10
+      ty:you're already in it!
+      done
+    endif
+    if RM$ cart
+      or
+      if IN$ cart
+        ty:You struggle comically, but
+        ty:finally make it.
+        prevroom=room
+        toroom 10
+        done
+    endif
+  nend
+  ty:You can't do that!
+
+v:exit,leave
+  n:cart
+    if room=10
+        ty:You climb out.
+        toroom prevroom
+        done
+    else
+      ty:you're not in it!
+      done
+    endif
+  nend
+  ty:You can't do that!
+
+v:light,start,fire
+  n:dynamite,fuse,stick
+    if IN$ dynamite
+    else
+      if RM$ dynamite
+        ty:You aren't holding that!
+        done
+      else
+        ty:You don't see that here!
+        done
+      endif
+    endif
+    p:lens,sunlight,beam
+      if IN$ lens
+        if fuse=0
+          if room=9
+            ty:You angle the lens carefully...
+            ty:The fuse sputters and lights!
+            fuse=1
+            done
+          else
+            ty:You can't use the lens here!
+            done
+          endif
+        else
+          ty:The fuse is already lit!
+          done
+        endif
+      else
+        ty:you don't have the lens!
+        done
+      endif
+vend
+
+
+
+BACKGROUND
+
+if water>0
+  ty:the water is now ^
+  nty:water
+  ty: feet deep!
+  water=water + 1
+  if IN$ cart
+    OR
+    if RM$ cart
+      if water>3
+        ty:The cart is floating!
+      endif
+  endif
+endif
+
+if fuse=9
+  ty:the dynamite explodes with a mighty ROOOAAARRR!!!
+  fuse=10
+  if RM$ dynamite
+    or
+    if IN$ dynamite
+      ty:the tremendous force kills you so fast you don't
+      ty:even feel it.
+      ty:
+      ty:         R. I. P.
+      end
+  endif
+  ty:A large rock hits your head!
+  if IN$ hardhat
+    ty:WHAAANGGG!  Good thing you had your helmet on!
+  else
+    ty:Your head splits open and your
+    ty:brains spill out across the ground!
+    ty:Y I C K O !
+    end
+  endif
+  ty:you are thrown to the ground. loose dirt
+  ty:showers down around you.
+  destroy dynamite
+  if dynplace=6
+    water=1
+    ty:rushing water covers the floor!!
+  endif
+endif
+
+if water=10
+  if room=10
+    if prevroom=9
+      ty:In the cart, you float slowly through
+      ty:the vertical shaft to the surface.
+      ty:You have won this adventure!
+      end
+    else
+      ty:The cart hits the ceiling and promply
+      ty:rolls over, dumping you into the cold waters!
+    endif
+  endif
+  ty:The swirling waters suck you down!
+  ty:You die a horrible death!
+  end
+endif
+
+if fuse>0
+  and
+  if fuse<9
+    fuse=fuse + 1
+    if IN$ dynamite
+      OR
+      if RM$ dynamite
+        ty:The fuse is burning brightly!
+        if fuse>6
+          ty:it's nearly burned down!
+        endif
+    endif
+endif
+

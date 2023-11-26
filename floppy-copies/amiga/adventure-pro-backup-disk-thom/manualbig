@@ -1,0 +1,288 @@
+
+
+AdventurePro
+
+AdventurePro is a powerful language for creating text and text-based graphic adventure games.  Good enough.
+
+
+The entire game is defined by the programmer in four text files.  These files are called "prog.adv","roomdat.adv","graphicdat.adv", and "sequences.adv".  When the programmer has created these four files, he or she runs the symbolizer, which takes the files and packs them into one file (called "symbol.adv").
+
+The file "prog.adv" contains the actual program code that executes during the game.  "roomdat.adv" contains the text room descriptions and data detailing the connections between rooms.  "graphicdat.adv" contains almost all of the graphic data (which picture for which room, which picture for which noun, etc.).  The  "sequences.adv" file contains information specific to graphic animation sequences. Note that none of these files actually contain graphics or sounds.  Graphic and sound IFF files should already reside on the disk; the ".adv" files just contain filenames.
+
+Room Data
+
+The "roomdat.adv" file is organized into entries for each room. each entry is separated by a space.  Here is a typical entry:
+
+W„e„l„c„o„m„e„ „t„o„ „t„h„e„ „S„u„n„-„R„i„z„e„ „I„n„d„u„s„t„r„i„e„s„ „l„a„b„o„r„a„t„o„r„y„!„
+1„7„,„0„,„2„
+2„2„,„0„,„1„3„
+p„r„o„t„r„a„c„t„o„r„ „e„l„e„p„h„a„n„t„ „d„i„s„k„ „$„
+
+First comes the text description of the room, terminated by a return.  The next three numbers (on the next line) represent the rooms the player enters when he or she moves north, south, or east (respectivly) from this room.  The next line is very similar;  the three numbers represent west, up, and down. Any of the numbers which are to represent directions the player cannot go from this room should be set to 0.  Placement of commas is critical in these two lines (at least in this version).
+
+The last line indicates which nouns (objects) are in this room when the game begins.  Nouns are seperated by a space, and the line is terminated by a '$' and a return.  If no item starts in this room, simply put a '$' on this line.
+
+Since there are no numbers indicating room number in the entry,  rooms are numbered by the placement of each room entry within the file.
+
+Each room entry must consist of four (4) lines.  Line length is unimportant (or relativly so).  Lines are terminated by returns.
+
+
+Graphic Data
+
+Buckle your seat belts; this is a complex one.  The "graphicdat.adv" file contains nearly all of the data pertaining to graphics that exists in the adventure.  As in the room data, attention to what goes in which line is critical.  Unlike the room data, however, NO lines should be left blank.  Not even returns at the top are acceptable. 
+
+The first line contains two numbers seperated by a comma.  These are the width and height, respectivly, of the adventure screen.  Valid numbers are "320,200,", "640,200,", "320,400,", or "640,400,".
+
+The next line carries only one number; the depth (bitplanes) of the screen.  Valid numbers (shown as "3,") are from 1 to 5 (4 if using 640 mode).  Sorry, no HAM.
+
+The third line contains only a string; it is the name of the IFF picture file that you wish to use as your background.  The color map will be loaded from this picture, so be sure that all of your other graphics use this picture's colors.  The string should not  have any spaces before it or inside it. 
+
+The fourth line has two numbers which represent the X and Y offsets of the room pictures when they are displayed.  This allows you to place the room picture "window" anywhere you like on the screen.
+
+The fifth line holds the file name of the IFF brush file used as the picture for the f‚i‚r‚s‚t‚ room.  All rooms m‚u‚s‚t‚ have a picture (though they can easily share).  Lines after the fifth contain the file names for each room in sequence.  This means that if you  
+defined 25 rooms in the "roomdat.adv" file, you would use lines 5-29 as file names for your rooms.
+
+The next line (after you get done with the room picture names) holds the X and Y coordinates of the top left of the text window.
+
+The next line holds the width and height of the text window.  The text window bounds the place where words appear on the screen.  This area should be color 0 (background color, usually black) in the background graphic, as it will be written over by text.  The text will be in Topaz 8 (no support for other fonts yet).
+
+The next line begins something special.  You have the option of using predifined points on the screen to hold small pictures or animation sequences for each object currently in the room or in the player's inventory.  Within the next few lines, you can define important things (such as how many objects to display, where each is displayed, etc.) and the system will take care of shuffling the objects around, displaying them, activating the animation, and so on.
+
+You basicly need to define two groups of X/Y coordinates.  Imagine that the screen is a tackboard.  The X/Y coordinates are "tacks" with which the computer pins any objects it finds in the current room, or in the player's hands.  The tacks hold each object picture by the upper left corner.  The tacks can't move around after you have set where they are.  The program will shuffle the pictures from tack to tack, as the player gets and drops objects, or moves from room to room.  If the program has more pictures to display than there are tacks, it will hold them "backstage" until tacks become vacant.
+
+Got that???
+
+The first group you need to define is the player inventory "tackboard".  The first line should contain only one number, the number of "tacks" you will define.  The second line should hold the X and Y positions of the first tack (e.g. "235,40,").  Subsequent lines hold more "tacks", until you have defined as many as you said you would in the first line.
+
+Now you need to do the same thing for the room "tackboard"; write  
+the number of coords., and then each set of coords., all on separate lines.
+
+The number of room "tacks" and inventory "tacks" need not be the same.  Though there are few limits on "tack" placement, several warnings are in order.  "Tacks" and noun pictures should both be constructed to work together.  "Tacks" should be uniformly spaced so that any picture can hang on any "tack" without overlapping other pictures.  Though the noun graphics will not hurt the background screen, the colors may not look good, so black out the background in that area, or at least be careful.
+
+Garbage w‚i‚l‚l‚ be left on the screen if you overlap any dynamic graphics without removing them in reverse order.  Since you cannot really control the noun graphics, you should not overlap them with anything at all.
+
+If you wish simply not to have a room or inventory "tackboard", make the number of "tacks" 0, and don't make any "tack" coodinate 
+lines.  Note that you can have a room "tackboard" without an inventory "tackboard", or vise versa, or no "tackboards" at all.
+
+After you have defined your "tackboards", the next lines define which noun goes with which graphic or animation sequence.  For each line, type the noun, followed by a space, and then the file name.  If the noun uses an animation sequence instead, just type the sequence number instead of a file name. A typical definition list looks like this:
+
+3„,„
+r„a„y„g„u„n„ „g„u„n„.„p„i„c„
+t„r„o„u„s„e„r„s„ „3„
+c„h„e„r„ „r„e„a„l„l„y„s„t„u„p„i„d„p„i„c„t„u„r„e„o„f„c„h„e„r„.„p„i„c„t„u„r„e„
+
+The last set of definitions deals with macro keys.  AdventurePro lets you define "hot" keys, which, when pressed, inject words or phrases into the command string.  You need to supply a RAWKEY type number, the qualifier number (defining whether shifts or amiga keys are held down), and the string to be injected.
+
+The first line should (suprise, suprise) hold the number of definitions you wish to make.  Every line after that should hold the key number, a comma, the qualifier number, another comma, and the string to be injected.
+
+A typical definition set looks like this:
+
+4„,„
+8„0„,„0„,„h„e„l„p„
+6„2„,„1„6„,„z„a„p„
+8„1„,„0„,„k„i„l„l„ „c„h„a„r„a„c„t„e„r„^„
+8„2„,„1„,„k„i„l„l„ „m„y„s„e„l„f„^„
+
+Notice the '^'.  Normally, the program produces a return after it 
+injects the string into the command line.  A '^' placed at the end of the string inhibits this.  The '^' is not actually printed.
+
+A word about commas.  The best rule of thumb to use when deciding 
+whether to use a comma at the end of a line is; if the line c‚o‚n‚t‚a‚i‚n‚s‚ a text string, do not put a comma at the end.
+
+Wha-lah!  That's the "graphicdat.adv" file.
+
+Animation Sequence Data
+
+The next file to discuss is the "sequences.adv" file.  This file contains the definitions of the animation sequences that the game will use.  Let's get to it.
+
+Like the "graphicdat.adv" file, it is important not to have any empty lines.  The comma rule holds for both files.  Also, like the "roomdat.adv" file, sequence definitions are not numbered (their placement in the file determines their number).
+
+The first line contains one number; the total number of sequences to be defined.  The next line plunges right in with the first definition.
+
+In the definition, the first line contains five numbers.  The numbers and what they represent are:
+
+1. The interval between frames of animation.  The fastest interval (1) means that frames will be shown 6 per second.  An interval of 2 gives 3 frames per second. An interval of 6 gives 1 
+FPS, and so on.
+
+2. The total number of frames in a sequence.  This does not mean how many pictures are to be loaded (since several frames can use the same picture) or how many times the sequence is to be looped through.  It just means the number of frames the sequence displays before cycling back to the beginning (if the sequence is 
+a repeating one).  Valid numbers are 1-10.
+
+3. This number is actually two numbers, in that it represents (1)whether a sequence repeats indefinitly or just stops at its end frame, and (2)whether it is permanent or not.  If the sequence is to repeat, the first bit of the number should be set.
+
+When an animation sequence is called into action, the pictures that it needs are loaded off disk.  When the sequence is no longer used, all pictures are wiped from memory, requiring a reload every time the sequence is used.  Setting the second bit of the definition number causes the sequence's graphics to load at the beginning of the game, and keeps them in memory until the game ends.
+
+Therefore, here is a list of what is legal for this number:
+
+0   Does NOT repeat, is NOT permanent.
+1   Does repeat, is NOT permanent.
+2   Does NOT repeat, is permanent.
+3   Does repeat and is permanent.
+
+
+4. This number represents which room this animation is tied to.  For instance, if you want a torch animation to burn on the wall of room 7, set this number to 7.  Every time the player enters room 7, this animation will load and cycle (after the room picture has been displayed).  Setting the number to zero will make this sequence "uncomitted", requiring program statements to activate and deactivate it.  Note that if you have a noun that starts in room 7, and the noun is attached to this animation sequence, you should still set this number to zero.
+
+5.  This number chooses which of three types the sequence should be.
+
+If this number is set to 0, this sequence will be a "normal" one.  This means that, before the sequence begins cycling, a copy of the portion of the background screen that is about to be drawn over is saved. when the sequence is shut off, the saved portion is put back, to restore the background.
+
+If this number is set to 1, this sequence will be "simple".  This 
+means that the background is not saved, and frames are just thrown up on the screen.  This destroys any background, but saves 
+memory and CPU time.
+
+If this number is set to 2, this sequence will be "super". This means that between e„v„e„r„y„ f„r„a„m„e„ „of the sequence, the background of 
+the last frame is restored and a new portion is saved.  This is costly in memory and CPU time, but is necessary for animations that move across the screen.
+
+Whew! And all in the first line of the definition!
+
+
+The next line starts a series of lines which define each frame of the 1-10 you can use.  One line for each frame; three numbers on each line.  The first number is the picture number that this frame shows. If it is set to zero, the background is restored for 
+this frame (except for a "simple" sequence, in which case nothing is drawn and the previous frame just stays there).  The next two numbers are the X and Y coordinates for this frame to appear at.  Offsets are also available through the language commands, so if the sequence frames all have the same X/Y position and the sequence is not tied to a room, these two numbers can be set to zero.  Note that the X/Y for noun-attached sequences should a„l„w„a„y„s„ be set to "0,0," because the "tackboard" routines take care of moving them around.  Also note that sequences attached to  
+rooms should a„l„w„a„y„s„ use these X/Y coords., since the program does not control them.
+
+After the lines which define frames, the next line holds just one 
+number; the number of actual graphic pictures used.  Pictures should not be confused with frames, since several frames can use the same picture, or none at all.
+
+The next lines contain only the file names for each picture (in order, one file name per line).
+
+
+Let's look at a typical sequence entry.
+
+1„,„3„,„1„,„0„,„0„,„
+0„,„5„1„4„,„9„6„,„
+1„,„5„1„4„,„9„6„,„
+2„,„5„1„4„,„9„6„,„
+2„,„
+s„i„1„.„b„r„u„s„h„
+s„i„2„.„b„r„u„s„h„
+
+This sequence displays three frames continuously at a rate if 6 frames per second.  It is not permanent, is not attached to any particular room, and is of the "normal" displaying type.
+
+All of its frames are displayed at the coordinates 514,96. The first frame doesn't actually show any picture, but the second frame shows picture "si1.brush", and the third frame shows "si2.brush".
+
+There should be no empty lines between the end of one sequence and the beginning of another.
+
+Yeah! That takes care of the sequences.  Let's now look at the language itself.
+
+
+The Language!
+
+The Adventure-Pro language is a top-down, super-specialized language that is similar to PILOT.  If you don't know PILOT, don't worry.  AL (which is what we'll call the language from now on) is very simple to learn.
+
+Some simple facts about AL:
+
+1. It has no line numbers, which is okay because
+2. It has no loops or recursion of any sort.
+3. It has no real input statements, but that's okay too, since
+4. Almost all logic is based on what nouns, verbs, adjectives, and prepositional objects were typed in.
+5. AL first receives input from the player, parses it into discreet slots, checks for special cases (like movement from room to room), executes the entire program from beginning to end (or until it hits a "done" statement), and goes back to waiting for input. 
+6. AL has no string variables.
+7. AL has no arrays.
+8. AL allows only one statement per line.
+9. AL statements are terminated by a return.
+
+
+What follows is a list of the commands (statements) currently available to AL.
+
+
+The AdventurePro Language
+
+
+
+Logic Commands
+
+AL has two different classes of logic statements; input logic and 
+internal logic.  Input logic deals with the words and types of words the player inputs.  Internal logic deals with math and special cases, but never inputted data.
+
+Input logic takes total precedence over internal logic.  Also, input logic follows a definite hierarchy within itself.
+
+
+Input Logic
+
+v:word,word,word,...,word
+
+   Signifys verb.  If the present inputted verb is one of the words following  v: , flow proceeds. If not, nothing is executed until the next  v: .  This command overrides everything else.
+
+vend
+
+   Ends verb logic.  Flow will always proceed normally from this point.  This command overrides everything else.
+
+n:word,word,word,...,word
+
+   Signifys noun.  If the present inputted noun is one of the words following  n: , flow proceeds. If not, nothing is executed until the next  n:.  This command overrides everything else except verb logic.
+
+nend
+
+   Ends noun logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb logic.
+
+a:word,word,word,...,word
+
+   Signifys adjective.  If the present inputted adjective is one of the words following  a: , flow proceeds. If not, nothing is executed until the next  a: .  This command overrides everything else except verb and noun logic.
+
+aend
+
+   Ends adjective logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb and noun logic.
+
+p:word,word,word,...,word
+
+   Signifys prepositional object.  If the present inputted prep. object is one of the words following  p: , flow proceeds. If not, nothing is executed until the next  p: .  This command only overrides if (conditional) logic.
+
+poend
+
+   Ends prep. object logic.  Flow will always proceed normally from this point. This command only overrides if logic.
+
+
+Internal Logic
+
+if variable=(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+
+   Standard conditional statement.  While the number to the left of the = must always be a variable, all of the others can be either a variable or a number.  if true, flow proceeds normally.  If false, it skips to the next  else  or  endif  statement.  Nesting is supported.  The spacing is critical in this command.  The equal sign must have no spaces on either side of it.  Between all other operators and variables, one space is necessary.
+  e.g. :
+             if pig=6 * albert - nova
+             if ralph=minivan + center / 1362
+
+if variable<(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+ and
+if variable>(variable or number) (+,-,*,/) (var/num) (oper.) var/num)...
+
+   These are exactly the same as the above  if=  command, except that the conditionals are different.
+
+if RM$ noun
+
+   This conditional is true only if the noun in question is currently in the same room as the player.  It is just like any other conditional statement as far as program flow goes.
+
+if IN$ noun
+
+   This conditional is true only if the noun in question is currently in the inventory of the player.  It is just like any other conditional statement as far as program flow goes.
+
+
+else
+
+   This command directly reverses the condition(true or false) of the preceeding if command.  It will not work with verb, noun, adj., or prep.obj. logic.
+
+
+endif
+
+   This command terminates a conditional. Simply put, program flow continues from this command whether the preceding conditional proved true or false.  All "if"s are nested, however,  
+so if three conditionals started a segment of code, three "endif"s would be required to end it.
+
+or
+
+   This command ties two conditional statements together with a conditional OR.  For instance, the code fragment
+
+if RM$ bomb
+  or
+  if timer=0
+   ty: BOOMMMMMMMM!
+endif
+
+would print "BOOMMMMMMMM!" in the text window if timer equaled zero or if the bomb was in the room with the player.  Notice that 
+because the OR made the two conditionals seem like one to the system, only one endif was neccessary.
+
+and
+
+   This command ties two conditionals together with a conditional AND.  It is implemented just like OR.
+
+
+
+
+

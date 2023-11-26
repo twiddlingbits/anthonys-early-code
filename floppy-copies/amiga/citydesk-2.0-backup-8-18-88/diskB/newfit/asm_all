@@ -1,0 +1,15 @@
+
+asm -oaw:cd/obj/obj/ cfit.asm
+asm -oaw:cd/obj/obj/ cinvfit.asm
+asm -oaw:cd/obj/obj/ cinvitfit.asm
+asm -oaw:cd/obj/obj/ cinvtextfit.asm
+asm -oaw:cd/obj/obj/ citfit.asm
+asm -oaw:cd/obj/obj/ ctextfit.asm
+asm -oaw:cd/obj/obj/ fit.asm
+asm -oaw:cd/obj/obj/ invfit.asm
+asm -oaw:cd/obj/obj/ invitfit.asm
+asm -oaw:cd/obj/obj/ invtextfit.asm
+asm -oaw:cd/obj/obj/ itfit.asm
+asm -oaw:cd/obj/obj/ textfit.asm
+
+

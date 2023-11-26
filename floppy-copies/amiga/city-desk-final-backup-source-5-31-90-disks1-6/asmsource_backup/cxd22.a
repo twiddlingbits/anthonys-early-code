@@ -1,0 +1,36 @@
+*
+* lattice 3.03 _CXD22
+*
+
+      XDEF _CXD22
+      XDEF _CXD33
+
+      csect text
+
+_CXD22
+_CXD33
+
+      MOVE.L    D2,-(A7)
+      MOVE.L    D3,-(A7)
+      TST.L     D1
+      BEQ       zero1
+      TST.L     D0
+      BEQ       zero2
+      CLR.L     D2
+      MOVEQ     #$1F,D3
+j10   ASL.L     #1,D0
+      ROXL.L    #1,D2
+      CMP.L     D1,D2
+      BCS       j20
+      SUB.L     D1,D2
+      ADD.L     #00000001,D0
+j20   DBF       D3,j10
+      MOVE.L    D2,D1
+      BRA       j2c
+zero2 CLR.L     D1
+zero1 CLR.L     D0
+j2c   MOVE.L    (A7)+,D3
+      MOVE.L    (A7)+,D2
+      RTS
+      END
+

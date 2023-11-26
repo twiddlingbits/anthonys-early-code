@@ -1,0 +1,1 @@
+blink LIB:c.o+main.o+/gadlibstub.o TO "main" LIB LIB:lcnb.lib LIB:amiga.lib lib:debug.lib

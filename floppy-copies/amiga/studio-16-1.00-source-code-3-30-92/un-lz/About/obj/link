@@ -1,0 +1,2 @@
+blink lib:c.o WITH objlist TO runtime:About LIB lib:lcnb.lib + lib:amiga.lib SC SD  NODEBUG
+copy runtime:About Studio16:Start

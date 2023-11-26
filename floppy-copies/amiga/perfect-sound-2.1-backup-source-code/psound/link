@@ -1,0 +1,4 @@
+alink WITH objlist TO RAM:a.out LIB RAM:lib/lc.lib+RAM:lib/amiga.lib
+copy ram:a.out df1:psound/a.out
+
+

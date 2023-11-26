@@ -1,0 +1,88 @@
+[helv 14.4 bold]
+[tabset 4"]
+
+
+[under;cj]The Specs:[p;bold;lj]
+
+
+
+[lm .3"]
+Independent Channels:[tab]Two (stereo)
+
+Physical Dimensions:[tab]2 3/8" X 5" X 11/16"
+
+Signal Input Level:[tab]Line Level
+
+Input Gain:[tab]Variable
+
+Sample Length[tab]8 bits
+
+Sample Rate (max):[tab]23,283 samples/second
+
+Sample Rate (min):[tab]Slow as you want
+
+Freq Response:[tab]11.6 KHz
+
+FCC Approval:[tab]Class B
+
+Port:[tab]Parallel/Printer
+
+Passthru:[tab]None
+
+
+
+[lm=0;cj;under]Some Common Questions:[p]
+
+
+
+[roman 10;p;it;fj]
+
+Can I use a microphone with Perfect Sound[p]?
+
+Yes, but not directly.  The Perfect Sound inputs are
+line level, thus you can not hook a mic up directly. To use a mic you
+must go thru a pre-amp, such as your stereo. You can also get small
+amplifiers for as little as $10 at Radio Shack.
+
+
+[p;it]
+What is the maximum frequency I can record?
+
+[p;]The theoretical maximum frequecy a digitizer can record
+is half its
+sampling rate. Thus, Perfect Sound has the ability to record
+frequencies up to 11.6 KHz. [p;bd;under]However, the point is moot.
+[p] The Amiga has a low pass filter on its
+outputs that eliminate all frequencies above 7KHz.
+
+
+[p;it]Can I create Instuments for DMCS with Perfect Sound?
+
+[p]Yes.
+
+
+[p;it]How much memory does digitized sound use?
+
+[p]About 10K per second of fair mono sound. Stereo uses twice as
+much memory as mono, and higher sampling rates for better quality uses more
+memory.
+
+
+[p;it]Does Perfect Sound use external RAM?
+
+[p]
+Yes.
+
+
+[p;it]If I have 512K of fast RAM as well as 512K of chip memory,
+can I record 1 Meg samples?
+
+[p]No. A digitial sample must be in
+[under]contiguous[p] memory. The Amiga operating system logically
+separates all RAM expansions as separate chunks of memory. Thus, if you
+have a 512K RAM expansion (this includes internal upgrades) you will be able
+to record two samples of about 400K each, but not one sample of 800K. The
+same problem will occur if you plug two two meg boards into your Amiga. This
+is not the same as one four meg expansion. The Amiga will separate the two
+two megs into separate chunks.
+

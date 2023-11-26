@@ -1,0 +1,22 @@
+static struct NewWindow SMON_NewWindow = {
+   430,
+   150,
+   200,
+   40,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE|ACTIVEWINDOW,
+   REPORTMOUSE|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   " SMPTE Monitor ", /** TITLE **/
+   0,0,
+   104,32,640,400,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+
+static struct Gadget SIZEgad = { NULL,NULL,NULL,NULL,NULL,GADGHCOMP,GADGIMMEDIATE|RELVERIFY,SIZING,
+	NULL,NULL,NULL,NULL,NULL,NULL,NULL };

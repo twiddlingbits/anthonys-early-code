@@ -1,0 +1,107 @@
+How To Write an AudioHandler
+============================
+
+The AudioHandler is a special type of studio16 Module who's job is to
+translate a standard event protocoll into a format understandable by a
+specific piece of hardware (It's a device driver.).  The source code of
+Studio 16's Amiga Handler is included and should be used as a specific
+example of how to implement a handler.
+
+A key structure for AudioHandlers is "PlayingSamp".  This structure
+includes lots of information, including circular buffer pointers that
+contain the actual data to play. Two indexes are maintained in the
+strucutre "bb_diskio_index" and "bb_handler_index."  DiskIO maintains the
+one index and the handler maintains the other.
+
+Here's the sequence of events that occur to play a typical sample:
+
+1. The user highlights a sample and selects PLAY in the open list
+2. Open list broadcasts SE_CMD_PLAY_SAMPLE
+3. Someone (currently open_list.c, but subject to change.) receives the
+PLAY event and generates an SE_CMD_PRELOAD_SAMPLE event
+4. DiskIO recieves the SE_CMD_PRELOAD_SAMPLE event.  It Allocates a
+	PlayingSample struct, gets a readlock on the samle to play, and preloads
+	enough data to fill up its circular buffers. bb_diskio_index is incrented
+	once for each "big_block" loaded.  (These indexes wrap around, so if
+	there are four big_buffers then index is incremented by:
+	index = (index+1)&3;
+5. DiskIO broadcasts SE_PRELOAD_DONE
+6. Someone (currently open_list.c) notices that the preload is finished.
+	It Allocates a channel (via AllocChan()) and fills in 
+	PlayingSample->key.  It then broadcasts SE_TRIGGER_PLAYBACK
+7. The AudioHandler notices the trigger event and starts playing the
+sample.  To do this if uses the following loop:
+
+A. Trasnfer one big_block of data from PlayingSample 
+	(ps->big_block[ps->bb_handler_index]) to the hardware.
+   The AudioHandler will almost always use it's own buffers to break
+   up the big_blocks and buffer the big_block data. For example,
+	the AmigaHandler transfers big_block data to a small array of
+	ciruclar buffers located in chip ram.  The AD1012 transfers
+	data to the card (who is maintaining circular buffers in its
+	internal ram)
+B. Broadcast SE_INFO_BLOCK_PLAYED.  DiskIO uses the block played
+   events to trigger the hard disk load of another bigblock. 
+	bb_diskio_index is incremented after the load is complete.
+C. Increment bb_handler_index.  Check to make sure bb_handler_index
+	hasn't passed bb_diskio_index.  This shouldn't happen unless
+	the sample is finished playing (signified by LAST_BLOCK flag set)
+   or DiskIO hasn't been able to load a new big_block off disk while
+	the handler has played all big_blocks.  If you do overrun 
+	the buffers, use some icky code like this:
+
+		[WaitTOF loop]
+
+D. If the sample's not done Goto A. A fished sample is detected like so:
+	if (ps->flags&LAST_BLOCK 
+		 && ps->bb_diskio_index==ps->bb_handler_index)  /** DONE! **/
+
+	Remember:  The bb_handler_index always starts at zero and, once 
+	playback is underway, points to the block that is playing.
+	The bb_disk_index points to the block that is being loaded off disk
+	(assuming that all data hasn't been loaded.  If it has,
+	bb_disk_index points to the big_block that would recieve data
+	if more data was available.)
+
+8. The AudioHandler broadcasts SE_INFO_CHANNEL_DONE
+9. DiskIO notices this and free's the PlayingSample struct and
+	associated big_buffers and releases the read lock.
+10. Someone (OpenList currently) notices this and free's the allocated channel
+
+About SE_CMD_PLAY_SAMPLE
+------------------------
+
+In the above example, playback was initiated with the SE_PLAY_SAMPLE
+command.  PLAY_SAMPLE is a higher level event in that there is a 
+server somewhere (currently in open_list)
+who generates the appropriate lower level commands:
+
+1. AllocChan()
+2. SE_CMD_PRELOAD_SAMPLE
+3. Wait for SE_INFO_PRELOAD_DONE & fill in key
+4. SE_CMD_TRIGGER_PLAYBACK
+5. Wait for SE_INFO_CHANNEL_DONE
+6. FreeChan()
+
+Thus most modules who are syncronising with events will use lower level
+commands (PRELOAD and TRIGGER).
+
+Events you must deal with when writting an AudioHandler
+--------------------------------------------------------
+
+Handler Broadcasts these events:
+
+	SE_INFO_BLOCK_PLAYED;	(MINIMUM)
+	SE_INFO_CHANNEL_DONE;	(MINIMUM)
+	SE_INFO_HILO;
+
+Handler Acts on these events:
+
+	SE_CMD_TRIGGER_PLAYBACK;	(MINIMUM)
+	SE_CMD_KILL_MODULE;			(MINIMUM)
+	SE_CMD_STOP_PLAYING;
+	SE_CMD_SET_CHANNEL_VOLUME;
+
+"MINMUM" indicates events that absolutle must be delt with for a minimally
+working system.  Other events should be added eventually, but are not
+required to get up and running.

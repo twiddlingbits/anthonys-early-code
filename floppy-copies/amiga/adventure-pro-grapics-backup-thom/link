@@ -1,0 +1,2 @@
+.k name/a
+blink lib:c.o WITH <name> TO a.out LIB lib:lcmffp.lib + lib:lc.lib + lib:amiga.lib  NODEBUG

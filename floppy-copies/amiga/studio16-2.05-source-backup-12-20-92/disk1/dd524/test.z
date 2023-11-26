@@ -1,0 +1,301 @@
+#include "exec/types.h"
+#include "exec/exec.h"
+#include "libraries/configvars.h"
+#include "libraries/dos.h"
+#include <hardware/intbits.h>
+
+/**************************************************************/
+
+short *GetDD524Base();
+long DD524IntHandler();
+void WaitAllReplys();
+void UnInitDD524();
+struct BlockMsg *SendBlock();
+void RemInt();
+
+/**************************************************************/
+
+#define DD524_FIFO			0/2		/** /2 because short * **/
+#define DD524_STATUS 		2/2
+#define DD524_CONTROL		2/2
+#define DD524_CS_BITS		4/2
+#define DD524_INT_ENABLE	6/2
+
+#define CONTROL_DEFAULT		0xe6		/* 48K samp rate, SEL=1, int 6 **/
+#define CS_BITS_DEFAULT		0xf5		/* consumer, 48K, copy ok, */
+
+/**************************************************************/
+
+#define XMIT_READ_SIZE  1024*128
+
+struct BlockMsg {
+	struct Message msg;
+	char *data;
+	};
+
+/**************************************************************/
+
+short *dd524_base;
+struct MsgPort *xmit_block_port;
+struct MsgPort *xmit_reply_port;
+struct Interrupt *dd524_int;
+
+/**************************************************************/
+
+main()
+{
+long fp,i;
+char *buffer;
+long readlen;
+
+buffer=(char *)AllocMem(XMIT_READ_SIZE, 0);
+if (buffer==0) {
+	printf("Not enough memory for buffer\n");
+	exit(10);
+	}
+
+fp=Open("AUDIO:TestXmit",MODE_OLDFILE);
+if (fp==0) {
+	printf("Cant open file 'RAM:TestXmit'\n");
+	FreeMem(buffer,XMIT_READ_SIZE);
+	exit(10);
+	}
+
+/*** Allocate Ports **/
+
+xmit_block_port=(struct MsgPort *)CreatePort(0,0);
+xmit_reply_port=(struct MsgPort *)CreatePort(0,0);
+
+
+setmem(buffer, XMIT_READ_SIZE, 0);
+readlen=Read(fp,buffer,XMIT_READ_SIZE);
+if (readlen) {
+	for (i=0;  i < XMIT_READ_SIZE/1024; i++)
+		SendBlock(&buffer[i*1024]);
+	}
+
+InitDD524();
+
+do {
+	setmem(buffer, XMIT_READ_SIZE, 0);
+	readlen=Read(fp,buffer,XMIT_READ_SIZE);
+	if (readlen) {
+		for (i=0;  i < XMIT_READ_SIZE/1024; i++)
+			SendBlock(&buffer[i*1024]);
+		WaitAllReplys();
+		}
+	} while (readlen);
+
+WaitAllReplys();
+
+Close(fp);
+FreeMem(buffer,XMIT_READ_SIZE);
+UnInitDD524();
+}
+
+/**************************************************************/
+
+void WaitAllReplys()
+{
+short k;
+struct BlockMsg *msg;
+
+for (k=0; k < XMIT_READ_SIZE/1024; k++) {
+	WaitPort(xmit_reply_port);
+if (k==0)
+	printf("got reply %d\n",k);
+	msg=(struct BlockMsg *)GetMsg(xmit_reply_port);
+	FreeMem(msg,sizeof(struct BlockMsg));
+	}
+}
+
+/**************************************************************/
+
+struct BlockMsg *SendBlock(data)
+char *data;
+{
+struct BlockMsg *msg;
+
+msg=(struct BlockMsg *)AllocMem(sizeof(struct BlockMsg),MEMF_CLEAR);
+if (msg) {
+	msg->msg.mn_Node.ln_Type = NT_MESSAGE;
+	msg->msg.mn_ReplyPort = xmit_reply_port;
+	msg->msg.mn_Length = sizeof(struct BlockMsg);
+	msg->data=data;
+	PutMsg(xmit_block_port, msg);
+	}
+else
+	printf("non mem!\n");
+return(msg);
+}
+
+/**************************************************************/
+
+struct ExpansionBase *ExpansionBase=NULL;
+
+short *GetDD524Base()
+{
+struct ConfigDev *ConfigDev=NULL;
+struct ConfigDev *FindConfigDev();
+short *base;
+
+if ((ExpansionBase = (struct ExpansionBase *)OpenLibrary("expansion.library",0))==0) {
+	printf("Can't Open expansion.library\n");
+	exit(10);
+	}
+ConfigDev = FindConfigDev(0, 2127, 3);
+if (ConfigDev) {
+	base=(short *)ConfigDev->cd_BoardAddr;
+	}
+else {
+	CloseLibrary(ExpansionBase);
+	printf("Can't find DD524 card.\n");
+	exit(10);
+	}
+CloseLibrary(ExpansionBase);
+return(base);
+}
+
+/********************************************************/
+/*
+ * Called when the fifo passes under half full.
+ */
+
+DD524IntHandler()
+{
+unsigned short i;
+static struct BlockMsg *msg;
+static short index=0;
+
+if (dd524_base[DD524_STATUS]&0x80) { /** bit clear if we caused interupt **/
+/*	kprintf("no int!\n");
+	return(1);*/
+	}
+
+if (msg==0) {
+	msg=(struct BlockMsg *)GetMsg(xmit_block_port);
+	index=0;
+	}
+	
+if (msg) {
+	for (i=index; i < 1024; i++)
+		dd524_base[DD524_FIFO]=msg->data[i];
+	ReplyMsg(msg);
+	msg=(struct BlockMsg *)GetMsg(xmit_block_port);
+	index=0;
+	}
+
+if (msg) {
+	while (dd524_base[DD524_STATUS]&32)
+		dd524_base[DD524_FIFO]=msg->data[index++];
+	}
+else {
+	while (dd524_base[DD524_STATUS]&32)
+		dd524_base[DD524_FIFO]=0;
+	}
+
+return(0);
+}
+
+/**********************************************************/
+
+int InitDD524()
+{
+short i;
+
+dd524_base=GetDD524Base();
+printf("Found DD524 at %x\n",dd524_base);
+
+/** Setup DD524 registers default state (consumer mode) **/
+
+dd524_base[DD524_CONTROL]=CONTROL_DEFAULT;
+dd524_base[DD524_CS_BITS]=CS_BITS_DEFAULT;
+
+/*** Add New Interupt to handle FIFO half empty interupt ****/
+
+if (AddMyInt()==0) {
+	return(1);
+	}
+
+/*** Turn on FIFO interupts ***/
+
+for (i=0; i < 2048; i++)	/** fill fifo to get ints going **/
+	dd524_base[DD524_FIFO]=0;
+
+i=dd524_base[DD524_STATUS];	/** clear any old ints pending **/
+dd524_base[DD524_INT_ENABLE]=1;
+dd524_base[DD524_CONTROL]=(CONTROL_DEFAULT-2);	/** Turn on fifo **/ 
+
+return(0);
+}
+
+/**************************************************************/
+
+void UnInitDD524()
+{
+dd524_base[DD524_INT_ENABLE]=0;		/** int's off **/
+RemInt();
+DeletePort(xmit_block_port);
+DeletePort(xmit_reply_port);
+}
+
+/**************************************************************/
+
+AddMyInt()
+{
+extern struct Interrupt *MakeInt();
+
+dd524_int = MakeInt("DD524",0,DD524IntHandler,0);
+if (dd524_int==0) {
+	return(0);
+	}
+AddIntServer(INTB_EXTER, dd524_int);
+return(1);
+}
+
+/*****************************************************************/
+
+void RemInt()
+{
+void FreeInt();
+
+if (dd524_int) {
+	RemIntServer(INTB_EXTER,dd524_int);
+	FreeInt(dd524_int);
+	}
+}
+
+/*****************************************************************/
+
+struct Interupt *MakeInt(name,pri,code,data)
+char *name;
+int pri;
+void (*code)();
+APTR data;
+{
+struct Interrupt *intr;
+
+intr=(struct Interrupt *)AllocMem(sizeof(struct Interrupt), MEMF_PUBLIC|MEMF_CLEAR);
+if (intr==0) return(0);
+
+intr->is_Node.ln_Pri=pri;
+intr->is_Node.ln_Type=NT_INTERRUPT;
+intr->is_Node.ln_Name=name;
+intr->is_Data = data;
+intr->is_Code = code;
+
+return(intr);
+}
+
+/*****************************************************************/
+
+void FreeInt(intr)
+struct Interrupt *intr;
+{
+if (intr==0) return;
+if (intr->is_Node.ln_Type != NT_INTERRUPT) return;
+intr->is_Node.ln_Type=0;
+FreeMem(intr,sizeof(struct Interrupt));
+}
+
+/**************************************************************/

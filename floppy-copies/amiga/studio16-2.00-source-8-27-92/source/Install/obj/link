@@ -1,0 +1,1 @@
+blink lib:c.o WITH objlist TO Studio16:/Install.HD LIB lib:lcnb.lib + lib:amiga.lib NODEBUG

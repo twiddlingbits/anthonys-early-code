@@ -1,0 +1,288 @@
+
+
+
+[cj,helv]PÅeÅrÅfÅeÅcÅtÅ ÅVÅiÅsÅiÅoÅnÅ
+
+
+RÅeÅaÅlÅ ÅTÅiÅmÅeÅ ÅVÅiÅdÅeÅoÅ ÅDÅiÅgÅiÅtÅiÅzÅeÅrÅ
+
+
+
+[roman 10,lj,tabset 2.25"]Hardware Design by:   @Mike Balzer
+Software Design by:   @Tracy Rockwell
+Project Coordinator:  @Tracy Rockwell
+Manual by:            @Thom Robertson
+                      @Anthony J. Wood
+
+
+
+Copyright 1988 by SunRize Industries.  All rights reserved. No part of this book may be reproduced, in any form or by any means, 
+without written permission from the publisher.  The Perfect Vision program is copyrighted 1988 by SunRize Industries. The Perfect Vision program may not be copied except for the purposes of creating a backup copy.  IBM-PC is a registered trademark of International Buisness Machines, Inc.  Perfect Vision is a trademark of SunRize Industries.
+
+This Manual was created completely with the City Desk desktop publishing system using an Amiga 1000 with 3 megabytes of memory and a Hewlett-Packard LaserJet printer.
+
+[cj]SunRize Industries
+3801 Old College Rd.
+Bryan, Texas 77801
+(409) 846-1311
+[lj,p]
+
+
+[helv]CÅoÅnÅtÅeÅnÅtÅsÅ:[roman]
+
+What is Perfect Vision?       [hskip 7cm]3
+Make A Backup                 [hskip 7cm]3
+Running The Software          [hskip 7cm]3
+Hooking Up the Hardware       [hskip 7cm]4
+Video Sources                 [hskip 7cm]5
+Setting Brightness and Contrast[hskip 7cm]5
+Grabbing and Saving a Picture[hskip 7cm]5
+File Formats                  [hskip 7cm]18
+Some Things You Should Know   [hskip 7cm]18
+Appendixes
+[hskip 1cm]A: Video Modes        [hskip 7cm]18
+[hskip 1cm]B: Dithering          [hskip 7cm]18
+[hskip 1cm]C: Printer Ports      [hskip 7cm]18
+[hskip 1cm]D: Pallette Registers [hskip 7cm]18
+[hskip 1cm]E: RAW Disk Format    [hskip 7cm]18
+[hskip 1cm]F: Color              [hskip 7cm]18
+
+ 
+WÅhÅaÅtÅ ÅiÅsÅ ÅPÅeÅrÅfÅeÅcÅtÅ ÅVÅiÅsÅiÅoÅnÅ?Å
+
+
+Perfect Vision is a real time video digitizer for the IBM PC.  With Perfect Vision, you can capture pictures off a VCR or video camera, and store them  an IBM-PC disk.  You can then load and edit the pictures in a paint program, or print them in a desktop publishing program.
+
+Perfect Vision will capture a black and white image in 1/60 of a second or an interlaced image in 1/30 of a second.  This allows you to capture still pictures from a playing VCR, something previously available only on much more expensive equipment.
+
+Resolution of captured pictures:
+
+320 x 200 with 16 gray scales.
+320 x 400 with 16 gray scales.
+
+Hardware:
+
+   Connects to printer port
+   64K of on-board RAM
+   Flash converter digitizes NTSC video in real time
+
+Video Boards:
+
+Perfect Vision supports the CGA, EGA, VGA, MCGA, and Hercules video adapter boards.  Refer to Appendix A for more on the different video adapter boards.
+
+
+MÅaÅkÅeÅ ÅAÅ ÅBÅaÅcÅkÅuÅpÅ
+
+
+Before you run Perfect Vision, please make a copy of the original disk.  Always run the program from the copy, and keep the original in a safe place.  See your PC DOS manual for an explanation of how to copy a disk.
+
+
+RÅuÅnÅnÅiÅnÅgÅ ÅtÅhÅeÅ ÅSÅoÅfÅtÅwÅaÅrÅeÅ
+
+
+The disk you were supplied with does not contain an MS-DOS copy on it.  Therefore, the best way to run the software is to start with your own MS-DOS disk already booted up.  Place the Perfect Vision disk in your unused floppy drive and change the drive selection accordingly.  For instance, if you have two floppy drives, you probably have the DOS disk in drive A.  Put the Perfect Vision disk in drive B and type "b:" to select that drive.
+
+Now type "PVISION" and press return.  Perfect Vision should load and run at this point.  If it does not, check that the drive door is closed and that the proper drive has been selected.
+
+
+HÅoÅoÅkÅiÅnÅgÅ ÅUÅpÅ ÅtÅhÅeÅ ÅHÅaÅrÅdÅwÅaÅrÅeÅ
+
+
+You should have received the following items in your Perfect Vision box:
+
+1 Disk
+1 Manual
+1 Perfect Vision
+1 Wall transformer
+3 Color filters
+
+In addition, you should have received a special cable which should have come with your Perfect Vision, but packed in a plastic bag.
+
+Use the following steps to connect your Perfect Vision, with your PC's power OFF.
+
+1.  Connect your Perfect Vision to your PC using the cable supplied.  One end of your cable should connect to the parallel port on the back of your computer.  The other should connect to the large center plug on the back of your Perfect Vision.
+
+2.  Plug one end of your wall transformer into the back of Perfect Vision and the other end into a wall power socket.
+
+3.  Connect a video source to your Perfect Vision via a shielded RCA patch cable.  NOTE: If you are using a VCR, the plug on your VCR that you want to use is labeled "Video Out" and is a standard 
+RCA jack.  If you cannot find this jack, refer to your VCR owner's manual to find the jack that outputs an NTSC video signal.
+
+4.  Turn on your Perfect Vision using the switch in the back of Perfect Vision.  When your Perfect Vision is on, the light on the front panel will light.
+
+You can now turn on your PC and load the Perfect Vision software, as described in the previous section.
+
+
+VÅiÅdÅeÅoÅ ÅSÅoÅuÅrÅcÅeÅsÅ
+
+
+Perfect Vision will work with any standard NTSC video signal.  Some examples would be the video out from a VCR, color or black and white video camera, or a TV.  Perfect Vision throws away all of the color signal (if there is any) when it digitizes.  Therefore, a color camera is used in exactly the same way that a black and white one is.
+
+The Perfect Vision has a phono (RCA) type video input.  You should use a shielded RCA patch cord to connect your video signal to the Perfect Vision.  Not all video sources use an RCA jack for the video out; however, converters are cheap and easy to find (try your local Radio Shack.)
+
+The quality of your digitized picture is directly related to the quality of your video source.  Sources that are free of noise will result in clearer pictures.  Also, not all video signals have the same resolution.  For example, black and white cameras generally have a higher bandwith than color cameras, and thus give better quality results.  Also, cameras give much better video quality than home VCRs.  This is because the "bandwidth" of the VCR is much lower than a camera's.
+
+Note that the popular Panasonic B/W camera, model # WV-1410 works fine with Perfect Vision.  Although we don't specifically recommend this camera, it is popular, cheap, and works just fine with Perfect Vision.
+
+
+SÅeÅtÅtÅiÅnÅgÅ ÅBÅrÅiÅgÅhÅtÅnÅeÅsÅsÅ ÅaÅnÅdÅ ÅCÅoÅnÅtÅrÅaÅsÅtÅ
+
+
+The quality of your digitized pictures is directly related to how you adjust the two knobs on the front of your digitizer, "Brightness" and "Contrast".  You should carefully adjust these before doing any serious digitizing.  The following is a step-by-step system to set the knobs.
+
+HINT: For those who are using a camera as an input source, first connect your camera directly to a monitor that accepts a composite video signal (if you have one) and focus it on the object (picture, person, etc.) you want to digitize.  It is possible to focus your camera while using Perfect Vision; it's just a big pain. Of course, VCRs and laserdisks don't need focusing.  Remember also that some monitors switch between video input and other kinds.  The switch that controls this input selection must be set to "composite video" to work correctly with your video source.
+
+Now, connect your digitizer and turn it on.  Turn on your PC and run the Perfect Vision program.  You should see a large list of options available to you.  Check that the correct graphics card is selected (it should do this automatically) and the correct printer port is selected.  See appendix C for more about printer ports.
+
+Now press the F8 key.  A blank screen with a short list of commands  at the bottom should appear.  Press the "c" key.
+
+At this point, digitized pictures should start to appear on your screen at about one every five seconds.  If they do not, make sure that you have a video source hooked up to your Perfect Vision, that your Perfect Vision is turned on, and that you followed the steps outlined previously in the section "Hooking up the Hardware."  If the screen is totally black or white, but no flashing cursors or error messages appear, then your Perfect Vision knobs are just badly adjusted.
+
+If, when you press the "c" key to digitize, a blinking cursor appears or an error message appears, you can get back to the digitizing menu by pressing the space bar.  There will be a delay of 1-10 seconds before you actually see the menu again, though, so don't immediately assume it has crashed.
+
+When your digitizer is definitely working, turn both knobs all the way clockwise.  The picture should now be whited out.  If you are using a camera, place something white and something black in front of the camera.  Those who are using a VCR or similar input should find a picture that has this contrast.
+
+Slowly turn the contrast knob counter-clockwise until the black is as black as possible.  Now turn the brightness knob until the white almost fades out.
+
+You should have a good picture now.  Continue to make very small adjustments until you are satisfied with your picture.  Be warned that this may take time and patience.
+
+
+GÅrÅaÅbÅbÅiÅnÅgÅ ÅaÅnÅdÅ ÅSÅaÅvÅiÅnÅgÅ ÅaÅ ÅPÅiÅcÅtÅuÅrÅeÅ
+
+
+Your digitizer may be merrily cycling along, but you still need to capture the pictures and save them to disk.  This process couldn't be simpler.  First, wait until the picture you want is  on the screen.  Press the space bar.  Your picture will be frozen in memory, and the digitizing menu will be displayed again.  To save this picture, press "f" for FÅiÅlÅeÅ.  From the new menu that comes up,  choose "r" for sÅaÅvÅeÅRÅaÅwÅ.  
+
+A requester will appear, with a line for entering the file name on the top.  Type in your file name, and press return.  Your file should now be saved on disk.
+
+
+FÅiÅlÅeÅ ÅFÅoÅrÅmÅaÅtÅsÅ
+
+
+There are currently a total of three file formats supported, PCX (PC Paintbrush), TIFF (which is a scanner format that is read by most desktop publishing programs), and RAW which is our own file format.  You can save aÇnÇdÇ load PCX pictures; this is extremely useful for saving the palette registers for later use and then loading PCX to restore them.  See appendix D for more information about pallette registers.
+
+Please keep in mind that only the .RAW file format actually loads the image into internal buffers so that you can redisplay the picture in other video modes or change color registers around.  Loaded PCX pictures can be displayed but not modified, and TIFF cannot be reloaded.
+
+For more information about the RAW disk format, please refer to appendix E.
+
+
+SÅoÅmÅeÅ ÅTÅhÅiÅnÅgÅsÅ ÅYÅoÅuÅ ÅSÅhÅoÅuÅlÅdÅ ÅKÅnÅoÅwÅ
+
+
+The file requester:  When you choose to load or save a file (in whichever format),  the Perfect Vision file requester appears on the screen.  This is a box containing eight lines.
+
+The top line is the Directory line;  here is where you type in your drive letter and/or directory name.  The next line is the Filename line, where you type in the name of the file you want to save or load.  The lower six lines are filled with a list.  If your cursor (represented by the highlighted area) is on the directory line, a list of the current directories will be displayed.  If you are on any of the other lines, a list of the files in this directory that have the same suffix (PCX,TIF, or RAW) as your file will be displayed.
+
+You can move your cursor up and down with the arrow keys.  If your disk has more files on it than can be displayed, you will be able to scroll the six-line list up or down by moving down past the last line or up to the top line.  
+
+Pressing the ENTER key can do two things.  If your cursor is on the top line, the directory displayed on that line will be selected and the file list will be updated.  On any other line, the file name on that line will be chosen and the program will proceed to save or load the named file.
+
+Pressing the F2 key moves the cursor to the top of the file list, but keeps the directories displayed.  This allows you to press ENTER on the directory you want, as if you had typed it into the directory line and pressed ENTER there.
+
+Pressing the ESCAPE key lets you leave the file requester mode without doing anything.
+
+It is not necessary for you to type in the filename extension;  the program will add it automatically.
+
+
+Preferences:  The file on your disk called "PVPREF.TXT" is a data file that contains a record of your current settings (which video mode, which printer port, etc.).  This file is updated automatically and loaded every time you run your Perfect Vision software.  This is purely for convieniance.
+
+
+Explanations of the various key functions are at your fingertips with the F1 key, which is the help key for this program.
+
+
+If you are in a mode with 16 or more color registers available, remember that the menus and lists use color register 15 when they are displayed.  Be careful about setting register 15 to the same color as register 0, as this will make it impossible to read anything.
+
+Appendix A: Video Modes
+
+
+Perfect Vision supports a total of 9 video modes on 5 different video adapters.  These include the Hercules, CGA, EGA, MCGA, and the VGA.  Each have their advantages and disadvantages.  Usually, the higher the resolution the better the picture, but at the same time it takes more time to update the screen due to the sheer number of pixels processed.
+
+The CGA mode 4 has two palettes of colors to choose from.  The CGA mode 5 has 4 colors but on the original IBM CGA card with composite video output the color was suppressed to produce four gray scales.  Your particular CGA card may or may not do this.  Lastly, the CGA mode 6 has two colors (black and white).  Perfect Vision supports two pixel dithering to effectively give you three gray scales.
+
+The Hercules compatible monochrome card only supports black and white images.  Perfect Vision supports up to 4 pixel dithering which gives you the appearance of having 5 gray scales.
+
+The EGA was the next major improvement to the graphic capabilities of the IBM PC.  Modes 13 and 14 both have 16 colors with 4 gray scales to choose from.  You may have to turn up the brightness of your monitor to see the next to lowest gray scale.  Mode 16 gives you 16 colors from a palette of 64 to choose from.  You can choose up to 4 pixel dithering to give you the appearance of 13 gray scales.
+
+The VGA was announced with the introduction of the PS/2 computers.  It gives you the two new graphic modes 18 and 19.  Mode 19 is the source of all the recent hullabaloo.  It gives you the ability to show 256 colors from a palette of 262,144 with an analog RGB monitor.  Mode 18 has the highest resolution at 640x480 but only allows you to show 16 colors out of the 256K palette.
+
+Finally, something peculiar to the PS/2 Model 30 is the MCGA which is a subset of the other video modes.  It supports all the CGA modes and the VGA mode 19.
+
+The chart below shows all the different video modes Perfect Vision supports, their resolutions, number of colors, and the adapters they work on.
+
+Mode  Resolution   Colors            Graphic boards
+----------------------------------------------------
+ 4    320x200       4                CGA, EGA, MCGA, VGA
+ 5    320x200       4(gray)          CGA, EGA, MCGA, VGA
+ 6    640x200       2                CGA, EGA, MCGA, VGA
+
+ 7    720x348       2                Hercules
+
+13    320x200       16(4 gray)       EGA, VGA
+14    640x200       16(4 gray)       EGA, VGA
+16    640x350       16/64(4 gray)    EGA, VGA
+18    640x480       16/256K(16 gr.)  VGA
+19    320x200       256/256K(16 gr.) VGA
+
+
+
+Appendix B: Dithering
+
+
+Dithering is a sneaky way of using the display to present what appears to be more colors or shades than the display actually supports.  Let's examine the theory behind this.
+
+Images are represented on the display by small dots called "pixels".  Pixels are arranged in rows and columns; the number of   rows and columns depends on your display's resolution.  Each pixel can be one of the colors your display can show, or black (which most people treat as just another color).
+
+Most displays have a high enough resolution so that individual pixels are hard to see, and this is the secret of dithering.  Because pixels are so small and close together, a black pixel placed next to a white pixel looks like one gray pixel.  When placed in the middle of a large picture that fills the display, pairs of such dots can be used to make colors or shades that are blendings of the basic shades produced by the display.
+
+Now, the reason most dithering is made with two pixels side by side is simply this; the function of almost all video screens is such that pixels are more tightly packed side-to-side than they are top-to-bottom.  This means that pixels beside each other blend more easily.
+
+Perfect Vision supports 4-pixel dithering (four pixels in a square) on some video adapters, and of course 2-pixel dithering.  
+Since dithering techniques produce a blockier picture, you have to make some tough decisions about what graphic and dithering modes to use based on your video card and your application.  For instance, when digitizing a black-and-white drawing for use in a desktop publishing program, you may wish to use no dithering for the highest resolution possible.  If, however, you wished to make 
+a "slideshow" of human faces, you might want to use 4-pixel dithering to get as much depth and texture into the picture as possible.
+
+
+
+Appendix C: Printer Ports
+
+
+When you turn your computer on, it searches for the number of printer ports installed in your computer.  The computer can recognize up to three printer ports (if they are installed).  The computer follows a priority for these ports and designates them as LPT1, LPT2, and LPT3.
+
+Some video adapter boards come with a parallel port included.  Some IBM compatibles come with a parallel port already installed.  Also, I/O boards are available with parallel ports on them.  All of these ports can be configured for one designation or another, but if you have only one parallel port, it will always be seen by the computer as LPT1.
+
+The Perfect Vision software allows you to choose which printer port to use with a selection on the main menu screen.  It does not do this automatically, so if at first you cannot get input from your Perfect Vision, try changing the active port.  Do not automatically assume that if you have two ports they will be LPT1 and LPT2.  Different settings come on different boards.
+
+
+
+Appendix D: Pallette Registers
+
+
+Some video adapter boards come with a predefined set of colors (or gray scales), but most allow a set of color "registers" to be  filled with a color from a larger set called a "pallette".  For example, mode 16 (on EGA and VGA cards) allows for 16 color registers to be filled with colors from a pallette of 64 colors.
+
+The reason that the Perfect Vision software allows you to load PC  Paintbrush files when you cannot edit them is that you also load the particular color register combination used for that picture.  This is useful when capturing sequences of frames for animation purposes, or when you are capturing pictures that you want to merge (using a paint program).
+
+
+
+Appendix E: RAW Disk Format
+
+
+Perfect Vision saves data in a RAW format (really no format at all).  This is an almost straight dump of screen data to a file.  Pixels are saved left-to-right, top-to-bottom in a format of two pixels per byte.  Since pixels coming from the Perfect Vision are always in 16 grey-scales, any pixel can be represented by four bits.  A byte contains 8 bits, so we can put two pixels in a byte.  This method of saving data is definitely not plane-by-plane.
+
+In all 32,000 bytes are saved for each non-interlaced screen, and 64,000 bytes are saved for an interlaced picture.
+
+Because the IBM and Amiga versions of Perfect Vision are really just the same device,  we were able to make the RAW format completely interchangable.  This means that the Perfect Vision software on the Amiga and the PCs can share data just by sending the RAW files through modems.
+
+Also, for our customers who want to use their Perfect Vision on both machines, we offer software kits for a reasonable price.
+
+
+
+Appendix F: Color
+
+
+Perfect Vision was originally developed for the Commodore Amiga computer.  However, from the beginning it was designed so that it 
+would be usable by almost any computer with the proper cabling and software.  This is why it is an external box and not a board and why it has its own power supply.
+
+Perfect Vision for the Amiga is capable of doing color pictures using three color filters and a 3-pass process.  The IBM version,  however, being a totally different beast, does not support color in this, first, version.
+
+Color filters are provided for this product not because we don't care to take them out, but because we are commited to providing the IBM user with full color support in a future version of the Perfect Vision-IBM software.  This update will be available for less than $10.00 (perhaps even free) to all registered owners, and is expected in the Fall of 1988.  Just a reminder, then, to send in your registration card.  This is the only way we can be sure to get you all of the information and upgrades available.
+
+When this update becomes available, it will also support our new product, the Perfect Vision Color Splitter.  This box will allow you to grab color pictures from a color camera or freeze-framed VCR. The 9-pin connector on the back of your Perfect Vision is for use with the Color Splitter; the connections will allow software control of the color seperation process.
+
+

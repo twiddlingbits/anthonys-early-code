@@ -1,0 +1,82 @@
+#include "exec/types.h"
+#include "exec/exec.h"
+#include <fcntl.h>
+
+struct GfxBase *GfxBase=NULL;
+struct IntuitionBase *IntuitionBase=NULL;
+struct Library *LayersBase=NULL;
+struct Library *GadLibBase=NULL;
+struct StudioBase *StudioBase=NULL;
+struct Library *InterfaceBase=NULL;
+
+void openlibraries()
+
+{
+void closelibraries();
+
+StudioBase=(struct Library *)OpenLibrary("studio.library",0);
+if (StudioBase==NULL) {
+	exit(10);
+	}
+
+/** open gadget library **/
+
+GadLibBase=(struct Library *)OpenLibrary("gadlib.library",0);
+if (GadLibBase==NULL) {
+   closelibraries();
+	exit(10);
+	}
+
+/* open intuition library */
+
+IntuitionBase=(struct IntuitionBase *)OpenLibrary("intuition.library",33);
+if (IntuitionBase==NULL) {
+   telluser("Use Workbench 1.2 or greater.","",0);
+   closelibraries();
+   exit(10);
+   }
+
+/* open graphics library */
+
+GfxBase=(struct GfxBase *)OpenLibrary("graphics.library",0);
+if (GfxBase==NULL) {
+   telluser("Can't open graphics library!","",0);
+   closelibraries();
+   exit(10);
+   }
+
+/** Open arpbase for the file requester **/
+
+LayersBase = (struct Library *)OpenLibrary("layers.library",0);
+if (LayersBase==0) {
+   telluser("Can't open layers library!","",0);
+   closelibraries();
+   exit(10);
+   }
+
+if ((InterfaceBase=(struct Library *)OpenLibrary("Interface.library",0))==NULL)
+	{telluser("Can not open interface lib","",NULL);closelibraries();exit(10);}
+
+}
+
+void closelibraries()
+{
+if(InterfaceBase)
+	 CloseLibrary(InterfaceBase);
+
+if (IntuitionBase)
+   CloseLibrary(IntuitionBase);
+
+if (GfxBase)
+   CloseLibrary(GfxBase);
+
+if (LayersBase)
+   CloseLibrary(LayersBase);
+
+if (GadLibBase)
+	CloseLibrary(GadLibBase);
+
+if (StudioBase)
+	CloseLibrary(StudioBase);
+}
+

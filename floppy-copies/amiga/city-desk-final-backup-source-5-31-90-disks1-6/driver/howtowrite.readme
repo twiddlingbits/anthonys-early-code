@@ -1,0 +1,417 @@
+            How to Write a V1.3 Graphics Printer Driver
+            -------------------------------------------
+
+    THESE NOTES SHOULD BE USED IN CONJUNCTION WITH THE NOTES IN THE
+ROM KERNAL MANUAL ON HOW TO WRITE A GRAPHIC PRINTER DRIVER.
+
+Render.c
+--------
+
+In General:
+    - the arguments (ct, x, y, status) should be declared as 'longs'.
+    - EVERYTIME YOU CALL 'PWRITE' YOU MUST CHECK THE RETURN CODE AND
+      IF IT ISN'T 'PDERR_NOERR' YOU MUST EXIT IMMEDIATELY!  If you do
+      not do this the user may not be able to cancel/abort the printing.
+    - EVEN IF YOU'VE WRITTEN LOTS OF DRIVERS BEFORE AND THINK THAT YOU
+      ARE AN EXPERT PLEASE READ ALL OF THE ENCLOSED DOCUMENTATION AND
+      SOURCE CODE!  SOME THINGS HAVE CHANGED.  THERE ARE DEFINITE
+      REASONS BEHIND THE NEW RECOMMENDATIONS, SOME OF WHICH RELATE TO
+      FEEDBACK FROM USERS, PROGRAMMERS, ETC.  PLEASE ADHERE TO OUR
+      GUIDELINES SO THAT YOU'LL WRITE A COMPATIBLE DRIVER.
+
+Pre-Master Initialization (case 5):
+
+    ct - NA.
+     x - io_Special flag from the IODRPReq structure.
+     y - NA.
+
+    This is the first call that you will get.  The value in 'x' should be
+used to tailor your driver according to the 'SPECIAL_' flags found in
+'devs/printer.h'.  Currently the ONLY flags that you will be interested in
+are 'DENSITY1' to 'DENSITY7'.  See the 'EpsonX' or 'HP_LaserJet' source
+file(s) 'render.c' and 'density.c' for an example of how to handle this call.
+The flag 'SPECIAL_CENTER' should be ignored (it will always be clear anyway).
+The printer device now grabs this flag, adjusts the x offset accordingly
+(passed in case 1, explained below), and then clears this flag.
+
+    You should return 'PDERR_NOERR' after this call.  YOU SHOULD NEVER
+CALL PWRITE DURING THIS CASE!  THE HP_LASERJET SOURCE CODE HAS BEEN
+CHANGED (FROM THE BETA 2 RELEASE) TO REFLECT THIS.  REFER TO THE NEW
+(GAMMA 1 (or later)) HP_LASERJET SOURCE CODE FOR AN EXAMPLE OF HOW TO
+PROPERLY SELECT A DENSITY.
+
+    We recommend that when writing a driver that no density below 80
+dpi be supported.  This results in a minimum of 640 dots across for
+a standard 8.5 x 11 inch piece of paper (8.0 inches x 80 dpi => 640 dots).
+This gives a 1-1 correspondence with width dots on the screen
+(with a standard 640 x 200/400 rastport) to dots on the printer.
+Note that the HP_LaserJet driver is a minor exception to this rule
+in that its minimum density is 75 dpi.  The was done as the HP_LaserJet
+(not the PLUS or II) has so little memory that 75 dpi is the only density
+at which it is able to output a full page.
+
+Master Initialization (case 0):
+
+    ct - a pointer to a IODRPReq structure.
+     x - width (in pixels) of printed picture.
+     y - height (in pixels) of printed picture.
+
+    As before this is the call where you should allocate the memory that
+you will need to store the data for the printer.  If the allocation fails
+you should return an error of 'PDERR_BUFFERMEMORY'; if it succeeds an error
+of 'PDERR_NOERR' should be returned.  This is also a good time to do any
+one-time initializations to either the printer or your buffer.  DO NOT
+RESET THE PRINTER AS PREVIOUSLY RECOMMENDED AS THIS CAUSES PROBLEMS
+DURING MULTIPLE DUMPS!
+
+    YOU SHOULD NOT USE THE VALUE IN 'CT' UNLESS YOUR PRINTER IS ONE
+OF THOSE RARE KIND THAT FOR SOME REASON A RENDER FUNCTION CANNOT
+BE WRITTEN.  WITH THE ADDITION OF THE 'CASE 6' CALL AND THE
+'PCC_MULTI_PASS' color class type (found in devs/printer.h),
+NO KNOWN PRINTER NEEDS THIS VALUE!  If you do use the value in 'ct'
+and do the entire dump yourself then your MUST return an error of
+'PDERR_TOOKCONTROL' which tells the printer device that the dump has
+already been done and to exit gracefully.
+
+    As explained above, you should return either 'PDERR_BUFFERMEMORY'
+or 'PDERR_NOERR' after this call.  If your allocation for memory succeeds
+and you then call 'PWrite' to send some initialization cmds to the
+printer, you should return the return code from 'PWrite'.  Refer to the
+source code for an example of this.
+
+
+Put Pixel(s) in Buffer (case 1):
+
+    ct - pointer to a PrtInfo structure (found in 'devices/prtgfx.h').
+     x - PCM color code for this pass (only for PCC_MULTI_PASS printers).
+         The 'PCM' defines can be found in 'devices/prtgfx.h'; they
+         are 'PCMYELLOW', 'PCMMAGENTA', 'PCMCYAN' and 'PCMBLACK'.
+         These codes are used to index into the 'ColorInt' array
+         found in the 'PrtInfo' structure.
+     y - print head row # (range is 0 to PED->ped_NumRows - 1).
+
+    THIS CALL HAS COMPLETELY CHANGED FROM THE PREVIOUS SPEC TO
+FACILITATE SHORTER DUMP TIMES!  In this call you are passed an
+entire row of YMCB (Yellow/Magenta/Cyan/Black) intensity values.
+The code for this case has been broken out into a separate file;
+please refer to the 'Transfer.c' notes below.
+
+    You should return 'PDERR_NOERR' after this call.
+
+
+Dump Buffer To Printer (case 2):
+
+    ct - NA.
+     x - NA.
+     y - # of rows sent (since last call).
+
+    This call has changed slightly from the previous spec and has some
+new recommendations.  When you get this call it is recommended that you
+either a) white-space strip your buffer or b) run-length-encode your
+buffer.  If your printer supports RLE (Run Length Encoding), now is the
+time to RLE your data (see the enclosed Xerox_4020 source code for an
+example; bear in  mind that your printer's RLE algorithm may differ).
+If your printer doesn't support RLE then your should white-space strip
+your data.  This involves scanning your buffer from back to front for
+the first occurrance of a non-zero value.  You should send only the data
+up to this point.  In other words, DO NOT SEND TRAILING WHITE_SPACE
+DATA TO THE PRINTER.  USING EITHER OF THE ABOVE TWO TECHNIQUES WILL
+SIGNIFICANTLY REDUCE PRINT TIMES (DEPENDING ON THE DATA INVOLVED)!
+The 'y' variable should be used to figure out how many pixels to
+advance the paper (if your printer supports this feature; most do).
+Implementing this new feature will allow successive graphic dumps
+to butt up against each other (which is desirable).
+
+    You should return the error from 'PWrite' after this call.
+
+
+Clear and Init Buffer (case 3):
+
+    ct - NA.
+     x - NA.
+     y - NA.
+
+    This call is made BEFORE each case 1 call.  You should clear your
+active print buffer (remember you're double buffering) and initialize
+it if necessary.
+
+    You should return 'PDERR_NOERR' after this call.
+
+
+Close Down (case 4):
+
+    ct - error code (the reason why we are here).
+     x - io_Special flag from the IODRPReq structure.
+     y - NA.
+
+    This call is made at the very end of a graphic dump OR if the
+graphic dump was aborted/cancelled for some reason.  YOU SHOULD NOT
+INDISCRIMITELY FREE THE PRINT BUFFER'S MEMORY!  The print buffer's memory
+should only be freed if you allocated it.  If 'PD->pd_PrintBuf' is not NULL
+then you must have allocated the memory, so you must free it up.  Refer to
+the enclosed source code for the proper way to do this.  If your printer
+(usually a page oriented printer) requires a page eject command, you
+should do it here.  If the 'SPECIAL_NOFORMFEED' bit is set in 'x',
+then you should NOT send the page eject command.  Refer to the
+'HP_LaserJet' source code for an example of this.  NOTE THAT IF THE
+ERROR CODE (CONTAINED IN 'CT') IS 'PDERR_CANCEL' YOU SHOULD NOT DO ANY
+PWRITES DURING THIS CALL!  An error of 'PDERR_CANCEL' indicates that the
+user is trying to cancel the print due to a printer problem, paper out
+condition, etc.  If you did do any PWrites and the printer was hung up,
+another 'Printer Trouble' requestor would come up for each individual
+PWrite that you performed here (obviously we want to avoid this).  Refer
+to either the 'HP_LaserJet' or 'CalComp_ColorMaster' source code for an
+example of how to correctly handle the error code in 'ct'.
+
+    You should return either 'PDERR_NOERR' or the error from 'PWrite'
+(if you need to call it) after this call.
+
+
+Switch to Next Color (case 6):
+
+    ct - NA.
+     x - NA.
+     y - NA.
+
+    THIS IS A NEW CALL!  This call has been introduced so that drivers
+for color printers that require a color (either Y, M, C, or B) be
+defined in its entirety can be supported.  When this call is made you
+should instruct the printer to advance its color panel.  Refer to the
+'ColorMaster' source code for an example.  99.9% OF YOU DRIVER WRITERS
+OUT THERE CAN IGNORE THIS CALL (actually you'll never receive it), SO
+DON'T EVEN BOTHER WRITING ANY CODE FOR THIS CASE.
+
+
+Printertag.asm
+--------------
+
+    YOU MUST MAKE SURE THAT THE VERSION NUMBER OF YOUR DRIVER IS SET TO 35,
+THIS IDENTIFIES IT AS A V1.3 DRIVER.  THE VERSION NUMBER IS DEFINED JUST
+ABOVE THE '_PEDData' STRUCTURE IN PRINTERTAG.ASM.  It is important that you
+declare enough constants/storage in this file.  Refer to the source code
+for an example.  Of special note are the new fields '8BitChars',
+'PrintMode' and 'ConvFunc'.  8BitChars is a pointer to a table of chars
+for the ascii codes $a0 through $ff; make this null (DC.L 0) if you don't
+provide the table.  PrintMode is a flag set by the printer device and used by
+you in DoSpecial and/or Render if you are working with a page oriented
+printer (like a HP LaserJet).  PrintMode requires 4 bytes of storage
+(ie. DS.L 1).  ConvFunc is a pointer to a character conversion function
+that allows you to selectively translate any character to a combination of
+any other characters.  ConvFunc's arguments are a pointer to a buffer,
+the character in question, and a cr/lf flag.  If you translate the character
+then you should return the number of characters that that the original
+character translated to else return -1 if you didn't do any translation.
+If you don't have a translation function (most printers won't) then you must
+declare the pointer to be null (ie. DC.L 0).  The code for the conversion
+function can be put virtually anywhere (ie. data.c, dospecial.c, etc.).
+Here is an example of a simple conversion function:
+
+
+    ConvFunc(buf, c, flag)
+    char *buf, c;
+    int flag; /* expand lf into lf/cr flag (0-yes, else no ) */
+    {
+        int err;
+
+        if (c == '0x7f') { /* change DELETE to '<DEL>' */
+            *buf++ = '<';
+            *buf++ = 'D';
+            *buf++ = 'E';
+            *buf++ = 'L';
+            *buf++ = '>';
+            err = 5; /* I added this many chars to the buffer */
+        }
+        else {
+            err = -1; /* I didn't do anything with the char */
+        }
+        return(err);
+    }
+
+    Another use for this routine would be to support underlining on a printer
+that doesn't do automatic underlining.  You could have an underline flag
+that would tell you if underlining was on or off.  If off, your routine
+would do nothing (return -1).  If on, your routine would put the char,
+backspace, and the underline character in the buffer and return '3'.
+It is recommended that you pass '0x1b' (ESC) and '0x9b' (CSI) back to the
+printer device (ie. do not process them; simply return -1).  WHEN DOING
+MULTIPLE EXPANSIONS (like the example above) TRY AND KEEP THE EXPANSION
+TO A MINIMUM.  THIS WILL HELP YOUR THRUPUT AND REDUCE THE POSSIBILITY
+OF DATA OVERRUN.  THE PRINTER DEVICE CURRENTLY HAS A FIXED LENGTH INTERNAL
+BUFFER TO STORE THE CHARACTERS FOR ANY GIVEN LINE.
+
+
+Density.c
+---------
+
+    Refer to the enclosed source code for the recommended way to implement
+multiple densities (THIS HAS CHANGED FROM THE V1.2 SPEC!).  Of special note
+is the logic for selecting which density to use.  Basically the code should
+select the desired density OR the highest possible density if the user asked
+for a density higher than you support.  ie. If your driver supports four
+densities (DENSITY1 through DENSITY4) and the user selected DENSITY6,
+then your code should select DENSITY4.  Refer to the EpsonQ or EpsonX
+source code for an example of how to support both narrow (8.5 inch)
+and wide (14 inch) paper.
+
+Transfer.c
+----------
+
+    This is the heart of the new printer drivers which consists of 3 parts;
+Scaling, Dithering, and Rendering an entire row of source pixels as
+explained below.
+
+    Scaling - execute the scaling code VERBATUM from the source code!
+              The code is duplicated here for convience:
+              sx = *sxptr++;
+              (where sxptr is initialized to PInfo->pi_ScaleX)
+
+              'sx' is an integer telling you how many times
+              to use each SOURCE pixel.  This value may be different
+              for some SOURCE pixels so the code MUST be executed
+              for each SOURCE pixel.
+
+    Dither - this involves either thresholding, grey-scale dithering,
+             or color dithering each DESTINATION pixel.  If
+             'PInfo->pi_threshold' is non-zero, then the dither value is
+             'PInfo->pi_threshold ^ 15'.  If 'PInfo->pi_threshold' is zero,
+             then the dither value is :
+             '*(PInfo->pi_dmatrix + ((y & 3) * 2) + (x & 3))' where x is
+             initialized to 'PInfo->pi_xpos' and is incremented for each
+             DESTINATION pixel.  Again refer to the source code for
+             an example.  SINCE THE PRINTER DEVICE USES A 4x4 DITHER
+             MATRIX YOU MUST CALCULATE THE DITHER VALUE EXACTLY AS
+             GIVEN ABOVE.  IF YOU DON'T YOU'LL END UP WITH A NON_STANDARD
+             DRIVER AND GET UNPREDICTABLE RESULTS!
+
+    Render - this involves putting the pixel in the print buffer based
+             on the dither value.  If the intenisty value for the pixel
+             is GREATER than the dither value (computed above) then the
+             pixel should be put in the printer buffer.  If you are
+             working with a YMCB printer and you have rendered Black
+             for a specific pixel then YOU SHOULD NOT render either
+             Yellow, Magenta, or Cyan for that pixel!  Refer to the
+             source code of any of the YMCB ColorClass printers for
+             an example of this.
+
+ ColorType  Notes
+ ---------  -----
+     BW - you must always test the Black intensity value against the
+          dither value to see if you should render the pixel.
+          (refer to the HP_LaserJet source code for an example)
+
+    YMC - Thresholding - use the Black intensity values BUT output
+                         YMC to make Black.
+          Else - if not color then use the Black intensity values BUT
+					output YMC to make Black.
+               - else use the YMC (no Black) intensity values.
+          (refer to the CalComp_ColorMaster2 source code)
+
+   YMCB - Thresholding - use only the Black intensity values.
+          Else - if Black is rendered then ignore the YMC values.
+               - else if color then dither/render the YMC values.
+          (refer to the Xerox_4020 source code for an example).
+
+ YMC_BW - Thresholding - use the Black intensity values.
+          Else - if not color then use the Black intensity values.
+               - else use the YMC (no Black) intensity values.
+          (refer to the Okimate_20 source code)
+
+    In general, if Black is render for a specific printer dot then the
+    YMC values should be ignored.  This is the case since the combination
+    of YMC is Black.  NOTE:  It is HIGHLY recommended that you construct
+	your buffer such that the order in which the colors are output are
+	Yellow followed by Magenta followed by Cyan followed by Black.  This
+	is most important on color ribbon printers as it reduces the amount
+	of ribbon color contamination.  ie. If you printed Black and then
+	Yellow, the Yellow ribbon would get some Black ink on it.
+
+    YOU MUST FOLLOW THESE INSTRUCTIONS EXACTLY AND TO THE LETTER!!!
+    FAILURE TO DO SO WILL RESULT IN A NON_STANDARD PRINTER DRIVER
+    THAT WILL WRECK HAVOC WITH THE USER.  IF YOU DON'T QUITE UNDERSTAND
+    HOW TO IMPLEMENT THIS CALL, RE-READ THE DOCUMENTATION AND REFER TO
+    THE ENCLOSED SOURCE CODE LIBERALLY FOR EXAMPLES OF HOW TO DO IT!
+    IE. THE SOURCE CODE IS THERE, USE IT!!!  I CAN'T EMPHASIZE THE ABOVE
+    NOTICE ENOUGH!
+
+    The bulk of the execution time of a graphic dump is spent in this
+    call.  ie. This is an excellent candidate for re-coding to assembler.
+
+DoSpecial.c
+-----------
+
+    If you are writing a driver for a page oriented printer (like a
+HP_LaserJet) then you should delete the dummy 'Close' routine from the
+'init.asm' file and insert a real 'Close' routine at the bottom of this
+file.  This 'Close' routine is responsible for ejecting the paper after
+text has been sent to the printer and the printer device has been closed.
+Refer to the 'HP_LaserJet' 'DoSpecial.c' source code for an example of
+the correct way to write a 'Close' routine.  Some printers lose data
+when sent thier own reset command.  For this reason we highly recommend
+that if you use the printer's own reset command to issue a reset that you
+define the variable 'PD->pd_PWaitEnabled' to be a character that the printer
+normally wouldn't print.  You then put this character in the reset string
+(in data.c) before and after the reset character(s).  For example: In the
+Epson dospecial.c source code you will see the line
+
+    if (*command == aRIS) {
+        PD->pd_PWaitEnabled = 253; /* same as \375 */
+    }
+
+and in the data.c file the string for reset is "\375\033@\375".  This means
+that when the printer device goes to output the reset string "\033@" that
+it will 'eat' the "\375" and wait one second, then it will send the "\033@",
+and finally it will 'eat' the second "\375" and wait one second.  This insures
+that no data will be lost if a reset command is imbedded within a string.
+ie. "Hello \033#1world" where '\033#1' is the code for reset.
+
+	We no longer recommend that you issue a carriage-return/linefeed in the
+initialization code.  Instead just a carriage return should be issued.
+
+Data.c
+------
+
+Typefaces:
+
+    There is now support for selecting different typefaces.  Due to the
+extended character translation table, the character set selection
+commands (aFNT0 - aFNT10) are really no longer needed.  If you want
+your driver to support different typefaces you can use the FNT commands
+to select typefaces 0 (default) through 10.  See the HP_LaserJet data.c
+source code for an example of selecting different typefaces.  Please
+comment (in the data.c file) which typefaces are selected by which commands.
+We recommend that you follow our suggested standards (found in printer.h)
+for selecting typefaces.
+
+Raw Mode: (new command)
+
+    There is now an escape sequence command (aRAW) which sets the printer
+device into 'raw' mode (no translation of data is done) for a specific
+number of characters.  This command can be used to send commands directly
+to the printer from the CLI.  The format is ESC[Pn"r where 'Pn' is an ascii
+digit argument specifying that the next 'Pn' characters are NOT to be
+translated but sent directly to the printer.  ie. ESC[5"r  means that the
+next 5 characters are to be sent directly to printer.  For future
+compatibility, you can add a dummy entry of '\377' in the data.c table.
+
+How to test your driver
+-----------------------
+
+1. Do a Black&White (with threshold = 7), GreyScale, and Color dump of the
+   same picture.  The Color dump should be in color.  The GreyScale dump
+   should look like the Color dump except it will consist of patterns of
+   black dots (sort of like looking at a B&W television).  The Black&White
+   dump will have areas of SOLID BLACK and areas of SOLID WHITE.  If you
+   have written a driver for a non-color printer (ie. black only) then
+   forget the Color dump print.
+
+2. Do a dump with the DestX and DestY dots set to an even multiple of the
+   XDotsInch and YDotsInch for your printer.  ie.  If your printer has a
+   resolution of 120 x 144 dpi, do a 480 x 432 dump.  The printed picture
+   should be 4 x 3 inches on the paper.  If the WIDTH of the picture is
+   off then you either a) made a mistake in the scaling code or
+   b) put the wrong value for XDotsInch in printertag.asm.  If the HEIGHT
+   of the picture is off then you have put the wrong value for YDotsInch
+   in printertag.asm.
+
+3. Use the supplied program 'PrinterTest' to give the alpha commands a
+   real workout.

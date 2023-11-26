@@ -1,0 +1,70 @@
+[lj] - Left justify
+
+[rj] - Right justify
+
+[cj] - Center justify
+
+[fj] - Fill justify
+
+[lm n] - Set left margin (within the box) to n
+
+[rm n] - Set right margin (within the box) to n
+
+[indent n] - Set paragraph indent for left and fill justify.  The left
+   margin is NOT used.  Example:
+
+      This is lm 3 and
+   indent 6 characters.
+
+    (New paragraph) this is
+        lm 8 and indent 4, an
+        example of reverse indent.
+
+[leading n] - Sets line leading to n.  Line leading is the distance between
+   the baselines of the two lines.  Note that leading=0 is legal, and will
+   result in the lines overprinting each other on the same line.
+
+[spacing n] - Sets line spacing to n.  Line spacing is the distance from the
+   bottom of one line to the top of the next.  Note that leading and spacing
+   are mutually exclusive, i.e. you use only one method at a time.  Spacing
+   is most useful when making extensive font or size changes, as the
+   distance between lines will automatically adjust itself to the size of
+   the fonts on the line.
+
+[parspace n] - Sets the paragraph spacing to n.  This is the amount of
+   vertical space between paragraphs.  Note that it is added to the leading
+   or spacing.
+
+[mag f] - Sets the text magnification factor to f.  Mag 1 is normal size.
+   Both magnification (like mag 2.5) and shrinking (like mag .8) are
+   allowed.
+
+[magx f] - Sets text magnification in the horizontal direction only to f.
+
+[magy f] - Sets text magnification in the vertical direction only to f.
+
+[spacestretch n] - Sets the maximum space stretch to n.  When fill
+   justifying a paragraph, spaces must normally be stretched so the right
+   margin will line up.  If the amount of stretching exceeds this parameter,
+   then the space between characters will also be stretched.
+
+[it] or [italic] - Sets italics.
+
+[bd] or [bold] - Sets bold.  Both bold and italics can be set at the same
+   time.
+
+[un] or [under] or [underlined] - Sets underline.
+
+[compress] - Sets compressed mode.  Good only for laser fonts.
+
+[pl] or [p] or [plain] - Clears italic, bold, underline, and compress modes.
+
+[fsize n] - Sets font size to n.
+
+[font s] - Change font to s (s is a font name, like "topaz" or "roman").
+
+[font s n] - Change font to s and size to n.
+
+[s n] - Change font to s and size to n.  Shorthand for font command.
+
+

@@ -1,0 +1,4 @@
+save.o+openlibraries.o,*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o,*
+prog:interfacelib/interfacestub.o

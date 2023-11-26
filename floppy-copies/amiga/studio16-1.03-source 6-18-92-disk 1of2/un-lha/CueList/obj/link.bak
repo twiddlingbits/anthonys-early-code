@@ -1,0 +1,1 @@
+blink lib:cback.o WITH objlist TO runtime:CueList LIB lib:lcmieee.lib + lib:lcnb.lib + lib:amiga2.0.lib+lib:debug.lib SC SD NODEBUG

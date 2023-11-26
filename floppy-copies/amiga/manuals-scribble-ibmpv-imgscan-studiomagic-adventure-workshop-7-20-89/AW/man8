@@ -1,0 +1,2562 @@
+
+
+
+
+
+                    Adventure  Workshop
+                          Manual
+
+                     by Thom Robertson
+
+
+Introduction
+
+Welcome to the fascinating hobby of adventure game writing.  The Adventure Workshop system will allow you to create whole new worlds for you and your friends to explore.  Adventure Workshop gives you the powerful language and text capabilities of a text adventure, together with sound and graphic abilities found in few  other graphic adventure systems.
+
+What Is an Adventure?
+
+You probably know already what a computer adventure game is, but if you don't, this section is here to help.  
+
+An adventure game is simply a computer game which is designed to present the player with a simulated reality in which the player can move about, interact with things and people, and solve puzzles in an effort to win the game.  What this means is that, instead of blasting aliens from your spacecraft (like one would do in an acrade game) you get to reason with them, sneak around them, or try to avoid them altogether.
+
+Almost all adventure games allow you to "talk" to the computer by 
+typing what you want to do on the keyboard.  They then type back, telling you what happened or what you see.  For instance, a typical text adventure might go like this:
+
+Player:go north
+
+Computer:You go north, and see a very large dragon here.
+
+Player:kill dragon
+
+Computer:What will you use?
+
+Player:the sword
+
+Computer:You kill the dragon with the sword.  You are victorious!
+
+As you can see, computers can act as a guide through a mythical world.  But most people can get bored with a computer that does nothing but type,  so many computer adventures also have graphics and sound in them.  This way, you can actually see the monster and hear its roar.  The basic function of an adventure game, to present a player with a complex puzzle and give him or her many options with which to solve it, has not changed.
+
+
+What Is Adventure Workshop?
+
+Adventure Workshop is a computer language tailor-made to the creation of adventure games.  The adventure you write with Adventure Workshop can use sounds and graphics as well as custom fonts and text.
+
+Adventure Workshop can create stand alone adventures.  This means that you can give your adventures to your friends who don't have the Adventure Workshop system.  It also means that you do not have to include lots of bulky source files on your adventure disk.
+
+Adventure Workshop supports the Amiga IFF file standard.  This means that you can use your favorite paint program to create graphics for your adventure.  You can also use a sound digitizer like the Perfect Sound sound sampler to record sound effects for your adventure.  Lastly, you can use your favorite word processing program to create the adventure itself.
+
+Adventure Workshop is an easy language to learn.  Even if you have never programmed anything before, you should have little trouble mastering this simple and straightforward language.
+
+Adventure Workshop is fast.  The system includes a symbolizing program which packs and sorts your adventure code before it is executed (made to work) by the interpreter.  This results fast and efficient operation.
+
+
+Distribution Agreement
+
+SunRize Industries will allow owners of the Adventure Workshop package to freely distribute copies of games they have created using Adventure Workshop.  In accordance with this, the file INTERPRETER can also be freely distributed, since it is required for the adventure's operation.  The INTERPRETER file and all sound and graphic files included in the Adventure Workshop package may be freely distributed only when the intent is to distribute a working adventure game f‚o‚r‚ ‚n‚o‚n‚-‚c‚o‚m‚m‚e‚r‚c‚i‚a‚l‚ ‚u‚s‚e‚, and those files are a part of that game.
+
+Under no cirumstances may the SYMBOLIZER file be given away or sold.  This file may only be copied for archival purposes.  The Adventure Workshop manual and all written material published by SunRize Industries pertaining to the Adventure Workshop system may never be copied or reproduced in any way.
+
+Sample Adventure
+
+The sample adventure, Sample Adventure, can be played immediately.  First ,though, make a backup of the Adventure Workshop disk and store the original in a safe place.  Never use your original; disk failures can happen to the best of us.  For information about making a backup, refer to your Amiga user manual.
+
+Now, turn on your computer and insert your copied Adventure Workshop disk.  Double-click on the Adventure Workshop disk icon, and when the window appears, Double-click on the INTERPRETER icon.  The Sample Adventure adventure should now run.  Enjoy.
+
+If you have any problems getting your sample adventure to work,  reread this section and try again.  If it still does not work,  make another backup disk and try with that disk.  If nothing works, call SunRize Industries and we will try to help you.
+
+
+Making an Adventure
+
+
+Programming
+
+A computer program consists of a series of commands which together achieve the desired goal.  Just as you would tell a friend where to meet you by an ordered series of instructions (such as "go down Maple Street two blocks, then turn right") you tell a computer what to do by giving it a series of instructions.
+
+Because a computer is so stupid, you must choose the instructions you will use carefully.  Also, because a computer is not smart enough to know a human language, you must converse in a limited language that the computer c„a„n„ understand.  The language we will use, for obvious reasons, is Adventure Workshop.
+
+When computer instructions are put together, they are collectively called a p„r„o„g„r„a„m„, or simply c„o„d„e„.
+
+In Adventure Workshop, a program is written in a text file, just like you were writing a letter on your computer.  The program starts at the top, and goes down line by line.  Each line of the program is one command.
+
+When a computer actually gets around to acting upon the instructions you give, the computer is said to be e„x„e„c„u„t„i„n„g„ your program.
+
+Because Adventure Workshop is an adventure game system, its language is tailored just for writing adventures.  When the Adventure Workshop interpreter operates, it first gets input from the player of the game.  Then it executes your program, which considers the input received by the player, and tells Adventure Workshop how to react.  This means that your program is completely executed many times during a game.  This is a big difference between Adventure Workshop and most other languages, which execute just once.
+
+A Player's Eye View of Adventure Workshop
+
+There are several aspects of the Adventure Workshop system that are standardized for ease of use.
+
+One basic aspect is the screen.  The screen which Adventure Workshop works within  is 640 x 200 with 16 colors.  The screen always has two immovable windows.  The top window contains information about where the player is and what surrounds him or her.  The bottom window contains text (and sometimes graphics) which tell the player what is happening.  This is also where the player types in his or her actions.
+
+The player exists in a world of several locations (rooms) which are interconnected by the directions North, South, East, West, Up, or Down.  The player may find objects and people in these rooms which he or she can interact with.  Some of the objects may be carried, and if so they are considered to be in the player's "inventory".
+
+The player has several built-in commands which he or she can use.  These commands cannot normally be changed by the programmer.
+
+NORTH  - moves the player north if it is possible
+SOUTH  - moves the player south if it is possible
+EAST   - moves the player east if it is possible
+WEST   - moves the player west if it is possible
+UP     - moves the player up if it is possible
+DOWN   - moves the player down if it is possible
+
+INVENTORY - prints a list of objects the player is currently carrying.  This list appears in the lower window.
+
+The player may type only partial words for the directions (such as NOR, INVEN, E, etc.).
+
+Adventure Workshop has a last-command memory.  At any time the player can hit the up-arrow key to re-type his last command.
+
+
+A Programmer's Eye View of Adventure Workshop
+
+An Adventure Workshop adventure is defined by two text files.  One defines the areas which the player moves through.  The other is an actual program which controls the adventure, and does things like displaying graphics, playing sounds, etc.
+
+As stated in the player's eye view,  the screen of Adventure Workshop is fixed at 
+640 x 200 in 16 colors.  Two windows are always on the screen.  Except for a choice of two sizes for these windows,  the programmer has no control over their placement.
+
+The screen colors and graphics that appear outside the window area can be defined by the programmer in an IFF graphic picture (made with the paint program of the programmer's choice or one of the pre-made backgrounds that come on your disk can be used).  This picture can then be loaded with the BACKPIC command.
+
+The text font used in the adventure can be any normal Amiga font which resides on disk.  The fonts topaz 8 and topaz 9 are already in memory and can be used.  The color of the text in both the upper and lower windows can be changed at any time with the COLOR command.  The default font is topaz 8.  The default color is color 1.
+
+The text in the upper window is updated and formatted automatically by Adventure Workshop.  The programmer has no control over this, except for the text color and the room descriptions in the room decription file.
+
+The text in the lower window is completely controlled by the programmer.  Text can be placed in the window with the TY: and NTY: commands.  Graphics can be placed in the window with the DISG command.  Adventure Workshop will type a prompt string and a cursor in this window when it needs input from the player.  The prompt string can be defined by the PROMPT command.  The default prompt is "What do you want to do?".
+
+The programmer defines the locations that the player moves through in the room decription file.  These rooms cannot be removed or added during the course of play, but the connections between them can be modified with the CONNECT command.  The room file also defines the objects that the player finds and interacts with.  These objects can be repositioned with the RM+, RM-, IN+, and IN- commands. They can also be removed completely with the DESTROY command.
+
+Adventure Workshop structures its programs into beginning, main, and background segments.  These segments are all the same language, and they exist in the same text file;  they are simply segregated.  Adventure Workshop structure looks something like this:
+
+first instruction
+instruction
+instruction
+MAIN
+instruction
+instruction
+instruction
+BACKGROUND
+instruction
+instruction
+last instruction
+
+The group of instructions before the MAIN command is the beginning code; it    gets executed at the beginning of the game, and then never again.
+
+The group of instructions after the MAIN command and before the BACKGROUND command is the main code.  This section gets executed once every time the player types something in, unless the player typed in a movement.
+
+The group of instructions after the BACKGROUND command is the background code.  This section gets executed once every time the player types anything in, but after main code executes (if it executes at all).
+
+What Files Does Adventure Workshop Use?
+
+The Adventure Workshop language consists of two files on your Adventure Workshop disk.  These files are called SYMBOLIZER and INTERPRETER.
+
+The SYMBOLIZER file is used to pack and sort the text files you have written that describe your game.  The SYMBOLIZER outputs a file called "SYMBOL.ADV".  The INTERPRETER file then uses the SYMBOL.ADV file to run your game.
+
+The files you need to make an adventure work are:
+
+<name>.ROM     the text file which defines your adventure world
+               as a set of interconnected places (rooms)
+
+<name>.PRG     the text file which contains your adventure 
+               program
+
+SYMBOLIZER     the program which takes your two text files and 
+               processes them into one file called SYMBOL.ADV
+
+INTERPRETER    the program which uses the SYMBOL.ADV file to
+               actually make your adventure happen
+
+Various IFF    used in the adventure as directed by your text
+sound and      files
+graphic files
+
+The <name>.PRG and <name>.ROM files are files that you have to write.  The SYMBOLIZER and INTERPRETER files are provided for you on Adventure Workshop Disk A.  The graphic and sound files you use can be taken from the pre-made ones on Adventure Workshop Disk B or created from scratch with a commercial sound or graphics editor.
+
+
+Files on Your Adventure Workshop Disk
+
+Please note that most of the files on your Adventure Workshop disk cannot be seen from the Workbench.  This is because they do not have .info files associated with them.  All of the Adventure Workshop files can be seen by using the DIR command from the CLI or Shell environments.
+
+Adventure Workshop is a complete development system.  For this reason, it was set up to be used through the CLI interface.  While you can use the Workbench interface with Adventure Workshop, it is not recommended.
+
+
+Tutorial
+
+In this tutorial, we will examine two demonstration adventures; D„i„g„g„e„r„ „
+and S„p„a„c„e„ „M„o„n„s„t„e„r„.  The first and simplest, D„i„g„g„e„r„,„ must be typed in with the text editor (word processor) of your choice.  You may want to 
+use the ED or MicroEMACS editors for this purpose.  Both are included on your program disk and instructions for both are included in this manual.
+
+The second and more complex adventure, S„p„a„c„e„ „M„o„n„s„t„e„r„, is already on your program disk in the Adventures directory.
+
+Symbolizing and Playing the Digger Sample Adventure
+
+The SYMBOL.ADV file on your Adventure Workshop disk is the file created by symbolizing the SampleB.rom and SampleB.prg files in the Programs drawer.  To play the Digger adventure you must create the two files which define the adventure.
+
+Enter your text editor and type in these lines:
+
+You are in room 1.
+0,2,0,0,0,0
+$
+
+You are in room 2.
+1,0,0,0,0,0
+$
+
+Now save this text on your program disk (which should be in the internal Amiga drive).  Save using the name "Digger.rom", and put it in the a„d„v„e„n„t„u„r„e„s„ „directory.  You can do all this simply by saving as "df0:adventures/Digger.rom".
+
+Now, re-enter your text editor and type in these lines:
+
+in+ shovel
+
+MAIN
+
+v:dig
+  if room=1
+    ty:You find nothing.
+    done
+  endif
+  if room=2
+    ty:You find a sack of gold!
+    done
+  endif
+
+Save this text on your program disk (which should still be in the internal Amiga drive).  Save using the name "Digger.prg", and put it in the a„d„v„e„n„t„u„r„e„s„ „directory.  You can do all this simply by saving as "df0:adventures/Digger.prg".
+
+Now you can use the SYMBOLIZER program to symbolize the Digger.rom and Digger.prg files.
+
+From the Workbench screen, with your Adventure Workshop disk in drive DF0: (the internal drive), click on the Adventure Workshop disk icon.  When the window opens, click on the SYMBOLIZER icon.  When the SYMBOLIZER runs, it opens an option window with several buttons.  Click on the button labeled "Filename"; a file requester window will then appear.  The long bar on the bottom of this window (with the word "File" next to it) is a place for you to type in a file name.  Click on the bar, and then type "Adventures/Digger.prg".  Hit the return key.  The requester window will go away.  Now click on the button named "Compile".  This window should go away, and you should see several messages on the remaining window, the last of which will be "Hit RETURN to Continue."  Press the return key.
+
+If the program was correctly typed in, you should not see any messages that start with the word "ERROR:".  If you do see such a message, your program did not SYMBOLIZE correctly and will not work.  Go back and re-edit the Digger files to see what went wrong.
+
+If all went well, your SYMBOL.ADV file should now be changed to operate the Digger adventure.  Click on the INTERPRETER icon to play Digger.
+
+
+Understanding the Digger Sample Adventure
+
+This is the text that goes into the two files which define the Digger adventure.
+
+
+Room Text (Digger.rom)
+
+You are in room 1.
+0,2,0,0,0,0
+$
+
+You are in room 2.
+1,0,0,0,0,0
+$
+
+
+Program Text (Digger.prg)
+
+1   in+ shovel
+2   
+3   MAIN
+4   
+5   v:dig
+6     if room=1
+7       ty:You find nothing.
+8       done
+9     endif
+10    if room=2
+11      ty:You find a sack of gold!
+12      done
+13    endif
+
+Note that the numbers (1-13) that begin each line of this program are just here to make it easier for us to discuss it.  Line numbers do not normally appear in Adventure Workshop programs.  Such numbers would generate errors when the program was SYMBOLIZED.
+
+The Digger adventure gives the player a shovel and two rooms in which to dig.  One room yields nothing, and the other has a sack of gold buried in it.
+
+Let's look at the room description first.  The room file is organized into entries for each room. each entry is separated by a space.  The Digger adventure happens to have two rooms.
+
+Within each entry, the data for the room is organized in a rigid format.  First comes the text description of the room, terminated by a return.  The next six numbers (on the next line) represent the rooms the player enters when he or she moves north, south, east,  west, up, and down (respectivly) from this room. Any of the numbers which are to represent directions the player cannot go from this room should be set to 0.  Placement of commas is critical in this line.  There should be a comma between each of the numbers, but no commas at the beginning or end of the line.
+
+The last line indicates which nouns (objects) are in this room when the game begins.  Nouns are separated by a space, and the line is terminated by a '$' and a return.  If no item starts in this room, simply put a '$' on this line.
+
+Since there are no numbers indicating room number in the entry,  rooms are numbered by the placement of each room entry within the file.  Put more simply, the third entry defines room 3, the seventeenth entry defines room 17, etc.
+
+Each room entry must consist of three (3) lines.  Line length is unimportant.  Lines are terminated by returns.
+
+Now let's look at the program for Digger.
+
+The first line adds the object "shovel" to the player's inventory.  This is mainly so that the player can type "inventory" and see that he or she has a shovel.  The Digger program doesn't actually have any way to pick up or drop an object.
+
+Line 3 is a definition command which sets the point at which normal program operation starts.  Any instructions before this point are executed just once, at the beginning of the game.
+
+Line 5 checks to see if the verb "dig" was typed in by the player.  If so, line 6 is executed.  If not, nothing is executed until the next V: or VEND statement.  In this case, nothing is executed; the INTERPRETER just prints "I don't understand that." and prompts the player for more input.
+
+Line 6 checks to see if the variable ROOM is currently equal to 1.  The variable ROOM happens to be a reserved variable, constantly updated by the INTERPRETER, which always holds the number of the current room the player is in.  If ROOM is equal to 1, lines 7 and 8 are executed. If not, then nothing is executed until an ELSE or ENDIF command (in this case, the ENDIF at line 9).
+
+Line 7 puts the words "You find nothing." in the lower text window.
+
+Line 8 stops execution of the program and returns control to the Adventure Workshop interpreter, which then asks for more input from the player.  After the player types something and hits return,  execution will begin at line 3 again.
+
+Line 9 is the ENDIF statement that ends the logical clause started by the IF statement in line 6.  One ENDIF statement is needed for every IF statement.
+
+Line 10 is almost exactly like line 6 except that it checks to see if the player is in room 2.  If so, execution proceeds to line 11.  If not, execution jumps to line 13.
+
+Line 11 tells the player that he or she has found a sack of gold.
+
+Line 12 and line 13 are just like lines 8 and 9, and do the same things.
+
+This is just about the shortest adventure one could make with Adventure Workshop.  Notice that we could have given the player more rooms to search, more treasure, and/or limited time (perhaps a cave-in on turn ten).
+
+
+
+Symbolizing and Playing the Space Monster Sample Adventure
+
+The SYMBOL.ADV file on your Adventure Workshop disk is the file created by symbolizing the SMonster.rom and SMonster.prg files in the Programs drawer.  To play the Space Monster adventure you must first use the SYMBOLIZER program to symbolize the SMonster.rom and SMonster.prg files. 
+
+
+Understanding the Space Monster Sample Adventure
+
+This is the text that goes into the two files which define the Space Monster adventure.
+
+
+Room Text (SMonster.rom)
+
+
+// Space Monster room description //
+
+You are in the control room.
+0,0,2,0,0,0
+computer $
+
+You are in an access tunnel.
+0,0,3,1,0,0
+extinguisher $
+
+You are at the airlock entrance.
+0,0,0,2,0,0
+$
+
+
+Program Text (SMonster.prg)
+
+1  // starting section of code - remember, this stuff only happens
+2     once!  //
+3  backpic 2 graphics/screen1
+4  prompt What now, Cap'n Ned?
+5  font topaz.font 9
+6  
+7  ty:You are the dashing space ace, ^nCaptain Ned.
+8  ty:You are on the space freighter Zam-Zam.
+9  ty:Something EVIL is trying to get in!
+10 ty:
+11 monsterin=10
+12 oldroom=room
+13 loadsound sounds/beeps
+14 disg graphics/console
+15 playsound sounds/beeps 0 64
+16 
+17 MAIN
+18 // main code - this stuff happens every time a player types in
+19    anything besides a direction (movement) or "inventory" //
+20 
+21 // deal with picking up objects (in this case, only the fire extingisher
+22    can be picked up, and then only after it has been found) //
+23 
+24 v:get,take,grab
+25   n:extinguisher,can,sprayer
+26     if ROOM CONTAINS extinguisher
+27       ty:okay!
+28       rm- extinguisher
+29       in+ extinguisher
+30       update
+31       done
+32     else
+33       ty:You don't see that here.
+34       done
+35     endif
+36 
+37   n:computer,screen
+38     if ROOM CONTAINS computer
+39       ty:You can't budge it.
+40       done
+41     else
+42       ty:You don't see that here.
+43       done
+44     endif
+45   nend
+46 
+47 // deal with setting down objects:
+48    notice that since we didn't allow the player to pick up the
+49    computer, we don't have to deal with it in any special way
+50    here. //
+51 v:drop,leave
+52   n:extinguisher,can,sprayer
+53     if INVENTORY CONTAINS extinguisher
+54       ty:okay!
+55       rm+ extinguisher
+56       in- extinguisher
+57       update
+58       done
+59     else
+60       ty:You aren't holding that.
+61       done
+62     endif
+63   nend
+64   ty:You aren't holding that.
+65   done
+66 vend
+67 
+68 // deal with use of fire extinguisher //
+69 v:fire,use
+70   n:extinguisher,sprayer
+71     if INVENTORY CONTAINS extinguisher
+72       ty:The fire extinguisher sprays out a dense, white fog.
+73       if alienfound=1
+74         ty:The space alien screams and expires!
+75         ty:You have won this adventure!^h
+76         end
+77       endif 
+78       done
+79     else
+80       ty:You don't have that!
+81       done
+82     endif
+83   nend
+84 vend
+85 
+86 v:wait,rest
+87   ty:Time passes...
+88   done
+89 vend
+90 
+91 // This is the end of MAIN code: if the program reaches this point,
+92    the message "I don't understand that." will be printed and
+93    the BACKGROUND code will NOT be executed.   //
+94 
+95  BACKGROUND
+96  // this code is executed every time the player types in anything
+97     (except for the inventory command and mis-typed stuff which
+98     would cause program flow to reach the end of the MAIN code //
+99  
+100  if oldroom=room
+101  else
+102   if ROOM CONTAINS extinguisher
+103     disg graphics/exting.
+104   endif
+105 
+106   if ROOM CONTAINS computer
+107     disg graphics/console
+108   endif
+109 
+110   if room=1
+111     playsound sounds/beeps 0 64
+112   endif
+113   if room=2
+114     playsound sounds/beeps 0 44
+115   endif
+116   if room=3
+117     playsound sounds/beeps 0 24
+118   endif
+119 
+120 endif
+121 
+122 if monsterin>0
+123   monsterin=monsterin - 1
+124   endif
+125 
+126 if alienfound=1
+127   ty:The alien devours you messily!
+128   ty:You have lost this adventure.^h
+129   end
+130 endif
+131 
+132 if room=3 and monsterin=0
+133   disg graphics/alien
+134   ty:The alien creature is here!
+135   alienfound=1
+136 endif
+137 
+138 oldroom=room
+
+
+Once again, it needs to be noted that the line numbers of this listing do not actually appear in the real code.  They are simply here to facilitate explaining the program to you.
+
+In the Space Monster adventure, the player can move between a computer room, an access tunnel, and an airlock room.  He or she can pick up and use a fire extinguisher.  He or she can also try to pick up the computer, without much success.  Finally, he or she can simply wait for time to pass.
+
+On the tenth turn of the game a horrible alien monster invades the airlock room.  The player can kill it with the fire extinguisher, but if he or she doesn't do so immediately upon encountering the alien, it will eat the player.
+
+First we will examine the room description text.  Notice that the Space Monster adventure has three rooms; a control room (room 1), an access tunnel (room2), and an airlock room (room3).  The control room contains a computer console, and the tunnel has a fire extinguisher in it.  The airlock room has nothing inside it.
+
+Now let's examine the program itself.
+
+Lines 1 and 2 are comment lines.  They are there simply so that the programmer can mark things or remind him- or herself of something special going on.  The SYMBOLIZER throws these lines away without even looking at them;  therefore, you can type anything in as a comment.
+
+Comments are defined by having a double-slash (//) at the beginning and end.  Comments can be several lines long, and you don't have to put double-slashes around every line.
+
+Comments do not show up in the SYMBOLIZER's output when you use the -p option.
+
+Line 3 is a definition command which defines the IFF graphic to be used as the background picture.  When the INTERPRETER runs, it will get this picture off the disk and display it on the screen before anything else can happen.  Only one background picture can be used during the adventure.
+
+The screen type (either type 1 or type 2) is also defined with this command.  In this case, a type 2 screen (with smaller, narrower windows than the type 1 screen) was selected.  If a type 1 screen had been used, the windows would be larger, with more space for text and less for border graphics.  It is important to realize that the INTERPRETER cannot get any information about the window sizes from the graphic itself.  If you want a screen to look good, your graphic has to conform to the definitions of the particular type of screen you are using.
+
+Line 4 is a definition command defining the text prompt that the INTERPRETER will use when getting input from the player.  This text will appear in the lower window, followed by a cursor, when input is required.  In this case, the words "What now, Cap'n Ned?" will appear.  Only one prompt string can be used during an adventure.
+
+Line 5 is yet another definition command.  This one defines the font and font size to be used for the adventure.  Only one font and font size can be used for an adventure.
+
+The lines 7-10 are TY: statements which tell the player who and where he or she is at the beginning of the adventure.  Remember, since these lines are before the MAIN command, they get executed just once, at the beginning of the game.
+
+Line 11 is an assignment statement.  A human would say "put the number ten into the variable named 'monsterin'".  This variable will be used to time things so that the space monster appears in the airlock room on turn 10.
+
+Line 12 is also an assignment statement.  This statement makes the variable 'oldroom' equal to the variable 'room'.
+
+Now, the variable 'room' is a reserved variable, which means that Adventure Workshop already has dibs on using it.  In particular, the INTERPRETER always keeps the 'room' variable filled with the number of the room the player is currently occupying.  Your program can use this 'room' variable at any time to find out where the player is.
+
+The reason we are copying 'room' into 'oldroom' here is simply to update it. The real reason is explained in lines 98-118.
+
+Line 13 is a command which loads an IFF sound from disk into memory.  A sound channel (one of four on the Amiga) is also allocated to the  sound.  This command does NOT play the sound.
+
+Line 14 loads an IFF graphic from the disk and immediately sticks it in the lower text window.  The text is scrolled out of the way to make room for the picture.  In this case, a picture of a computer console is shown, because that is what is in the room.
+
+Line 15 plays the sound that was loaded in line 13.  because of the arguments of the command ("0 64"), this sound will be played in a continuous loop at full volume.
+
+Line 17 is the MAIN statement for this program.  All of the lines  before this command get done only once, at the beginning of the game.
+
+Lines 18, 19, 21, and 22 are more comment statements.
+
+Line 24 is a V: statement checking for the verbs "get","take", or "grab".  If any of these words were typed in, the next statement to be executed will be line 25.  If not, program flow will skip to line 50 (the next V: statement).
+
+Line 25 is a N: statement checking for the nouns "extinguisher", "can", or "sprayer".  If any of these words were typed in, the next statement to be executed will be line 26.  If not, program flow will skip to line 36 (the next N: statement).
+
+line 26 checks to see if the extinguisher (not the sprayer or can) is in the room with the player.  If not, control goes to line 31 (an ELSE statement).
+
+If the player has indeed typed "get extinguisher" (or one of the other words checked for in lines 24 and 25, and the fire extinguisher is in the room with the player, then we need to let the player pick the object up.
+
+We start by telling the player that he or she was successful (with the TY: statement in line 27).  Then we remove the 'extinguisher' object from the room (line 28).  We also put 'extinguisher' into the player's inventory (line 29).
+
+Lastly, we provide a DONE command to tell the INTERPRETER that the job has been done and to go on to the BACKGROUND code (line 31).  The UPDATE command (line 30)also forces the INTERPRETER to update the information in the upper window.  This is necessary since the object is no longer in the room; it's in the player's inventory.
+
+Line 32, an ELSE command, asks the question "What happens if the extinguisher was not in the room with the player?" (as checked for in line 26).  If the extinguisher was in the room, flow jumps from this command to line 35 (an ENDIF statement).  If not, flow proceeds to line 33.
+
+Line 33 tells the player that the object was not here.
+
+Line 34 stops execution of the program and tells the INTERPRETER to execute the BACKGROUND code (if there is any; in this case there is) and then go get input.
+
+Line 35 is an ENDIF statement (for the IF statement in line 26).
+
+Lines 37-44 are very similar to lines 25-35.  While lines 25-35 let the player get the extinguisher (provided certain conditions are met), Lines 37-44 check if the player is trying to pick up the computer.  If so, the message "You can't budge it." is printed and nothing happens.
+
+Line 45 is a NEND statement.  This statement is like an ENDIF statement, but instead of closing the logical branch caused by an IF command, the NEND command corresponds to the previous N: command (on line 37).  If you have another N: or V: command coming up right away, this command is not really necessary.  However, it is always good practice to finish what one starts.
+
+Note that internal logic (IF, ELSE, ENDIF) and input logic (V:, N:, NEND, VEND, etc.) are two totally seperate things.  Internal logic is nestable; that is, you can put IF statements inside other IF statements.  Input logic is not; for instance, one V: statement cannot be considered to be nested inside another.
+
+Instead, input logic follows a strict heirarchy.  Verb logic (V:,VEND) is considered first, followed by noun logic (N:,NEND), adjective logic (A:,AEND), and finally prepositional object logic (P:,POEND).  For instance, NEND will close branches created by the N:, A:, and P: commands, but not a branch created by V:.
+
+ALL internal logic is subservient to input logic.  Even a POEND command will cause all nested IF branches to close (as if it were a super-ENDIF command).
+
+Lines 47-50 are more comment lines.
+
+As lines 24-45 dealt with picking up objects, lines 51-66 deal with dropping objects.
+
+One big difference, though, is the use of the NEND command (line 63) to enable us to tell the player "You aren't holding that" twice; once if he or she doesn't have the object (line 60) and once if he or she didn't type in a viable noun (line 64).
+
+Lines 69-84 deal with the use of the fire extinguisher.  If the player typed "use extinguisher" (lines 69-70) and he or she actually has the extinguisher (line 71) then the fire extinguisher fires, giving off "a dense, white fog."  Now, if the player has found the monster (a check of the 'alienfound' variable in line 73), the alien monster dies and the game is over (lines 74-76).
+
+Line 75 shows an interesting feature of the TY: command; the "^" character.  This character can format the text in several useful ways, depending on how it's used.  Here, we use the characters "^h" to cause a "[PRESS A KEY]"  message to immediately appear in the lower window.  The INTERPRETER then waits for a key press before continuing.  This function is used here to give the player time to read the message made by the TY: statements in lines 74 and 75.
+
+The text "^h" will never actually show up in the lower text window.
+
+Line 76 is an END statement.  This statement actually stops the INTERPRETER program.  It closes all files, clears all screens, and returns control to the Workbench or CLI/SHELL (depending on where you ran the INTERPRETER from).  Notice that you don't need a DONE statement after this statement; there is no point.
+
+Lines 79-82 deal with the player trying to use the extinguisher when he or she doesn't have it.
+
+Lines 86-89 simply allow a game turn to pass if the player types in "wait".  Remember, if program flow is allowed to reach the bottom of the MAIN code (that is, the top of BACKGROUND code) without encountering a DONE command,  the message "I don't understand that." is printed and the INTERPRETER goes back to waiting for player input without executing the BACKGROUND code.
+
+Line 95 is the definition command BACKGROUND.  All lines after the BACKGROUND command are considered BACKGROUND code.
+
+BACKGROUND code is executed EVERY time the player types in something, unless the end of MAIN code is reached (which causes an "I don't understand that" message). 
+
+BACKGROUND code is the only section of a program which executes after the player moves (types NORTH, SOUTH, EAST, WEST, UP, or DOWN).
+
+BACKGROUND code (and beginning code) is optional; MAIN code is not.
+
+Since BACKGROUND code executes once every game turn, it is the logical place to put timer-type code.  In this case, we will count down the ten turns until the alien space monster appears in room 3.
+
+Line 100 is an IF statement that checks if the 'oldroom' variable is still the same as the 'room' variable.  Here we are really asking if the player has moved or not.  If so, line 101 causes program flow to jump to line 120.  If not program flow continues to line 102.
+
+You can see that lines 100 and 101 act together to check if 'oldroom' and 'room' are NOT equal.  Nothing happens if they are equal.
+
+Lines 102-104 load and display the fire extinguisher if it is in the room with the player.
+
+Lines 106-108 load and display the computer console if it is in the room with the player.
+
+Lines 110-112 play the "beeps" sound at full volume (64) if the player is in room 1.
+
+Lines 113-115 play the "beeps" sound at volume 44 if the player is in room 2.
+
+Lines 116-118 play the "beeps" sound at volume 24 if the player is in room 3.
+
+Line 120 (ENDIF) closes the branch started at the IF statement in line 100.
+
+Lines 122-124 keep track of when the alien is to appear.  Line 122 makes sure that the count has not yet reached zero.
+
+Line 123 is a simple example of math in Adventure Workshop.  This assign statement gets the number from the 'monsterin' variable, takes 1 away from it, and puts the number back in 'monsterin'.
+
+These three lines are also a prime example of generic timer code.  Similar code could be used to keep track of a bomb, watch, or the air in a swimmer's air tank..
+
+In lines 126-130, the alien has lunch.  Line 126 checks to see if the player has found the monster yet.  If so, the monster eats the player, and the game is over.
+
+This war is not so one-sided, though.  Look back at lines 68-83.  Those lines let the player kill the alien with the fire extinguisher.  Since MAIN code gets executed before BACKGROUND code, we can see that the player gets one chance to use the fire extinguisher on the monster before he or she gets eaten.  Of course, the player might not be carrying the extinguisher, or might try to run away.  Since BACKGROUND code is executed even when a player moves, though, he or she is alien food unless the fire extinguisher is used to kill it.
+
+Notice that the END command is used here again (line 129) to stop the game.  Also note that we again use the "^h" embedded text command (line 128) to give the player time to read of his or her demise before the program shuts down.
+
+You may ask, "But how is the monster f„o„u„n„d„ in the first place?"  I'm glad you asked.
+
+Line 132 specifically checks to see if the monster has gotten in yet AND if the player is in the room with the monster (room 3).  Notice the AND.  The logic words AND and OR are used when the programmer wants to check for more than one thing with a single IF statement.  This is NOT the same thing as nesting several IF statements;  line 132 is just one IF statement with multiple parameters.
+
+If both tests in line 132 were true, then the alien has been officially found.  The monster graphic is displayed (line 133) and the alienfound variable is set to 1 (line 135).  Now the player has one chance to use the fire extinguisher to kill the alien (lines 68-83) before the alien eats the player (lines 126-130).
+
+Finally, line 138 makes the 'oldroom' variable equal to the current player room.  This variable is simply here to keep the program from redisplaying the extinguisher and computer pictures unless it is necessary.
+
+
+
+Advanced Concepts
+
+
+AW was designed to provide as much flexibility to the experienced programmer as possible while being easy for the novice to use.  Obviously, this is a tough standard and one that requires compromise.
+
+The AW handles basic text formatting, screen and window control, movement, and object placement.  It remains the programmer's job to create code for picking up and dropping objects, advanced text formatting, and just about everything else.
+
+Though the AW language makes the basic mechanics of a game easy,  special situations or representations take complex code.
+
+In this chapter, we will examine some of the more complex things you can do with AW to make your games more fun or unique.
+
+First, lets take a closer look at the program flow of the AW INTERPRETER.
+
+When the INTERPRETER runs, it:
+
+1. loads the SYMBOL.ADV file from disk
+2. opens an new Amiga screen and window
+3. loads and displays the background picture
+4. moves the player to room 1
+5. sets all variables to 0
+
+Then beginning code (all code before the MAIN command) is executed.  Your introduction, which can include sounds, graphics, and text, should be placed here.  If you want the player to start with objects in his or her inventory, use the IN+ command now.  If you want the player to start in a room other than room 1, use the TOROOM command now.
+
+After beginning code is finished, the upper window is updated for the first time.  The room description is printed, followed by "Obvious exits" and objects in the room.
+
+Now control is passed to the INTERPRETER's input module.  This module prints your pre-defined PROMPT in the lower window, and then accepts input (typed words followed by a RETURN) from the player.  
+
+After the player has pressed RETURN, the INTERPRETER checks to see if the player typed in a valid direction (NORTH, SOUTH, EAST, WEST, UP, or DOWN).  If so, a check is made to see if there is actually an exit from the current room in that direction.  If not, the message "You can't go that way" is printed in the lower window and control goes back to the input module.
+
+If there is an exit where the player wants to go, the player is immediately moved to the connecting room and control passes to the BACKGROUND code.
+
+While the input module will accept shortened directions (like "s" for "south" or "ea" for "east") it will not accept complex directions such as "go north" or "enter western door".  If you want the player to be able to type such commands legally, you can write code for it.  Examples of such code will appear later in this chapter.
+
+This direction section can be turned on and off with the ON DIRECTION and OFF DIRECTION commands.  It is normally on.
+
+If the player did not type in a direction, the INTERPRETER proceeds to check if the player typed in "INVENTORY" (or a part of the word).  If so, a list of the objects currently held by the player is printed in the lower window.  Then control returns to the input module.
+
+If the player did not want an inventory, the MAIN code of your program starts to execute.
+
+Your MAIN code should be mostly concerned with doing things if the player typed in something understandable.  The INTERPRETER handles a mis-typed or non-understood word by waiting until program flow reaches the bottom of MAIN code.  If ever the end of MAIN code is reached, the message "I can't understand that" is printed in the lower window and control immediately goes back to the input module.
+
+Therefore, you should design your code as a series of "nets" which catch the text that you want your program to understand (like "get book" and "kill dragon with sword").  The "nets" should make things happen (put the book into inventory, for instance) and then use the DONE command to go straight to the BACKGROUND code, thereby avoiding the end of MAIN code.
+
+If for some reason you want the BACKGROUND code to execute even if the player typed something wrong,  you can always add this code fragment to the end of your main code:
+
+ty:I don't understand that.
+done
+
+If a DONE was encountered in MAIN code, or the player moved, BACKGROUND code begins to execute. Here you should not use the input logic commands (N:, V:, etc.).  Instead, stick with IF-type logic.
+
+Though you may already have noticed, BACKGROUND code was designed to simulate time passing.  For this reason, put all of your timer code here.
+
+If you have any monsters, traps, or special events in your adventure, they should all be handled in this section.
+
+DONE commands can be used in this section, but it is not necessary.  When the end of BACKGROUND code is reached, control normally passes back to the input module.
+
+We say normally because two commands, UPDATE and NOINPUT, can change that.  If the UPDATE command was executed, a flag is set which makes the INTERPRETER update the entire upper window after completing BACKGROUND code.  This is necessary when the program moves the player with a TOROOM command or changes the room with RM+, RM-, or CONNECT commands.  After the update, control is allowed to pass to the input module.
+
+If the NOINPUT command was executed, a flag is set which can make two different things happen.  If the INJECT command was used to put text into the input buffer, the input module is by-passed, and the INJECTed text is used as if the player had typed it in.  If nothing was INJECTed, the input module operates as normal, BUT the pre-defined text PROMPT is n‚o‚t‚ printed.
+
+The INTERPRETER stops this cycle and shuts down when it executes an END command.  It will also shut down if the player types "quit" and you did not use the word "quit" in your adventure.  Either way, the shut-down is sudden.
+
+The following diagram shows this whole process graphically.
+
+INSERT FLOWCHART DIAGRAM HERE
+
+Now let's take a quick step back.
+
+The beginning code is where you should put an introduction explaining where the player is and what he or she is supposed to do.  The MAIN code is where you handle all of the things the player can do.  The BACKGROUND code is where you handle all of the things the environment (including monsters) does.
+
+Earlier we promised to show you how to handle complex directions, and now we will.  Examine this code fragment:
+
+v:go,move,run,walk
+  n:north
+    inject north
+    noinput
+    done
+  n:south
+    inject south
+    noinput
+    done
+  n:east
+    inject east
+    noinput
+    done
+  n:west
+    inject west
+    noinput
+    done
+  n:up
+    inject up
+    noinput
+    done
+  n:down
+    inject down
+    noinput
+    done
+vend
+
+This code is simple, but powerful.  If the movement parser cannot process a complex direction, it passes the whole line to the main parser.  There, the movement words are treated just like any other words, and are isolated.  When this code is executed, the key movement word will be recognized as a noun, and the code behind the N: command will be executed.  This particular code simply INJECTs the proper terminology for that direction into the input buffer.  Then the NOINPUT flag is set and a DONE is issued.  The movement parser then can act correctly on the new input.  The result is a movement, which was (hopefully) what the player wanted in the first place.
+
+Now on to other things.
+
+One of the more versatile commands in AW is WAIT.  using WAIT right after displaying a graphic is the only way to place a graphic in the lower window 
+that takes up the e„n„t„i„r„e„ „window.  Actually, you can place any size graphic you want in the window.  However, if the graphic is too large, part of your background graphic will be drawn over.  If the graphic is not small enough to allow for one line of text beneath it, the text will cause the window to  scroll, pushing the top of your graphic off the window.
+
+That's where WAIT comes in.  Immediately after displaying your big graphic, use a WAIT [number] command to give the player time to see it.  After the WAIT, you are free to clear the window ("^c" in a TY: command) and format a 
+text description of what the player just saw.
+
+WAIT is even more powerful in conjunction with sounds.  While AW does not support SMUS format music, you can achieve great-sounding music with an audio digitizer (like Perfect Sound) and AW.
+
+Examine this code fragment:
+
+playsound sound1 1 64
+wait sound1
+playsound sound2 1 64
+
+This code, when executed, would play sound1, wait for it to end, and then play sound2.  There would no dicernable gap between the two sounds.  This means, theoretically, that you could make your AW program say a sentence by playing sounds which are individual words.  Actually, since only four sounds can be loaded into AW at any one time, this is not feasable.  Also, the difference between the end of one word and the start of another would be audible.
+
+However, music (stuff straight off the radio) doesn't have these problems.  You could use a digitizer to record parts of a song, edit the song into manageable chunks that fit together, and play them using AW.  Because of the Amiga's special sound chips, you can even load new parts of the song into memory while playing old parts.
+
+This technique has been successfully used to play entire three-minute songs on a 512K Amiga.
+
+Of course, it's not quite that simple.  To cut and piece together music this way requires great patience and a good musical ear.  However, if you or a friend meets those requirements, you can achieve astonishing results.
+
+
+
+Code Limitations
+
+
+Though every effort has been made to create as flexible a system as possible, there are still limits on aspects of creating adventures with AW.  These limitations are shown on the chart below.
+
+                                    Max. Amount       Max. Size
+TY: commands                         2000               200 char.
+verbs                                1000               200 char.
+nouns                                 500               200 char.
+adjectives                            255               200 char.
+prep. objects                         255               200 char.
+objects                               255               200 char.
+variables                             255               200 char.
+file names                            255               200 char.
+object in a room                       20
+symbolized code                                        5000 bytes
+sounds                                  4                no limit
+graphics                         no limit                no limit
+
+
+Actually, sounds and graphics a„r„e„ „limited by the amount of free CHIP RAM available.  However, AW itself places no limits on these things.
+
+
+
+Command Summary
+
+=            assign statement
+A:           logic test for adjectives
+AEND         logical end for A:
+AND          logical ANDs two if statements
+BACKPIC      defines graphic to be used as background
+CLEARSOUND   erases a sound from buffer
+CLOSE        closes a file
+CONNECT      connects or disconnects two rooms
+DESTROY      removes object from game, wherever it is
+DISG         loads and displays graphic in lower window
+DONE         ends program flow, returns to text input
+ELSE         logical inverter (used after IF statement)
+END          ends game; stops Adventure Workshop
+ENDIF        ends control area of an IF statement
+FONT         defines text font to be used in game
+IF (<,=,>)   conditional statement
+IF ROOM CON  conditional that checks for objects in rooms
+IF INV CON   conditional that checks for objects in inventory
+IN+          adds object to inventory
+IN-          removes object from inventory
+INJECT       inserts text into the input line
+LOADGAME     loads compete game status from disk
+LOADSOUND    loads sound file into buffer
+N:           logic test for nouns
+NEND         logical end for N:
+NOINPUT      makes a DONE command re-execute program immediately
+NTY:         prints variable in lower window
+OPEN         opens a disk file
+ON DIRECTION enables the direction module
+OFF DIRECTION disables the direction module
+OR           logical ORs two IF statements
+P:           logic test for prepositional objects
+PLAYSOUND    plays previously loaded sound
+POEND        logical end for P:
+PROMPT       defines text to be used as input prompt
+READ         reads from an OPENed file
+RM+          adds object to room
+RM-          removes object from room
+RND          puts a random number in a variable
+SETCOLOR     sets color of subsequent text commands
+STOPSOUND    stops a playing sound
+STOREGAME    stores compete game status on disk
+TOROOM       moves player to a room immediatly
+TY:          prints text in lower window
+UPDATE       makes a DONE command update both windows
+V:           logic test for verbs
+VEND         logical end for V:
+WAIT         halts program temporarily
+WAITOFF      defines use of text scrolling prompt
+WRITE        writes to an OPENed file
+
+
+
+Command Reference
+
+Variables
+
+Variables are words in the program which stand for storage places in memory.  Thus, a variable's purpose is to hold any number you put into it.  One variable can hold only one number, and in Adventure Workshop that number cannot have a decimal point in it (though it can be negative or positive).
+
+Variable names consist of letters only.  They cannot also contain numbers or punctuation marks.
+
+Legal variable names:
+
+flagA
+axemurderer
+Timer
+
+Illegal variable names:
+
+flag1
+axe murderer
+bomb*timer
+
+You do not need to initialize or declare a variable in Adventure Workshop.  Simply using it will insure its inclusion by the symbolizer.  All variables are set to 0 at the beginning of the interpreter's operation.
+
+File Names
+
+Many Adventure Workshop commands accept file names as arguments.  A filename is literally the name of a file that resides on disk.  The path of a filename (the particular disk or drawer it is in) should always be included as a prefix to the filename itself.  Filenames should not have spaces in them.  The normal CLI convention of putting quotes around filenames that include spaces will not work in Adventure Workshop.
+
+Legal filenames:
+
+monster.pic
+df1:graphics/pie
+Work_Disk:gun_5
+
+Illegal filenames:
+
+monster pic
+df1:graphics: pie_pic
+df0/gun
+
+Notice that, unlike variable names, filenames CAN include punctuation and numbers.  For more information about filename and path syntax, consult your Amiga CLI manual.
+
+Whenever you refer to a file, graphic, or sound, use the same name.  If you use path information in an OPEN command, but just use the filename when trying to CLOSE it,  Adventure Workshop will be confused.
+
+
+Command Syntax
+
+The following commands are displayed in a standardized format.  This is for ease of use and clarity.  This is an example of the format as it is used in the RM+ statement:
+
+RM+ (number) [object] 
+
+First comes the command in uppercase.  Upper case is not really necessary to the symbolizer;  it simply defines the command word.
+
+Next is the list of arguments for that command.  If the argument is enclosed in brackets, the argument has to be there; it is mandatory.  If enclosed in perentheses, the argument is optional.  Here is a list of possible arguments:
+
+filename        name of a graphic, sound, or text file
+variable        variable name 
+object          object the player interacts with (hat, gun, etc.)
+word or words   verbs, nouns, adjectives, prepositional objects
+                also a text line like "You are dead."
+number          integer number (no decimals)
+letter          single character
+
+If one of several arguments can be used in one space, they are seperated in the definition by commas.
+
+
+Command:=            assign statement
+
+Type:Math
+
+Syntax:[variable]=[variable,number] (+,-,*,/) (variable,number) ...
+
+Explanation:Math assignments can be made to any variable.  While the number to the left of the equal sign must always be a variable, all of the others can be either a variable or a number. The spacing is critical in this command.  The equal sign must have no spaces on either side of it.  Between all other operators and variables, one space is necessary.
+
+There is NO precedence in the math routines of Adventure Workshop.  This means that in the statement "A=1 + 2 * 10", A will be assigned the value of 30.
+
+Remember that variables can only consist of letters, not numbers, spaces, or punctuation.
+
+Examples:
+          pig=6 * albert - nova
+          ralph=minivan + center / 10
+
+          if bombtimer>0
+             bombtimer=bombtimer - 1
+          else
+             ty:BOOOOOOMMMM!!!!!
+          endif
+
+This last example shows one of the fundamental uses of math in Adventure Workshop.  The bombtimer variable is reduced by one every time this code fragment is executed.  When the variable reaches zero, the bomb explodes.
+
+
+
+
+Command:A:           logic test for adjectives
+
+Type:Input Logic
+
+Syntax:A:[word],(word),(word),...,(word)
+
+Explanation:Tests for an adjective match.  If the present inputed adjective is one of the words following  a: , flow proceeds. If not, nothing is executed until the next  a: or aend command.  This command overrides everything else except verb and noun logic.
+
+Examples:
+
+          A:big,gigantic,huge,large,monsterous
+
+          V:get
+            N:bottle
+              A:pepsi
+                ty:You've won the Pepsi challenge!
+              A:coke
+                ty:You <expletive> Coke drinker!
+              aend
+              ty:Please specify Coke or Pepsi.
+            nend
+          vend
+
+In this last example, we see how your program could seperately handle a player typing "get coke bottle" and "get pepsi bottle".
+
+
+
+
+Command:AEND         logical end for A:
+
+Type:Input Logic
+
+Syntax:AEND
+
+Explanation:Ends adjective logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb and noun logic.
+
+Examples:
+
+          A:red
+            (code here)
+          AEND
+
+
+
+
+Command:BACKPIC      defines graphic to be used as background
+
+Type:Definition
+
+Syntax:BACKPIC [number] [filename]
+
+Explanation:This command defines the name of the IFF graphic which will be used as your background picture.  The picture must be in IFF format, and must be a 640 x 200 x 16-color picture.  Actually, Nearly any IFF picture will load, but other formats will look strange or have garbage in them, or won't fit the screen.
+
+Adventure Workshop supports two different screen types, but the only way they differ is in the size of the two text windows used by the Adventure Workshop interpreter.  Type 1 screens have bigger text windows than type 2 screens;  the graphic files on your Adventure Workshop disk named "type1.pic" and "type2.pic" show the dimensions of the two types.
+
+The first argument is the screen type (a 1 or a 2) and the second is the filename.
+
+Remember that the filename should also include the path.  For instance, if your background picture was called "race_picture", it was for type 2 windows, and it was on the disk called "data-disk" in the "graphics" drawer, the command would look like this:
+
+BACKPIC 2 data-disk:graphics/race_picture
+
+The BACKPIC command is optional.  If the SYMBOLIZER doesn't find it in 
+your program, it will assume you want a blank type 1 screen.  That is what you will get when the INTERPRETER is run.  Note that the default screen does not reside on disk; it is created from scratch by the INTERPRETER.
+
+Examples:
+
+          BACKPIC 1 DF0:graphics/type1.pic
+          BACKPIC 2 Joe's_Adventure_Disk:picture
+
+
+
+
+Command:CLEARSOUND   erases a sound from buffer
+
+Type:Sound
+
+Syntax:CLEARSOUND [filename]
+
+Explanation:This command deallocates the memory of the specified sound, removing it from memory.  The sound must be loaded again to be of use again.
+
+Examples:
+
+         CLEARSOUND beep.snd
+         CLEARSOUND df1:sounds/hello
+
+
+
+
+Command:CLOSE        closes a file
+
+Type:File
+
+Syntax:CLOSE [filename]
+
+Explanation:This closes a file previously opened by the OPEN command.
+
+Remember to check the reserved variable S„T„A„T„U„S„ „to be sure this command worked correctly.
+
+Examples:
+
+         CLOSE highscores
+         CLOSE Gamedisk:files/data_A
+
+
+
+
+Command:CONNECT      connects or disconnects two rooms
+
+Type:Environment
+
+Syntax:CONNECT [number] [letter] [number] [letter]
+
+Explanation:This command is the only command which can alter the room connection map defined in the ".rom" file.  Any two rooms can be connected in any way.
+
+Example:
+
+          CONNECT 3 N 4 S
+          ty:The door is now open!
+
+In this first example, room 3 and room 4 are connected.  After the execution of this command the player in room 3 will be able to go north into room 4, and vice versa.
+
+Example:
+
+          CONNECT 23 U 4 W
+
+This example shows that the player can move up from room 23 to 4, and can move back by going west.  
+
+Examples:
+
+          CONNECT 18 W 0 N
+          CONNECT 17 E 0 N
+          ty:The door is now closed.
+
+These examples show how to disconnect two rooms, in this case rooms 17 and 18.  The "N" after the "0" in this case is necessary to the SYMBOLIZER but unused.
+
+
+
+
+Command:DESTROY      removes object from game, wherever it is
+
+Type:Environment
+
+Syntax:DESTROY [object]
+
+Explanation:This command seeks out and destroys all instances of the object specified. 
+
+If, for example, there were 3 individual sticks of dynamite in different rooms (or the player inventory) and they were all called "dynamite", destroying "dynamite" would make them all disappear.
+
+Examples:
+
+          ty:BOOOOMMMMM!!
+          if room contains dynamite
+            ty:You are killed by the blast!
+          endif
+          destroy dynamite
+
+This example shows how an object (in this case, dynamite) can be removed 
+from the game.  The IN- and RM- commands could also remove an object, but only DESTROY is global.
+
+
+
+
+Command:DISG         loads and displays graphic in lower window
+
+Type:Graphic
+
+Syntax:DISG [filename]
+
+Explanation:This command (display graphic) loads a graphic file from disk and displays it in the text window. The text is scrolled up until enough room is made for the graphic.  After the graphic is placed in the text window, it scrolls off the top just like text.
+
+Because of this graphic system, it is important to follow some simple guidelines for making and using your graphics.
+
+1.  Don't make a graphic that is larger than your lower text window.  Remember that the windows are smaller in the type 2 format than they are in the type 1 format.  Graphics which are too large will write over the bottom of your background screen, making an unsightly mess.
+
+2.  If possible, make the graphic small enough to allow one line of text underneath it.  This may or may not be possible, depending on which font you use, but it is always a good idea.
+
+3.  When creating your custom graphic,  remember that you have much more horizontal space than you do vertical space on the screen.
+
+4.  Don't forget the extra power these commands give you:
+   a: the "^h" text option, which automatically puts a "<PRESS A KEY>" prompt on the screen and waits for a keypress.
+   b: the WAIT command, which can stop the whole program for a period of time so your graphic won't scroll off prematurely.
+
+Examples:
+
+          DISG face.pic
+
+          DISG df1:celebrities/Cher
+          ty:You see Cher in the crowd.  Quick! Go get
+          ty:her autograph!^h
+
+
+
+
+Command:DONE         ends program flow, returns to text input
+
+Type:Internal Logic
+
+Syntax:DONE
+
+Explanation:This command stops execution of the current section of code; if the command occurs in MAIN code, the INTERPRETER immediately starts executing the BACKGROUND code.  This is necessary because the INTERPRETER will print "I can't understand that." and skip the BACKGROUND code if the end of the MAIN section of code is reached.
+
+If the DONE command occurs in BACKGROUND code, the INTERPRETER returns control to the input module.
+
+Note that the UPDATE and NOINPUT commands are used to modify the effects of a DONE command in interesting ways.
+
+Examples:
+
+          ty:You got the gold.
+          IN+ gold
+          DONE
+
+
+
+
+Command:ELSE         logical inverter (used after IF statement)
+
+Type:Internal Logic
+
+Syntax:ELSE
+
+Explanation:This command directly reverses the condition(true or false) of the preceeding IF command.  It will not work with any of the input logic commands.
+
+Examples:
+
+         if engineon=0
+           ty:The car's engine is off.
+         ELSE
+           ty:You drive away.
+         endif
+
+
+
+
+Command:END          ends game; stops Adventure Workshop
+
+Type:Internal Logic
+
+Syntax:END
+
+Explanation:This command ends the game.  All windows and screens opened by the program are closed; all memory is returned to the pool.  Control is released back to Workbench.
+
+Examples:
+
+         ty:You won the game!
+         ty:Please play again.^h
+         END
+
+
+
+
+Command:ENDIF        ends control area of an IF statement
+
+Type:Internal Logic
+
+Syntax:ENDIF
+
+Explanation:This command terminates a conditional. Simply put, program flow continues from this command whether the preceding conditional proved true or false.  All IF statements are nested, however, so if three conditionals started a segment of code, three ENDIFs would be required to end it.
+
+Examples:
+
+         if engineon=0
+           ty:The car's engine is off.
+         else
+           ty:You drive away.
+         ENDIF
+
+
+
+
+Command:FONT         defines text font to be used in game
+
+Type:Definition
+
+Syntax:FONT [word] [number]
+
+Explanation:This command defines the font used in the adventure.  Adventure Workshop can use any standard Amiga font.  The font must be where the interpreter can use it, of course.  Usually this just means that your Workbench disk needs to be in a drive, and if your whole adventure resides on a Workbench disk, so much the better.
+
+Fonts are defined by a font name (not a file name) and a number which is the vertical height of the font.  Standard fonts include topaz 8, ruby 12, diamond 20, etc.  Look on your Workbench disk under the "fonts" directory for a list of your available fonts.
+
+Examples:
+
+      FONT ruby.font 12
+
+      FONT sapphire.font 19
+
+
+
+
+Command:IF (<,=,>)   conditional statement
+
+Type:Internal Logic
+
+Syntax:IF [variable,number][<,=,>][variable,number]
+
+Explanation:This is Adventure Workshop's standard conditional statement.  If true, flow proceeds normally.  If false, it skips to the next ELSE or ENDIF  statement.  Nesting is supported.  The spacing is critical in this command; the equal sign must have no spaces on either side of it.
+
+Examples:
+
+         if pig=6 
+         if ralph=minivan 
+         if bombtimer<33
+         if flood>-4
+
+To build more complex conditional commands, you can use the AND and OR commands w„i„t„h„i„n„ an IF statement.
+
+
+
+
+Command:AND          logical ANDs two conditionals
+
+Type:Internal Logic
+
+Syntax:AND
+
+Explanation:This command ties two conditionals in an IF statement together with a conditional AND.  For instance, the code fragment
+
+IF ROOM CON bomb AND timer=0
+   TY: BOOMMMMMMMM!
+ENDIF
+
+would print "BOOMMMMMMMM!" in the text window if timer equaled zero and if the bomb was in the room with the player.  Notice that because the AND made the two conditionals use only one IF statement, only one ENDIF statement was necessary.
+
+Examples:
+
+          IF lives<1 AND lives>2
+
+          IF maxturns=25 AND seta=setb AND jerk=1
+
+Note that in IF statements with multiple parameters (like the ones above), parameters are evaluated left-to-right, just as in the assign statement.
+
+
+
+
+Command:OR           logical ORs two conditionals
+
+Type:Internal Logic
+
+Syntax:OR
+
+Explanation:This command ties two conditionals in an IF statement together with a conditional OR.  For instance:
+
+IF room=10 OR room=11 OR room=12
+    ty:It is dark here.  You cannot see anything.
+endif
+
+This code fragment would tell the player that he or she could not see if the player was in rooms 10, 11, or 12.  Notice that because the use of two OR statements make the conditionals fit inside one IF statement, only one endif is necessary.
+
+Note that you can use ORs and ANDs together in the same IF statement.
+
+Examples:
+
+          IF lives<1 OR lives>2
+
+          IF maxturns=25 AND seta=setb OR jerk=1
+
+
+
+
+Command:IF ROOM CONTAINS   conditional that checks for objects in rooms
+
+Type:Internal Logic
+
+Syntax:IF ROOM CONTAINS [object]
+
+Explanation:This conditional is true only if the object given as an argument is currently in the same room as the player.  Otherwise, it is just like an IF statement and can use ORs and ANDs.
+
+The keyword CON can be used as an abbreviation of CONTAINS.
+
+Examples:
+
+         IF ROOM CONTAINS mouse
+           ty:The elephant screams!
+         endif
+
+         IF ROOM CON grenade
+
+
+
+
+Command:IF INVENTORY CONTAINS   conditional that checks for objects in inventory
+
+Type:Internal Logic
+
+Syntax:IF INVENTORY CONTAINS [object]
+
+Explanation:This conditional is true only if the object given as an argument is currently in the inventory of the player.  Otherwise, it is just like an IF statement and can use ORs and ANDs.
+
+The keyword CON can be used as an abbreviation of CONTAINS.  The keyword INV can also be used as an abbreviation of INVENTORY.
+
+Examples:
+
+         IF INVENTORY CONTAINS cocaine
+           ty:The cop says "All right, kid. 
+           ty:Assume the position."
+        endif
+
+         IF INV CON wand
+
+
+
+
+Command:IN+          adds object to inventory
+
+Type:Environment
+
+Syntax:IN+ [object]
+
+Explanation:This command adds an object to the player inventory. It does not erase the object from wherever it was previously.
+
+Examples:
+
+      in+ nuclearbomb
+
+      in+ wallet
+      ty:Someone behind you says, "Hey!  That's
+      ty:my wallet!  Stop, thief!"
+
+
+
+
+Command:IN-          removes object from inventory
+
+Type:Environment
+
+Syntax:IN- [object]
+
+Explanation:This command removes an object from the player inventory.
+
+Examples:
+
+      in- vase
+      ty:The delicate vase shatters when you drop it!
+
+      in- sack
+
+
+
+
+Command:INJECT       inserts text into the input line
+
+Type:Environment
+
+Syntax:INJECT [word or words]
+
+Explanation:This command puts text into the input line of the INTERPRETER.  The effect is exactly as if the player had typed in the text him- or herself.  However, this text will never actually appear in the lower window.
+
+This command is designed to be used with the NOINPUT command.  When you use these two commands together, you can literally take the program control a„w„a„y„ from the player.  You can use this effect to more fully parse the player's input, or even to create a loop.
+
+
+Examples:
+
+         v:check
+           n:backpack,pack
+             INJECT inventory
+             NOINPUT
+             DONE
+           nend
+         vend
+
+This example allows the player to check his or her backpack.  The effect 
+is the same as if an inventory was requested by the player.
+
+
+
+
+Command:LOADGAME     loads compete game status from disk
+
+Type:File
+
+Syntax:LOADGAME [filename]
+
+Explanation:This command loads a previously saved game from disk under the file name specified.
+
+Examples:
+
+      v:load
+        n:game
+          loadgame gameA
+          ty:Game re-loaded.
+          update
+          done
+        nend
+      vend
+
+
+
+
+Command:LOADSOUND    loads sound file into buffer
+
+Type:Sound
+
+Syntax:LOADSOUND [filename]
+
+Explanation:   This command loads an IFF sound file into chip memory.  The sound is not played, just kept ready.  Only four sounds may be kept in memory at any one time.
+
+Examples:
+
+         LOADSOUND scream
+         LOADSOUND Sound_disk:sounds/creak.snd
+
+
+
+
+Command:N:           logic test for nouns
+
+Type:Input Logic
+
+Syntax:N:word,word,word,...,word
+
+Explanation:Tests for a noun match.  If the present inputed noun is one of the words following  N: , flow proceeds. If not, nothing is executed until the next  N: or NEND command.  This command overrides everything else except verb logic.
+
+Examples:
+
+        v:get
+          N:rope,cable,line
+            ty:You get the rope.
+            rm- rope
+            in+ rope
+          nend
+        vend
+
+
+
+
+Command:NEND         logical end for N:
+
+Type:Input Logic
+
+Syntax:NEND
+
+Explanation:Ends noun logic.  Flow will always proceed normally from this point.  This command overrides everything else except verb logic.
+
+Examples:
+
+        v:get
+          N:rope,cable,line
+            ty:You get the rope.
+            rm- rope
+            in+ rope
+          nend
+        vend
+
+
+
+
+Command:NOINPUT    makes a DONE command re-execute program immediately
+
+Type:Internal Logic
+
+Syntax:NOINPUT
+
+Explanation:This command sets a flag in the INTERPRETER which changes the action of the next DONE command.  The affected DONE returns control to just after the input module.
+
+Two different things can happen when using this command.  If the INJECT command was used to fill the input line of the INTERPRETER, this command will insure that the MAIN program is re-executed immediately.
+
+If the INJECT command was n‚o‚t‚ used, this command will simply cause the next input to be gotten w„i„t„h„o„u„t„ printing the text prompt.  This is useful when you want to temporarily provide your own prompt with a TY: statement.
+
+
+
+Examples:
+
+         v:check
+           n:backpack,pack
+             INJECT inventory
+             NOINPUT
+             DONE
+           nend
+         vend
+
+This example allows the player to check his or her backpack.  The effect 
+is the same as if an inventory was requested by the player.
+
+         MAIN
+         v:yes
+           if altinput=1
+             ty:The world explodes!
+           endif
+         v:no
+           if altinput=1
+             ty:Ok.
+           endif
+         vend
+         altinput=0
+
+         (rest of program here)
+
+         v:activate
+           n:bomb
+             ty:This is the Armeggedon Bomb.  Its use will
+             ty:destroy all life on Earth.
+             ty:
+             ty:Are you sure you want to proceed?^
+             NOINPUT
+             altinput=1
+             done
+           nend
+         vend
+
+This large and complex example illustrates how to use the NOINPUT command to provide a special and temporary prompt and deal with the resultant input in special ways.
+
+
+
+
+Command:NTY:         prints variable in lower window
+
+Type:Text
+
+Syntax:NTY:[variable]
+
+Explanation:This command prints a number to the text window.  No carriage return is issued for this statement, which means that it should usually be followed by a TY: statement.
+
+Examples:
+
+         ty:The time is now ^
+         NTY:clocktime
+         ty: o'clock.
+
+If clocktime is equal to 9, this example displays :
+
+         The time is now 9 o'clock.
+
+
+
+
+Command:OFF DIRECTION  disables the direction module
+
+Type:Internal
+
+Syntax:OFF DIRECTION
+
+Explanation:This command shuts down the ability of the AW INTERPRETER to 
+recognize and act on direction words (NORTH, SOUTH, EAST, WEST, UP, or DOWN).  This command is useful if a programmer wants to control the movement of the player in a special way or wants to use the direction words for another purpose.
+
+Examples:
+
+      OFF DIRECTION
+
+
+
+
+Command:ON DIRECTION  enables the direction module
+
+Type:Internal
+
+Syntax:ON DIRECTION
+
+Explanation:This command re-enables the ability of the AW INTERPRETER to 
+recognize and act on direction words (NORTH, SOUTH, EAST, WEST, UP, or DOWN) after the OFF DIRECTION command has been used.
+
+Examples:
+
+      ON DIRECTION
+
+
+
+
+Command:OPEN         opens a disk file
+
+Type:File
+
+Syntax:OPEN [filename]
+
+Explanation:This command opens a sequential disk file for use (either reading or writing).  While you do not have to specify whether you will read or write to this file, woe to he who trys to read and write simultaniously.
+
+Only one disk file may be open at a time.
+
+Remember to check the reserved variable S„T„A„T„U„S„ „to be sure this command worked correctly.
+
+Examples:
+
+      OPEN fileA
+
+
+
+
+Command:P:           logic test for prepositional objects
+
+Type:Input Logic
+
+Syntax:P:[word],(word),(word),...,(word)
+
+Explanation:Signifys prepositional object.  If the present inputted prepositional object is one of the words following  P: , flow proceeds. If not, nothing is executed until the next  P: or POEND.  This command overrides all internal logic.
+
+Examples:
+
+      v:put
+        n:treasure
+          P:ledge,overhang,crag,rock
+            ty:The treasure is now safely out of sight.
+            in- treasure
+            rm+ 23 treasure
+          poend
+        nend
+      vend
+
+This example deals with the player typing "put treasure under ledge".  Notice that the treasure went to room 23.  You can make room 23 a room the player cannot move into, but let the player store to and retrieve stuff from it.
+
+AW recognizes prepositional objects as words appearing after these prepositions:
+    IN, ON, UNDER, WITH, BEHIND, USING, INTO, and INSIDE.
+
+
+
+Command:PLAYSOUND    plays previously loaded sound
+
+Type:Sound
+
+Syntax:PLAYSOUND [filename] [number,variable] [number,variable]
+
+Explanation:This command plays an IFF sound at the speed specified in its file.  You can choose to make it repeat or play a finite number of times.  You can also choose the volume (0-64).  The arguments, in order, are the sound name, the number of times the sound plays, and the volume.   Setting the loop number to zero is how you make it play continously.
+
+You can turn off a continuous sound with the STOPSOUND command.
+
+Examples:
+
+          PLAYSOUND whistle 1 64
+
+          PLAYSOUND sounds/wind.snd 0 30
+
+
+
+
+Command:POEND        logical end for P:
+
+Type:Input Logic
+
+Syntax:POEND
+
+Explanation:Ends prepositional object logic.  Flow will always proceed normally from this point.  This command overrides internal logic.
+
+Examples:
+
+      v:put
+        n:treasure
+          P:ledge,overhang,crag,rock
+            ty:The treasure is now safely out of sight.
+          POEND
+        nend
+      vend
+
+
+
+
+Command:PROMPT       defines text to be used as input prompt
+
+Type:Definition
+
+Syntax:PROMPT [word or words]
+
+Explanation:This command lets you define the input prompt text.  This text is printed in the lower window just before the interpreter expects input.  If this command is not present somewhere in your program, the interpreter will use the phrase "What is your command?".
+
+Examples:
+
+      PROMPT What?
+      PROMPT What now, oh mighty adventurer?
+      PROMPT >
+
+
+
+
+Command:READ         reads from an OPENed file
+
+Type:File
+
+Syntax:READ [variable]
+
+Explanation:This command reads the next integer number in from the previously opened sequential file.
+
+Remember to check the reserved variable S„T„A„T„U„S„ „to be sure this command worked correctly.
+
+Examples:
+
+      READ clocknum
+
+
+
+
+Command:RM+          adds object to room
+
+Type:Environment
+
+Syntax:RM+ (number) [object]
+
+Explanation:This command adds an object to a room.  This is an add, not a transfer. If the player drops an object, you must not only add that object to this room, but also remove it from the inventory.  It is quite possible to get multiple objects with the same name if you aren't careful.
+
+Examples:
+
+      RM+ raygun
+      RM+ 5 cherry
+
+In the last example the "5" is an optional number describing the room to receive the object.  If no number is before the object argument, the object will be added to the room the player is currently in.
+
+
+
+
+Command:RM-          removes object from room
+
+Type:Environment
+
+Syntax:RM- [object]
+
+Explanation:This command removes an object from the room the player is in.  Note that this command does not allow an optional room number like RM+.
+
+Examples:
+
+      RM- raygun
+      RM- cherry
+
+
+
+
+Command:RND          puts a random number in a variable
+
+Type:Math
+
+Syntax:RND [variable] [number,variable]
+
+Explanation:This command fills a variable with a pseudo-random number.  This number will be from zero to the number (up to 255) that you supply as the second argument.  This number cannot be negative.
+
+Examples:
+
+         RND diceroll 5
+         RND temperature 100
+
+
+
+
+Command:SETCOLOR     sets color of subsequent text commands
+
+Type:Text
+
+Syntax:SETCOLOR [number]
+
+Explanation:This command changes the color of the text.  You can choose between the 16 colors of your adventure background screen.  Remember that your text will disappear if you choose color 0, as that is the background color.  The color change only happens to text printed after this command; previously printed text will not be affected.  Note that the color is initialized to color 1,  but the change of color applies to all text, even text appearing in the upper window.
+
+The argument can be from zero to 15.
+
+Examples:
+
+         ty:There is a great big ^
+         SETCOLOR 2
+         ty:DRAGON ^
+         SETCOLOR 1
+         ty:here!
+
+This example lets the player know about the dragon is an eye-catching way.  The code fragment will show up as:
+
+         There is a great big DRAGON here!
+
+with the word 'DRAGON' printed in color 2 (which will hopefully be red or some other bright, dagerous color).
+
+
+
+
+Command:STOPSOUND    stops a playing sound
+
+Type:Sound
+
+Syntax:STOPSOUND [filename]
+
+Explanation:This command stops the sound specified. Nothing happens if the sound has already run out or been stopped.
+
+Examples:
+
+         STOPSOUND winds
+         STOPSOUND DF1:sounds/beep.snd
+
+
+
+
+Command:STOREGAME    stores compete game status on disk
+
+Type:File
+
+Syntax:STOREGAME [filename]
+
+Explanation:This command stores a complete status of the game on disk under the file name specified.  This command does not make a whole new game; instead, it is an all-purpose "game-save" feature that allows the player to save his position in the game for playing later.  Note that you will have to surround this command with the proper code to let the player access it.
+
+Examples:
+
+         v:save
+           n:game
+             STOREGAME gameA
+             if status=0
+               ty:Your game is now saved.
+             else
+               ty:Disk error! Game is NOT saved!
+             endif
+           nend
+         vend
+
+
+
+
+Command:TOROOM       moves player to a room immediatly
+
+Type:Environment
+
+Syntax:TOROOM [variable,number]
+
+Explanation:This command immediately moves the player to the specified room.  The screen will not update until the rest of the code has been executed.  
+
+Make sure that the provided argument is valid for your room map, and never let the argument equal zero.  Either way it is quite possible to send the player off into never-never land.
+
+Examples:
+
+         TOROOM 10
+
+         ty:ZAAPPP!!!
+         ty:You beam down with Spock and Bones.
+         TOROOM 53
+
+
+
+
+Command:TY:          prints text in lower window
+
+Type:Text
+
+Syntax:TY:[word or words]
+
+Explanation:This command is the standard print command for the program.  When this command is encountered, all text from just after the TY: to the end of the line will be printed in the text window.  Words will wrap and text will scroll up.
+
+Special one-character commands can be embedded in the text string.  When the text processor finds an embedded command, it processes the command immediatly and does not print the characters that make up the command.  All of these commands consist of a "^" character followed by a normal character.  The following is a list of these commands and what they do.
+
+^c  Clears the lower text window.
+^n  Generates a carriage return in the text window.
+^h  Stops the print and displays a "[PRESS A KEY]" prompt in the text window, then waits for a key press.
+^   This symbol, alone and at the end of a line of text, tells the interpreter not to generate a carriage return after it puts the text into the lower window.  This is useful for getting text to wrap correctly, and for incorporating numbers into your text using the NTY: command.
+
+Example:
+
+         TY:Your gun can't fire without bullets!
+
+This first example shows what you could tell the player if he forgot to buy bullets.  When this command is executed, the player would see:
+
+Your gun can't fire without bullets!
+
+Example:
+
+         TY:^cThis adventure by^n^nJoe Smith^nSmith Software Inc.
+
+This example shows how well you can format your text with the imbedded commands.  Joe Smith would run his code and see:
+
+(text window clears here)
+This adventure by
+
+Joe Smith
+Smith Software Inc.
+
+Example:
+
+         TY:The bomb will explode in ^
+         NTY:timebomb
+         TY: seconds!
+
+This last example shows how you can incorporate variables into your text.  In this case, if the variable "timebomb" was equal to 3, the player would see:
+
+The bomb will explode in 3 seconds!
+
+
+
+
+Command:UPDATE       makes a DONE command update upper window
+
+Type:Internal Logic
+
+Syntax:UPDATE
+
+Explanation:This command sets a flag in the INTERPRETER which changes the action of the next DONE command.  The affected DONE returns control to the input module, but first completely updates the room data in the upper window (exactly as it does when a player moves from room to room).
+
+Examples:
+
+         v:use
+           n:transporter
+             ty:ZAAPPP!!!
+             ty:You beam down with Spock and Bones.
+             toroom 53
+             UPDATE
+             done
+           nend
+         vend
+
+
+
+
+Command:V:           logic test for verbs
+
+Type:Input Logic
+
+Syntax:V:[word],(word),(word),...,(word)
+
+Explanation:Signifys verb.  If the present inputted verb is one of the words following  V: , flow proceeds. If not, nothing is executed until the next  V: or VEND.  This command overrides everything else.
+
+Examples:
+
+         V:throw
+
+         V:get,grab,take
+
+
+
+
+Command:VEND         logical end for V:
+
+Type:Input Logic
+
+Syntax:VEND
+
+Explanation:Ends verb logic.  Flow will always proceed line-by-line from this point.  This command overrides everything else.
+
+Examples:
+
+         v:study,examine
+           (code here)
+         VEND
+
+
+
+
+Command:WAIT         halts program temporarily
+
+Type:Internal
+
+Syntax:WAIT [number,filename]
+
+Explanation:Stops execution of program until one of two timers has expired.  
+
+If the argument behind the WAIT statement is a number,  the program will hold for that period of time.  The number indicates sixths (1/6) of a second.
+
+If the argument is a word, the WAIT statement assumes it is the filename 
+of a playing sound.  The program will hold until the sound finishes playing.
+
+Examples:
+
+         playsound sounds/hello.voice
+         wait sounds/hello.voice
+         playsound sounds/there.voice
+
+This example shows how to string two sounds together.  The "hello.voice" 
+sound is played, and the program waits until it is finished before playing "there.voice".
+
+         wait 60
+
+This example shows how to pause the program for ten seconds.
+
+
+
+
+Command:WAITOFF      defines use of text scrolling prompt
+
+Type:Definition
+
+Syntax:WAITOFF
+
+Explanation:This command has the purpose of shutting down the "[PRESS A KEY]" function of the lower text window.  This function watches the text scroll by and stops the scroll and prints the text line "[PRESS A KEY]" when a screen full of text has gone by.  This solves the problem of long text descriptions and graphics scrolling off the screen before the player can look at them.  Hitting any key will erase the "[PRESS A KEY]" and continue the scroll.  
+
+Note that the upper window does not have this feature.  If you choose to use the WAITOFF command, you will have to format your text more carefully, but you will get to use the last line of text at the bottom of the lower window.
+
+With or without this command, you can always use the "^h" imbedded text command in your TY: statements.
+
+Examples:
+
+         WAITOFF
+
+
+
+
+Command:WRITE        writes to an OPENed file
+
+Type:File
+
+Syntax:WRITE [variable]
+
+Explanation:This command writes a variable to the previously OPENed file.
+
+Remember to check the reserved variable S„T„A„T„U„S„ „to be sure this command worked correctly.
+
+Examples:
+
+      WRITE timecounter
+
+
+
+
+Appendix A: Reserved Variables
+
+Adventure Workshop has two reserved variables; rƒoƒoƒmƒ and sƒtƒaƒtƒuƒsƒ.  Adventure Workshop also has one reserved noun; nƒoƒuƒnƒ.
+
+rƒoƒoƒmƒ is a variable which always holds the current room position of the player.  If the player moves from room to room, this variable will change to the new room number before bƒaƒcƒkƒgƒrƒoƒuƒnƒdƒ code is executed.  This allows the programmer to "anticipate" the 
+player's position and take appropriate action.
+
+For instance, suppose the player is at a room who's description reads "You are standing at the edge of a deep pit with steep sides.  Attempts to go down would be suicidal."  If the player then typed "down",  you would find out about it by checking the rƒoƒoƒmƒ variable about whether he or she was in the room that was the bottom of the pit.  You could then punish the player with a message like "You fall to your death. Splat! You are dead."
+
+sƒtƒaƒtƒuƒsƒ is a variable which is updated with a number every time a command involving disk access happens.  These commands are LOADSOUND, GRAPHIC, STOREGAME, LOADGAME, etc.  If everything went 
+okay with the access, sƒtƒaƒtƒuƒsƒ will hold a value of 0.  Any other value means an error of some kind.
+
+Currently, the values mean:
+
+v‚a‚l‚u‚e‚      m‚e‚a‚n‚i‚n‚gƒ
+0          okay
+1          disk error (bad file name, no file found, or disk full)
+2          out of memory
+
+Of course, if you want the player to be aware of the disk error, y„o„u„ „must provide the code to do so.  Example:
+
+if status=0
+else
+  ty:Disk error!
+  close myfile
+  done
+endif
+
+
+
+nƒoƒuƒnƒ is used in place of a noun name in any statement that uses nouns.  Nƒoƒuƒnƒ can be considered to be the current noun typed in by the player.  Consider this code fragment:
+
+      v:get,take,grab
+        n:spear,gun,bullet,icebox,rope,cigarette
+          if ROOM CONTAINS noun
+            rm- noun
+            in+ noun
+          endif
+        nend
+      vend
+
+This fragment deals with the player picking up any one of 6 objects.  With the nƒoƒuƒnƒ reserved noun, the code is much simpler.
+
+
+
+Appendix B: Using A Paint Program with Adventure Workshop
+
+
+Using DeluxePaint or any other IFF-compatible paint program, with Adventure Workshop, is simple.
+
+Let's look at the Adventure Workshop screen first.  When it runs, the Adventure Workshop interpreter opens a 640x200 screen with 16 colors (4 bitplanes).  This screen size is unchangeable.  Just before the screen opens,  the interpreter loads the background picture who's name was defined in the program command BACKPIC.  Path data is included in the BACKPIC filename.  If the interpreter cannot find the file, or if the file it found was not an IFF graphic file, the program will abort.
+
+You must always supply the Adventure Workshop interpreter with a background picture, though you are welcome to use the provided files.  If you choose to make your own,  set your paint program to the 640x200x16-color format.  
+
+Adventure Workshop can use two different screen types.  These two types are only different in the text windows that are cut out in the middle.  Two graphic files on your Adventure Workshop disk, "type1.pic" and "type2.pic", are usable background screens, but are simply pictures of boxes showing the boundries of the text windows for that type of background screen.  The type 1 screen has bigger text windows than the type 2 screen.  It is recommended that when you create your own background screen, you use one of these graphics as your template.
+
+Now, before you start painting, consider your pallette (the 16 colors you will use).  The pallette you make for your background screen will be the combination of colors used throughout the adventure, so you must plan ahead.  For instance, suppose you were creating a  dark and scary horror adventure.  Suppose also that you made a dark and forboding background screen for this adventure, using all blues and blacks.  What if you wanted to have blood in one of your paste-on pictures?  You would need to set aside a color register for red, preferably before you started drawing your background picture.  It's best if you plan for all of your graphics (what they look like, where they appear) at this time.  However, you may find it acceptable to simply fill several color registers with standard colors in anticipation of your graphic needs.
+
+After you have selected your pallette, go ahead and draw your background.  Remember that, while you can put artwork or lettering inside the areas reserved for the text windows, the Adventure Workshop interpreter will clear these areas to black (actually color register 0, which does not have to be defined as black in your graphic) as soon as it encounters it's first text or graphic statement.
+
+Once you have created your background picture, simply save it to disk as a picture file.  You can save it as a brush (your paint program may not distinguish between these two types of file; DPaint II does), but it is a pain and does not insure correct alignment of your picture with the text areas.  You need not use any particular filename suffix or place the artwork in any particular drawer.  Just remember where it is when you refer to it in the BACKPIC command in your program.
+
+Remember that the Adventure Workshop interpreter does not automatically place boxes around the text window.  Such boxes have to be in the graphic itself; such a box is not mandatory.
+
+Now let's talk about paste-on graphics.  These are the graphics which appear in the text window during the game.  To create such a picture, you must simply respect a few limitations.
+
+First, paste-on graphics automatically use the color pallette provided by the background picture.  There is no way to change this pallette while the adventure is running.  Second, paste-on graphics cannot exceed the size of the lower text window where they will be placed.  For a type 1 window, graphics cannot be bigger than 548 wide and 98 tall.  For a type 2 window, don't exceed 480 wide and 100 tall.  If a larger graphic is loaded, part of your background will be overwritten.
+
+This chart shows how big your paste-on graphics can be for each type of screen available:
+
+Screen Type           Max. Width          Max. Height
+    1                     548                 98
+    2                     480                100
+
+
+Actually, the only way to use graphics as large as the whole lower text window is to use the WAITOFF command and provide a WAIT command right after you display the graphic.  Otherwise, text will be written to the window right after the graphic is displayed, causing the window to scroll, and the top of your graphic to be lost.  It is therefore usually a good idea to leave room for at least one line of text (whichever size font you use) under the graphic.
+
+We recommend, then, that you load up your paint program, load your background screen (or the template screen), create your graphic within the lower text window boundries, and save your graphic as a brush.  Again, DPaint II will allow you to do this; other paint programs may not.
+
+Refer to the documentation of the DISG command for more information about paste-on graphics.
+
+
+
+Appendix C: Using Perfect Sound with Adventure Workshop
+
+
+Sounds can give a whole new dimintion to your adventures.  While some sounds are included on your data disk,  you can easily create custom sounds unique to your adventure with the SunRize Industries Perfect Sound audio digitizer.  
+
+Adventure Workshop can use IFF-compatible sound files created using the Perfect Sound digitizer or any other digitizer that supports IFF sampled sound files.
+
+First, some theory, limitations, and caveats.  Audio digitizers recieve sound input from sources such as a microphone or cassette player and convert it to big blocks of numbers.  From there, a digitizing program can save the block of data to disk.  Such programs for the Amiga can save in the IFF sound format, the IFF instrument format, the SONIX format, and a straight data dump.  Not all programs can save all types; for instance, currently only the AudioMaster program can save in SONIX format.  The Adventure Workshop uses the IFF sound format only.
+
+Adventure Workshop uses only mono sounds (not stereo), and will only load IFF sound files.  Actually, Adventure Workshop will also load IFF instrument files, but cannot use them correctly if they consist of more than one octave (which most IFF instrument files do).
+
+Adventure Workshop will try to load any length of sound file, but it will not load sounds it has no room in memory for.  This is a big, important limitation, because Adventure Workshop loads sounds (and graphics) into "chip" RAM.  "Chip" RAM refers to the first 512K block of RAM, and is so called because the powerful sound and graphic chips of the Amiga can only access this area of memory.  Unfortunately, Most people have no extra RAM, and the Amiga operating system gobbles the first 120K right off the bat.  This means that with a normal 512K machine, you would be lucky to load a 100K sound file, and even with extra RAM you are limited to less than 400K.  Remember also that your graphics are in the same boat; that is, they also load only into chip RAM.
+
+The lesson to learn, then, is that when creating your awesome, ultimate adventure, you will have to make hard choices about where and when to display graphics and play sounds.
+
+As a side note,  new Amiga chips are available which increase chip RAM to 1,024K (though you still have to buy the extra 512K seperatly).  These new chips are offered as upgrades to all old machines except the Amiga 1000.  Adventure Workshop is able to take advantage of this development without any modifications or upgrades.
+
+
+Appendix E: Pictures on Disk B
+
+Your Adventure Workshop B disk contains mostly graphic IFF files.  These are pictures suitable for use with Adventure Workshop. This appendix is a directory of these graphics.
+
+Please note that, though the pictures shown here are black-and-white, the actual pictures on disk are in full color and will look much better.
+
+To see any of these pictures, simply use the SHOW program included on your B disk. 
+
+
+INSERT PICTURES HERE
+
+
+Appendix F: Using the MEMACS text editor
+
+This appendix is a brief tutorial of the MEMACS text editor.  A much more complete tutorial is contained in the Amiga Enhancer Software Manual (for the Workbench 1.3 software upgrade).
+
+The MEMACS text editor is a program which resides in the main directory of your Workbench disk (and the AW A disk).  It can be used by simply clicking on the MEMACS icon.  You can also open a CLI or SHELL window, and then type "MEMACS f„i„l„e„n„a„m„e„", where f„i„l„e„n„a„m„e„ is the name of the text file you want to create or edit.  Path data is included in the filename.
+
+When MEMACS is executed, it creates a full-size window for you to type inside.  At this point you can begin typing your text.
+
+You can edit your text with the DELete, BACKSPACE, and cursor keys.
+
+Once you have finished your text, you can quit by using your mouse to pull down the P„r„o„j„e„c„t„ „menu, and choosing S„a„v„e„-„a„s„-„f„i„l„e„.  You can then type the filename of your text file, and press RETURN.  This will save the text you created under that filename.  You can then choose the Q„u„i„t„ „option (also in the P„r„o„j„e„c„t„ „menu) to exit MEMACS.
+
+If you don't like the changes you have made, you can just Q„u„i„t„ „without saving the new version of your text.
+
+
+MEMACS Reference
+
+MEMACS is controlled almost entirely by its menus.  Here is a brief list of the menu options and what each one does.
+
+Option    Description
+
+   P„r„o„j„e„c„t„
+Rename        changes name of text currently being worked on
+Read-file     loads a file into MEMACS
+Visit-file    loads another file for you to look at
+Insert-file   inserts file into text currently being edited
+Save-file     saves text under current file name
+Save-as-file  saves text under a name you provide
+Save-mod      saves only text files which have been changed
+Save-exit     saves file and exits MEMACS
+New-CLI       opens new CLI window
+CLI-command   executes a CLI command from MEMACS
+Quit          exits MEMACS
+
+   E„d„i„t„
+Kill-region     deletes text block, saving it in kill buffer
+Yank            copies kill buffer into text being edited
+Set-mark        marks current cursor position
+Copy-region     copies text block into kill buffer
+Upper-region    changes all text in text block to upper-case.
+Lower-region    changes all text in text block to lower-case.
+List-buffers    shows status of currently open buffers
+Select-buffer   lets you choose buffer to edit
+Insert-buffer   inserts a buffer into the current text
+Kill-buffer     removes a buffer from memory
+Justify-buffer  moves all lines of a buffer to left edge
+Redisplay       redraws screen
+Quote-char      allows use of keyboard shortcuts as normal letters
+Indent          Moves cursor to next line, indenting as last line
+Transpose       Swaps positions of two adjacent characters
+Cancel          ends search-type commands
+
+   W„i„n„d„o„w„
+One-window      makes window full width
+Split-window    splits window in half, for simultanious editing
+Next-window     moves cursor to next window
+Prev-window     moves cursor to previous window
+Expand-window   adds one line to current window
+Shrink-window   removes one line from current window
+Next-w-page     displays next page of next window
+Prev-w-page     displays next page of previous window
+
+   M„o„v„e„
+Top-of-buffer   moves cursor to start of buffer
+End-of-buffer   moves cursor to end of buffer
+Top-of-window   moves cursor to top of window
+End-of-window   moves cursor to bottom of window
+Goto-line       moves cursor to specific line
+Swap-dot&mark   marks current cursor position; moves to last mark
+Next-page       moves cursor to next page
+Prev-page       moves cursor to previous page
+Next-word       moves cursor to next word
+Previous-word   moves cursor to previous word
+Scroll-up       scrolls text in window up
+Scroll-down     scrolls text in window down
+
+   L„i„n„e„
+Open-line       splits line at current cursor position
+Kill-line       transfers current line to kill buffer
+Kill-to-eol     deletes line from cursor to right side
+Start-of-line   moves cursor to left-most position
+End-of-line     moves cursor to right-most position
+Next-line       moves cursor to next line
+Previous-line   moves cursor to previous line
+Line-to-top     moves current line to top of window
+Delete-blanks   destroys blank lines immediately below cursor
+Show-line#      shows information about current line
+
+   W„o„r„d„
+Delete-forw     deletes next word or partial word
+Delete-back     deletes last word or partial word
+Upper-word      changes next word to upper-case.
+Lower-word      changes next word to lower-case.
+Cap-word        capitalizes current letter, all others in current
+                word are made lower-case
+Switch-case     flips case of current word
+
+   S„e„a„r„c„h„
+Search-forward  searches for next occurence of supplied word
+Search-backward searches for previous occurence of supplied word
+Search-replace  searches for word; replaces with supplied word
+Query-s-r       same as Search-replace, but asks for permission
+                to do replace
+Fence-match     move cursor to next occurence of current letter
+
+   E„x„t„r„a„s„
+Set-arg         gets a numerical argument for operational commands
+Set             changes several MEMACS parameters:
+                Screen     toggles between MEMACS using the
+                           Workbench screen or its own custom
+                           one
+                Interlace  toggles interlace mode on or off
+                Mode       Allows choice of cmode or wrap
+                Left       set left margin
+                Right      set right margin
+                Tab        set increment for tab spacing
+                Indent     in cmode, amount of indention
+                Case       toggles case-sensitivity in searches
+                Backup     allows choice of on or off
+Start-macro     starts recording key strokes as a new macro
+Stop-macro      stops recording macro
+Execute-macro   executes defined macro
+Set-key         allows you to define a function key as several
+                keystrokes (like a macro)
+Reset-keys      return defined function keys to thier defaults
+Execute-file    runs a program from MEMACS
+Execute-line    executes a line of MEMACS commands you type in
+
+
+
+Appendix F: Using the ED text editor
+
+This appendix is a brief tutorial of the ED text editor.  A much more complete tutorial is contained in the AmigaDOS User's Manual (???????? books).
+
+The ED text editor is a program which resides in the C directory of your Workbench disk (and the Adventure Workshop program disk).  It can be used by opening a CLI or SHELL window, and then typing "ED f„i„l„e„n„a„m„e„", where f„i„l„e„n„a„m„e„ is the name of the text file you want to create or edit.  Path data is included in the filename.
+
+When ED is executed, it creates a full-size window for you to type inside.  
+At this point you can begin typing your text.
+
+You can edit your text with the DELete, BACKSPACE, and cursor keys.
+
+Once you have finished your text, you can quit by pressing the ESC key, typing the character "x", and pressing RETURN.  This will save the text you  created under the filename you used when you started ED.  It will also end the ED program.
+
+If you don't like the changes you have made, you can just quit without saving the new version of your text.  To do this press the ESC key, type the character "q", and press RETURN.
+
+
+ED Reference
+
+Special Keys
+
+BACKSPACE         delete character to left of cursor
+DEL               delete character at cursor
+ESC               enter extended command mode
+RETURN            split line at cursor and create a new line
+TAB               move cursor right to next tab position (does not
+                  insert a TAB character)
+<up-arrow>        move cursor up
+<down-arrow>      move cursor down
+<left-arrow>      move cursor left
+<right-arrow>     move cursor right
+
+Intermediate Commands (uses CTRL key)
+
+CTRL-A   insert line
+CTRL-B   delete line
+CTRL-D   scroll text down
+CTRL-E   move to top or bottom of screen
+CTRL-F   flip case of text
+CTRL-G   repeat last extended command line
+CTRL-H   delete character left of cursor (like BACKSPACE)
+CTRL-I   move cursor right to next tab position
+CTRL-M   RETURN
+CTRL-O   delete word or spaces
+CTRL-R   move cursor to end of previous word
+CTRL-T   move cursor to start of next word
+CTRL-U   scroll text up
+CTRL-V   verify screen
+CTRL-Y   delete to end of line
+CTRL-[   ESC (enter extended mode)
+CTRL-]   cursor to end or start of line
+
+Extended Commands
+
+This is a full list of extended commands including those that are merely extended versions of immediate commands.  These commands are invoked by first pressing the ESC key, and then typing the command and pressing RETURN.  In the list, /s/ indicates a string, /s/t/ indicates two exchange strings, and n indicates a number.
+
+
+A /s/      insert line after current
+B          move to bottom of file
+BE         mark block end at cursor
+BF /s/     backwards find
+BS         mark block start at cursor
+CE         move cursor to end of line
+CL         move cursor one position left
+CR         move cursor one position right
+CS         move cursor to start of line
+D          delete current line
+DB         delete marked block
+DC         delete character at cursor
+E /s/t/    exchange the next instance of s for t
+EQ /s/t/   exchange but query first
+EX         extend right margin
+F /s/      find next instance of the string s
+I /s/      insert line before current
+IB         insert copy of marked block
+IF /s/     insert file with a filename of s
+J          join current line with next
+LC         distinguish between upper and lower case in searches
+M n        move to line n
+N          move to start of next line
+P          move to start of previous line
+Q          quit without saving text
+RP         repeat until error
+S          split line at cursor
+SA /s/     save text to file
+SB         show block on screen
+SH         show information
+SL n       set left margin
+SR n       set right margin
+ST n       set tab distance
+T          move to top of file
+U          undo changes on current line
+UC         do not distinguish between upper and lower case in searches
+WB /s/     write marked block to file s
+X          exit, writing file to disk
+
+
+
+Appendix ?: Using The CLI or SHELL
+
+This appendix gives a brief tutorial of the Command Line Interface (CLI) and its AmigaDOS 1.3 successor, SHELL.  Knowledge of the CLI is important for Amiga programmers because it allows much more power and flexibility than the Workbench.
+
+The SHELL invironment is, for all practical purposes, identical to the CLI.  For that reason, this tutorial will discuss the CLI.  Any functions of the CLI that are not identical to the SHELL will be mentioned; otherwise, just treat SHELL as if it were CLI.
+
+Since the CLI is a disk invironment, we need to know a little bit about how Amiga disks are arranged.
+
+Every formatted disk has a name.  For instance, your Adventure Workshop A disk has the name "Adventure Workshop Disk A".  Whenever you reference a disk in the CLI, you must use the disk name followed by a ":" character.  Alternately, you can choose to specify a particular disk drive (no matter what disk is in it).  The internal Amiga drive is called "DF0:".  The external drive is called "DF1:".  The ram disk in your computer is called "RAM:".
+
+Files on a disk are arranged in d„i„r„e„c„t„o„r„i„e„s„. The main directory is the r„o„o„t„ directory.  You can reference this simply by using the name of the disk.  However, files can also be inside of a sub-directory, or d„r„a„w„e„r„.  For instance, some of the directories on your A disk are C„,„ „G„r„a„p„h„i„c„s„,„ „S„o„u„n„d„s„,„ „etc. Directories can be referenced by their name, followed by a "/" character.
+
+Finally, files themselves can be referenced by just thier names, with no special characters on the end.
+
+So, if you were talking about the "beeps" sound file in the Sounds directory of Adventure Workshop disk A, you would type "Adventure Workshop Disk A:Sounds/beeps".
+
+Of course, who wants to keep typing all that?  The CLI has a feature to help you out.  Each CLI window has a default disk and directory.  These defaults can be changed with a simple CLI command, so you could change the default to "Adventure Workshop Disk A:Sounds/", and then you could reference the file "beeps" with only its name, "beeps".
+
+When you open a CLI window (from the Workbench), you are presented with a blank window and a prompt string ("3>", usually).  This string is much longer in the SHELL, where it is used as a reminder of the current disk and 
+drawer default (examples: "Workbench 1.3:>","Data disk:graphics>").  
+
+The prompt string tells you that the CLI is waiting for you to type something in.  What you type in is a CLI command, or the name of a program file.
+
+Let's say you want to see what programs are on the Adventure Workshop A disk.  For this job you would use the D„I„R„ command.  Assuming that your A disk is in the internal drive, and it is the default disk, you would type :
+
+dir
+
+The disk would spin, and you would see something like this:
+
+     c (dir)
+     Prefs (dir)
+     System (dir)
+     L (dir)
+     Graphics (dir)
+     devs (dir)
+     S (dir)
+     T (dir)
+     fonts (dir)
+     adventures (dir)
+     Sounds (dir)
+     libs (dir)
+  .info                            Disk.info
+  Graphics.info                    INTERPRETER
+  INTERPRETER.info                 man6
+  Prefs.info                       Shell
+  Shell.info                       Sounds.info
+  symbol.adv                       SYMBOLIZER
+  SYMBOLIZER.info                  System.info
+
+
+Some commands require you to type in a„r„g„u„m„e„n„t„s„, which are extra pieces of information, after the name of the command.  For instance, the C„O„P„Y„ command requires that you tell it which file to copy from, and which file to copy to.  If you wanted to copy the "beeps" sound file from the A disk into the RAM disk (a memory "disk" that Workbench maintains), you would say:
+
+copy df0:Sounds/beeps to ram:beeps
+
+Notice that the copy command used three arguments, and they were all seperated by spaces.  This command doesn't type anything back at you unless something goes wrong.
+
+Earlier we discussed changing the default disk and drawer for a CLI window.  The C„D„ „command does this.  If you wanted the new default to be the Background drawer on the disk in drive DF1:, you would type:
+
+cd df1:Background
+
+Notice that we don't have to add the "/" character to our drawer name if we don't have a filename coming after it.  There are exceptions to this rule.
+
+The Adventure Workshop can be run entirely from the CLI.  To execute the SYMBOLIZER with the program disk in the internal drive, you can type:
+
+df0:symbolizer
+
+The symbolizer will then run, and the requester will pop up to let you choose the files you want to SYMBOLIZE.  Alternately, the SYMBOLIZER will accept arguments for the filenames and what should be shown.  These are the acceptable arguments:
+
+-d             forces the SYMBOLIZER to show you the data tables it makes as it makes them
+-p             forces the SYMBOLIZER to show you the program as it reads it
+f„i„l„e„n„a„m„e„       defines the name of both the .prg file and the .rom file
+f„i„l„e„n„a„m„e„.prg   defines the name of the .prg file
+f„i„l„e„n„a„m„e„.rom   defines the name of the .rom file
+
+The last two arguments have to be used together.  Incidently, this is the only way for the SYMBOLIZER to use .prg and .rom files that do NOT have the same filename.
+
+You can use these arguments in any order, and all of them are optional.  Legal examples would be:
+
+symbolizer adventures/digger -p
+symbolizer yourgame.prg yourgame2.rom -d -p
+symbolizer biggame
+
+The INTERPRETER can also be run from the CLI.  Interpreter accepts no arguments, so you just execute it by typing:
+
+interpreter
+
+
+As you may have already guessed, the CLI commands are actually just programs which reside on your Workbench disk.  Most of them are in the C directory, but some are in the System directory.  For this reason, the Workbench disk you used to boot up your computer with needs to stay in a disk drive, so the CLI can access those commands when you use them.
+
+Fortunately, the Adventure Workshop program disk i‚s‚ a Workbench disk, so you can boot up your computer with it (or a copy of it).
+
+
+CLI reference
+
+The following is a listing of the most useful CLI commands.  For a complete  list, consult the AmigaDOS User's Manual (???????? Books).
+
+CD         changes default directory
+COPY       copies a file or files
+DELETE     deletes a file or files
+DIR        displays current file list
+DISKCOPY   copies whole disks
+ED         text editor
+FORMAT     formats a blank disk
+INFO       displays information on current disks
+MAKEDIR    makes new directory on a disk
+RELABEL    changes disk name
+RENAME     changes file name
+
+Many of these commands will print an acceptable argument list if you type the command with no arguments after it.
+
+
+Appendix ?: Error Messages
+
+In the course of operation, both the SYMBOLIZER and INTERPRETER have routines which deal with problems that may arise from errors in a programmer's code, disk failure, etc.  In such cases, Adventure Workshop will display a short message to let the programmer know what has happened.
+
+This appendix will describe the error messages that Adventure Workshop could generate and explain what they mean.
+
+SYMBOLIZER Errors
+
+ERROR: can't open room file <filename>.
+
+   Printed when the defined .„r„o„m„ „file was not found on disk.  This could happen when the path was not fully or correctly stated, when '.rom' was misspelled, or when the proper disk was not in the proper drive.
+
+ERROR: Illegal room number
+
+   Printed when something is wrong with room connection numbers in the room description file.  The six numbers where the error was found are printed just above this error message.  This message could be caused by improper spacing or improper use of commas, as well as too many or too few numbers.
+
+ERROR: Bad object list in room <room #>.
+
+   Printed when something is wrong with an object list in the room description file.  The room description with the problem is indicated in the error message.  Like the previous error, this message can be caused by improper spacing or improper use of commas, as well as improper placement of the '$' symbol.
+
+ERROR: can't open program file <filename>.
+
+   Printed when the defined .„p„r„g„ „file was not found on disk.  This could happen when the path was not fully or correctly stated, when '.prg' was misspelled, or when the proper disk was not in the proper drive.
+
+ERROR: 'room contains' statement.
+
+   Printed when an "if room contains" statement was bad in any way.  Usually caused by misspellings.  Note that you might also recieve this message if you used the reserved variable ROOM improperly in a normal IF statement.
+
+ERROR: 'inv. contains' statement.
+
+   Printed when an "if inventory contains" statement was bad in any way.  Usually caused by misspellings.
+
+ERROR: Undefined comparison in IF.
+
+   Printed when no '<', '>', or '=' signs were found in an IF statement.  This error can be caused by improper spacing.  Remember, no spaces around the operator (<, >, =), one space between everything else.
+
+ERROR: assignment variable expected.
+
+   Printed when a number was encountered at the beginning of a line.  No Adventure Workshop command requires a number (like 6, 25, 2001) at the beginning of a line.  Also, numbers cannot be used as part of a variable name.  Therefore, if you see this error message, it's because the SYMBOLIZER detected a number at the beginning of a line.
+
+ERROR: assignment operator expected.
+
+   Printed when an equal sign was not found after an assignment variable.  If the word at the beginning of a line was not a command, the SYMBOLIZER assumes it is a variable name and it will have an equal sign after it (with no space in between).  If not, this error message appears.  Therefore, any misspelled command can cause this message.  Comments that aren't properly bracketed can also cause this error.
+
+ERROR: invalid operator.
+
+   Printed when no '+', '-', '/', or '*' was found separating two variables in an assignment statement.
+
+ERROR: Bad ON command.
+
+   Printed when 'direction' did not succeed the 'on' command.
+
+ERROR: Bad OFF command.
+
+   Printed when 'direction' did not succeed 'off'.
+
+ERROR: bad room number.
+
+   Printed when a room number was bad in a CONNECT statement.  This is caused by a number that is higher then the total number of rooms or a number that is less than 1.  It can also be caused by a mis-placed space or misspelling.
+
+ERROR: bad direction.
+
+   Printed when N,S,E,W,U, or D was not found where expected in a CONNECT statement.
+
+ERROR: No MAIN specified.
+
+   Printed when no MAIN statement was found.  The MAIN statement is mandatory.  This message is mostly caused by mis-spellings.
+
+ERROR: can't save 'symbol.adv' file.
+
+   Printed when a disk error occurred when saving the s„y„m„b„o„l„.„a„d„v„ „file.  This error can be generated by a disk being too full or not being in the drive.
+
+
+INTERPRETER Errors
+
+The following error codes will appear in a small requester window in the upper-left of the screen.  The error will remain on until you click the "OK" button with the mouse.  Please note that an error will cause the INTERPRETER to shut down immediately,
+
+
+ERROR: Can't open symbol.adv .
+
+   Printed when the s„y„m„b„o„l„.„a„d„v„ file was not found.  The name could be misspelled, the path could be wrong, and the disk could be absent.
+
+ERROR: Out of memory;Adventure Workshop code.
+
+   Printed when there is no memory for the symbolized program to load into.  This generally means that your system hasn't got nearly enough memory to run the INTERPRETER.  This message most likely will never be seen.
+
+ERROR: screen won't open.
+
+   Printed when there is no memory for the screen to use.  This generally means that your system hasn't got enough memory to run the INTERPRETER.  
+
+ERROR: window won't open.
+
+   Printed when there is no memory for the window to use.  This generally means that your system hasn't got enough memory to run the INTERPRETER.  
+
+ERROR: task handle not found.
+
+  Printed when the Amiga operating system is REALLY screwed up.  You should never see this error message with a healthy machine.  Try a cold re-boot.
+
+ERROR: can't find <filename>
+
+   Printed when the BACKPIC-defined graphic file was not found on disk.  The name could be misspelled, the path could be wrong, and the disk could be absent.
+
+ERROR: can't load font.
+
+   Printed when the FONT-defined Amigafont file was not found on disk.  The name could be misspelled, the path could be wrong, and the disk could be absent.
+
+ERROR: OR not followed by IF statement.
+
+   Printed when an OR command was not immediately followed by a conditional statement.  This error can only be caused by a mis-use of the OR keyword or a misspelling.
+
+ERROR: Bad command data;
+
+   Printed when the INTERPRETER could not understand the symbolized program.  You should never see this error.  If you do, please write down the numbers that will appear right after this error, and send that information along with the program the error happened on to us.  This will get you a free bug fix, along with our gratitude.
+
+
+
+
+   

@@ -1,0 +1,151 @@
+1,1,11,12,466,You are in a tunnel that is blocked by a cave-in to the west.
+0,0,2,0,0,0,2,3,4,0,You are in a low tunnel.
+0,0,3,1,0,0,0,You are at a four-way juncture in the mine.
+4,5,7,2,0,0,5,6,7,8,9,10,11,0,You are in a storage area of the mine.
+0,3,0,0,0,0,12,0,You are in a small, slightly damp shaft.
+3,6,0,0,0,0,0,You are at a dead end.  It is very humid here.
+5,0,0,0,0,0,0,You a choice of three tunnels at this juncture.
+9,8,0,3,0,0,0,You are at a small dead-end.
+7,0,0,0,0,0,13,0,You are at the bottom of a vertical shaft.  The walls are much to slick to climb.  A shaft of sunlight beams down upon you.
+0,7,0,0,0,0,0,You are in the cart.
+0,0,0,0,0,0,0,NOUN
+GLOP
+LAMP
+HARDHAT
+GOBA
+GOBB
+GOBC
+GOBD
+GOBE
+GOBF
+GOBG
+DYNAMITE
+CART
+LENS
+HAT
+CAVE
+TUNNEL
+ROOM
+MINE
+AROUND
+FUSE
+STICK
+zyxwvut
+GET
+TAKE
+PICK
+GRAB
+HOLD
+DROP
+LAY
+PUT
+EXAMINE
+SEARCH
+EXPLORE
+LOOK
+WAIT
+FILL
+DIG
+EXCAVATE
+TUNNEL
+ENTER
+BOARD
+EXIT
+LEAVE
+LIGHT
+START
+FIRE
+zyxwvut
+zyxwvut
+LENS
+SUNLIGHT
+BEAM
+zyxwvut
+You are Mack the Miner Guy.
+You are trapped because
+of a cave in!
+Find the way out!
+careful!
+got it.
+You are now wearing it.
+it seems light enough to drag.
+You don't see that here!
+dropped.
+you mean let go?  ok.
+You aren't holding that!
+The cave-in completely blocks the mine entrance.
+You can hear faint noises, which probably means
+they're trying to dig through to you.
+The noises are depressingly faint.
+There's nothing special here, but you can plainly
+hear the sound of rushing water.
+You notice a gleam in the corner and
+bend down to see what caused it.
+   You see a magnifying lens here,
+left by your buddy George the Geologist.
+you see nothing special here.
+Time passes...
+You have nothing to dig with!
+you're already in it!
+You struggle comically, but
+finally make it.
+You can't do that!
+You climb out.
+you're not in it!
+You angle the lens carefully...
+The fuse sputters and lights!
+You can't use the lens here!
+The fuse is already lit!
+you don't have the lens!
+the water is now 
+ feet deep!
+The cart is floating!
+the dynamite explodes with a mighty ROOOAAARRR!!!
+the tremendous force kills you so fast you don't
+even feel it.
+         R. I. P.
+A large rock hits your head!
+WHAAANGGG!  Good thing you had your helmet on!
+Your head splits open and your
+brains spill out across the ground!
+Y I C K O !
+you are thrown to the ground. loose dirt
+showers down around you.
+rushing water covers the floor!!
+In the cart, you float slowly through
+the vertical shaft to the surface.
+You have won this adventure!
+The cart hits the ceiling and promply
+rolls over, dumping you into the cold waters!
+The swirling waters suck you down!
+You die a horrible death!
+The fuse is burning brightly!
+it's nearly burned down!
+zyxwvut
+zyxwvut
+backgraphic1
+cave1
+cave2
+cave3
+cave6
+cave4
+cave5
+cave7
+cave8
+cave9
+cave10
+zyxwvut
+hardhat.g
+lamp.g
+dynamite.g
+lens.g
+cart.g
+goba.g
+gobb.g
+gobc.g
+gobd.g
+gobe.g
+gobf.g
+gobg.g
+zyxwvut
+640,200,3,30,20,20,130,600,65,9,440,65,440,80,440,95,490,65,490,80,490,95,540,65,540,80,540,95,9,440,10,440,25,440,40,490,10,490,25,490,40,540,10,540,25,540,40,0,0,2,1,6,7,8,9,10,11,12,3,5,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,648,20,1,0,20,2,0,20,3,0,20,4,0,1,1,2,3,4,5,0,2,12,0,13,1,20,5,0,2,2,12,3,14,5,6,7,8,9,10,11,0,13,1,20,6,0,41,1,42,1,21,2,4,15,0,13,4,20,7,0,41,4,42,4,21,2,13,0,13,13,20,8,0,41,13,42,13,21,23,20,9,0,21,1,6,7,8,0,2,12,0,14,1,20,5,0,30,2,50,1,0,2,2,12,4,3,14,5,6,7,8,9,10,11,0,14,1,20,10,0,40,0,1,43,1,21,2,15,0,14,4,20,10,0,40,0,4,43,4,21,2,13,0,14,13,20,11,0,40,0,13,43,13,21,23,20,12,0,21,1,9,10,11,12,0,2,16,17,18,19,20,0,10,1,51,1,20,13,0,20,14,0,20,15,0,20,16,0,21,22,10,1,51,6,20,17,0,20,18,0,21,22,10,1,51,2,10,3,51,0,30,3,51,1,0,20,19,0,20,20,0,20,21,0,20,22,0,40,0,14,21,22,22,20,23,0,21,1,13,0,20,24,0,21,1,14,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,20,24,0,21,1,15,16,17,0,20,25,0,21,1,18,19,0,2,13,0,10,1,51,10,20,26,0,21,22,13,13,60,14,13,20,27,0,20,28,0,30,4,50,1,0,53,51,10,21,22,23,20,29,0,1,20,21,0,2,13,0,10,1,51,10,20,30,0,53,50,4,21,54,20,31,0,21,22,23,20,29,0,1,22,23,24,0,2,12,21,22,0,14,12,54,13,12,20,12,0,21,54,20,9,0,21,22,22,4,1,2,3,0,14,14,10,5,51,0,10,1,51,9,20,32,0,20,33,0,30,5,51,1,0,21,54,20,34,0,21,22,54,20,35,0,21,22,54,20,36,0,21,22,26,11,6,51,0,20,37,1,46,6,20,38,0,30,6,50,6,1,51,1,0,14,13,60,13,13,11,6,51,3,20,39,0,22,22,22,10,5,51,9,20,40,0,30,5,51,10,0,13,12,60,14,12,20,41,0,20,42,0,20,43,0,20,43,0,52,22,20,44,0,14,4,20,45,0,54,20,46,0,20,47,0,20,48,0,52,22,20,49,0,20,50,0,62,12,10,2,51,6,30,6,51,1,0,20,51,0,22,22,10,6,51,10,10,1,51,10,10,4,51,9,20,52,0,20,53,0,20,54,0,52,54,20,55,0,20,56,0,22,22,20,57,0,20,58,0,52,22,11,5,51,0,61,12,5,51,9,30,5,50,5,1,51,1,0,14,12,60,13,12,20,59,0,11,5,51,6,20,60,0,22,22,22,0,

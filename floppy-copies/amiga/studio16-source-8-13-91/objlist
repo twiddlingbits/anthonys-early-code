@@ -1,0 +1,15 @@
+FROM  _main.o,about.o,add.o,alter.o,cread.o,cwrite.o,*
+drawline.o,even.o,flip.o,frags.o,*
+getint.o,graph.o, *
+loadilbm.o,loadit.o,loadsamp.o,main.o,menus.o,*
+move.o,msg.o,nomem.o,openscr.o,pickslot.o,play.o,powr.o,*
+putname.o,putxy.o,saveiff.o,savesamp.o,skip.o,*
+ratetoss.o,toperiod.o,*
+filter.o, openlibraries.o, lp_filter.o,new_loop_section.o,*
+mix_samples.o,mem_type.o, low_level_io.o,*
+ed_main.o,setup.o,open_list.o,menus12.o,*
+getstr.o, big_digit.o, load_play.o,*
+filerequest.o, refresh_edit_win.o,gadlib.o, module.o,*
+link_standard_modules.o, toddgadlib.o, samples.o,*
+show_error.o,inhandler.o,handler_io.o,record_sound.o, newpointer.o
+

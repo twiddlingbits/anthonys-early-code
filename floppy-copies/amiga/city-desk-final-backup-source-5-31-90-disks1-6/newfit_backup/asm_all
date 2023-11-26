@@ -1,0 +1,15 @@
+
+asm -o/obj/ cfit.asm
+asm -o/obj/ cinvfit.asm
+asm -o/obj/ cinvitfit.asm
+asm -o/obj/ cinvtextfit.asm
+asm -o/obj/ citfit.asm
+asm -o/obj/ ctextfit.asm
+asm -o/obj/ fit.asm
+asm -o/obj/ invfit.asm
+asm -o/obj/ invitfit.asm
+asm -o/obj/ invtextfit.asm
+asm -o/obj/ itfit.asm
+asm -o/obj/ textfit.asm
+asm -o/obj/ greekfit.asm
+asm -o/obj/ invgreekfit.asm

@@ -1,0 +1,1 @@
+blink vd0:lib/c.o WITH vidlist TO RAM:a.out LIB lib:lcmffp.lib + lib:lc.lib + lib:amiga.lib + lib:iff.lib + lib:itools1l.lib

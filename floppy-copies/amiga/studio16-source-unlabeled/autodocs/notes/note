@@ -1,0 +1,223 @@
+
+Make every window on the CustomScreen a module? LoadSeg() and launch it
+as an amiga process??  Define standard ways to do things, then new modules
+can be added by simply putting a new xxxx.mod type file in the executable
+directory.
+
+
+PREFS
+====
+
+Make a psound_prefs structure with all inforomation that is savable.
+Include:
+ default file requester path;
+ path for working directory to put open samples in (default ram:)
+ open windows, window positions, and sizes
+ time code source: Serial Port MTC, SMPTE from board
+ # of undos
+ pointer to next prefs structure.  This way I can chain pref structures of
+different modules and have then save/load automaticly
+
+segments
+========
+
+Each piece of sound is called a segment and has the name format:
+
+SampleName.SegmentName
+
+Samles are sections of sound recorded on the hard disk. Each sample has
+associated with it a list of segments.  These are pointers to a section of
+the sample.  Each segment has associated with it the following information:
+
+Description
+Start and ending point
+Fade In/Out Times
+Loop times
+
+
+Macros
+======
+
+Just a thought, but what about defining a maco.  For example, an ASDR
+instrument could be created by three segments.  You could define one
+macro as all three segments.
+
+Other possibilites for macros are combinations of tools, or tools with
+specified parameters (for example, you could have a "can" macro, which is
+just the standard echo with a small echo delay) Combinations of tools would
+be macros that perhaps call two differnt echos and a flage to give a unique
+effect.
+
+Cue list
+========
+
+have the cue list able to trigger other events besides sounds
+
+For instance, enable user to cue midi sequence events that send a standard
+message (via AREXX?) that midi sequenceers will hear and start playing.
+
+Perhaps que an event that will trigger an AREXX script so general purpose
+things can happen (fade genlock, show subtitles, etc...)
+
+AREXX port
+==========
+
+enable digital sounds to be triggered from other programs.  For example,
+enable 16 bit sounds to be triggered from showmaker.
+
+Bars & Pipes Output filter
+=========================
+
+Filter to allow Bars & Pipes to trigger sound samples
+
+Resource Map
+============
+
+Display's system resources availble, such as
+
+Fast, Chip RAM
+Hard disk space
+SMPTE ports
+MIDI Ports
+No of DSP chips, where they are
+D/A, A/D channels, including internal sounds
+CPU usage to record or play/channel with current cpu
+Max num tracks available to record/playback with curent cpu & bus(3000/2000)
+
+Editor
+=====
+
+Add Cut, Copy, Paste functions
+Have paste bring up a requester that asks such things as:
+Auto Scale, No Scale, Simple Scale
+
+Track assignment
+================
+
+Have a screen where you can set each "track"????
+
+ex:
+
+track         location
+
+1              Amiga left 1
+2              Amiga Left 2
+3              Amiga right 1
+4              Amige right 2
+5              12 bit virtual 1
+6              12 bit virtual 2
+7              12 bit virtual 3
+8              16 bit virtual 1 right
+etc....
+
+This allows you to easily switch all sounds on a track to a new output
+device.
+
+Shower Ideas 12/16/90
+=====================
+
+Make a base struture with all globle variables, such as:
+gfxbase, intutionbase, chain of segments loaded, opened samples.
+
+Make things modular, so that anyone can put in code with the name:
+
+xxxxx.mod and ps12 will load it and spawn it as a process.  Maybee make
+the spawned process think it was run the same as if from a cli?
+
+Include a shared library or a jump table in global structure with standard
+routines (file requester, mygadgets, lists, etc.)
+
+Make as many things customizable as possible.  For example, one of the
+global jumps could be the standard editor.  Some could write their own
+editor and replace the system editor by simply including the xxxx.mod file.
+
+Include a standard way for tools to be integrated into the system. For
+example, some one could easily write a new kind of flange effect.  Specify
+how these tools should interface to the system, so all the flange has to do
+is post its name and address to a global list, the flange then becomes
+available in all modules that support tools (like the editor?)
+
+Make an 8 bit sampler module, a moudle to upload/download system exlusive
+msgs from samplers to get their internal sounds.
+
+
+File I/O
+========
+
+Why are we using our own sample I/O like get_samp, etc.
+Why don't we just use getc(), putc(), lseek() etc?  Or perhaps make
+16 bit versions of them using low level I/O.
+
+ANS: so we can change samples in the middle of a file without re-writting
+the whole file?
+ANS: so we can have a file opened READ-WRITE and READ. The operating sys
+only allows one READ_WRITE file opened at a time.
+
+Track structure
+===============
+
+Have a structure describing each track. eacample:
+
+struct Track tracks[16];      /** 16 track **/
+struct Track {
+   struct dev *d;   /** structure describing this devices handle **/
+                    /** add open_dev() type routines  */
+   chanel;        /* left, right ? */
+   }
+
+maybee pointers to regions on this track??
+
+SMPTE
+=====
+
+The smpte library can be programmed to signal a tast when a certian time
+code has been reached.  Thisway the main play routine QUE_PLAY all the
+handlers with times its playback routines will start.  The handlers can then
+open the smpte library and ask to be signaled when its time to start the
+actual playback.  Since the handler is so closely related to the hardware,
+it can pre send playback data to the card.  If the smpte reader is on the
+card, the card can triger the start of playback automaticlly
+
+Since the cards track the smpte code, if the user has two or more cards
+plugged in, he will probablly have to run smpte code to each card.  Unless
+we have the smpte.library send the timing info to each card.
+
+Hard disk
+=========
+
+write a hard disk scanner that tells how fragmented a file is.  Perhaps
+write a defrag utilities that will re-organize your hard disk so its faster.
+
+Non-Destructive editing
+=======================
+
+What about a mode where all edits are performed by modifing a play table.
+You set up an array of pointer sets that points to clips of a sample.
+The sound is played by playing each clip. EG. you start out with only one
+entry pointing to the
+entire sample.  If the user does a cut in the middle of a sample, the pointer
+array is changed to contain to sets of pointers. The two sections of sound
+that weren't cut.  Likewise, an insert generates a new set of pointers in
+the array. Effects, like fades, could genereate a new sample and a set of
+pointers is generated that points to the new sample.
+
+When the sample is closed, a new continous sample is generated by appending
+all the sample pointed to together.
+
+Advantages: Unlimited Undo with no extra memory, much faster responce time
+for large samples
+
+What about a 'playlist' structure.  Instead of having all the editor
+functions work on single samples, the work on a playlist.  You generate the
+"array of pointers" mentioned above by following the playist struct (it
+points to a list of REGIONS which point to sections of individual samples.)
+
+This way, many of the same routines used in the cue list software can be
+shared.  For example, the play and graph routines.
+
+16/8 bits!
+==========
+
+Dont forget that I want a copiler time switch to generate an 8 bit or 16 bit
+editor.  This will allow us to use this code of a possible "Perfect Sound 4"
+

@@ -1,0 +1,1 @@
+blink lib:cback.o WITH objlist TO Studio16:Apps/Editor LIB lib:lcmieee.lib + lib:lcnb.lib + lib:amiga.lib+lib:debug.lib SD NODEBUG

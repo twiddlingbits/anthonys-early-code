@@ -1,0 +1,139 @@
+
+Dec 11, 1988
+
+
+The following is a discussion of some of the features in City Desk 2.0.
+
+Laser Printer Module
+--------------------
+
+A new program is now included with City Desk for HP LaserJet and Postscript
+owners.  With this Utility You can:
+
+1. Download softfonts to a laserjet
+2. Erase softfonts in a laserjet
+3. Reset a LaserJet
+4. Print A test Page
+5. Generate .hp files from a softfont
+6. Generate .ps files for PostScript Fonts
+
+Autohyphenation
+---------------
+
+The Auto hyphenation function is now functional.  You can toggle it on or
+off in the "flow options" requester.  To find this requester click the right
+mouse button over the reflow tool in the tool box.  The autohyphenation flag
+is saved with your "auto prefs."  Be sure an save an autoprefs file after
+turning on autohyphenation if you wish it to be active when you first run
+City Desk.  Whenever you turn on auto hyphenation, City Desk uses an
+additional 80K of RAM for hyphenation tables.  This RAM is not used when you
+have hyphenation turned off.
+
+Use the command [autothresh x], where x is a unit of distance, to tell city
+desk how often to try and hyphenate a line.  autothresh sets the maximum
+allowable amount of white space before hyphenation is tried.  Currently
+the default is .5 inches.  Examples:
+[autothresh .2"]
+[autothresh 18pt]
+[autothresh .1"+.3cm]
+
+HP LaserJet Support
+-------------------
+
+HP laserjet owners can now have city desk automaticly download a set of soft
+fonts.  This is done by createing an "autofonts" file (see example autofonts
+file on this disk.)  If City Desk finds an autofonts file in its current
+directory, it will download the indicated fonts to your laserjet.
+
+Example "autofonts" file:
+
+;
+; this file has the same format as a font "list" used by the City Desk
+; Laser Utility to download a list of soft fonts.
+; the semicolon indicates a comment
+;
+; Valid commands:
+;R               (reset printer, erase all fonts)
+;D <file> <id>   (download font <file> and assign it id <id>)
+;
+; Now reset printer & download three softfonts from the current directory
+;
+R
+D trp10 1
+D trp10b 2
+D trp12 3
+
+
+Assign Fonts
+------------
+
+There is a new menu option under "preferences" that allows you to re-assign
+'font:'  This should be used with care.  Once you change font: city desk can
+not access any font information in the previous font directroy.  font: is
+the path to your screen "amiga" fonts.  This has nothing to do with laser
+fonts.
+
+Percent Black
+------------
+
+The Perfect Black option in the object options requester now allows you to
+add background screening on any object.  Screens can now be zero percent,
+allowing you to put a white box on top of a gray screen.  The Perfect Black
+is also adjustable in 5 percent increments.
+
+Printing
+--------
+
+Currently when you print with PostScript, output is sent to the ser: device
+which is the serial port.  With LaserJet selected, output is sent to either
+ser: or par: depending on your amiga preferences selection.  The Amiga
+preference HP driver is not used, and doesn't even need to be on your disk.
+However, your selection of parallel or serial is used. You can
+easily change these choices by selecting "print to file" in the print
+requester. When the file requester appears, enter one of the folowing
+in the file string gadget:
+
+par:           (parallel port)
+ser:           (serial port, set baud rate etc in amiga preferences)
+aux:           (alternate unbuffered serial. WB 1.3 only)
+
+Copy Page
+---------
+
+When you copy pages (either with the cut/copy/paste functions or by having
+a default page copied) object links are not preserved.  That
+is objects linked together on the page being copied from will not be linked
+on the page being copied to.
+
+Loading Color Pictures
+----------------------
+
+When loading graphics, color pictures are converted to gray scales.
+Pictures that are B&W or are exacly 16 gray scales (for example, digitized
+images) need no conversion and load quickly. When drawing B&W pictures,
+be sure and use just ONE bit plane.  If you draw a b&W picture in dpaint
+with your palette set to 32 colors, City Desk will attempt to convert the
+picture to 16 gray scales on load.  Make sure you draw b&w pictures with
+your palette set to two colors.
+
+Color pictures (not HAM) are converted to gray scales when loaded.
+Before this happens you will be presented with a requester
+that gives the following options:
+
+   Saturate       This increates both brightness and contrast
+   OverSaturate   This increates brightness and contrast even more
+   NoWhite        This causes light gray to be used instead of white.
+                  This sometimes looks better on laser printers.
+
+Each of the above options changes the picture slightly during conversion.
+If you just click the close box, the picture will be coverted to gray scales
+without applying any of the above enhancments.  Whether or not an option is
+needed can usually be found by experimentation.
+
+In some case better conversion results may be achieved by using dpaint or
+butcher to convert the picture to 16 gray scales before loading into city
+desk.  This is because color to grayscale conversion is very complicated and
+entrie programs can be written the specialise in that one fuction.  City
+Desk incorperates the most poplular methods of conversion, but not always
+the best.
+

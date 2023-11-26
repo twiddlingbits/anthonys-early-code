@@ -1,0 +1,242 @@
+.. City Desk Reference Guide: Section9.CD
+.. This section contains:
+..  
+..  -List of Typesetting Commands
+..  -Units of Measure
+..  -List of [A]miga Key Commands
+..  -List of Available fonts
+..  -List of supported printers
+..
+.. Copyright 1987 by:
+..   MicroSearch
+..  9896 S.W. Freeway, Houston, TX  77074
+..  (713) 288 9818
+..
+..  Written by:
+..   SunRize Industries
+..   P.O. Box 1453, College Station, TX  77841
+..  (409) 846 1311
+..
+.eh=Page #//City Desk Reference Card
+.oh=Reference Guide//Page #
+[helv 14;bd]Reference Guide
+[roman 10;pl;fj]
+[setstartchar $;setendchar$$
+Units of Measure
+The unit's abbreviation must be placed immediately after the number with no spaces in between. If you do not specify a unit of measure, C‚i‚t‚y‚ ‚D‚e‚s‚k‚ defaults to inches, except for font sizes which defaults to points. Note that fractional numbers can be specified as well.
+$tabset 1.5" 4";settabchar >$
+unit>abbreviation>value
+ 
+millimeters>mm>25.4mm = 1in
+centimeters>cm>2.54cm = 1in
+inches>in or ">
+feet>ft or '>1ft = 12in
+picas>pc>6pc = 1in; 1pc = 12pt
+points>pt>72pt = 1in
+cubits>cb>1cb = 18in
+
+
+List of Typesetting Commands                        
+Formatting commands are embedded in the text. These commands are enclosed in square brackets [] and must be entered in lowercase letters, otherwise they are not recognized.  Multiple commands may be entered in the same brackets if separated by either commas or semicolons. The list of commands follows below.
+
+
+[bm n„]             -bottom margin is set to n.
+[bd]               -turn on boldface typeface. 
+[bold]             -turn on boldface typeface.
+[break]            -turns off the [nobreak] function.
+
+[cj]               -centered justification
+[compress]         -set compress mode.
+
+[fj]               -filled justification
+[font n„a„m„e„] „ „ „ „ „   -set the font to name. Example: [font topaz]
+[fsize n„]          -sets the font size to n. Example: [fsize 8]
+
+[hskip +n„]          -Positive horizontal skip. 
+[hskip -n„]         -Negative horizontal skip. 
+
+[indent n„]         -indent this line to +n spaces.
+[indent -n„]        -reverse indentation. Good for outlines.
+[it]               -turn on the italic attribute. 
+[italic]           -turn on the italic attribute.
+
+[leading n„]        -set line leading to n (The space between lines of text is set to n).
+[lj]               -left justification
+[lm n„]             -sets the left margin to n.
+
+[mag m„.„n„]          -magnification of m.n times the current size.  Example [mag 2.5]
+[magx m„.„n„]         -Horizontal magnification in the x direction only.
+[magy m„.„n„]        -Vertical magnification in the y direction only.
+
+[nobreak]          -Indicates that all text intil a [break] command should not be broken across boxes.
+[nocj]             -turns off center justification.
+[nocompress]       -turn off compress mode.
+[nobd]             -turn off boldface if already on.
+[nobold]           -turn off boldface if already on.
+[noit]             -turn off italic if already on. 
+[noitalic]         -turn off italic if already on.
+[noun]             -turn off underlined.
+[nounderlined]     -turn off underlined.
+
+[parspace n„]       -Space between paragraphs is set to n.
+[p]                -Turns off all attributes (bold, italic, etc)
+[pl]               -same as [p]
+[plain]            -same as [p]
+
+[rj]               -right justification
+[rm n„]             -set the right margin to n„.
+
+[setendchar c„h„a„r„]     -define the end escape character to c„h„a„r„. Default is a close bracket ].
+[setsofthyphenchar c„h„a„r„] -define a new soft hyphen. Default is ~.
+[setstartchar c„h„a„r„]   -define the start escape character to c„h„a„r„. 
+Default is an open bracket [.
+[settabchar c„h„a„r„]     -define a tab character. Default is @.
+[settiechar c„h„a„r„]     -Define a tie character. Default is _.
+[sentspace n„]       -  Extra space between sentences. Adds n„ space after periods at the end of a sentence.
+[spacestretch n„]   -   Sets point at which to start filling between characters, not just words in [fj] mode.
+[spacing n„]           -Turns of leading, and tells City Desk to put lines of text on after the other, with n„ spave between them.
+
+[tab]              -place text after position defined in [tabset]
+[tabset n„1„ „n„2„ „.„.„]  -define tab-stop positions at n„1„ „n„2„ „.„.„.„ 
+[tm n„]             -define top margin.
+
+[un]               -turn on underlined.
+[under]            -turn on underlined.
+[underlined]       -turn on underlined.
+
+[vcenter]       -Centers a block of text vertically within its box. 
+[vskip +n„]       -Positive vertical skip. Useful for superscripts.
+[vskip -n„]      -Negative vertical skip. Useful for subscripts.
+
+[widowoff]      -turn off widow and orphan line checking.
+[widowon]       -turn on widow and orpan line checking. 
+
+
+-----------------------------------------------------------------
+Special Characters
+
+Special characters may all change. Exception: the backslash.
+
+
+\~               -the soft hyphen(~) is a special character that tells City Desk where to hypheate a word if it is nessasary. Example a„n„y„~„w„a„y„
+\@               -TAB - moves to next tab stop.
+\_               -The underscore is the tie character. Same as a space, except the words cannot be broken when they are tied. Also, the sentspace paramater will not effect the tie. Thus M„r„.„\„_„J„o„n„e„s„ „will make sure that Mr. and Jones do not get split.
+[                -Open bracket. Start of escape sequence.
+]                -Close bracket. End of escape sequence.
+
+\\               -Allows entering any special character (including a backslash) into the text. The character following the backslash is treated with no special meaning attached, therefore it is printed. If a decimal value follows a backslash, i.e: \\183, then the ASCII value of the character is used. This is useful for entering foreign characters, bullets, daggers, etc.( a postscript bullet can be entered by saying \„\„1„8„3„)
+
+\\n              -print a newline
+\\[              -print an open bracket
+\\]              -print a close bracket
+
+
+
+-----------------------------------------------------------------
+List of City Desk [A]miga Keys                          
+City Desk's Amiga key commands are activated by pressing both the right mouse button and the corresponding character at the same time. These options can also be accessed from the Drag Bar.
+
+              [A] N  -- Get new file
+              [A] O  -- Open... a file
+              [A] S  -- Save as... give name to file
+              [A] G  -- Load Graphic
+              [A] T  -- Load Text
+              [A] P  -- Send current page to printer
+              [A] Q  -- Quit/Exit from C‚i‚t‚y‚ ‚D‚e‚s‚k‚
+
+              [A] E  -- Edit a block of text
+              [A] A  -- Edit Text Attributes
+              [A] F  -- Edit Page Format
+              [A] R  -- Reflow Text Chain
+              [A] I  -- Invert Graphic
+
+              [A] ]  -- Bring toolbox to front of window
+              [A] [  -- Hide toolbox behind window
+
+
+-----------------------------------------------------------------
+List of Graphics Editor Amiga Keys
+Graphics Editor Amiga key commands are activated by holding down the right Amiga key and the appropriate letter at the same time. These options can also be accessed from the Menu Bar.
+
+              [A] W  -- Clear Screen 
+              [A] Z  -- Start Over
+              [A] Q  -- Quit with Save
+              [A] X  -- Just Quit
+
+              [A] C  -- Cut graphic
+              [A] P  -- Paste normal size
+              [A] R  -- Paste resized
+              [A] E  -- Erase Area
+
+              [A] D  -- Quick Draw 
+              [A] S  -- Slow Draw
+              [A] L  -- Draw Line
+              [A] B  -- Draw Box
+              [A] F  -- Fill Area
+              [A] M  -- Magnify 
+              [A] 1  -- Fine Brush
+              [A] 2  -- Medium Brush
+              [A] 3  -- Thick Brush
+              [A] 4  -- Small Square Brush
+              [A] 5  -- Big Square Brush
+
+
+-----------------------------------------------------------------
+List of Available Amiga Fonts                  
+Amiga Fonts         Font Size               Abbreviation
+
+Diamond               12                    [diamond]
+Emerald               20                    [emerald]
+Garnet                9, 16                 [garnet]
+Opal                  11                    [opal]
+Ruby                  8, 12                 [ruby]
+Sapphire              14, 15, 18, 19        [sapphire]
+Topaz                 8                     [topaz]
+
+
+
+HP LaserJet Fonts         Font Size       Abbreviation
+ (resident)
+
+Helv Bold                      14          [helv]  
+Courier                        12          [courier]
+Courier Bold                   12          [courier;bd]
+Courier Italic                 12          [courier;it]
+Tms Roman                      10          [roman]
+Tms Roman Bold                 10          [roman;bd]
+Tms Roman Italic               10          [roman;it]
+Tms Roman Comp.                8, 10       [roman;compressed]
+Tms Roman Comp. Bold           10          [roman;compressed;bd]
+Tms Roman Comp. Italic         10          [roman;compressed;it]
+Line Printer                   8
+
+
+
+      Postscript fonts                           Size
+        (resident)
+
+      Roman
+      Helvetica
+      Courier
+
+
+You may expand these lists by obtaining separate font cartridges.
+
+
+---------------------------------------------------------------
+List of Supported Preference Printers
+
+                -Apple LaserWriter or compatible
+                -Custom
+                -AlphaCom AlphaPro 101
+                -Brother HR 15XL
+                -CBM HPS1000
+                -Diablo 630
+                -Diablo Advantage D25
+                -Diablo C-150
+                -Epson
+                -Epson JX80
+                -HP LaserJet (or compatible)
+                -HP LaserJet PLUS
+                -Okimate 20
+                -Qume LetterPro 20

@@ -1,0 +1,23 @@
+##base InterfaceBase *the name of our base used by C glue code and C PRAGMAS
+##name Interface     *the name of our library 
+##vers 1          *version #
+##revs 1          *revision #
+##libid  Todds window/menu/etc library © 1991 
+##bias 30         *first function is always at an offset of -30 from lib base
+##init init_Interface
+##expu rem_Interface
+***************************************************************************
+##ret struct window * 
+OpenNewWind(nwind,state,x,head)
+CloseWind(wind)
+##ret void
+ColorGadList(ngh)
+HandleIntuitMess(wind,message)
+RefreshWind(wind)
+RefreshBar(wind)
+WindTitleChange(wind,cs)
+##ret char *
+FindFileName(name)
+FileRequest(path,name,flags)
+##end
+

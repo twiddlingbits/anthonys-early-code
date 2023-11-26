@@ -1,0 +1,4 @@
+FROM  cursorsubs.o, linesubs.o, makewin.o, memsubs.o, ntextwin.o,*
+search.o, texted.o, textedldtxt.o, textedmenus.o, txtedgetstr.o,*
+fillandfind.o, scrolldown.o, draglines.o, replacereq.o, flashscreen.o,*
+extrasubs.o

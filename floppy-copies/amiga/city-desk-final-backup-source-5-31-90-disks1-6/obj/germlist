@@ -1,0 +1,2 @@
+lc -b -f -v -odf0:obj/ main showstat updatemargins printoptions menus saveobject text loadilbm prefio createview newtextformat savepage loadfonts screen editmenu editsmall graphed printmode magwin
+lc -odf0:obj/ getfile

@@ -1,0 +1,139 @@
+
+#define Wth 390
+static struct NewWindow Record_NewWindow = {
+   (640-548)>>1,
+   15,
+   Wth,
+   65,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE,
+   REPORTMOUSE|ACTIVATE|SMART_REFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE|WINDOWSIZING,
+   0,0,
+   " Record Window ", /** TITLE **/
+   0,0,
+   250,65,1024,65,
+   CUSTOMSCREEN
+   };
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct slider *GAINknob;
+static void GAINfunc();
+static struct NewSlider GAINgad=
+	{NULL,					/* *next (gadget) */
+	10,16,(Wth>>1)-4,28,				/* Box x1,y1,x2,y2 */
+	SLIDER_COOL|FREE_HORIZ|MANUAL_XOR,			/* Flags */
+	GAINfunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	100,1,51,				/* list_size | show_size | top */
+	8*7+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct slider *FREQknob;
+static void FREQfunc();
+static struct NewSlider FREQgad=
+	{&GAINgad,					/* *next (gadget) */
+	(Wth>>1)+4,16,379,28,				/* Box x1,y1,x2,y2 */
+	SLIDER_COOL|FREE_HORIZ|MANUAL_XOR,			/* Flags */
+	FREQfunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	28,1,26,				/* list_size | show_size | top */
+	8*12+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct slider *RATEknob;
+static void RATEfunc();
+static struct NewSlider RATEgad=
+	{&FREQgad,					/* *next (gadget) */
+	10,32,379,44,				/* Box x1,y1,x2,y2 */
+	SLIDER_COOL|FREE_HORIZ|SLIDER_ARROWS|MANUAL_XOR,			/* Flags */
+	RATEfunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	600,1,550,					/* list_size | show_size | top */
+	8*10+8,-1};				/* knob_width | knob_Height */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct Button *FILEbut ;  
+static void FILEfunc();
+static void RECORDfunc();
+static void AUTOFILTfunc();
+static void MONITORfunc();
+
+#define NUMGADS 4
+#define FILEbutton but[3]
+#define RECORDbutton but[2]
+#define AUTOFILTbutton but[1]
+#define MONITORbutton but[0]
+
+static struct NewButton but[] = {
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+	{&AUTOFILTbutton,				/* *next (gadget) */
+	10,48,90,48+12,					/* Box x1,y1,x2,y2 */
+	BUTN_COOL|BUTN_TOGGLE|MANUAL_XOR,				/* Flags */
+	MONITORfunc,					/* Call Function */
+	NULL,						/* user_data */
+	NULL,					/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"Monitor"},					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+	{&RECORDbutton,				/* *next (gadget) */
+	97,48,201,48+12,			/* Box x1,y1,x2,y2 */
+	BUTN_COOL|BUTN_TOGGLE|MANUAL_XOR,				/* Flags */
+	AUTOFILTfunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"Auto Filter"},					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+	{&FILEbutton,				/* *next (gadget) */
+	208,48,292,48+12,			/* Box x1,y1,x2,y2 */
+	BUTN_COOL|BUTN_TOGGLE|MANUAL_XOR,				/* Flags */
+	NULL,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"Record"},					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+	{&RATEgad,				/* *next (gadget) */
+	299,48,383,48+12,			/* Box x1,y1,x2,y2 */
+	BUTN_COOL|BUTN_TOGGLE|MANUAL_XOR,				/* Flags */
+	FILEfunc,				/* Call Function */
+	NULL,					/* user_data */
+	NULL,				/* COLORS */
+	NULL,					/* id */
+	NULL,					/* MsgPort *notifyme */
+	NULL,					/* *gad_ptr */
+	"Name"}};					/* *text */
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

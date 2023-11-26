@@ -1,0 +1,17 @@
+static struct NewWindow NewWind = {
+   30,
+   12,
+   200,
+   40,
+   BLACK,
+   WHITE,
+   NEWSIZE,
+   WINDOWSIZING|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   "Time", /** TITLE **/
+   0,0,
+   100,34,1024,1024,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/

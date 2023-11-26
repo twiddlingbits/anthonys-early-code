@@ -1,0 +1,100 @@
+
+
+
+MAKING AN IFF INSTRUMENT
+
+  This file will explain in detail how to create an IFF
+instrument that is in tune and sounds good. 
+
+  step 1. Prepare to digitize a sound.
+Hook up your audio source to your digitizer.  You only need to
+hook up one channel, since IFF instruments are not stereo.  Load
+the Perfect Sound program, and monitor the input line you are
+using.  Now, set up your audio source, and adjust the volume
+until you get the best possible sound.  If you have one, hook
+your graphic equalizer or filter box in between the audio source
+and the digitizer. Adjust it to cut out or limit frequencies
+above 4000 hertz.  Higher frequencies will create unwanted noise
+(called "aliasing") at this record speed.
+
+  step 2. set digitizing rate and pitch.
+Pick "Adjust Record Rate" from the menu, and set the record rate
+to 8363 (eighty-three hundred and sixty-three).  You probably
+won't get the slider to give you this particular number, so click
+on the number box and edit the number directly.
+  To be in tune, the sample you digitize must match the pitch of
+middle C.  There are many ways to change the sample pitch to do
+this.  For instance, on a synthesizer, simply press the C key
+that is nearest to the middle of the keyboard.  Middle C is the
+standard for all Amiga instruments.  Don't bother with this step
+if you are digitizing a percussion sound that consists mostly of
+white noise.
+
+  step 3. digitize.
+Double check your connections, and then digitize your sound.
+Edit it until you have the sound you want.  Remember that some
+music programs have limits on how big their instruments can be.
+Sonix cannot use an instrument bigger than about 31000 bytes, while
+DMCS is limited to about 39k bytes.
+
+  step 4. create octaves.
+Click on your sample to highlight it.  Now use the menu option 
+Sample * 2".  Your new sample name should indicate that this
+sample is one octave higher than the base sample(i.e."flute0.5").
+Click on the base sample again and use the menu option "Sample /
+2" to get another sample that is one octave lower than your base
+sample.  These three samples will be your new three-octave
+instrument.  By continuing to multiply or divide, you can create
+up to a five-octave instrument.  You can also choose to make an
+instrument with only 1,2,3, or 4 octaves.  If you do not make a
+5-octave instrument, your music program will stretch the lowest
+sample to reach a really low note, which can sometimes distort
+the sound unacceptably.  Also, the samples need not all be the
+same.  Many drum instruments are composed of 5 different
+samples.  The only real stipulations are that each sample must
+be exactly twice the length of the next higher one, and all
+samples must be of an even length.
+
+  step 5. create instrument.
+Click on the highest pitched sample of the octaves you have made
+for your instrument.  Move the slider marked "start" to the
+place you want your sustain to start.  The"start" marker marks a
+place in your instrument that will loop through to the end
+continuously while the note lasts.  If you want an instrument
+that has no sustain (i.e. a percussion sound) simply move the
+"start" slider all the way to the right.  Now choose the menu
+option "Make IFF Instrument".  If all goes well, you will be
+asked for "SamplesPerHighCycle".  This basicly adjusts your
+octave.  The default, eight, will give you just what you have
+made.  A lower number will drop the octave of all of your
+samples, while a higher number will raise the octave. Note that
+the number must be a multiple of 2 (2,4,8,16,32,etc.). Also,
+Perfect Sound will not reflect the octave change.
+
+  step 6. save instrument
+A completed instrument will be shown just like a sample in the 
+list. However, if you play it, you will hear all of the octaves,
+one after another.  To play the individual octaves, press the
+F1-F5 keys. Click the instrument to highlight it, and then save
+it as IFF. Congratulations!  You have made an IFF instrument.
+
+
+    Now we will go through the process step by step to create an
+actual instrument.  On your disk is a sample called "beep1".
+This is a raw sample that has been already set to middle C at a
+playback rate of 8363.
+    Run Perfect Sound.  Load "beep1". Play it once, to hear how
+it sounds.  Now select the menu option "Sample*2". When it asks
+for the name of the new sample, type "beep0.5".  Now, click on
+"beep" again to highlight it.  Pick the menu option "Sample/2".
+ Call it "beep2".  Now click on "beep0.5" to highlight it.  Move
+the "start" pointer all the way to the right; we don't want a
+sustain point.
+    Choose the menu option "Make IFF Instrument". When it asks
+for the samples per high cycle, just click the "ok" button.
+Name this new voice "beepinst".
+    Now load the "beep" instrument off the disk.  "Beep"
+and your "beepinst" instrument should sound exactly alike.
+
+
+||

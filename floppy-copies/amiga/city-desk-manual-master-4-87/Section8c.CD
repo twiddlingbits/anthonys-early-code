@@ -1,0 +1,199 @@
+.. City Desk Reference Guide: Section8c.CD
+.. This section contains the following:
+.. 
+..  -Typesetting control words
+..
+.. Copyright 1987 by:
+.. MicroSearch
+.. 9896 S.W. Freeway, Houston, TX  77074
+.. (713) 988 2818
+.. 
+.. Written 1987 by:
+.. SunRize Industries
+.. P.O. Box 1453, College Station, TX  77840
+.. (409) 846 7879
+..
+[roman 10;pl;fj]
+City Desk Typesetting Control Words
+
+
+SYNTAX: Formatting commands such as changing fonts, margins, justification and others may be embedded anywhere in the text. All such embedded control words are enclosed in square brackets \[\]. Multiple commands may be entered in the same square brackets by separating them with either commas or semicolons.
+
+~
+The TILDE is the soft hyphen character. By placing it within a word, you are telling C‚i‚t‚y‚ ‚D‚e‚s‚k‚ were to break that word if it needs to. For example, "pro~fessional" will tell C‚i‚t‚y‚ ‚D‚e‚s‚k‚ to hyphenate professional at the end of a line if it would make that line look nicer.
+
+\\n
+   This control word prints a newline. It is used to indicate the end or paragraphs.
+
+
+\[bd\] or \[boldface\]
+   BOLDFACE overstrikes the specified character or set of characters.  Example:
+    \[bd\] This is bold text \[pl\]and this is not.
+produces:
+    This is bold text and this is not.
+
+
+\[bm n…\]
+   BOTTOM MARGIN sets the number of lines to be left between the bottom of the box and the bottom of the text area.
+
+
+\[cj\]
+   CENTER JUSTIFICATION centers the specified number of lines between the left and right margins. Example:
+    \[cj\] This line is centered
+produces:
+[cj]This line is centered[fj]
+
+
+\[compressed\]
+   This command sets the character attribute to compressed mode. It is valid only on HP laser fonts not Amiga fonts.
+
+
+\[fj\]
+   FILLED JUSTIFICATION has the effect of concatenating and filling the lines so that the text is smooth on both sides of the margins. This is the default justification.
+
+
+\[font n…a…m…e…\]
+   FONT assigns a font name or typeface. All lines followed by this command have the appearance of the specified font.
+ Example:
+   \[font emerald\]This is emerald \[font diamond\]This is diamond
+produces:
+    [font emerald]This is emerald [font diamond] This is diamond
+[roman 10]
+
+
+\[fsize n…\]
+    FSIZE sets the font size to n. Example:
+    \[font diamond,fsize 20\] This is diamond 20
+produces:
+    [diamond 20] This is diamond 20
+[roman 10]
+
+
+\[indent n…\]
+    INDENT Specifies the amount to indent the first line of a new paragraph. Negative indents are useful for creating outlines. Example:
+
+\[indent .5";parspace 10pt\]This is some text that will be used as an example. This is the end of a paragraph.\\n This is the first line in a new paragraph. This is the end?
+
+produces:
+
+     This is some text that will be used
+as an example. This is the end of a
+paragraph.
+
+     This is the first line in a new
+paragraph. This is the end?
+
+
+\[it\] or \[italic\]
+   ITALIC causes characters to have the appearance of slanted letters. Example:
+\[it\]This is italic.\[pl\] This is not.
+produces:
+     T„h„i„s„ „i„s„ „i„t„a„l„i„c„.„ „This is not.
+
+
+\[leading n…\]
+   Line LEADING specifies the vertical spacing between two lines. This distance is calculated from the baseline of one line to the baseline of the next. Note that \[leading 0\] is valid, but it will result in lines overprinting each other.
+
+
+\[lj\] 
+   LEFT JUSTIFICATION places all output lines against the left margin. This control word gives the effect of a "ragged right  margin." Lines are not smooth on the right margin.
+
+
+\[lm n…\]
+   LEFT MARGIN adjusts the position of the text with respect to the physical left edge of the box. Example:
+\[lm 5\] This line is placed five spaces from the left
+\[lm 0\] This line is placed beginning at the edge of the box.
+
+produces:
+
+     This line is placed five spaces from the left
+This line is placed beginning at the edge of the page.
+
+
+\[mag m….…n…\…]…
+   MAGnification increases or decreases the size of a character or group of characters in both directions (vertical or horizontal) by a factor of m„.„n„ times the current size. This control word is useful when character sizes are not available in an Amiga font. Example:
+   This is \[mag 2.5\]2.5\[mag 1\] times larger.
+produces:
+[topaz 8]This is [mag 2.5]2.5[mag 1] times larger.[roman 10]
+
+
+\[magx m….…n…\]
+      MAGnification in the X direction (horizontal) decreases or increases the size of the character by a factor of m„.„n„ times the current size. The effect is the same as \[mag m.n\] but magnification is in the horizontal direction only.
+
+
+\[magy m.n\]
+      This command is the same as \[magx m.n\] but MAGnification is in the Y direction only (vertical).
+
+
+\[parspace n…\]
+      This command is in addition to line spacing and leading. \[parspace n\] defines the blank distance between paragraphs.
+
+
+\[pl\] or \[plain\]
+      PLAIN resets text to the normal or default appearance of characters. Examples:
+       \[pl\]This is plain text \[bd\]this is not, it is bold.
+produces:
+       This is plain text this is not, it is bold.
+
+
+\[rj\] 
+     RIGHT JUSTIFICATION forces all text to be placed against the right margin leaving the left side "ragged." Example:
+     \[rj\] This line is right justified
+          And so is this.
+produces:
+[rj]This line is right justified
+And so is this[fj]
+
+
+\[rm n…\]
+   RIGHT MARGIN sets the number of character spaces to be left blank with respect to the physical right edge of the page.
+
+
+\[spacing n…\]
+   Line SPACING is the vertical distance from the bottom of one line to the top of the next. It is most useful when making extensive fonts changes. \[spacing n\] is mutually exclusive with \[leading n\]. You use one method only.
+
+
+\[spacestretch n…\]
+    Space Stretch is used in conjunction with filled justification. This command indicates the amount of white space that can be stretched before the space between characters starts to stretch. Space stretch can be defined in any unit of measure. C‚i‚t‚y‚ ‚D‚e‚s‚k‚ defaults to a size of 12 points.  Note that this can also be called "microjustification"
+
+
+\[tab\]
+   This command is used in conjunction with \[tabset n„1„ „n„2„ „.„.„.„\]. Each time this command is encountered it places any text following this code at the next tab-stop position. It is easier to use a tab character than the \[tab\] code. To define a tab character see \[settabchar c„h„a„r„a„c„t„e„r„\].
+
+Example:
+
+\[tabset 1" 2"\]
+123\[tab\]443\[tab\]average: 283.0
+produces:
+[tabset 1" 2"]
+123[tab]443[tab]average: 283.0
+
+
+\[settabchar c…h…a…r…a…c…t…e…r…\]
+    SETTABCHAR c„h„a„r„a„c„t„e„r„ defines a special character to be recognized as a TAB for tab-stops positions in subsequent output lines. Each time the specified symbol is encountered it places any text at the next tab-stop position. The default tab character is the "@" symbol. Use this command in conjunction with \„[tabset n„1„ „n„2„ „ „.„.„.„\„] „ „Example:
+
+\„[tabset 1" 2" 3"\„]
+\„[settabchar >\„]
+123>456>34.67>average: 204.55
+
+produces:
+[tabset 1" 2" 3";settabchar >]
+123>456>34.67>average: 204.55
+
+
+\[tabset n…1… …n…2… …n…3….….….…\]
+   TABSET defines the position of each tab-stop. You may define any number of tab-stop positions in any valid unit of measure.
+
+
+\[tm n…\]
+   TOP MARGIN defines the number of lines to be left blank between the top of the box and the first line of the text area.
+
+
+\[un\] or \[underlined\]
+   UNDERLINED (or underscore) underscores text in the specified lines or characters. Examples:
+
+\[un\]This line is underlined. \[pl\] This is not.
+produces:
+
+      T‚h‚i‚s‚ ‚l‚i‚n‚e‚ ‚i‚s‚ ‚u‚n‚d‚e‚r‚l‚i‚n‚e‚d‚.‚ This is not.
+

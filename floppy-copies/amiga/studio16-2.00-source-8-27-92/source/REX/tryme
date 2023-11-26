@@ -1,0 +1,23 @@
+/***************************************************/
+/* LOAD IN STUDIO 16 AREXX SO WE CAN SEND COMMANDS */
+/***************************************************/
+address command 'studio16:Utilities/Studio16REXX'
+/*address command 'studio16:Utilities/Studio16REXX NO SCREEN'*/ /* DO COMMANDS WITHOUT OPENING SCREEN */
+/*address command 'WaitForPort Studio16.1'*/ /* Optional.. May be needed in some cases */
+/***************************************************/
+NL = '00'X
+CHAN_INPUT  = '1'
+CHAN_PLAY   = '2'       /* Constants */
+CHAN_OUTPUT = '3'
+/***************************************************/
+options results
+/***************************************************/
+address 'Studio16.1'
+/***************************************************/
+
+
+S16OpenWithAutoClose 'Spirit:samples/Mumies'
+key=result
+say 'Print #1'
+S16Trigger key
+say 'Print #2'

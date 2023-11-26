@@ -1,0 +1,4 @@
+.Key fl1,fl2,fl3
+;
+LC:blink from LIB:c.o,safeclose.o,echo.o,comb.o,proc.o,do_menu.o,IFFRoutines.o,disk.o,mainsed40.o,getfile.o,subsed40.o,subsed240.o,goodsed.o,graph.o to ear lib LIB:lc.lib+LIB:amiga.lib LIB:lcmffp.lib map nil:
+

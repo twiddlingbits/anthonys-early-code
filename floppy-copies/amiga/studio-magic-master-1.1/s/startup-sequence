@@ -1,0 +1,8 @@
+echo "Studio Magic Version 1.1"
+if EXISTS sys:system
+    path sys:system add
+endif
+BindDrivers
+stack 5000
+StudioMagic 83000
+

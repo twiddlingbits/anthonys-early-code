@@ -1,0 +1,10 @@
+echo "Lattice AmigaDOS C Compiler Version 3.10"
+echo "Copyright 1986, Lattice, Inc."
+stack 3000
+cd SOURCE
+echo " "
+assign QUAD:    RAM:
+assign LC:      C_DISK#2:c
+assign INCLUDE: C_DISK#2:
+assign LIB:     C_DISK#2:lib
+

@@ -1,0 +1,53 @@
+APPENDIX B - EXAMPLE PROGRAM RUN
+
+
+Welcome to Anthony's Speech Recognition Experiment
+
+1. Learn an utterance from a file on disk
+2. Compare an utterance on disk to learned phrases (mthd 1)
+3. Compare an utterance on disk to learned phrases (mthd 2)
+4. Exit
+
+1
+
+Enter file name to load: DOG1
+Loading dog1  length: 6654  sampling rate: 13257
+Learning sample # 1...
+
+Welcome to Anthony's Speech Recognition Experiment
+
+1. Learn an utterance from a file on disk
+2. Compare an utterance on disk to learned phrases (mthd 1)
+3. Compare an utterance on disk to learned phrases (mthd 2)
+4. Exit
+
+1
+
+Enter file name to load: CAT1
+Loading cat1  length: 3070  sampling rate: 13257
+Learning sample # 2...
+
+Welcome to Anthony's Speech Recognition Experiment
+
+1. Learn an utterance from a file on disk
+2. Compare an utterance on disk to learned phrases (mthd 1)
+3. Compare an utterance on disk to learned phrases (mthd 2)
+4. Exit
+
+3
+
+Enter file name to compare: DOG2
+Loading dog2   length: 6116  sampling rate: 13257
+
+i: 0 dog1 d=5.162811 d(norm)=0.206512
+i: 1 cat1 d=7.420756 d(norm)=0.674614
+
+Welcome to Anthony's Speech Recognition Experiment
+
+1. Learn an utterance from a file on disk
+2. Compare an utterance on disk to learned phrases (mthd 1)
+3. Compare an utterance on disk to learned phrases (mthd 2)
+4. Exit
+
+4
+

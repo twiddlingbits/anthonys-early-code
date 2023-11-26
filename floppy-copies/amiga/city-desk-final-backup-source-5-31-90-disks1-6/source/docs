@@ -1,0 +1,69 @@
+
+This file contains documentaion for the City Desk program.
+The format is:
+
+Function Name, Source File Name
+description of paramater;
+description of what subroutine does
+
+
+copypage(source, dest)     initdefaultpage.c
+
+struct pageinfo *source, *dest;
+
+Copys many elements from the source page to the destination page.
+Only copies elements in the pageinfo structure, not things like
+objects.
+
+move_page(source, dest)     movepage.c
+
+int source, dest;
+
+Copies the entire source page to the destination page.  All objects
+are copied including text chains. However, textchains that flow off
+the page are not currently copied. Objects already on the destination
+page are not effected.
+
+initdefaulpage()        initdefaulpage.c
+
+extern struct pageinfo defaultpage;
+
+Sets the defaultpage structure to some nominal values. The defaultpage
+structure is often used for initilizing pages with the copypage() call.
+
+
+get_screen_data()       get_screen_data.c
+
+extern std_width;
+extern std_height;
+
+Reads the Workbench width and height then sets std_width, std_height.
+This allows compatiblitiy with PAL and morerows.
+
+erase_page()            erase_page.c
+
+int pg;
+
+Deletes all objects on page pg and then clears the page if it is open.
+
+draw_page()             draw_page.c
+
+int pg;
+
+If page pg is open, this function refreshes its display. This includes
+drawing margins, grid, and any objects on the page.
+
+deletepage()            deletepage.c
+
+struct pageinfo *page;
+
+Deletes a page's view if it exists then calls erase_page to delete
+all objects on the page.
+
+removepage()            removepage.c
+
+struct pageinfo *page;
+
+Calls deletepage to delete a page, then shifts all pages down to
+actually remove the page.
+

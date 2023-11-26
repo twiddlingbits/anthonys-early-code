@@ -1,0 +1,2 @@
+a68k /inter.asm -oenvir.o
+blink FROM envir.o+FileReq.o+menu.o+window.o+inter.o+prog:studio/studiostub.o+prog:gadlib/gadlibstub.o TO "libs:Interface.library" LIB LIB:lcnb.lib lib:amiga.lib NODEBUG

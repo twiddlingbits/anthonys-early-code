@@ -1,0 +1,158 @@
+1,1,-1,88,16730830,2,11,115,590,1,9,2,1,3,1,1,0,2,0,0,0,0,0,2,1,0,3,4,0,0,0,3,0,0,0,2,0,0,0,4,0,5,2,0,0,0,0,5,4,7,6,0,0,0,2,0,6,0,0,0,5,0,0,3,0,7,5,8,0,0,0,0,0,8,7,9,0,0,0,0,4,5,0,9,8,0,0,0,10,0,0,10,0,0,0,0,0,0,0,NOUN
+SWORD
+SHIELD
+DRAGON
+GOLD
+BEAST
+LIZARD
+TREASURE
+GEMS
+zyxwvut
+YES
+Y
+QUICK
+GET
+TAKE
+GRAB
+PICK
+DROP
+CHUCK
+LEAVE
+LEAP
+JUMP
+BOUND
+VAULT
+PUNCH
+HIT
+FIGHT
+STAB
+PIERCE
+IMPALE
+CUT
+KILL
+USE
+LOOK
+EXAMINE
+STUDY
+WAIT
+zyxwvut
+zyxwvut
+zyxwvut
+You are at the bottom of the pit.  You obviously can't get back up, but a small tunnel leads South.
+You are in a tunnel that leads West.  To your East is a gaping pit ten feet across.  You can see a small alcove on the other side.
+You in a small alcove on the other side of the pit.  You fear you must jump again to get back.
+You are in a large tunnel.
+You are in a medium-sized tunnel with three exits.
+You are in a small, dirty alcove.
+You are in a small North-South tunnel.  A foul stench permeates the air here.
+You are in a huge cavern littered with gold!  The dragon-stench makes your head spin.
+You are in a small depression at the back of the dragon's cave.  There is light coming from above!
+You shouldn't be here, dammit!
+^c
+ 
+                            Welcome to
+                         Catacombs of the
+                            Underearth
+               A short demo adventure written using the
+          Adventure Workshop adventure language written by
+                            Thom Robertson
+                                 and
+                          SunRize Industries
+  Language and Demo Copyright 1988 SunRize Industries
+^cYou are the son of a farmer in the land of Velantia.
+One spring day you take a walk far to the south of your 
+father's fields.  Suddenly you slide down a hole in the ground 
+that was concealed by some bushes!^h
+^cNow you sit in a pit on your bruised bottom, wondering what 
+to do.^n
+Ok!
+Cannot restart game.^h
+This critter is a little bit too big to be handled that way!
+No such critter is near.
+got it.
+You don't see that here.
+You already have all you can carry!
+You scoop up all you can carry.  You are rich!
+You see no treasure or gold here!
+What are you trying to get?
+dropped.
+You can't drop what you don't have!
+What do you want to drop???
+You make a mighty effort and barely make it to the alcove!
+You make a mighty effort and barely make it to the other side!
+Jumping here accomplishes nothing.
+The beast does not even notice your pitiful blows!
+Boxing with thin air is a rather fruitless endeavor.
+The sword seems to guide your hand as you plunge it into 
+the dragon's scaley breast!
+The horrid beast screams, and expires!
+With WHAT???
+You see nothing to use your sword on here.
+You use your sword by cutting or stabbing with it.
+You use your shield just by holding it.
+You use your treasure by spending it back home!
+What do you want to use?
+The dragon lies vanquished in a pool of its own foul ichor.
+You face a great and terrible dragon!
+Its scales are reddish-brown, its black talons are six inches 
+long, and its evil yellow eyes glare at you balefully.
+The dragon is preparing to give you another blast of fiery breath!
+You see no dragon here.
+You face a slavering, glowering beastie!
+Its skin is furred in black, its dripping teeth are six inches 
+long, and it glares at you with hunger in its beady eyes.
+You see no beast here.
+The sword is a huge, two-handed sucker!
+Its blade glows with an internal fire, and it hums faintly.
+You see no sword here.
+The shield is large, round, and very thick.
+You see no shield here.
+You see nothing special about that.
+You wait.
+You walk into the pit and fall to your death!
+The beast blocks your route!
+The dragon blocks your way!
+The beast tries to leap across behind you, but its claws scrabble 
+on the ledge and it falls to its doom!
+The beast pursues you closely!
+With a bone-chilling roar, it bounds toward you!!!
+The beast catches you in its jaws.  You scream as it engulfs you 
+with one gulp!
+A horrible beast with slavering jaws confronts you!
+Once again the dragon belches fire at you!
+You are cooked instantaniously!^n
+A huge and maddened dragon charges at you!
+Before you can react, it belches a great stream of fire at you!
+You crouch behind your shield, which miraculously keeps the 
+blast from cooking you.  However, you feel that your blackened 
+and smoking shield cannot protect you again.
+ You climb from the hole and greet the sun. You have won this 
+adventure.  Thank you for playing.
+^h^cYou are dead.  Better luck next time.^h
+Would you like to play again? 
+zyxwvut
+garnet.font
+graphics/cou.title.pic.2
+What now?
+sounds/stt_leadin
+sounds/stt_loop1
+sounds/stt_finish
+ram:restart
+sounds/stt_loop2
+sounds/beast1
+sounds/victory
+sounds/scream
+sounds/beast.scream
+sounds/fire
+sounds/beast.eat
+sounds/end_start
+sounds/end_loop1
+sounds/end_loop2
+sounds/end_loop2.1
+sounds/end_loop2.2
+sounds/end_loop3
+sounds/end_finish
+zyxwvut
+zyxwvut
+zyxwvut
+1164,63,4,63,5,63,6,64,4,1,64,67,50,4,64,5,1,64,20,11,0,0,20,12,0,0,20,13,0,0,20,14,0,0,20,15,0,0,67,50,5,64,6,1,64,20,11,0,0,20,16,0,0,20,17,0,0,20,18,0,0,20,19,0,0,20,20,0,0,20,12,0,0,20,21,0,0,97,7,66,4,66,8,67,50,6,66,6,63,9,109,1,20,22,0,0,20,23,0,1,20,24,0,1,20,25,0,0,20,26,0,1,20,27,0,0,1,1,2,0,10,3,51,1,0,20,28,0,0,98,7,11,2,51,0,0,20,29,0,0,52,22,63,9,112,100,26,10,3,51,1,0,52,22,1,3,0,53,51,10,1,4,5,6,7,0,2,4,6,7,0,13,4,60,13,6,20,30,0,0,21,54,20,31,0,0,21,2,3,2,0,13,1,20,32,0,0,41,1,42,1,100,54,20,33,0,0,21,2,5,8,9,0,13,5,14,5,20,34,0,0,21,54,20,35,0,0,42,5,100,22,54,20,36,0,0,21,23,20,37,0,0,21,1,8,9,10,0,2,2,3,5,0,14,1,20,38,0,0,43,1,40,0,1,100,54,20,39,0,0,21,23,20,40,0,0,1,11,12,13,14,0,10,1,51,2,0,20,41,0,0,53,51,3,30,4,51,3,0,0,21,22,10,1,51,3,0,20,42,0,0,53,51,2,30,4,51,2,0,0,21,54,20,43,0,0,21,1,15,16,17,0,13,4,60,13,6,20,44,0,0,21,22,20,45,0,0,21,1,18,19,20,21,22,0,13,4,14,2,20,46,0,1,20,47,0,0,20,12,0,0,63,10,20,48,0,0,64,10,1,64,67,50,10,66,10,30,5,51,5,0,0,21,54,20,49,0,0,21,22,54,20,50,0,0,21,1,23,0,30,6,51,1,0,0,2,2,0,20,51,0,0,21,2,3,0,20,52,0,0,21,2,5,8,9,0,20,53,0,0,21,23,20,54,0,0,1,24,0,30,6,51,1,0,0,100,1,25,26,0,30,6,51,1,0,0,2,4,0,13,4,10,5,51,5,0,20,55,0,0,21,54,20,56,0,0,20,57,0,1,20,58,0,0,20,59,0,0,21,22,54,20,60,0,0,21,22,2,6,0,10,7,51,2,0,20,61,0,0,20,62,0,1,20,63,0,0,21,54,20,64,0,0,21,22,2,2,0,14,2,60,13,2,20,65,0,0,20,66,0,0,21,54,20,67,0,0,21,2,3,0,14,3,60,13,3,20,68,0,0,21,54,20,69,0,0,21,23,20,70,0,0,21,1,27,0,20,71,0,0,21,10,1,51,3,0,61,10,4,51,2,0,63,11,64,11,1,64,20,72,0,0,67,50,11,66,11,20,12,0,0,30,8,51,1,0,0,22,10,1,51,2,0,61,10,4,51,3,0,63,11,64,11,1,64,20,72,0,0,67,50,11,66,11,20,12,0,0,30,8,51,1,0,0,22,10,4,51,4,0,61,10,1,51,5,0,61,10,7,51,2,0,20,73,0,0,53,51,4,22,10,4,51,2,0,61,10,1,51,4,0,61,10,7,51,2,0,20,73,0,0,53,51,2,22,10,4,51,8,0,61,12,5,51,5,0,10,1,51,8,0,54,20,74,0,0,53,51,8,22,22,10,1,51,3,0,61,10,7,51,2,0,61,10,8,51,0,0,63,12,64,12,1,64,20,75,0,1,20,76,0,0,63,13,67,50,12,66,12,66,9,30,7,51,5,0,0,22,10,1,50,4,0,54,10,7,51,2,0,61,10,8,51,0,0,64,9,1,64,20,77,0,0,20,78,0,0,30,7,51,1,0,0,22,22,10,7,51,2,0,61,10,8,51,0,0,61,10,6,51,0,0,63,14,64,14,1,64,20,79,0,1,20,80,0,0,67,50,14,66,14,20,12,0,0,30,8,51,1,0,0,22,10,1,51,4,0,61,10,7,51,0,0,64,9,1,64,20,81,0,0,20,12,0,0,20,78,0,0,30,7,51,2,0,0,22,10,1,51,8,0,10,5,51,1,0,61,10,6,51,0,0,64,13,1,64,20,82,0,0,20,83,0,0,30,8,51,1,0,0,22,10,5,51,0,0,20,84,0,0,64,13,1,64,20,85,0,0,30,5,51,1,0,0,14,3,20,86,0,1,20,87,0,1,20,88,0,0,54,20,83,0,0,30,8,51,1,0,0,22,22,22,10,1,51,10,0,20,89,0,1,20,90,0,0,66,13,63,15,63,16,64,15,1,64,67,50,15,64,16,2,64,66,15,63,17,63,18,63,19,67,50,16,64,17,1,64,67,50,17,64,18,1,64,67,50,18,64,17,1,64,67,50,17,64,19,1,64,67,50,19,64,16,2,64,67,50,16,64,17,3,64,66,16,63,20,67,50,17,64,18,1,64,67,50,18,64,20,2,64,66,18,66,19,66,17,63,21,67,50,20,64,21,1,64,67,50,21,67,51,15,52,22,10,8,51,1,0,20,91,0,0,20,12,0,0,20,92,0,1,30,3,51,1,0,0,113,66,13,101,22,10,7,51,1,0,30,7,51,2,0,0,22,30,4,50,1,0,0,30,6,51,0,0,0,0,

@@ -1,0 +1,6 @@
+.key file/a
+
+link:alink from LIB:c.o+<file$t1>.o to <file$t1> lib LIB:lc.lib+LIB:amiga.lib map <file$t1>.map
+
+
+

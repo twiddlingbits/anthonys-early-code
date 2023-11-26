@@ -1,0 +1,43 @@
+static struct TextAttr MyFont = {"topaz.font",TOPAZ_EIGHTY,FS_NORMAL,FPF_ROMFONT };
+
+static struct NewScreen NewScreenStructure = {
+   0,0,   /* screen XY origin relative to View */
+   0,STDSCREENHEIGHT,   /* screen width and height */
+   3,   /* screen depth (number of bitplanes) */
+   BLACK,WHITE,   /* detail and block pens */
+   HIRES,   /* display modes for this screen */
+   CUSTOMSCREEN,   /* screen type */
+   &MyFont,   /* pointer to default screen font */
+   "Studio 16",   /* screen title */
+   NULL,   /* first in list of custom screen gadgets */
+   NULL   /* pointer to custom BitMap structure */
+};
+
+static USHORT Palette[] = {
+   0x0b85,   /* color #0 */
+   0x0FDa,   /* color #1 */
+   0x0951,   /* color #2 */
+   0x0000,   /* color #3 */
+   0x0f00,   /* color #4 */
+   0x0da4,   /* color #5 */
+   0x0610,   /* color #6 */
+   0x0d95    /* color #7 */
+   };
+
+#define PaletteColorCount 8
+
+static struct NewWindow NewWindow = {
+   0,
+   11,
+   0,
+   0,
+   BLACK,
+   WHITE,
+   MENUPICK,/* MOUSEMOVE|MENUPICK|MOUSEBUTTONS|GADGETUP|RAWKEY|CLOSEWINDOW, */
+   ACTIVATE|BORDERLESS|BACKDROP|NOCAREREFRESH,/* REPORTMOUSE|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,*/
+   0,0,
+   0, /** TITLE **/
+   0,0,
+   40,20,640,200,
+   CUSTOMSCREEN
+   };

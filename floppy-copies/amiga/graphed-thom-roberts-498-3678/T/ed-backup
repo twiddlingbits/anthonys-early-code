@@ -1,0 +1,16 @@
+
+
+
+
+the files you will need to include in your linker are:
+
+graphed       nwin        magwin
+
+editmenu      editsmall   maged
+
+all of the other programs I use are already in your linker.
+call my program like this :
+
+errors = graphic_ed(&graphic structure);
+
+

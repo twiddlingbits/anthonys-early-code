@@ -1,0 +1,412 @@
+[1mSymbol Fonts[0m
+The Table in  Appendix F  shows the  complete set of Symbol font characters
+which are available in most PostScript printers.
+
+Symbol  fonts  are  accessed  differently  depending  which printer you are
+using. If you are using a PostScript printer  you  may  access  the  Symbol
+font,  by using  the  embedded command [[3msymbol[0m] or by selecting Symbol font
+from the "[3mDefault[0m" or "[3mCurrent Text Attributes[0m" requester.
+
+If you are using an HP LaserJet PLUS  printer  or  a  Preferences  printer,
+Symbol  font is  accessed by  the embedded command [[3mcdsym[0m] or selecting the
+Amiga  font  [3mcdsym.font[0m  from  the  "[3mDefault[0m" or  "[3mCurrent Text Attributes[0m"
+requester.
+
+On  HP  LaserJet  PLUS and Preferences printers the Symbol font is an Amiga
+screen font printed as a graphic image. Because Symbol font is included  in
+the  set  of  built  in  fonts for PostScript printers its quality on these
+printers  will   be  appreciably  better  than  on  HP  LaserJet  PLUS  and
+Preferences printers
+
+To  use the characters in the Symbol font table you must first set the font
+to  Symbol ([[3msymbol[0m]), or  cdsym  ([[3mcdsym[0m])  then  type  a  back-slash  (\)
+followed by the value of the character of the you wish to print  (as  shown
+in the table).
+
+Example, to print capital Omega, type:
+
+PostScript:
+[[3msymbol[0m][3m\87[0m[[3mdefault[0m]
+
+HP LaserJet PLUS and Preferences:
+[[3mcdsym[0m][3m\87\[[3mdefault[0m]
+
+(Remember  the  [[3mdefault[0m] command  after the character value returns you to
+the current font and text attributes.)
+
+You may also enter an ASCII  character  (any  character  on  the  keyboard)
+directly after the [[3msymbol[0m] or [[3mcdsym[0m] command, but  this requires that you
+know which ASCII character has the same value as the Symbol  character  you
+wish to have printed.
+
+Example,  type the following into a City Desk project, then print it to see
+the results of using ASCII characters with symbol fonts:
+
+[1mPostScript[0m
+[[3msymbol[0m]Symbol fonts are great, but it's all Greek to me![[3mdefault[0m]
+
+[1mHP LaserJet+ and compatibles[0m
+[[3mcdsym[0m]Symbol fonts are great, but it's all Greek to me![[3mdefault[0m]
+
+Included in the examples drawer on the Data Disk  disk  is  a  file  called
+[1mCharacter_Value.cd[0m, which shows most printable ASCII characters followed by
+their ASCII value. This file is also useful for displaying and printing all
+the  possible characters available for any font, simply change  the [3mCurrent
+Text Attributes[0m to the desired font and print it. Do this for all fonts you
+may  be  interested  in  and  you  will  have a chart showing all printable
+characters for City Desk and your printer.
+
+[1mFile Conventions[0m
+
+When saving files to disk, add identifiers to the end of file names.  These
+identifiers,  or  extensions,  as  they  are  often  called  can help avoid
+confusion as you look over the files on a disk.
+
+For example the following files:  Open_House1.txt
+                                  Open_House2.doc
+                                  Open_House.pic
+might all be used to create a project named Open_House.cd.
+
+Here are a few of the extensions that we use here at MicroSearch:
+.cd     City Desk Project Files
+.obj    Text file exported using "[3mSave Object[0m" in the City Desk
+        "[3mProject[0m" menu
+.doc    Files created using a Word Processor (such as Scribble!)
+.txt    Files created using a Text Editor (Such as TxEd)
+.note   Files created using the Amiga NotePad
+.Pic    Graphic images
+.PicBW  Graphic image with one Bit Plane (Black and White)
+.Post   PostScript File, created by using "[3mPrint to File[0m"
+        ([3mPrint Options[0m requester)
+.HP     HP LaserJet+ File, created by using  "[3mPrinted to File[0m"
+        ([3mPrint Options[0m requester)
+
+
+[1mPreferences[0m
+
+Remember that Preferences set in City  Desk are not the same  as  those  set
+from Workbench. City Desk uses the Preferences from Workbench for only a few
+things.
+
+[1mColor[0m
+
+City Desk always looks at the colors set in  Workbench  Preferences,  these
+are  the   colors  City Desk will use when creating it's own screen. If you
+wish to change the  colors of your City Desk screen, you must first  change
+the  color  of   your   Workbench   screen.  City  Desk  only looks at  the
+colors set from Workbench  Preferences when City Desk is first  loaded,  or
+when you  select  a different [3mScreen  Resolution[0m from  the [3mPreferences[0m menu
+in  City  Desk.  If  you  find  a  combination  of  colors  that  you  find
+particularly  appealing,  you should  save  these  Workbench Preferences to
+the disk you normally boot from when using City Desk.
+
+[1mPrinters[0m
+
+City  Desk  also looks  at the  options  set in  Workbench  Preferences for
+printer information. The information used by City Desk  regarding  printers
+will vary depending on which printer you have selected from [3mPrint to[0m in the
+"[3mPreferences[0m" menu in City Desk. The following list shows you which options
+from Workbench Preferences affect City Desk:
+
+Preferences:    City Desk  will send your Project to a  preferences printer
+                in much  the same way that  Deluxe Paint II sends a graphic
+                to your Printer.  Be sure and set for black and white only,
+                or you  may get unpredictable results.
+
+
+HP  LaserJet+   If,  in  your  Workbench   Preferences  you  have  selected
+                "HP LaserJet PLUS" as the printer  you  wish to  print  to,
+                City Desk will automatically select "[3mPrint to HP LaserJet+[0m"
+                in the City Desk [3mPreferences[0m  menu. City Desk will also use
+                either  the  Parallel  or  Serial port for you HP LaserJet+
+                depending on which you have chosen in Workbench Preferences.
+                Because  City  Desk has it's own special printer driver for
+                use with HP LaserJet+ and compatible printers, you  do  not
+                need  to  select  HP  LaserJet  PLUS  from  the   Workbench
+                Preferences.  Selecting  "[3mPrint to HP LaserJet+[0m"  from  the
+                City Desk [3mProject[0m menu will force  City Desk to use its own
+                special printer driver.  You  will  still  need  to  select
+                either  Parallel  or  Serial  in Workbench Preferences, for
+                City Desk print your project. Finally, you may  force  City
+                Desk  to  use  the  Workbench Preferences printer driver by
+                first  selecting   HP  LaserJet  PLUS  from  the  Workbench
+                Preferences and then selecting "[3mPrint  to Preferences[0m" from
+                the City Desk  "[3mPreferences[0m"  menu.  This  will  of  course
+                result in a reduction of quality when printing your project.
+
+PostScript      City Desk disregards all Workbench Preferences settings for
+                PostScript printers except color. City  Desk  always  sends
+                information to a PostScript printer through the Serial post
+                at 9600 baud using  it's  own  special  PostScript  printer
+                driver.
+
+
+[1mMousing Around[0m
+
+Remember that the Right Mouse Button performs several functions within
+
+City Desk.
+Over the Title bar          It selects menu items (See pages A:1 & A:2).
+Over the Toolbox            It selects requesters such as the "[3mDefault Page
+                            Format[0m" and "[3mSize Options[0m" requesters
+                            (see pages 6-25 & 6-26).
+Over Overlapping Objects    It causes overlapping objects to alter the order
+                            in which they are layered (see page 3-14).
+When an Object is Hilited   It can abort an action, such as selecting text
+                            to reflow.
+                            [1mNote:[0m The Spacebar can also perform
+                            this function (see page 6-26).
+
+
+[1mSinging the Clipboard Blues[0m
+(or why are my project files so darn big!)
+
+City Desk 1.0 had a bug that was rather insidious.
+
+When City Desk saves a Project, it also saves the contents of the Clipboard.
+This is good because it allows you to leave items in the Clipboard that you
+have not yet flowed.
+
+When  City Desk loads a Project, it loads all of the  items that are in the
+Clipboard.
+
+When City Desk loads a Project, it does not erase the previous contents  of
+the Clipboard.
+
+When City Desk 1.0 loads a Project it loads but does not display, the items
+in the Clipboard.
+
+Imagine for a moment, that you have a project that is empty  except  for  a
+graphic  image  in  the Clipboard that uses 32k of memory. Follow the steps
+below saving and reloading the project to see what happens.
+
+Save the Project.   The image in the clipboard is saved.
+                    The Project file size is now 32k.
+Reload the Project. The image that was in the Clipboard remains.
+                    The image that was saved to disk is placed
+                    over the image in the clipboard.
+Save the Project.   Both images are saved.
+                    The Project file size is now 64k.
+Reload the Project  Both images in the saved file are laid over both images
+                    in the Clipboard
+Save the Project    All four images are saved
+                    Project file size 128k
+Reload the Project  The four images in the file are placed over the four
+                    images in the clipboard
+Save the Project    All eight images are saved
+                    The Project file size is now 256k
+
+Well by now you get the idea, after only 10 saves and loads the  file  size
+is now well over 16 megabytes!
+
+In  City  Desk  1.0,  you did not know that an object was in the Clipboard,
+most of  the time. In City Desk 1.1, if an object  is in the  Clipboard  it
+[1mWILL[0m be visible. If you wish to delete an object from the clipboard you may
+of course  use  the [1mSkull[0m pointer but  this  can  get  rather  tedious. The
+alternative to deleting objects individually from the Clipboard is to press
+the [1mF4[0m key. doing this will cause a requester to appear which asks, "[3mDelete
+all  objects in the clipboard?[0m". You may  now select "[3mOK[0m" which will remove
+all  objects in the Clipboard or "[3mCancel[0m" which will leave  all objects  in
+the  Clipboard  untouched.  You  may  press the [0mF4[0m key any time you wish to
+remove all items from the Clipboard.
+
+[1mSnapping out of it[0m
+
+Remember,if you  have selected "[3mSnap to Top On[0m" in the "[3mFlow Options[0m" menu,
+City  Desk  will  attempt to place any text to be flowed at the very top of
+the column you select. If another object is already at the top of a  column
+then City Desk will [1mNOT[0m let you flow that text into that column, unless you
+first select "[3mSnap to Top Off[0m" from the [3mFlow Options[0m menu.
+
+[1mGo with the Flow[0m
+
+If you have selected "[3mAutoFlow On[0m" in the [3mFlow Options[0m menu, City Desk will
+attempt  to flow the entire text chain into your project, starting with the
+column you have selected. If any text  remains  to  be  flowed,  after  the
+selected  column  has been filled, then City Desk will continue flowing the
+text by placing it into the next  column.  City  Desk  will  continue  this
+process  until  all of the text in the Text Chain has been flowed into your
+project or until City Desk encounters an obstacle.
+
+If City Desk encounters an  obstacle while flowing text, it will react in 1
+of 3 ways:
+
+1)  If there is enough room between the left column guide and the obstacle,
+    City Desk will continue  flowing  the  text  chain.  It  does  this  by
+    creating  a  new  text  block using the left column guide and the right
+    edge of the obstacle as its left and right margins. After  passing  the
+    obstacle,  City  Desk will resume flowing the text chain using the full
+    width of the column
+
+2)  If there is not enough room between  the  left  column  guide  and  the
+    obstacle, City Desk will attempt to flow the text chain to the right of
+    the obstacle by creating a new text block using the left  edge  of  the
+    obstacle,  and  the  right column guide, as the left and right margins.
+    After passing the obstacle City Desk will resume flowing the text chain
+    using the full width of the column.
+
+3)  If  there  is  not  enough  room either to the left or the right of the
+    obstacle, City Desk will stop flowing  the  text  chain  and  the  text
+    pointer  will  appear. This allows you to make decide where to continue
+    flowing text. 
+
+Remember, AutoFlow does not affect City Desk's capability to  automatically
+flow  text  chains  around other objects on the page. City Desk will always
+attempt to flow a text chain around an obstacle in the selected column. 
+
+[1mAVS Wild Cards[0m
+
+In the Search String  gadget of the [3mAVS Text Editor[0m and [3mHeadline Editor[0m you
+may use two wild cards to make your searches more fruitful.
+
+The Question mark "?" may be used search for any single character.
+    Example "?at" will find Cat, cat, rat, Bat, mat, fat, etc....
+            "b??m will find boom but not broom (b???m will find broom).
+The Asterisk "*" will find any number of any characters.
+    Example "s*t" will find sat, scratch, search for a hat, steal, etc...
+
+[1mPreformating Your Text[0m
+
+Remember  selecting  a  new  "[3mText  Format[0m" from the "[3mPreferences[0m" menu may
+change  the  options  you  have  selected  from  "[3mParagraph   End[0m"  in  the
+preferences menu. Always check the "[3mParagraph End[0m" before loading your text
+if  you  have  altered  the  "[3mText  Format[0m". (For  best  results do not use
+extended menu selection when setting "[3mText Format[0m" and "[3mParagraph End[0m".)
+
+[1mSpecial Keys in City Desk[0m
+
+Here is a list of City Desk special keys and their function.
+
+City Desk
+[1mF1[0m      Hilights all  objects  on the currently selected page by drawing an
+        orange box around them. This can be useful for  finding  hidden  or
+        overlapping objects (See pages 3-14 & A:7).
+[1mF2[0m      Opens a  requester indicating the last page in your Project. Select
+        "[3mOK[0m" to continue (new feature)
+[1mF3[0m      Opens  a  requester indicating the amount of memory  available  for
+        creating  Projects. Select  "[3mOK[0m" to  continue. This feature can  be
+        very informative on Amiga's with less than 1 meg (new feature)
+[1mF4[0m      Opens a requester asking "[3mDelete all objects on clipboard?[0m"  Select
+        "[3mOK[0m" to  delete  all objects from the Clipboard. Select "[3mCancel[0m" to
+        continue,  leaving   the   contents   of  the  Clipboard  unaltered
+        (new feature)
+[1mHelp[0m    Places the Toolbox behind, or in front, of all other windows on the
+        City Desk screen
+
+The [1mHelp[0m key can occasionally be confusing. This is because it  only  knows
+where  it  last  told  the toolbox to go. If it last told the Toolbox to go
+behind all other windows then, the next time it is pressed,  it  will  tell
+the  Toolbox  to  place itself in front of all other windows. The next time
+you press the [1mHelp[0m key, it tells the Toolbox to  return  behind  all  other
+windows  again. This means that if the [1mHelp[0m key last told the toolbox to go
+to the front, but you then used the Front gadget on a window to  place  the
+window over the toolbox, you must press the [1mHelp[0m key twice. This is because
+it thinks it is already at the front, it will go to  the  back  first,  and
+then come to the front.
+
+Graphic Editor
+
+[1mF2[0m      Changes the current Pen color from black to white or from white to
+        black. (see pages 5-6 &a:7)
+
+
+[1mDefinitions[0m
+
+The  following  words  and  phrases are use throughout the City Desk Manual
+
+Text            Any character which has been, or  could  be  typed  on  the
+                keyboard,  as  opposed  to  graphics  which must be created
+                using a graphics editor or paint program
+
+Text Chain      Any text which, when  flowed  into  a  City  Desk  project,
+                occupies more then one object block
+
+Object Block    The orange outline seen around  text which has been flowed,
+                or graphics which have be placed. This outline will  appear
+                when  selecting  various  pointers  and  when the [1mF1[0m key is
+                pressed.  When an object block is altered, its contents are
+                also altered. object  blocks  may  contain  ether  text  or
+                graphics. Object blocks are sometimes  referred to as boxes
+
+Text  Block     An  object block  which  contains text. A text block may be
+                only one part of a text  chain. Altering the  [3mCurrent  Text
+                Attributes[0m of a single text  block will  affect  the  whole
+                text chain.
+
+Graphic Block   An Object Block which contains a graphic
+
+Flow  Text      The  act  of placing  text  or text chains onto a page in a
+                City Desk project, by  selecting a column for it to  occupy
+
+Soft Fonts      A generic term referring to fonts which can be  transferred
+                from  a  computer to the memory of a printer, as opposed to
+                "Hard" fonts which are stored on a cartridge which  is  and
+                plugged  into the printer.  C-LTD  is  currently   offering
+                [1mJet Set[0m, a collection of soft fonts, which may be used with
+                any HP LaserJet+ or compatible printer.
+
+
+[1mMore Fonts for PostScript[0m
+
+We have increased the number of fonts, which are  available  when  using  a
+PostScript  printer.  The following table shows which new fonts were added,
+and their attributes. (see page B:16)
+
+Roman   8   BI
+        36  BI
+        48  BI
+Helv    8
+        18  Bbi
+        48  Bbi
+
+These new fonts can be both a boon and a burden. If you are using an  Amiga
+with  less  than 1 megabyte of RAM then, you should use the old fonts. This
+is because the new fonts require City Desk to use more memory. If you  have
+extended  memory  beyond  1  megabyte,  then  you  should use the new fonts
+because they offer more flexibility.
+
+The old fonts are on the City Desk Data Disk in the  Laserfontpool  drawer.
+The  new  fonts are on the City Desk Program Disk in the Laserfonts drawer.
+
+Font sets must be located in the Laserfonts drawer on the City Desk Program
+Disk for you to use them. If you intend to use the old fonts, then you must
+drag its icon from the laserfontpool drawer to the Laserfonts drawer.
+
+
+[1mCD Print[0m
+
+When you double click on the CD Print icon, CD Print will open a window  on
+the  Workbench  screen. This window has exactly the same dimensions as, and
+is placed precisely over, the menu bar of the workbench screen.  After  the
+CD  Print  window  appears you may select options from the CD Print Project
+menu. The CD Print window must  be  active  (selected)  for  the  CD  Print
+Project menu to appear.
+
+
+[1mSample Projects[0m
+
+There  are  several Projects which contain examples of how to use City Desk
+to create professional documents included, on the City Desk Data  Disk.  We
+recommend that you select "[3mPrint to PostScript[0m" from the "[3mPreferences[0m" menu
+before  loading these projects, as they were designed to be printed using a
+PostScript printer. After loading the projects you may wish  to  save  text
+chains  as  objects,  then load them into your favorite text editor or word
+processor, to  more  closely examine how embedded commands such as [[3mhskip[0m],
+[[3msettabchar[0m] and [[3mun[0m] can be used. You should also examine  how the overall
+layout of the page is achieved, noting when text chains are  separated  and
+where graphics are placed.
+
+[1mFilename                 File Size      Description[0m
+Registration_Card.cd         4434       The  registration  card  that  came
+                                        with  City   Desk,  Very  good  for
+                                        learning  how to design forms using
+                                        [[3mun[0m],  [[3mtab[0m]  (or  [3m@[0m)  and  [[3mhskip[0m]
+Business_Card.cd           69797        Template for a Business card
+Shipping_Label.cd          32811        Template for a Shipping Label
+MegaBite_Flyer.cd         123741        City Desk Advertisement
+Product_Catalog.cd        139444        MicroSearch Product Catalogue
+Character_Value.cd          3395        ASCII  characters followed by their
+                                        ASCII  value
+Superior_Products_Add.cd   12368        Layout of an advertisement which we
+                                        used for several magazines
+MegaBite_Add.cd            71919        Another Advertisement

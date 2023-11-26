@@ -1,0 +1,5 @@
+openlibraries.o,open_list.o,loadsamp.o,savesamp.o,newgetstr.o*
+add.o,show_error.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,*
+prog:interfacelib/interfacestub.o

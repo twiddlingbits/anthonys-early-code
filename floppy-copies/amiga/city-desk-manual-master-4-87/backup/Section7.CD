@@ -1,0 +1,211 @@
+.. City Desk User's Manual, Section6.CD
+.. Copyright 1987 by MicroSearch.
+.. Written by SunRize Industries
+.. This section contains the following:
+..
+..  -Introduction
+..  -The Typesetting Advantage
+..
+Section 6The Typesetting Advantage
+
+In a previous section of this manual, we provided you with some typesetting terminology. This section discusses how we can imbed these typesetting commands into the text for better control of the typeset output.
+
+
+The Syntax of Imbedded Control Words
+Typesetting commands, such as changing fonts, margins, and others maybe imbedded in the text. All such commands are enclosed in square brackets []. Multiple commands may be entered in the same brackets if you separate them by either commas or semicolons. These commands are described below.
+
+
+The Typesetting Advantage
+The word "Typesetting" refers to the creation of text (or an image) and then transferring that image to an electronic device (such as a printer or a screen.) In this section we will discuss the creation process only. Future sections will show you how to transfer this image to an electronic output device, namely the printer.
+Now that you are familiar with some typesetting terminology, let us create a page using these terms. 
+Imagine (or take out) a blank sheet of paper and draw a box in it. Suppose we decide to write some text on this sheet of paper.  Where would you place it? How far down the page should the text begin? or how far to the right? These measures are termed  MARGINS. There are four margins: top, bottom, left, right.
+
+     PICTURE
+
+They maybe set in several different units of measure (inches, centimeters, picas, etc.) Now think about the text. How much text should you fit  on one page ? How long should each line be ? Obviously by setting these margins you are restricted to a certain PAGE LENGTH (amount of lines on a page) and a certain LINE LENGTH (amount of characters on a line.)
+
+Many of these restrictions depend upon the CHARACTER SIZE (how small or large each character is) and the space between two lines (or LEADING.) 
+   You will fit fewer lines using large letters and the opposite applies if you use small letters.
+Example: 
+
+
+
+
+
+
+Finding fonts                          
+Now that we have the text, what about the typeface ? Many fonts (and sizes of character fonts) are available on the Amiga. This is of course dependent upon the kind of printer you own. If you have a dot matrix printer you may choose any of the standard Amiga fonts (a complete listing can be found in the Appendix.)
+If you have an HP LaserJet or compatible printer you can choose any of the laser fonts available on the LaserJet.
+You may expand this list of fonts by buying separate font sets (if available) from your Amiga dealer.
+
+
+Defining fonts                         
+You must tell C‚i‚t‚y‚ ‚D‚e‚s‚k‚ if you want a text font other than the default (which is Topaz 8). You may alter this default in three ways: by pulling the "EDIT TEXT ATTRIBUTES" submenu from Preferences, by pressing the right mouse button on the "ABC" tool (both discussed in the Tutorial), or by imbedding a typesetting command in the text that defines the new font. 
+The command to define fonts in C‚i‚t‚y‚ ‚D‚e‚s‚k‚ follows below:
+
+  [font n„a„m„e„ „n„] sets the font name and the font size to n„. n„ is optional
+  [fsize n„] sets the font size to n„.
+  [n„a„m„e„ „n„] changes font to n„a„m„e„ and size to n„.
+Examples:
+
+  [font d„i„a„m„o„n„d„ „1„2„] is the same as [font d„i„a„m„o„n„d„,fsize 1„2„]
+  [e„m„e„r„a„l„d„ „2„0„] is a shorthand for [font e„m„e„r„a„l„d„,fsize 2„0„]
+  [g„a„r„n„e„t„] is equivalent to [font g„a„r„n„e„t„]
+
+
+Alternating fonts                         
+"I like the fonts.., but how do I interchange among them ..?" Alternating fonts in a line of text or even changing fonts in characters on a single line of text is accomplished in C‚i‚t‚y‚ ‚D‚e‚s‚k‚ by imbedding a typesetting command within the text. Example:
+
+  [d„i„a„m„o„n„d„] This is diamond [o„p„a„l„ „1„1„] this is opal 11.
+  [s„a„p„p„h„i„r„e„ „1„5„]E[r„u„b„y„ „8„]a[t„o„p„a„z„ „8„]a[g„a„r„n„e„t„ „9„]c[m„i„c„r„o„ „6„]h [t„o„p„a„z„ „8„]character is different.
+
+
+The above commands will produce:
+
+  THIS IS DIAMOND this is opal 11.
+ „ „Ea‚c„h character is different.
+
+
+
+Appearance of characters                       
+We mentioned earlier that "attribute" indicated the appearance  of the characters. C‚i‚t‚y‚ ‚D‚e‚s‚k‚  allows you to have five different attributes. You may alter these attributes in three ways: (1) from the requester "EDIT TEXT ATTRIBUTES" pulled from EDIT, (2) by pressing the right mouse button at the "ABC" tool, or (3) by imbedding these typeface commands in the text.
+  The "EDIT TEXT ATTRIBUTE" submenu and the "TEXT FORMAT" window from the "ABC" tool are discussed in the C‚i‚t‚y‚ ‚D‚e‚s‚k‚ Tutorial. The attribute commands imbedded within the text are described below:
+
+[italic] or [it] -- t„h„e„ „i„t„a„l„i„c„ „s„t„y„l„e„
+[bold] or [bd]   -- the overstriked style
+[underlined] or [un] -- a‚ ‚l‚i‚n‚e‚ ‚d‚r‚a‚w‚n‚ ‚u‚n‚d‚e‚r‚n‚e‚a‚t‚h‚ ‚e‚a‚c‚h‚ ‚c‚h‚a‚r‚a‚c‚t‚e‚r‚
+[plain] or [pl] -- the normal appearance of characters.
+[compressed] -- Sets compressed mode. Valid only on laser fonts.
+
+
+You may defined one or any combination of the above in C‚i‚t‚y‚ ‚D‚e‚s‚k‚.
+Example:
+To get the word FO‚N„T you enter the following:
+  [bd]F[un]O[it]N[pl]T
+
+
+Using Foreign Characters
+C‚i‚t‚y‚ ‚D‚e‚s‚k‚ gives you the ability of loading, viewing and printing any of the bit-mapped foreign characters supplied in version 1.2 of AmigaDOS. The use of these character sets is described in the A„m„i„g„a„ „E„n„h„a„n„c„e„r„ „S„o„f„t„w„a„r„e„ featuring AmigaDOS, version 1.2, pages 16-18.
+Treat the files containing foreign characters as regular text files.
+
+
+Units of Measure                        
+We mentioned earlier that before you  place text on the page, margins had to be defined. Other restrictions are applicable as well: margins, line length and leading. All of these items must be defined in a certain unit of measure. Valid units of measure in C‚i‚t‚y‚ ‚D‚e‚s‚k‚ include the following:
+
+
+           u‚n‚i‚t‚                       a‚b‚b‚r‚e‚v‚i‚a‚t‚i‚o‚n‚
+
+       milimeters   ..................   mm 
+       centimeters  ..................   cm 
+       inches       ..................   in or " 
+       feet         ..................   ft or ' 
+       picas        ..................   pc 
+       points       ..................   pt 
+       cubits       ..................   cb 
+
+
+
+Magnifying text or characters
+Many times you will find the need to define a block of text or a character larger (or smaller) than the rest of the text, but no font of this size is available. This is when horizontal or vertical magnification becomes useful.
+   You may define these sizes in two ways: from the requestor (which lets you pick the block of text to be magnified) or by imbedding a typesetting command within the text. This command is valid on Amiga Preferences fonts only. The syntax of these  commands are shown below. 
+
+   [mag m.n] -- magnifies the text or character to m.n * the current size.
+   [magx m.n] -- Text magnification in the horizontal direction only.
+   [magy m.n] -- Text magnification in the vertical direction only.
+
+In the example below, the letter "E" is enlarged 2.5 times greater that the rest of the text. [mag 1] returns to the original size.
+
+   [mag 2.5]E[mag 1]ach apple costs 25 cents.
+   [magx 2.5]E[mag 1]ach apple cost 25 cents.
+   [magy 2.5]E[mag 1]ach apple cost 25 cents
+
+This produces:
+   
+   Each apple costs 25 cents.
+   E‚ach apple costs 25 cents.
+   E„ach apple costs 25 cents.
+
+
+Defining Margins
+You may set all four margins in C‚i‚t‚y‚ ‚D‚e‚s‚k‚: right, left, top, bottom. These control commands may be set in three ways: from the requestor, by pressing the right mouse button in the "OPEN-PAGE" tool  (both described in the Tutorial), or by imbedding a typesetting command within the text. These control words are defined as follows:
+ 
+   [bm n„] sets the bottom margin to n
+   [tm n„] the top margin is set to n
+   [lm n„] this defines the left margin to n
+   [rm n„] this control sets the right margin
+
+
+Example:
+  [lm 5] This line starts at five spaces after the edge of the page
+  [rm 5] This line contains five blank spaces before the right edge of the page.
+
+
+
+Justification                     
+Besides having the ability of placing text around the page and controlling the format of the characters, you also have the ability to control the format of the text as a paragraph. This is accomplished by means of JUSTIFICATION. C‚i‚t‚y‚ ‚D‚e‚s‚k‚ allows you to have four types of justification. Justification commands may be set in the "EDIT TEXT ATTRIBUTES" requester pulled from the Edit menu, by pressing the right mouse button in the "ABC" tool (described in the Tutorial),  or may be imbedded in the text. Justification control commands are shown below:
+
+    [rj]   right justification
+    [lj]   left justification
+    [cj]   center justification 
+    [fj]   filled justification 
+
+
+Examples of justification:
+
+           [rj]                            [lj]
+       ---------------               ----------------
+           -----------               ----------    
+         -------------               --------------
+    
+           [cj]                            [fj]
+        --------------               ----------------
+           -------                   ----------------
+         -----------                 ----------------
+
+
+
+Indentation
+  Indentation is defined as the amount of space from the left margin until the first line of text (ie.: margin+n„). Reverse indentation is accomplished by setting this parameter to a number 
+less than the left margin (margin-n„). Examples:
+
+ [lm 10] Left margin is set at 10 spaces from left edge of page
+ [indent 15] This line is place five spaces after the left margin
+ [indent 10] Return to the original margin
+ [indent 5]  This line is indented fives spaces less than the left margin.
+
+These commands will produce:
+
+       Left margin is set at 10 spaces from left edge of page
+           This line is places five spaces after the left margin
+       Return to the original margin
+  This line is indented five spaces less than the left margin
+     
+
+
+
+Multiple Columns of text                     
+Have you ever wondered how multiple columns of text are laid out on a page ? Defining multiple columns of text on a page requires you to define the following parameters:
+   
+   number of columns
+   size of each column
+   gutter
+
+The term "gutter" indicates the amount of space between two columns. In C‚i‚t‚y‚ ‚D‚e‚s‚k‚ you have the option of automatic definition of columns or defining multiple columns yourself. Automatic definition of columns is defined "EDIT PAGE FORMAT" option from the Edit menu or by pressing the right mouse button in the "OPEN-PAGE" tool. Both options are described in the C‚i‚t‚y‚ ‚D‚e‚s‚k‚ Tutorial.)
+
+
+Paragraph Spacing                        
+    Vertical spacing between paragraphs (not to be confused with leading). This command is in addition to leading or spacing. The control word to define paragraph spacing is shown below:
+    
+    [parspace n„] -- set paragraph spacing to n„ lines.
+
+
+Spacing between lines                      
+  Spacing between lines may be identfied in two ways: line leading and line spacing. These two types of spacing are mutually exclusive. You use only one method at a time. Each is described below:
+  LINE LEADING -- Line leading is the distance between the baseline of one line to the baseline of the next. Note that [leading=0] is valid, but it will result in the line overprinting each other on the same line. The control word to define line leading is:
+   [leading n„] -- sets line leading to n„ spaces.
+
+  LINE SPACING -- Line spacing is the distance from the bottom of one line to the top of the next. This control word is most useful when making extensive font size changes. Distances between lines will automatically adjust themselve to the size of the fonts on the line. This control word is define as follows:
+    [spacing n„] -- sets line spacing to n„]
+
+
+   The next section of this manual is a reference guide to all menus and typesetting commands discussed in the previous sections.

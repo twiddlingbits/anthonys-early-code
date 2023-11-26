@@ -1,0 +1,81 @@
+static struct TextAttr TOPAZ80 = {
+	(STRPTR)"topaz.font",
+	TOPAZ_EIGHTY,0,0
+};
+
+static UBYTE UNDOBUFFER[21];
+
+static UBYTE smpte_offset_SIBuff[21];
+static struct StringInfo smpte_offset_SInfo = {
+	smpte_offset_SIBuff,	/* buffer where text will be edited */
+	UNDOBUFFER,	/* optional undo buffer */
+	0,	/* character position in buffer */
+	20,	/* maximum number of characters to allow */
+	0,	/* first displayed character buffer position */
+	0,0,0,0,0,	/* Intuition initialized and maintained variables */
+	0,	/* Rastport of gadget */
+	0,	/* initial value for integer gadgets */
+	NULL	/* alternate keymap (fill in if you set the flag) */
+};
+
+static SHORT BorderVectors2[] = {
+	0,0,
+	202,0,
+	202,10,
+	0,10,
+	0,0
+};
+static struct Border Border2 = {
+	-2,-1,	/* XY origin relative to container TopLeft */
+	WHITE,0,JAM1,	/* front pen, back pen and drawmode */
+	5,	/* number of XY vectors */
+	BorderVectors2,	/* pointer to XY vectors */
+	NULL	/* next border in list */
+};
+
+static struct Gadget smpte_offset = {
+	NULL,	/* next gadget */
+	67,40,	/* origin XY of hit box relative to window TopLeft */
+	96,10,	/* hit box width and height */
+	NULL,	/* gadget flags */
+	RELVERIFY,	/* activation flags */
+	STRGADGET,	/* gadget type flags */
+	/*(APTR)&Border2*/NULL,	/* gadget border or image to be rendered */
+	NULL,	/* alternate imagery for selection */
+	NULL,	/* first IntuiText structure */
+	NULL,	/* gadget mutual-exclude long word */
+	(APTR)&smpte_offset_SInfo,	/* SpecialInfo structure */
+	NULL,	/* user-definable data */
+	NULL	/* pointer to user-definable data */
+};
+
+#define GadgetList1 smpte_offset
+
+static struct IntuiText IText2 = {
+	WHITE,0,JAM1,	/* front and back text pens, drawmode and fill byte */
+	10,41,	/* XY origin relative to container TopLeft */
+	NULL,	/* font pointer or NULL for default */
+	"Offset:",	/* pointer to text */
+	NULL	/* next IntuiText structure */
+};
+
+#define IntuiTextList1 IText2
+
+
+static struct NewWindow NewPrefWin = {
+	177,54,	/* window XY origin relative to TopLeft of screen */
+   PREF_WIND_WIDTH,
+   PREF_WIND_HEIGHT,
+	0,1,	/* detail and block pens */
+	CLOSEWINDOW,	/* IDCMP flags */
+   ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+	&smpte_offset,	/* first gadget in gadget list */
+	NULL,	/* custom CHECKMARK imagery */
+	"Edit Options",	/* window title */
+	NULL,	/* custom screen pointer */
+	NULL,	/* custom bitmap */
+	80,50,	/* minimum width and height */
+	-1,-1,	/* maximum width and height */
+	CUSTOMSCREEN	/* destination screen type */
+};
+

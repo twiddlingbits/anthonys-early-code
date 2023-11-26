@@ -1,0 +1,81 @@
+
+#include "exec/types.h"
+#include "exec/exec.h"
+#include "intuition/intuition.h"
+#include "graphed.h"
+
+
+blkwht(window,gmode,color)
+struct Window *window;
+int gmode,color;
+{
+
+int x;
+USHORT *dataarea,*dataarea2;
+
+static USHORT blktogData[] =
+{
+
+0x0000,0x0000,0x0000,0x0000,0x0FFF,0xFFFF,
+0xFFFF,0xFC00,0x0800,0x0000,0x0000,0x0400,
+0x083F,0x0E00,0x0038,0x0400,0x0819,0x8600,
+0x0018,0x0400,0x0819,0x860F,0x0F19,0x8400,
+0x081F,0x0601,0x999B,0x0400,0x0819,0x8607,
+0x981E,0x0400,0x0819,0x8619,0x999B,0x0400,
+0x083F,0x0F0E,0xCF39,0x8400,0x0800,0x0000,
+0x0000,0x0400,0x0FFF,0xFFFF,0xFFFF,0xFC00,
+
+};
+static struct Image blktog =
+{
+0,0,          /* LeftEdge, TopEdge */
+58,12,1,      /* Width, Height, Depth */
+&blktogData[0],
+1,0,        /* PlanePick, PlaneOnOff */
+NULL,        /* Pointer to next Image */
+};
+
+
+static USHORT whttogData[] =
+{
+
+0x0000,0x0000,0x0000,0x0000,0x1FFF,0xFFFF,
+0xFFFF,0xFC00,0x1FFF,0xFFFF,0xFFFF,0xF400,
+0x1F39,0x1FE7,0xF7FF,0xF400,0x1F39,0x9FFF,
+0xE7FF,0xF400,0x1F39,0x93C7,0xC1C3,0xF400,
+0x1F29,0x89E7,0xE799,0xF400,0x1F01,0x99E7,
+0xE781,0xF400,0x1F11,0x99E7,0xE59F,0xF400,
+0x1F39,0x19C3,0xF3C3,0xF400,0x1FFF,0xFFFF,
+0xFFFF,0xF400,0x1FFF,0xFFFF,0xFFFF,0xFC00,
+};
+
+static struct Image whttog =
+{
+0,0,          /* LeftEdge, TopEdge */
+59,12,1,      /* Width, Height, Depth */
+&whttogData[0],
+1,0,        /* PlanePick, PlaneOnOff */
+NULL,        /* Pointer to next Image */
+};
+
+
+dataarea = AllocMem(RASSIZE(58,12),MEMF_CHIP);
+dataarea2 = AllocMem(RASSIZE(59,12),MEMF_CHIP);
+movmem( &blktogData[0], dataarea, RASSIZE(59,12)  );
+movmem( &whttogData[0], dataarea2, RASSIZE(59,12)  );
+blktog.ImageData = dataarea;
+whttog.ImageData = dataarea2;
+x = 249;
+if (gmode == 1 || gmode == 3)
+   x = 540;
+
+if (color == 0)
+   DrawImage(window->RPort,&blktog,x,2);
+else
+   DrawImage(window->RPort,&whttog,x,2);
+
+FreeMem(dataarea,RASSIZE(58,12));
+FreeMem(dataarea2,RASSIZE(59,12));
+
+}
+

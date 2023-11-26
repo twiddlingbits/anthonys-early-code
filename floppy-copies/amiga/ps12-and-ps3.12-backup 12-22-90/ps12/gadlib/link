@@ -1,0 +1,2 @@
+blink LIB:c.o+"main.o"+gadlib.o TO "main" LIB LIB:lc.lib LIB:amiga.lib
+

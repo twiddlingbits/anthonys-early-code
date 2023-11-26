@@ -1,0 +1,18 @@
+//weekend of terror code//
+
+GRAPHIC
+
+ty:You wake up.
+ty:
+ty:You head won't stop throbbing.
+ty:Some party that was last night.
+ty:Well, better get some breakfast.
+
+MAIN
+
+v:quit
+  end
+
+BACKGROUND
+
+

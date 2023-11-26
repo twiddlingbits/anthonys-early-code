@@ -1,0 +1,150 @@
+
+City Desk 2.0 Notes as of 10/10/88
+( * = docs added since last version )
+
+New requesters:
+   Object options (toolbox)
+     STAMPED      setting this cause the object to be "stamped" to the
+                  background.  The only way to grab it is to change the
+                  pointer mode.  (right mouse button on arrow tool)
+     TRANSPARENT  Causes an object to be trasparent to text flow
+
+   Size Options (right mouse button over resize tool)
+   Pointer Options (right mouse button over arrow tool)
+      Move Linked Object is not finished
+
+   Flow Options   Right mouse button on reflow tool. (currently has
+                  crop icon, but that will change.) This requester has
+                  Auto Flow, Warnings, Use Default, Snap to Top, and
+                  Auto Hyphenate.
+
+   New Mag Value  The select new page magnification requester has been
+                  changed to flow the style of the rest of City Desk's
+                  requesters
+
+   Print          The print requester now lets you select between two
+                  dither types.  The dither type is used when printing
+                  gray scale prictures and can be ordered or halftone.
+                  These two types are identical to the two types of same
+                  name available on the new 1.3 printer drivers.
+                  You can also select proof mode. In proof mode,
+                  graphics are not printed.  The "dither lighter"
+                  switch causes only the lower 8 dither patterns to be
+                  used.  This results in ligher, lower resolution image.
+                  However, it looks better on some laser printers
+                  because the normal dither patters appear too dark
+                  on some printers. Postscript printers do their own
+                  dithering. This allows higher resolution postscript
+                  printers (such as a linotronic) to produce better
+                  results than lower cost printers (such as a laserwriter.)
+
+
+New Objects:
+
+   Gray block     To get a gray square, select the solid box option
+                  in the toolbox. This will change
+                  to a toolbox option. You can use the object options
+                  tool to change the level of gray.  Although only
+                  three different gray scales are displayed, they will
+                  print with the actule perecent you select in object
+                  options.
+
+Text Editor:
+
+   There is a new full screen text editor that is selected from either
+   ABC or EDIT. Currently all functions are working, although buggy.
+
+Graphics Editor:
+
+   There is a new graphics editor that edits in 16 gray scales.
+
+Toolbox:
+
+   Two new functions have been added to the tool box. There are
+   Draw a solid block, edit text attributes.  All of the current
+   functions will stay in the tool box; however, I will probably
+   rearange and redraw the toolbox icons.
+
+Sizing Lines
+      Now when you use the size tool on a line (drawn with the line
+      tool) either side of the line can be sized. Previously, always
+      the left side would be anchord and the right side (or bottom
+      for a vertical line) would move.  Now, the side you are nearest
+      when you click on the line will be the side that moves.
+
+EXPLODE
+      The "BOX" tool has been removed.  You now box an object in the
+      "OBJ" requester.  The explode tool now expands the current window
+      to its maximum size. Use the right mouse button on the explode tool
+      to un-explode a window.
+
+Misc:
+
+   I have altered many new requesters so they pop up centered on the
+   mouse pointer, if possible.  They can't center if the pointer
+   is too close to the window edge.
+
+Save/Open
+
+   Saveing and opening projects should now work correctly again.
+
+Erase Page
+
+   This menu option now correctly erases the clipboard as well as
+   any other page
+
+PostScript
+
+   Support now added for all postscript fonts on the adobe AFM disks
+   one and two.  This is basicly all fonts in a laserwriter plus.
+   A new program, "gen_ps_font" has been added to allow users to
+   generate and maintain their own ".ps" files.  Users can now create
+   any size or attributes (bold italic bold-italic) they want in
+   any of the basic "laser writer plus" fonts.  These are
+   Times Roman, Helvetica, Courier, Avant Garde, Bookman, Helvetica
+   Narrow, New Century Schoolbook, Palatino, Zaph Chancery, Symbol.
+   Of course your PostScript printer must have these fonts built in
+   to use them.
+
+Notes:
+
+   Dither:  When printing, grayscales are printed as dot patterns.
+            City Desk uese a 4X4 dot matrix which gives 16 gray
+            scales.  However, on many laserprinters at 300 dpi, the
+            laser can not switch on-off fast enought to print rows
+            of dots that are alternatly on off on off, etc.  The
+            result is that sometimes dots that are supposed to be
+            white are printed black.  This means that as many as
+            6 of the upper 16 gray shades come out as pure black on
+            some laserprinters.
+
+-------------------- NEW AS OF 10-10-88 ----------------------------
+
+Default object
+
+   The right mouse button on the OBJ tool will bring up a default object
+   requester.  Use the to set things like default density, rule thickness,
+   hp dpi, etc.
+
+Graphics Editor
+   The graphics editor now works with 16 gray scales and seems to
+   have stropped crasing
+
+Print Requester
+   There is new option in the print requester called "Strip Printing."  When
+   this option is selected, preferences prints will print in strips.
+   The result is that less chip RAM is needed, however, prints may
+   take longer.
+
+
+
+Plans:
+
+   On postscript printers, the density obj option will effect all objects,
+   not just blocks.
+
+
+<--- BUGS ---->
+
+The shadow option and outline page are not working correctly.
+

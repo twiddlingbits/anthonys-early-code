@@ -1,5 +1,7 @@
 # A Brief History of Anthony's Microcomputers
 
+[BACK TO HOME README](readme.md)
+
 ## PDP-11 American School of the Hague, Netherlands
 In 8th grade (about age 11, in 1978-ish) we moved from Houston to the Hague, Netherlands for a year or so.  While at the American Middle School of the Hague  I taught myself to program in the BASIC computer language.  I would go to the "computer museum" in downtown Hague via the tram, and use the time sharing terminals and the Commodore PETs they had there for the public.  But mostly, I would stay after school and use my school's single and old [PDP-11](https://en.wikipedia.org/wiki/PDP-11), which they named "Merlin".  The only computer class the school offered was "make Melvin draw" during which you would use punch cards to create an ASCI art.  This was pretty popular during the day, and I have some ASCII art in my windows class-basic games collection.  
 

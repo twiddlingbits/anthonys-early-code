@@ -1,0 +1,4 @@
+FROM LIB:c.o+echo.o+comb.o+proc.o+do_menu.o+IFFRoutines.o+disk.o+mainsed40.o+subsed40.o+subsed240.o+goodsed.o+graph.o
+TO echo
+LIB LIB:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib
+MAP echo.map

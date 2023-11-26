@@ -1,0 +1,5 @@
+copy ps.txt ram:
+copy /ad1012/play.exe ram:
+cd ram:
+
+

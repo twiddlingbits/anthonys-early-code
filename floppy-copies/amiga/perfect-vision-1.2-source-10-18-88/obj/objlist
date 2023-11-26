@@ -1,0 +1,4 @@
+FROM main.o, setup.o, drawsi.o, moveall.o, createmsl.o, showvaders.o, *
+drawbunker.o, cleargun.o, missle.o, hit.o
+
+

@@ -1,0 +1,44 @@
+8-30-88 AJW
+
+
+The file 'gen_ps_font' is used to create new font sizes or styles for
+postscript printers.  When your run this program, your current directory
+should be "afm".  Thus if you type "dir" you should see "disk1", "disk2",
+and "disk3".
+
+When you run this program you will be asked the following questions:
+
+"Enter output filename? "
+
+Enter a valid path & filename to put font data into. This should
+probably end in .ps. Example "dh0:laserfonts/myfonts.ps"
+
+If the file you entered already exits, you will be asked
+"file 'xxx' already exists. (A)ppend or (O)verwrite?"
+If you type 'a' the new font info will be added to the old. If you
+type 'o' the old stuff will be destroyed
+
+"Enter Global Font Size or Return"
+If you press return, you will be asked for font sizes to generate for
+each font. If you enter some sizes, the same sizes will be generated
+for all fonts. Example "10,12,14"
+
+"Generate fonts with no attributes"
+"Generate bold versions of fonts"
+"Generate italic versions of fonts"
+"Generate bold-italic versins of fonts"
+
+These questions let you specify which attributes you want to generate
+fonts for. Answer "y" or "n" or "return".  Return is the same as answering
+"y".  You can use this section to narrow your font generation. Thus, you
+could generate 72 point fonts but only in bold by answering "n" to all
+questions except the one about bold.
+
+After this, your fonts will be generated. Don't forget you can
+run the program multible times and append to an existing file.
+Thus, you could generate sizes 10,12 in bold, italic, and bold-italic.
+and then just certain fonts in bigger points.  Also note that if you
+run the program and don't specify a globle point size, you will be
+asked for each font. This gives you the option to not generate certain
+fonts.
+

@@ -1,0 +1,16 @@
+
+Color Separation Connector (DB 9)  pinouts
+
+
+Pin        [hskip 2cm]Connection
+
+1          [hskip 2cm]Bit 7 of Amiga parallel port
+2          [hskip 2cm]Not used
+3          [hskip 2cm]Bit 6 of Amiga parallel port
+4          [hskip 2cm]Not used
+5          [hskip 2cm]Unregulated power
+6          [hskip 2cm]Ground
+7          [hskip 2cm]Ground
+8          [hskip 2cm]Ground
+9          [hskip 2cm]Ground
+

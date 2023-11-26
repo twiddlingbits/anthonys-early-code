@@ -1,0 +1,1134 @@
+#include <exec/types.h>
+#include "exec/exec.h"
+#include "intuition/intuition.h"
+#include "devices/audio.h"
+#include "psound.h"
+
+struct GfxBase *GfxBase;
+struct IntuitionBase *IntuitionBase;
+char *bufL[2],*bufR[2];
+
+/** some wierd things that I shall try and fix in the future:
+
+   1. lmem always pointes to the data for mono sounds. rmem points
+      to the right channel data if it is a stereo sound.
+
+   2. The struct sample has arrays inside its structure. I did this
+      bacause when I wrote this program, I didn't know 'C'. Now that
+      I do, I look at the struct sample and say "wierd." I'll change
+      it someday.
+
+
+   Anthony Wood 2-22-87 **/
+
+
+
+
+main()
+{
+extern struct Menu Titles[];    /* menus done with MenuEd, Shareware */
+UBYTE cmap[16*3];
+int len,memory,samplen;
+int record_speed;               /* record speed in samples/second */
+int i,ss,sl,temp;
+register int k,j;
+int lastp=0;
+int cur=0;
+ULONG position=0;
+SHORT width=640;
+SHORT height=200;
+struct Samp samp;
+char *AllocMem(),*p1,*p2,*x;
+static char line[80],buf[80];
+static char path[80]="";
+UBYTE *pa=(UBYTE *)0xBFE001;   /* left mouse button is at this address */
+SHORT mousex,mousey;
+USHORT ops,ope,opp;
+ULONG class;
+USHORT code,menunum,itemnum,subnum;
+SHORT oct[MAX_SAMPLES];
+SHORT autograph;
+struct Gadget *gad;
+struct Window *Window;
+struct IntuiMessage *message;
+struct Gadget *gadget_s,*gadget_e,*gadget_p;
+struct PropInfo *prop_s,*prop_e,*prop_p;
+struct IOAudio IOB;
+struct Image image;
+struct Screen *screen=0;
+struct Screen *openscr();
+static struct NewWindow NewWindow = {
+   0,
+   0,
+   640,
+   200,
+   0,
+   1,
+   MOUSEMOVE|MENUPICK|MOUSEBUTTONS|GADGETUP|RAWKEY|NEWSIZE,
+   WINDOWDRAG|ACTIVATE|WINDOWDEPTH|NOCAREREFRESH|WINDOWSIZING,
+   0,0,
+   "Perfect Sound   Copyright 1987  SunRize Industries  Ver 2.1 ",
+   0,0,
+   40,20,640,200,
+   WBENCHSCREEN
+   };
+
+/* Open intuition library */
+
+IntuitionBase=(struct IntuitionBase *)
+   OpenLibrary("intuition.library",INTUITION_REV);
+if (IntuitionBase==NULL) {
+   printf("Can't open intuition library\n\n");
+   exit(10);
+   }
+
+/* open graphics library */
+
+GfxBase=(struct GfxBase *)OpenLibrary("graphics.library",0);
+if (GfxBase==NULL) {
+   printf("Can't open graphics library\n\n");
+   CloseLibrary(IntuitionBase);
+   exit(10);
+   }
+
+
+/* initilize window gadgets */
+
+gadget_s=(struct Gadget *)makegadgets();
+gadget_e=(struct Gadget *)gadget_s->NextGadget;
+gadget_p=(struct Gadget *)gadget_e->NextGadget;
+prop_s=(struct PropInfo *)gadget_s->SpecialInfo;
+prop_e=(struct PropInfo *)gadget_e->SpecialInfo;
+prop_p=(struct PropInfo *)gadget_p->SpecialInfo;
+
+NewWindow.FirstGadget=gadget_s;
+
+
+if ((Window=(struct Window *)OpenWindow(&NewWindow))==NULL) {
+   printf("Can't Open Window\n\n");                   
+   CloseLibrary(GfxBase);
+   CloseLibrary(IntuitionBase);
+   exit(10);
+   }
+
+newgadgets(Window);   /* add v2.1 gadgets to window */
+
+/* allocate audio channels 1 and 2 */
+
+if (allocate_channel (Window,&IOB)==FALSE) {
+   CloseWindow(Window);
+   CloseLibrary(GfxBase);
+   CloseLibrary(IntuitionBase);
+   exit(10);
+   }
+
+/**** allocate "double buffers" for audio device ****/
+
+for (i=0;i<2;i++) {
+   if ((bufL[i]=AllocMem(BUFSIZE,MEMF_CHIP))==0) {
+      deallocate_channel (&IOB);
+      CloseWindow(Window);
+      CloseLibrary(GfxBase);
+      CloseLibrary(IntuitionBase);
+      exit(10);
+      }
+
+   if ((bufR[i]=AllocMem(BUFSIZE,MEMF_CHIP))==0) {
+      FreeMem(bufL[0],BUFSIZE);  /* Bad job of clean up here !!!!! */
+      deallocate_channel (&IOB);
+      CloseWindow(Window);
+      CloseLibrary(GfxBase);
+      CloseLibrary(IntuitionBase);
+      exit(10);
+      }
+   }
+
+/* initlize sample array to zero */
+
+for(i=0;i<MAX_SAMPLES;i++) {
+   samp.lmem[i]=0;
+   samp.rmem[i]=0;
+   samp.length[i]=0;
+   samp.rate[i]=0;
+   samp.name[i]=0;
+   samp.sm[i]=0;
+   samp.em[i]=0;
+   samp.ctoctave[i]=0;
+   samp.oneshot[i]=0;
+   samp.repeat[i]=0;
+   samp.cycles[i]=0;
+   }
+
+ops=-1;  /** Old Position Start **/
+ope=-1;  /** Old Positopn End   **/
+opp=-1;  /** Old Position POS'N **/
+
+memory=frags();        /* find largest amount of free memeory */
+record_speed=9859;     /* period of 362 is default */
+autograph=FALSE;       /* autograph is off */
+
+drawwindow(Window);    /* Color window, refresh gadgets, draw lines, etc. */
+
+msg(Window,"Welcome to Perfect Sound.");
+
+
+/************************************/
+/** Now do DEMOS and TITLE screen ***/
+/************************************/
+
+
+/*** load the title screen if it exists ***/
+
+if (load_ilbm("ps.title",&image,cmap)==-1)
+   goto nodemos;
+
+screen=openscr(image.Width,image.Depth);
+if (screen==0) {
+   FreeMem(image.ImageData,image.Width/8*image.Height*image.Depth);
+   printf("Can't open screen!\n");
+   goto nodemos;
+   }
+
+/** set color registers **/
+for (i=0;i<16*3;i=i+3)
+   SetRGB4(&screen->ViewPort,i/3,cmap[i]>>4,cmap[i+1]>>4,cmap[i+2]>>4);
+
+/** draw title screen **/
+DrawImage(&screen->RastPort,&image,0,0);
+MoveScreen(screen,0,-199);       /** move screen up so it can be seen **/
+
+
+/** load some sample sounds if they are on the disk **/
+
+if (load_it(Window,&cur,&samp,"sounds/demo1","bang")!=-1)
+   samp.em[cur]=samp.length[cur];
+if (load_it(Window,&cur,&samp,"sounds/demo2","Welcome")!=-1)
+   samp.em[cur]=samp.length[cur];
+if (load_it(Window,&cur,&samp,"sounds/demo3","Button")!=-1)
+   samp.em[cur]=samp.length[cur];
+
+/**** play the loaded sounds ******/
+
+if (cur==2) {        /** make sure three sounds were loaded **/
+   prop_e->HorizPot=0xFFFF;ope=0xFFFF;
+   prop_p->HorizPot=0;opp=0;
+   prop_s->HorizPot=0;ops=0;
+   play(Window,&IOB,0,samp.length[0],&samp,0);
+   for (k=27000;k>=15000;k=k-4000) {
+      samp.rate[1]=k;
+      play(Window,&IOB,1,samp.length[1],&samp,1);
+      }
+   samp.rate[1]=9859;
+   play(Window,&IOB,1,samp.length[1],&samp,1);
+   for (k=0;k<50000;k++) ;
+   play(Window,&IOB,2,samp.length[2],&samp,2);
+   }
+
+while ((*pa&64)==64) ;   /** wait for left mouse button press **/
+
+CloseScreen(screen);
+FreeMem(image.ImageData,image.Width/8*image.Height*image.Depth);
+
+
+
+nodemos:      /** here if error trying to load demo's **/
+goto update;  /** print stat info at bottom of screen **/
+
+ignore:       /** here when ready for new input event **/
+
+SetMenuStrip(Window,Titles);   /* turn on menus */
+
+while ((message=(struct IntuiMessage *)GetMsg(Window->UserPort))==0)
+   Wait(1<<Window->UserPort->mp_SigBit);
+
+class=message->Class;
+code=message->Code;
+mousex=message->MouseX;
+mousey=message->MouseY;
+gad=(struct Gadget *)message->IAddress;
+ReplyMsg(message);
+ClearMenuStrip(Window);
+
+if (class==NEWSIZE) {
+   if (Window->Width > width || Window->Height > height) {
+      width=Window->Width;
+      height=Window->Height;
+      drawwindow(Window);
+      for(i=0;i<MAX_SAMPLES;i++) {
+         if (samp.lmem[i]!=NULL)
+            PutName(Window,samp.name[i],i,REG_VID);
+         }
+         if (samp.lmem[cur]!=0)
+            PutName(Window,samp.name[cur],cur,REV_VID);
+      goto update;
+      }
+   width=Window->Width;
+   height=Window->Height;
+   goto ignore;  /** window smaller so don't refresh **/
+   }
+
+if (class==MOUSEMOVE) {       /* moving proportional gadget */
+   do {
+      if (prop_s->HorizPot!=ops) {
+         ops=prop_s->HorizPot;
+         samp.sm[cur]=(prop_s->HorizPot>>7)*samp.length[cur];
+         samp.sm[cur]/=0x01FF;
+         lastp=samp.sm[cur];
+         }
+      if (prop_e->HorizPot!=ope) {
+         ope=prop_e->HorizPot;
+         samp.em[cur]=(prop_e->HorizPot>>7)*samp.length[cur];
+         samp.em[cur]/=0x01FF;
+         lastp=samp.em[cur];
+         }
+      if (prop_p->HorizPot!=opp) {
+         opp=prop_p->HorizPot;
+         position=(prop_p->HorizPot>>7)*samp.length[cur];
+         position/=0x01FF;
+         lastp=position;
+         }
+      message=(struct IntuiMessage *)GetMsg(Window->UserPort);
+      if (message==0)  break;
+      class=message->Class;
+      code=message->Code;
+      mousex=message->MouseX;
+      mousey=message->MouseY;
+      gad=(struct Gadget *)message->IAddress;
+      ReplyMsg(message);
+   } while (class==MOUSEMOVE);
+   if (autograph==TRUE) goto graphit;
+   goto update;
+   }
+
+if (class==MOUSEBUTTONS) {        /* selecting a new cur */
+   if (code!=SELECTDOWN) goto ignore;
+
+   if (mousey<GEP+11 && mousey>GEP) {
+      alter(&samp.em[cur],samp.length[cur],mousex);
+      lastp=samp.em[cur];
+      if (autograph==TRUE) goto graphit;
+      goto update;
+      }
+ 
+   if (mousey<GEP && mousey>GSP) {
+      alter(&samp.sm[cur],samp.length[cur],mousex);
+      lastp=samp.sm[cur];
+      if (autograph==TRUE) goto graphit;
+      goto update;
+      }
+      
+   if (mousey<GPP+11 && mousey>GPP) {
+      alter(&position,samp.length[cur],mousex);
+      lastp=position;
+      if (autograph==TRUE) goto graphit;
+      goto update;
+      }
+   mousey=(mousey-11)/8;
+   if (mousex>320) mousey+=MAX_SAMPLES/2;
+   if (mousey<MAX_SAMPLES && samp.lmem[mousey]!=0) {
+      if (cur==mousey) {
+         play(Window,&IOB,0,samp.length[cur],&samp,cur);
+         goto ignore;
+         }
+      PutName(Window,samp.name[cur],cur,REG_VID);
+      cur=mousey;
+      PutName(Window,samp.name[cur],cur,REV_VID);
+
+      ModifyProp(gadget_s,Window,0,AUTOKNOB|FREEHORIZ,
+      samp.sm[cur]*0xFFFF/samp.length[cur],0,0,0xFFFF);
+
+      ModifyProp(gadget_e,Window,0,AUTOKNOB|FREEHORIZ,
+      samp.em[cur]*0xFFFF/samp.length[cur],0,0,0xFFFF);
+
+      ModifyProp(gadget_p,Window,0,AUTOKNOB|FREEHORIZ,0,0,0,0xFFFF);
+
+      lastp=0;
+      position=0;
+      if (samp.ctoctave[cur]>1 || samp.repeat[cur]!=0) {
+      sprintf(line,"OneShotHiSamples %d  RepeatHiSamples %d No. Octaves %d",
+         samp.oneshot[cur],samp.repeat[cur],samp.ctoctave[cur]);
+      msg(Window,line);
+      }
+      }
+      if (autograph==TRUE) goto graphit;
+      goto update;
+   }
+
+if (class==RAWKEY) {    /** look for function key press. Plays octaves **/
+   if (code>89 || code<80)  goto ignore;
+   if (samp.ctoctave[cur]==0) {
+      msg(Window,"This sample is not an instrument.");
+      goto ignore;
+      }
+   if ((i=code-80)>=samp.ctoctave[cur]) {
+      msg(Window,"Octave not defined.");
+      goto ignore;
+      }
+   k=(powr(2,i)-1)*(samp.oneshot[cur]+samp.repeat[cur]);
+   len=powr(2,i)*samp.oneshot[cur];
+   if (even(k)!=k) {
+      msg(Window,"Warning: Octave address not on a word boundry!");
+      k=even(k);
+      }
+   if (even(len)!=len) {
+      msg(Window,"Warning: oneshot length not even!");
+      len=even(len);
+      }
+   IOB.ioa_Request.io_Unit=(struct Unit *)1;
+   if (len!=0)
+      tochan (&IOB,samp.lmem[cur]+k,len,toperiod(samp.rate[cur]),1);
+   k=k+len;
+   j=samp.repeat[cur];
+   if (even(j)!=j) {
+      msg(Window,"Warning: repeat length not even!");
+      j=even(j);
+      }
+   if (j!=0)
+      tochan (&IOB, samp.lmem[cur]+k,powr(2,i)*j,toperiod(samp.rate[cur]),0);
+   while (class!=RAWKEY || code<127) {
+      while ((message=(struct IntuiMessage *)GetMsg(Window->UserPort))==0)
+         Wait(1<<Window->UserPort->mp_SigBit);
+      class=message->Class;
+      code=message->Code;
+      ReplyMsg(message);
+      }
+
+   IOB.ioa_Request.io_Unit=(struct Unit *)3;
+   IOB.ioa_Request.io_Command=CMD_RESET;
+   DoIO (&IOB);
+   goto ignore;
+   }
+
+if (class==MENUPICK && code==MENUNULL) {
+    if (mousey<GPP-5) goto ignore;       /* play only if near gadget */
+    play(Window,&IOB,0,lastp,&samp,cur);
+    goto ignore;
+    }
+
+if (class==GADGETUP && gad->GadgetID==PLAYRANGE) {   /** play range **/
+   play(Window,&IOB,samp.sm[cur],samp.em[cur]-samp.sm[cur],&samp,cur);
+   goto ignore;
+   }
+
+
+menunum=MENUNUM(code);
+itemnum=ITEMNUM(code);
+subnum=SUBNUM(code);
+
+ 
+if ((class== MENUPICK && menunum==2 && itemnum==1) ||    /* GRAPH */
+     (class==GADGETUP && gad->GadgetID==GRAPH)) {
+
+   graphit:     /* update screen graph */
+
+   if (samp.lmem[cur]!=0) {
+      graph(Window,&samp,cur);
+      sprintf(line,"First sample graphed: %d  Last sample graphed: %d",
+              *(samp.lmem[cur]+samp.sm[cur]),*(samp.lmem[cur]+samp.em[cur]-1));
+      msg(Window,line);
+      }
+   goto update;
+   }
+
+ /** ALL GADGET commands must be above here **/
+
+if (class!=MENUPICK) goto ignore;   /** Only menu options follow **/
+
+
+if (menunum==0 && itemnum==0) {     /** New **/
+   k=FALSE;
+   for(i=0;i<MAX_SAMPLES;i++)
+      if (samp.lmem[i]!=0) {
+         if (k==FALSE) {
+            if (telluser("WARNING: This will erase all samples.",
+                 "         DO IT?")==FALSE)   goto ignore;
+            k=TRUE;
+            }
+         FreeMem(samp.lmem[i],samp.length[i]);
+         FreeMem(samp.name[i],strlen(samp.name[i])+1);
+         if (samp.type[i]==STEREO) {
+            FreeMem(samp.rmem[i],samp.length[i]);
+            }
+         samp.lmem[i]=0;
+         samp.rmem[i]=0;
+         samp.length[i]=0;
+         samp.name[i]=0;
+         samp.repeat[i]=0;
+         samp.oneshot[i]=0;
+         samp.cycles[i]=0;
+         samp.ctoctave[i]=0;
+         samp.sm[i]=0;
+         samp.em[i]=0;
+         }
+   drawwindow(Window);
+   }
+
+if (menunum==0 && itemnum==1) {      /** Open **/
+   if (load_samp(Window,&cur,&samp,path)==-1)
+      goto ignore;
+   samp.sm[cur]=0;
+   samp.em[cur]=samp.length[cur];
+   position=0;
+   lastp=0;
+   prop_e->HorizPot=0xFFFF;ope=0xFFFF;
+   prop_p->HorizPot=0;opp=0;
+   prop_s->HorizPot=0;ops=0;
+   RefreshGadgets(gadget_s,Window,NULL);
+   }
+
+
+if (menunum==0 && itemnum==3) {      /* save AS ... */
+   strcpy(line,samp.name[cur]);
+   i=get_fname(Window,NULL,"Save a Sample",line,path);
+   if (i==NULL) goto ignore;
+   strcpy(buf,path);
+   add(buf,line);   /* appends a file or directory to a path */
+
+   switch (subnum) {
+      case 0: save_IFF(Window,cur,&samp,buf,FALSE);
+              break;
+      case 1: save_samp(Window,cur,&samp,buf);
+              break;
+      case 2: save_IFF(Window,cur,&samp,buf,TRUE);
+      }
+   goto ignore;
+   }
+
+if (menunum==0 && itemnum==2) {      /* save ... */
+   strcpy(buf,path);
+   add(buf,samp.name[cur]);
+   switch (subnum) {
+   case 0: save_IFF(Window,cur,&samp,buf,FALSE);
+           break;
+   case 1: save_samp(Window,cur,&samp,buf);
+           break;
+   case 2: save_IFF(Window,cur,&samp,buf,TRUE);
+   }
+   goto ignore;
+   }
+
+if (menunum==0 && itemnum==5) {    /* about */
+   aboutps(Window);
+   goto ignore;
+   }
+
+if (menunum==0 && itemnum==6) {     /* quit */
+   if (!telluser("Do you really want to quit?",""))
+      goto ignore;
+   deallocate_channel (&IOB);
+   CloseWindow(Window);
+   CloseLibrary(IntuitionBase);
+   for(i=0;i<MAX_SAMPLES;i++)
+      if (samp.lmem[i]!=0) {
+         FreeMem(samp.lmem[i],samp.length[i]);
+         FreeMem(samp.name[i],strlen(samp.name[i])+1);
+         if (samp.type[i]==STEREO)
+            FreeMem(samp.rmem[i],samp.length[i]);
+         }
+
+   for (i=0;i<2;i++) {
+      FreeMem(bufL[i],BUFSIZE);
+      FreeMem(bufR[i],BUFSIZE);
+      }
+   closearrows();
+   closenewgadgets();
+   exit(0);
+   }
+
+if (menunum==3 && itemnum==2) {            /* monitor the digitizer */
+   msg(Window,"Press the left mouse button to exit.");
+   switch (subnum) {
+
+   case 0: listen(STEREO);
+           break;
+   case 1: listen(RIGHT);
+           break;
+   case 2: listen(LEFT);
+           }
+   msg(Window,"");
+   goto ignore;
+   }
+
+if (menunum==3 && itemnum==3)  {  /* record */
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   p1=(char *)1;p2=(char *)1;
+   Forbid();
+   memory=frags();
+   if (memory<8000) {
+      Permit();
+      for (i=0;i<1000;i++);
+      nomem(Window);
+      goto ignore;
+      }
+   if (subnum==0) {      /* stereo */
+      memory=memory/2;
+      p1=AllocMem(memory,0);
+      if (p1!=0) p2=AllocMem(memory,0);
+      if (p2==0) FreeMem(p1,memory);
+      }
+   else  
+      p1=AllocMem(memory,0);
+   Permit();
+   if (p1==0 || p2==0) {
+      printf("out of memory here %d\n",memory);
+      nomem(Window);
+      goto ignore;
+      }
+   switch (subnum) {
+      case 0: k=STEREO;
+              samp.lmem[i]=p1;
+              samp.rmem[i]=p2;
+              break;
+      case 1: k=RIGHT;
+              samp.rmem[i]=p1;
+              samp.lmem[i]=p1; /* use only to find free sample elsewhere */
+              break;
+      case 2: k=LEFT;
+              samp.lmem[i]=p1;
+              samp.rmem[i]=p1;    /* only for compatibility with prev.*/
+              break;
+      default: msg(Window,"BUG... code 01");
+              goto ignore;
+      }
+   samp.type[i]=k;
+   msg(Window,"Monitoring... Press left mouse button to start recording.");
+   listen(k);   /* listen before we start recording */
+
+   samplen=digitze (Window,p1,p2,sstorate(record_speed,k),memory,k);
+   if (samplen==0) {
+      msg(Window,"BUG... code 02");
+      FreeMem(samp.lmem[i],memory);
+      if (k==STEREO) FreeMem(samp.rmem[i],memory);
+      samp.lmem[i]=0;
+      goto ignore;
+      }
+   if (samplen==memory)
+      msg(Window,"Memory filled.");
+   else {
+      FreeMem(p1+RUP(samplen),RUP(memory) - RUP(samplen));
+      sprintf(line,"%d bytes used in this recording.",samplen);
+      if (k==STEREO) {
+         FreeMem(p2+RUP(samplen),RUP(memory) - RUP(samplen));
+         sprintf(line,"%d bytes used in this recording.",samplen*2);
+         }
+      msg(Window,line);
+      }
+   samp.length[i]=samplen;
+   samp.rate[i]=ratetoss(sstorate(record_speed,k),k);
+   line[0]=0;
+   getstr(Window,line,"Enter a label for this sample:",400);
+   if (line[0]==0) strcpy(line,"A Nameless Sound");
+   samp.name[i]=AllocMem(strlen(line)+1,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      FreeMem(samp.lmem[i],samplen);
+      samp.lmem[i]=0;
+      if (k==STEREO) FreeMem(samp.rmem[i],samplen);
+      goto ignore;
+      }
+   strcpy(samp.name[i],line);    /* move filename to premenant place */
+   if (samp.lmem[cur]!=0)
+     PutName(Window,samp.name[cur],cur,REG_VID);
+   PutName(Window,samp.name[i],i,REV_VID);
+   cur=i;
+   msg(Window,"");     /* clear input line */
+   samp.sm[cur]=0;
+   samp.em[cur]=samp.length[cur];
+   position=0;
+   lastp=0;
+   prop_e->HorizPot=0xFFFF;
+   prop_p->HorizPot=0;
+   prop_s->HorizPot=0;
+   RefreshGadgets(gadget_s,Window,NULL);
+   if (autograph) goto graphit;
+   }
+
+if (menunum==3 && itemnum==0) {    /* change default recording speed */
+   i=getint(Window,record_speed,6500,24000,
+            "Enter a new recording speed (samples/sec): ",450);
+   record_speed=i;
+   msg(Window,"Actual recording rate may differ slightly from rate requested.");
+   }
+
+if (menunum==3 && itemnum==1) {  /* View Signal Levels */
+   level(Window);
+   goto ignore;
+   }
+
+
+
+if (menunum==1 && itemnum==0) {     /* delete a range */
+   if (samp.em[cur]<=samp.sm[cur]) {
+      msg(Window,"Markers not set.");
+      goto ignore;
+      }
+   if (samp.em[cur]>=samp.length[cur] && samp.sm[cur]==0) goto whole;
+   msg(Window,"Working...");
+
+   i=samp.sm[cur];  /* start deleting including this byte */
+   j=samp.em[cur];
+
+   k=RUP(samp.length[cur]-(j-i));
+
+   if (j<samp.length[cur])
+      movmem(samp.lmem[cur]+j,samp.lmem[cur]+i,samp.length[cur]-j);
+
+    if (k<RUP(samp.length[cur]))
+       FreeMem(samp.lmem[cur]+k,RUP(samp.length[cur])-k);
+
+   if (samp.type[cur]==STEREO) {
+      if (j<samp.length[cur]) 
+         movmem(samp.rmem[cur]+j,samp.rmem[cur]+i,samp.length[cur]-j);
+      if (k < RUP(samp.length[cur]))
+         FreeMem(samp.rmem[cur]+k,RUP(samp.length[cur])-k);
+      }
+
+
+  samp.length[cur]=samp.length[cur]-(j-i);
+  msg(Window,"");
+  samp.sm[cur]=0;
+  samp.em[cur]=samp.length[cur];
+  prop_s->HorizPot=0;
+  prop_e->HorizPot=0xFFFF;
+  prop_p->HorizPot=0;
+  lastp=0;
+  position=0;
+  RefreshGadgets(gadget_s,Window,NULL);
+  }
+
+if (menunum==1 && itemnum==1) {    /* delete entire sample */
+
+whole:         /* jump here from delete range if entire sample */
+   if (samp.lmem[cur]==0) goto ignore;
+   FreeMem(samp.lmem[cur],samp.length[cur]);
+   if (samp.type[cur]==STEREO)
+      FreeMem(samp.rmem[cur],samp.length[cur]);
+   FreeMem(samp.name[cur],strlen(samp.name[cur])+1);
+   samp.lmem[cur]=0;
+   samp.rmem[cur]=0;
+   samp.length[cur]=0;
+   samp.name[cur]=0;
+   samp.repeat[cur]=0;
+   samp.oneshot[cur]=0;
+   samp.cycles[cur]=0;
+   samp.ctoctave[cur]=0;
+   samp.sm[cur]=0;
+   samp.em[cur]=0;
+   i=0;
+   while(samp.lmem[i]==0 && i<MAX_SAMPLES) i++;
+   PutName(Window,"",cur,REG_VID);
+   if (i!=MAX_SAMPLES) {
+      cur=i;
+      PutName(Window,samp.name[cur],cur,REV_VID);
+      prop_s->HorizPot=samp.sm[cur]*(0xFFFF/samp.length[cur]);
+      prop_e->HorizPot=samp.em[cur]*(0xFFFF/samp.length[cur]);
+      prop_p->HorizPot=0;
+      RefreshGadgets(gadget_s,Window,NULL);
+      lastp=0;
+      position=0;
+      }
+   else
+      cur=0;
+   }
+
+if (menunum==1 && itemnum==2) {      /* insert here */
+   msg(Window,"Please click Slot that contains the marked range.");
+   i=pickslot(Window,&samp);
+   move(Window,&samp,samp.sm[i],samp.em[i],position,i,cur);
+   msg(Window,"Range inserted.");
+   }
+
+if (menunum==2 && itemnum==0) {        /* flip cur sample */
+   if (samp.lmem[cur]==0) goto ignore;
+   msg(Window,"Flipping...");
+
+   flip(samp.lmem[cur],samp.length[cur]);
+   if (samp.type[cur]==STEREO) {
+      flip(samp.rmem[cur],samp.length[cur]);
+   }
+   msg(Window,"");
+   if (autograph==TRUE) goto graphit;
+   goto ignore;
+   }
+
+
+if (menunum==2 && itemnum==2) {   /* create a new instrument */
+   if (samp.lmem[cur]==0) goto ignore;
+
+/* create list of octaves in assending order */
+   k=0;
+   for (i=0;i<MAX_SAMPLES;i++)
+      if (samp.lmem[i]!=0)
+         oct[k++]=i;
+
+/* sort */
+
+   for (i=0;i<k-1;i++)
+      for (j=i+1;j<k;j++)
+         if (samp.length[oct[i]]>samp.length[oct[j]]) {
+            temp=oct[i];
+            oct[i]=oct[j];
+            oct[j]=temp;
+            }
+
+   if (samp.sm[oct[0]]==0) {
+      msg(Window,"You must set the start marker of octave with highest frequency.");
+      goto ignore;
+      }
+
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   len=(powr(2,k)-1)*samp.length[oct[0]];
+   p1=AllocMem(len,MEMF_CHIP);
+   if (p1==0) {
+      msg(Window,"Not Enough Chip Memory.");
+      goto ignore;
+      }
+   samp.length[i]=len;
+   samp.type[i]=RIGHT;
+   samp.rate[i]=samp.rate[oct[0]];
+   samp.lmem[i]=p1;
+   samp.rmem[i]=p1;
+   samp.ctoctave[i]=k;
+   samp.em[i]=samp.length[i];
+   samp.oneshot[i]=samp.sm[oct[0]];
+   samp.repeat[i]=samp.length[oct[0]]-samp.sm[oct[0]];
+
+   /* move all octaves into new instrument */
+
+   len=samp.length[oct[0]];
+   temp=0;
+   for (j=0;j<k;j++) {
+      if (samp.length[oct[j]]!=len)
+         msg(Window,"Warning, an octave length is not the correct size.");
+      movmem(samp.lmem[oct[j]],samp.lmem[i]+temp,len);
+      temp=temp+len;
+      len=len*2;
+      }
+
+
+   /* get a name for this sample */
+
+   line[0]=0;
+   getstr(Window,line,"Enter a name for this instrument:",400);
+   if (line[0]==0) strcpy(line,"Lazy typer");
+   samp.name[i]=AllocMem(strlen(line)+1,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      FreeMem(samp.lmem[i],samp.length[i]);
+      samp.lmem[i]=0;
+      samp.ctoctave[i]=0;
+      samp.oneshot[i]=0;
+      goto ignore;
+      }
+   strcpy(samp.name[i],line);
+
+  samp.cycles[i]=getint(Window,8,0,256,"Enter SamplesPerHiCycle",256);
+
+ /* sampperhicycle should be power of 2 for most programs */
+
+   j=FALSE;
+   for (k=0;k<16;k++)
+      if (powr(2,k)==samp.cycles[i]) j=TRUE;
+   if (j==FALSE)
+       msg(Window,"Warning: SamplesPerHiCycle may need to be a power of 2.");
+   else
+      msg(Window,"Instrument created.");
+  /* highlight new instrument */
+
+   PutName(Window,samp.name[cur],cur,REG_VID);
+   PutName(Window,samp.name[i],i,REV_VID);
+   cur=i;
+   }
+
+/* cut period in half by eliminating samples */
+
+if (menunum==2 && itemnum==3) {
+   if (samp.lmem[cur]==0) goto ignore;
+   if (samp.type[cur]==STEREO) {
+      msg(Window,"Sorry, this command does not work with stereo.");
+      goto ignore;
+      }
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   line[0]=0;
+   getstr(Window,line,"Enter a name for the new sample:",400);
+   if (line[0]==0) strcpy(line,"*2");
+   samp.name[i]=AllocMem(strlen(line)+1,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      goto ignore;
+      }
+   msg(Window,"Working...");
+   strcpy(samp.name[i],line);    /* move filename to permenant place */
+   samp.length[i]=samp.length[cur]/2;
+   samp.lmem[i]=AllocMem(samp.length[i],0);
+   if (samp.lmem[i]==0) {
+      nomem(Window);
+      samp.name[i]=0;
+      samp.length[i]=0;
+      goto ignore;
+      }
+   samp.type[i]=samp.type[cur];
+   samp.rate[i]=samp.rate[cur];
+   samp.em[i]=samp.length[i];
+   samp.rmem[i]=samp.lmem[i];
+   j=0;
+   for (k=0;k<samp.length[cur];k=k+2)
+      *(samp.lmem[i]+j++)=*(samp.lmem[cur]+k);
+
+   PutName(Window,samp.name[cur],cur,REG_VID);
+   PutName(Window,samp.name[i],i,REV_VID);
+   cur=i;
+   msg(Window,"");
+   }
+   
+
+/* double period by interpolating */
+
+if (menunum==2 && itemnum==4) {
+   if (samp.lmem[cur]==0) goto ignore;
+   if (samp.type[cur]==STEREO) {
+      msg(Window,"Sorry, this command does not work with stereo.");
+      goto ignore;
+      }
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   line[0]=0;
+   getstr(Window,line,"Enter a name for the new sample:",400);
+   if (line[0]==0) strcpy(line,"/2");
+   samp.name[i]=AllocMem(strlen(line)+1,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      goto ignore;
+      }
+   msg(Window,"Working...");
+   strcpy(samp.name[i],line);    /* move filename to permenant place */
+   samp.length[i]=samp.length[cur]*2;
+   samp.lmem[i]=AllocMem(samp.length[i],0);
+   if (samp.lmem[i]==0) {
+      nomem(Window);
+      samp.name[i]=0;
+      samp.length[i]=0;
+      goto ignore;
+      }
+   samp.type[i]=samp.type[cur];
+   samp.rate[i]=samp.rate[cur];
+   samp.em[i]=samp.length[i];
+   samp.rmem[i]=samp.lmem[i];
+   j=0;
+   for (k=0;k<samp.length[cur];k++) {
+      *(samp.lmem[i]+j++)=*(samp.lmem[cur]+k);
+      *(samp.lmem[i]+j++)=(*(samp.lmem[cur]+k)+*(samp.lmem[cur]+k+1))/2;
+      }
+   *(samp.lmem[i]+j-1)=*(samp.lmem[cur]+k-1);    /* last interp. is wrong */
+
+   PutName(Window,samp.name[cur],cur,REG_VID);
+   PutName(Window,samp.name[i],i,REV_VID);
+   cur=i;
+   msg(Window,"");
+   }
+
+if (menunum==2 && itemnum==5) {   /* Zero Range */
+   if (samp.lmem[cur]==0) goto ignore;
+   if (samp.sm[cur] >= samp.em[cur]) {
+      msg(Window,"Markers not set.");
+      goto ignore;
+      }
+   msg(Window,"Working...");
+   for (i=samp.sm[cur]; i<samp.em[cur]; i++) {
+      if (samp.type[cur]==STEREO || samp.type[cur]==LEFT)
+         *(samp.lmem[cur]+i)=0;
+      if (samp.type[cur]==STEREO || samp.type[cur]==RIGHT)
+         *(samp.rmem[cur]+i)=0;
+      }
+      msg(Window,"");
+      if (autograph) goto graphit;
+      goto ignore;
+   }
+
+
+if (menunum==2 && itemnum==6) {   /** autograph on or off **/
+   if (subnum==0) {
+      autograph=TRUE;
+      goto graphit;
+      }
+   if (subnum==1) autograph=FALSE;
+   }
+
+if (menunum==1 && itemnum==3) {      /* enter new playback rate */
+   if (samp.lmem[cur]==0) goto ignore;
+   samp.rate[cur]=getint(Window,samp.rate[cur],1000,27000,
+                  "Enter a new playback speed (samples/sec):",450);
+   }
+
+/* copy range to a new slot */
+
+if (menunum==1 && itemnum==4) {
+   if (samp.lmem[cur]==0) goto ignore;
+   len=samp.em[cur]-samp.sm[cur];
+   if (len<=1 || len>8000000) {
+      msg(Window,"Markers Not Set");
+      goto ignore;
+      }
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   line[0]=0;
+   getstr(Window,line,"Enter a label for the new sample",400);
+   if (line[0]==0) strcpy(line,"A Nameless Sound");
+   samp.name[i]=AllocMem(strlen(line)+1,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      goto ignore;
+      }
+   strcpy(samp.name[i],line);
+   if ((samp.lmem[i]=AllocMem(len,0))==0) {
+      nomem(Window);
+      FreeMem(samp.name[i],strlen(samp.name[i])+1);
+      goto ignore;
+      }
+
+   samp.rmem[i]=samp.lmem[i];
+
+   if (samp.type[cur]==STEREO)
+      if ((samp.rmem[i]=AllocMem(len,0))==0) {
+         FreeMem(samp.lmem[i],len);
+         FreeMem(samp.name[i],strlen(samp.name[i])+1);
+         nomem(Window);
+         samp.lmem[i]=0;
+         samp.name[i]=0;
+         goto ignore;
+         }
+
+   msg(Window,"Working...");
+
+   movmem(samp.lmem[cur]+samp.sm[cur],samp.lmem[i],len);
+   if (samp.type[cur]==STEREO)
+      movmem(samp.rmem[cur]+samp.sm[cur],samp.rmem[i],len);
+   msg(Window,"");
+   samp.length[i]=len;
+   samp.rate[i]=samp.rate[cur];
+   samp.type[i]=samp.type[cur];
+   PutName(Window,samp.name[cur],cur,REG_VID);
+   cur=i;
+   PutName(Window,samp.name[cur],cur,REV_VID);
+   samp.em[cur]=samp.length[cur];
+   samp.sm[cur]=0;
+   prop_e->HorizPot=0xFFFF;ope=0xFFFF;
+   prop_p->HorizPot=0;opp=0;
+   prop_s->HorizPot=0;ops=0;
+   RefreshGadgets(gadget_s,Window,NULL);
+   }
+
+/* append a slot to another slot */
+
+if (menunum==1 && itemnum==5) {
+   if (samp.lmem[cur]==0) goto ignore;
+   msg(Window,"Click slot to append");
+   i=pickslot(Window,&samp);
+   msg(Window,"Click slot to append this to...");
+   k=pickslot(Window,&samp);
+   len=samp.length[i]+samp.length[k];
+   move(Window,&samp,0,samp.length[i],samp.length[k],i,k);
+   }
+   
+/* Break up a stereo into two new slots */
+
+if (menunum==1 && itemnum==7) {
+   if (samp.lmem[cur]==0) goto ignore;
+   if (samp.type[cur]!=STEREO) {
+      msg(Window,"Sample must be stereo.");
+      goto ignore;
+      }
+   if ((i=getslot(Window,&samp))==-1) goto ignore;
+   samp.name[i]=AllocMem(strlen(samp.name[cur])+2,0);
+   if (samp.name[i]==0) {
+      nomem(Window);
+      goto ignore;
+      }
+   *samp.name[i]='L';
+   strcpy(samp.name[i]+1,samp.name[cur]);
+   samp.lmem[i]=samp.lmem[cur];
+   samp.rmem[i]=samp.lmem[cur];
+   samp.type[i]=LEFT;
+   samp.length[i]=samp.length[cur];
+   samp.rate[i]=samp.rate[cur];
+   samp.sm[i]=0;
+   samp.em[i]=samp.length[i];
+   x=AllocMem(strlen(samp.name[cur])+2,0);
+   if (x==0) {
+      nomem(Window);
+      FreeMem(samp.name[i],strlen(samp.name[i]+1));
+      samp.lmem[i]=0;
+      samp.rmem[i]=0;
+      samp.length[i]=0;
+      goto ignore;
+      }
+   *x='R';
+   strcpy(x+1,samp.name[cur]);
+   FreeMem(samp.name[cur],strlen(samp.name[cur])+1);
+   samp.name[cur]=x;
+   samp.lmem[cur]=samp.rmem[cur];
+   samp.type[cur]=RIGHT;
+   PutName(Window,samp.name[cur],cur,REV_VID);
+   PutName(Window,samp.name[i],i,REG_VID);
+   msg(Window,"Created seperate left and right channels.");
+   }
+   
+/* create stereo from two mono samples */
+
+if (menunum==1 && itemnum==6) {
+   if (samp.lmem[cur]==0) goto ignore;
+   msg(Window,"Click slot for left channel.");
+   i=pickslot(Window,&samp);
+   if (samp.type[i]==STEREO) {
+      msg(Window,"Sample must be mono.");
+      goto ignore;
+      }
+   msg(Window,"Click slot for right channel.");
+   k=pickslot(Window,&samp);
+   if (samp.type[k]==STEREO) {
+      msg(Window,"Sample must be mono.");
+      goto ignore;
+      }
+   if (k==i) {
+      msg(Window,"Samples must be in different slots.");
+      goto ignore;
+      }
+   if (samp.length[i]<samp.length[k]) {ss=i;sl=k;}
+   else {ss=k;sl=i;}
+   if (samp.length[i]!=samp.length[k])
+      FreeMem(samp.lmem[sl]+RUP(samp.length[ss]),
+         RUP(samp.length[sl]) - RUP(samp.length[ss]));
+   FreeMem(samp.name[sl],strlen(samp.name[sl])+1);
+   samp.lmem[ss]=samp.lmem[i];
+   samp.rmem[ss]=samp.rmem[k];
+   samp.type[ss]=STEREO;
+   PutName(Window,"",sl,REG_VID);
+   cur=ss;
+   samp.lmem[sl]=0;
+   samp.rmem[sl]=0;
+   samp.length[sl]=0;
+   samp.name[sl]=0;
+   PutName(Window,samp.name[cur],cur,REV_VID);
+   msg(Window,"Current sample is now stereo.");
+   }
+
+
+/** print Status information at the bottom of the screen **/
+
+update:
+if (samp.lmem[cur]!=0 && samp.em[cur]>samp.length[cur])
+     samp.em[cur]=samp.length[cur];
+
+
+memory=frags();
+sprintf(line,"Sample length: %7.7d  playback speed: %6.6d",
+        samp.length[cur],samp.rate[cur]);
+putxy(Window,23,164,line,WHITE,BLACK);
+
+sprintf(line,"Current position: %7.7d Start/End mark: %7.7d %7.7d",
+        position,samp.sm[cur],samp.em[cur]);
+putxy(Window,23,172,line,WHITE,BLACK);
+
+sprintf(line,"Memory for recording: %7.7d record speed: %6.6d",
+        memory,record_speed);
+putxy(Window,23,180,line,WHITE,BLACK);
+goto ignore;
+}

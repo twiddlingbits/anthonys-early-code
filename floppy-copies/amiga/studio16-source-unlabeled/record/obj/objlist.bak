@@ -1,0 +1,3 @@
+record.o+openlibraries.o+newgetstr.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o

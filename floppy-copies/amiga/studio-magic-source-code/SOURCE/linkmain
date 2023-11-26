@@ -1,0 +1,4 @@
+.Key fl1,fl2,fl3
+;
+LC:blink from LIB:c.o,trymain.o to trymain lib LIB:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib map nil:
+

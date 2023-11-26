@@ -1,0 +1,3 @@
+prog:dsp/pack/pack >prog:ad516/StandardCode.h ram:ad516.o Standard
+cc other
+ln

@@ -1,0 +1,44 @@
+.. City Desk Tutorial
+..Copyright 1987 by :  MicroSearch, Inc,
+..   9896 S.W. Freeway, Houston, TX 77074, (713) 288 9818
+.. Written by: SunRize Industries
+..   P.O. Box 1453, College Station, TX 77840, (409) 846-1311
+..
+AÅnÅ ÅEÅxÅaÅmÅpÅlÅeÅ:Å ÅHÅoÅwÅ ÅtÅoÅ ÅSÅeÅlÅlÅ ÅaÅ ÅHÅoÅuÅsÅeÅ
+
+   As an example, let's begin by building a flyer that will sell a house. We will walk through ten simple steps:
+
+SÅtÅeÅpÅ Å1Å.Å Set up the correct printer. In this example we will use Amiga Preferences printers. Select the "Print To" option from the Preferences menu and choose "Preferences". For this to work Correctly you must have a graphics preferences conected to your Amiga.
+
+SÅtÅeÅpÅ Å2Å.Å Set up the correct font. The main part of our text will use topaz 8. At this point, no corrections are necessary. (To verify that the default font is indeed topaz 8, go to the tool box and position the pointer over the "ABC" tool. Click the right 
+mouse button. This brings up the default text attributes requester. Click the "NEWFONT" gadget with the left mouse button. 
+This brings up the font requester. The font should be set at topaz 8.  Click the CÅAÅNÅCÅEÅLÅ gadget to exit the select font reqester, then again to exit the text attribute requester.)
+
+SÅtÅeÅpÅ Å3Å.Å Load in the Graphic. Select the "Load Graphic" option from the PROJECT menu. Click the drawer gadget and change its name to "CLIPART2". Find the filename "HOUSE" and click it. Then click the "OK" gadget to submit this file to CÇiÇtÇyÇ ÇDÇeÇsÇkÇ.
+
+SÅtÅeÅpÅ Å4Å.Å Place the Graphic on the Page. The pointer should read "PÇIÇCÇTÇ". This indicates that the house is ready to be placed on a window. Move this pointer inside the working page window and place the "PÇIÇCÇTÇ" arrow at the far left edge and about 1/4 inch down from the top of the page (1/4" below the top dotted line, and 1/4" to the right of the far left vertical dotted line. These dotted lines indicate the margins and are not actually printed.). Click the left mousebutton when you are ready. The house should appear.
+We are now going to resize the house so it fills the page. Go to the toolbox and click the resize tool with the left mouse button (the resize tool is the tool that looks like the resize gadget that appears in the botom right corner of standard windows.) Now go to the house, and click and hold down the left mouse button. A "ruber band box" should now appear. You can make the house any size you want by just moving the mouse intil the rubber band box is the size you want. Make the box extend in width intil the right edge of the rubber band box is about 1/4" from the right most vertical dotted line. Now release the mouse button. The house should change to the new size.
+
+SÅtÅeÅpÅ Å5Å.Å Load in First Block of Text. Select the "Load Text" option from the PROJECT menu. Click the drawer gadget and change its name to "SAMPLE". Find the "HOMEINTRO" filename and click it. Then click the "OK" gadget.
+   The pointer reads "TÇEÇXÇTÇ". Place this pointer underneath the house, against the left column guide and about 1.5 inches up from the bottom of the page (follow the dashed lines). When you are ready, click the left mouse button. The text should now appear as a bunch of dots.  You will not be able to read it, because we are 
+at such a small magnification (mag 1.)
+
+SÅtÅeÅpÅ Å6Å.Å ÅLoad in Second Block of Text. Follow the same procedure as step 5. Instead, load the filename "HOMECOST". Place this block of text against the second column guide and at about the same level as the "HOMEINTRO" block of text.
+
+SÅtÅeÅpÅ Å7Å.Å Load in Third Block of Text. Again, follow the same procedure as step 5. Instead, load the filename "HOMEPHONE". Center this block of text against the bottom of the page (above the lower most dashed lines).
+
+SÅtÅeÅpÅ Å8Å.Å Change Fonts in "HOMEPHONE". To call out the attention of our prospective buyers, we will make the phone number stand out from the rest of the text by using a larger print.
+   To change fonts, select the "Edit Text Attributes" option from the EDIT menu. Now PÅIÅCÅKÅ the block of text containing "HOMEPHONE". The requester "Format Text" pops up. Click the "NEWFONT" gadget. The requester "Select a Font" pops up. Click on the "Amiga" gadget to select the correct font category (this should be the default). Then click on the "-" font gadget until the name "diamond" appears. Notice that the font size also changes. Use the "+" gaddget under the font sizebe set it at 20. To quit this requester, click the "OK" gadget.
+   Click on the letter "B" in the Attribute gadget to turn on boldface, and click the letter "C" to turn on center justification. Then click "OK" to exit.
+   Place this block of text in the same position as before.
+
+SÅtÅeÅpÅ Å9Å.Å Enter a Top Title. As a final touch to our flyer, we will enter a title to indicate that we are, indeed, selling a house.
+   Click on the ABC tool with the left mouse button to call the "Mini Editor". On the top string gadget enter the following heading:
+
+   \[diamond 20;mag 3\]Elegant Home For Sale
+
+When you are finished typing, click on the "OK" gadget. Center this caption at the top of the page, underneath the top most horizontal dashed line.
+
+SÅtÅeÅpÅ Å1Å0Å.Å Save it and Print it. To end this sample session, let's save this page by selecting the "Save As..." option from PROJECT. Enter a project name of your choice and click "OK" when you are ready.
+Now let's get a hardcopy  of the final draft by selecting the "Print Document" option from the PROJECT menu.  We should have a flyer looking like this:
+                                                      

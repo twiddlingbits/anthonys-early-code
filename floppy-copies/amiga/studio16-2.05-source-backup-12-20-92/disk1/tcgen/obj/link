@@ -1,0 +1,1 @@
+blink lib:c.o WITH objlist TO /T.bak LIB lib:lcnb.lib + lib:amiga.lib + lib:debug.lib SC SD NODEBUG

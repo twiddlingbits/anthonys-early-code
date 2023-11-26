@@ -1,0 +1,270 @@
+
+(studio.c)		AddHandler
+----------------------------------------------------------------------------
+NAME
+	AddHandler -
+SYNOPSIS
+	
+	struct AudioHandler *AddAudioHandler(nh)
+	
+	struct NewAudioHandler *nh;
+FUNCTION
+	Given a NewAudioHandler struct, this function creates a new
+	entry in the studioBase->handlers List.  This funciton should
+	be called by any Module who's job is to be a device driver
+	for an audio card designed to be used by studio 16.
+
+	Note that name's pointer is copied but not its text.  Therefore,
+	the name's text should be declared static by the module 
+	initilizing NewAudioHandler.  This is in contrast to other
+	studio 16 functions like AddModule() which make a copy of the
+	text.
+INPUTS
+	pointer to NewAudioHandler struct (see studio.h)
+RESULTS
+	pointer to AudioHandler struct or NULL if not enough memory
+----------------------------------------------------------------------------
+
+(studio.c)		BroadcastEventParms
+----------------------------------------------------------------------------
+NAME
+	BroadcastEventParms -
+SYNOPSIS
+	
+	void BroadcastEventParms(type, arg1, arg2, arg3, arg4, arg5, flags)
+	
+	short type;
+	unsigned long arg1;
+	unsigned long arg2;
+	unsigned long arg3;
+	unsigned long arg4;
+	unsigned long arg5;
+	unsigned long flags;
+	
+
+FUNCTION
+	Sends an event message to all all modules who are listening for
+	the type being broadcast.  See GetEventID() for an example.
+INPUTS
+	type - numeric value of message type. Returned from GetEventID()
+	arg1 - arg5 message dependant arguments
+	flags - message dependant flags
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		ClearNotifyList
+----------------------------------------------------------------------------
+NAME
+	ClearNotifyList-
+SYNOPSIS
+	
+	void ClearNotifyList(type)
+	short type;
+FUNCTION
+	Tells studio16 to stop sending events of a specified type
+	to everyone currently listening for them.  Be carefull using this
+	since it may cause modules expecting certain events to
+	suddenly quit receiving them without notice.
+INPUTS
+	type ID of event to quit broadcasting
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		DeleteHandler
+----------------------------------------------------------------------------
+NAME
+	DeleteHandler -
+SYNOPSIS
+	
+	void DeleteAudioHandler(ah)
+	struct AudioHandler *ah;
+FUNCTION
+	Removes an AudioHandler from the system's list.   Call
+	DeleteHandler() as part of a device driver's close down sequence,
+	along with such functions as DeleteModule().
+INPUTS
+	pointer to the AudioHandler to remove.
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		GetEventID
+----------------------------------------------------------------------------
+NAME
+	GetEventID -
+SYNOPSIS
+	
+	GetEventID(name)
+	char *name;
+
+FUNCTION
+	Takes a pointer to a string and returns its ID number.  In 
+	Studio 16, "Events" are used to communicate between modules.
+	In order to broadcast an event, you must get its ID. ID's are
+	assigned dynamicaly at runtime for maximum flexability.  For
+	example, to play a sample you could use the sequence:
+	
+	int playid;
+	playid = GetEventID("SE_CMD_PLAY_SAMPLE");
+	if (playid!=-1) {
+		BroadcastEventParms(playid, samp, 0, samp->length, 0,0,0);
+		}
+
+INPUTS
+	name	pointer to the name of a studio event
+RESULTS
+	Event id (int) or -1 if out of memory
+----------------------------------------------------------------------------
+
+(studio.c)		IgnoreCount
+----------------------------------------------------------------------------
+NAME
+	IgnoreCount-
+SYNOPSIS
+	
+	void IgnoreCount(type, module)
+	short type;
+	struct Module *module;
+FUNCTION
+	Tells studio16 to quit sending SE_INFO_EVENT_COUNT messages
+	to a specifed module.
+INPUTS
+	type - type of messages to quit counting
+	module - module to quit receiving messages
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		IgnoreEvent
+----------------------------------------------------------------------------
+NAME
+	IgnoreEvent -
+SYNOPSIS
+	
+	void IgnoreEvent(type, module)
+	short type;
+	struct Module *module;
+FUNCTION
+	Tells studio16 to quit sending events of the specified type
+	to the specified module.  For example, if you have been listening
+	to smpte messages, but don't want to any more you could say
+
+		IgnoreEvent(se_info_smpte, thismodptr);
+
+	where se_info_smpte was a short filled in with a call to
+	GetEventID(); 
+INPUTS
+	type ID of message type to quit receiving
+	module pointer to module that doesn't want messages any more
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		LoadDefaults
+----------------------------------------------------------------------------
+NAME
+	LoadDefaults -
+SYNOPSIS
+	
+	void LoadDefaults(file)
+	char *file;    /** complete path/file pointing to defaults or NULL **/
+FUNCTION
+	trys to load defaults from the specified file.  If the file
+	can't be opened, some defauts are generated.  Defaults are
+	kept in studioBase->defaults. If a null is passed for arg1,
+	a default string "AutoPres" is generated.
+INPUTS	
+   ARGS:
+      1  pointer to string containing complete path of file
+         containing defaults to try and load.
+RETURNS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		NotidyMeOnEvent
+----------------------------------------------------------------------------
+NAME
+	NotidyMeOnEvent -
+SYNOPSIS
+	
+	void NotifyMeOnEvent(type, module)
+	short type;
+	struct Module *module;
+FUNCTION
+	Tells studio16 that you want to recieve events of a certian
+	type when they are broadcast.
+INPUTS
+	type ID of event you wish to receive
+	module the module that wants to receive events
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		NotifyMeOnCount
+----------------------------------------------------------------------------
+NAME
+	NotifyMeOnCount -
+SYNOPSIS
+	
+	void NotifyMeOnCount(type, module)
+	short type;
+	struct Module *module;
+FUNCTION
+	Tells studio16 to inform a module every time the number of
+	modules listening for a particular ID changes.  The module
+	wanting notices will receive messages of type "SE_INFO_EVENT_COUNT"
+	(arg1 is the event type and arg 2 is the number of modules
+	listening for event)
+INPUTS
+	type - message type to keep track of listners
+	module - module to recieve SE_INFO_EVENT_COUNT messages
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		SendMsg
+----------------------------------------------------------------------------
+NAME
+	SendMsg -
+SYNOPSIS
+	
+	void SendMsg(mod, type, arg1, arg2, arg3, arg4, arg5, flags)
+	struct Module *mod;
+	ULONG arg1, arg2, arg3, arg4, arg5,flags;
+	short type;
+FUNCTION
+	Sends a message to one particular module.  Use this if you
+	know that only one specific module is waiting for a message.
+	For example, Modlist sometimes uses this to send out
+	SE_CMD_KILL_MODULE messages.  This reduces the message trafic by not
+	sending SE_CMD_KILL_MODULE events to modules that don't need them.  
+	However, this is also dangerous in that a module may be 
+	interested in SE_CMD_KILL_MODULE events directed to other modules.
+	Since	SE_CMD_KILL_MODULE events are sometimes sent using SendMsg()
+	and not BroadcastEventParms(), third party modules can't monitor
+	SE_CMD_KILL_MODULE reliably. Use this function carefully.
+INPUTS
+	mod - module to receive message
+	type - flags same as BroadcastEventParms()
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(studio.c)		UpdateStandardModState
+----------------------------------------------------------------------------
+NAME
+	UpdateStandardModState(m,w) -
+SYNOPSIS
+	
+	void UpdateStandardModState(m,w)
+	struct Module *m;
+	struct Window *w;
+
+FUNCTION
+	Copies parameters into the m->state structure
+INPUTS
+RESULTS
+	NONE
+----------------------------------------------------------------------------

@@ -1,0 +1,55 @@
+HandleInt:
+	ar=DM(ADC);
+	sr=LSHIFT ar by 4 (lo);	{ Get Byte from Sampler }
+	DM(Input)=sr0;
+
+	mr=0;			{ Clear Mult (output) }
+
+	ax0=DM(Events);
+	ay0=EVmon;
+	ar=ax0 and ay0;		{   Monitor }
+	if ne Call MonInt;
+
+	ax0=DM(Events);
+	ay0=EVplay0;
+	ar=ax0 and ay0;
+	if eq jump next1;		{  Play Channel 0 }
+
+	ar=0;DM(Channel)=ar;
+	Call PlayInt;
+
+next1:	ax0=DM(Events);
+	ay0=EVplay1;
+	ar=ax0 and ay0;
+	if eq jump next2;		{ Play Channel 1 }
+
+	ar=1;DM(Channel)=ar;
+	Call PlayInt;
+
+next2:	ax0=DM(Events);
+	ay0=EVplay2;
+	ar=ax0 and ay0;
+	if eq jump next3;		{ Play Channel 2 }
+
+	ar=2;DM(Channel)=ar;
+	Call PlayInt;
+
+next3:	ax0=DM(Events);
+	ay0=EVplay3;
+	ar=ax0 and ay0;
+	if eq jump next4;		{ Play Channel 3 }
+
+	ar=3;DM(Channel)=ar;
+	Call PlayInt;
+
+next4:	ax0=DM(Events);
+	ay0=EVrec;
+	ar=ax0 and ay0;		{ Record }
+	if ne Call RecInt;
+
+	call HiLoSave;
+
+	if mv sat mr;
+	sr=LSHIFT mr1 by -4 (lo);
+	DM(DAC)=sr0;
+	rts;

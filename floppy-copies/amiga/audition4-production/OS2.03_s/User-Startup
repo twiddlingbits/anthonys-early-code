@@ -1,0 +1,30 @@
+; Last modified on Jul. 20, 1991  -  Thomas S. Hong
+
+Lock WB_2.x: ON cs.sys
+Lock Work: ON cs.work
+
+  ;The following statements are required for running POS.
+Work:POS/MakeMM/SetBlack >NIL:   ;only required for Pioneer LD-V220 player
+Assign Instruments: Work:POS/8SVX
+Assign Demo: Work:POS/MakeMM
+Assign AmigaVision: Work:AmigaVision
+  ;End of POS commands
+
+Assign DCTV: Work:DCTV
+Assign DemData: Work:ProPostDemo
+Assign DL: Work:BaudBandit/DL
+Assign UL: Work:BaudBandit/DL
+Assign DPaintIII: Work:DPaintIII
+Assign Imagine: Work:Imagine
+Assign JDK: Work:ProPostDemo
+Assign SBPro4: Work:SBPro4
+Assign ShowMaker: DH0:ShowMaker path
+
+Mount AMAX:
+
+CED -r
+SetNoClick
+
+Wait 10
+KickMenu
+EndCLI >NIL:

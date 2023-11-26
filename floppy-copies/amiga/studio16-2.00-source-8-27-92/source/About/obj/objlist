@@ -1,0 +1,4 @@
+about.o,openlibraries.o+StandImg.o+IntImg.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o,*
+prog:interfacelib/interfacestub.o

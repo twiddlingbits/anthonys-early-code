@@ -1,0 +1,10 @@
+.k name/a
+df1:c/lc1 <name>
+df1:c/lc2 <name>
+df1:c/alink from df1:lib/c.o,<name>.o to <name> library
+df1:lib/lc.lib,df1:lib/amiga.lib
+
+
+
+
+

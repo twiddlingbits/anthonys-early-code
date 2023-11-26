@@ -1,0 +1,63 @@
+City Desk Feature List as of 04/11/88
+
+1 == going to be in 1.2
+2 == Will try super hard to get into 1.2
+3 == might be in 1.2
+4 == Almost certainly wont be in 1.2
+
+1 24 pin printer support (NEC and EPSON)     done
+1 Default Even/Odd page                      done
+1 Stamp to background                        done
+1 Invisible to text flow                     done
+1 Hyphenation Routines                       in progress
+1 More WP Support
+1 New Graphics editor                        done
+1 new text editor phase 1                    done (almost)
+1 macros                                     in progress
+1 PAL support                                done
+1 more PS fonts
+1 more HP fonts
+1 moveable columns
+1 New gray scale support                     in progress
+1 Much improved screen display of pictures   done
+1 Pattern filled boxes
+1 multiple copies                            done
+1 delete/add/move/insert pages               done
+1 append to a project
+1 Text flow around irregular shaped graphic  in progress
+1 change magnify tool to be user friendly
+1 rulers and/or coordinate display           done (almost)
+1 Alter Colors to be gray scales             done
+1 True WYSIWYG color coordination            done
+1 Change menus to be more user friendly      done
+2 RMB on normal pointer brings up options
+1 Speed up window movement by 400%           done
+2 set x/y grid independently                 done
+2 add hot key to fill screen with window
+2 add context sensitive help screens
+2 font librarian
+2 color pallet
+2 landscape printing
+2 different size paper
+3 Global "add space between letters"
+3 fonts from multiple source (ie., reload fonts from other disks)
+3 curved borders
+3 cut/paste to clipboard
+3 link objects together                      done
+3 Dot matrix preview of postscript
+3 templates
+3 different number of columns on top and bottom of page
+3 able to assign pages on disk to icon in program for easy recall
+3 new text editor phase 2
+3 ability to open multiple projects
+3 user editable kerning tables
+3 overscan
+3 determine number and order of linked objects
+3 undo
+4 Structured graphics
+4 color separation
+4 download amiga screen fonts to postscript
+4 scalable fonts
+4 Angled text
+4 pattern fill any shape
+

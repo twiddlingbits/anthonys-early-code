@@ -1,0 +1,15 @@
+//weekend of terror code//
+
+GRAPHIC
+
+DISS 1 0 0
+activate 1
+
+MAIN
+
+v:quit
+  end
+
+BACKGROUND
+
+

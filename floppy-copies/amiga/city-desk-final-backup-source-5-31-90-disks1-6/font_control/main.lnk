@@ -1,0 +1,4 @@
+FROM LIB:c.o+main.o
+TO main
+LIB +LIB:lc.lib+LIB:amiga.lib
+MAP main.map

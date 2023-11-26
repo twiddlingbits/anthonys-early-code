@@ -1,0 +1,135 @@
+' 
+'            HOW TO RUN Amiga BASIC DEMONSTRATION PROGRAMS
+'            =============================================
+' 
+' 
+' For special instructions on how to deal with a 256k Amiga see the 
+' end of this document.
+' 
+'         1a. If you have 2 disk drives insert the Workbench diskette
+'                in the internal drive and the Extras diskette in the
+'                external drive.  Boot the system (<Ctrl><Amiga><Amiga>).
+'         1b. If you have a 1 drive system insert the Workbench 
+'                diskette and boot the system  (<Ctrl><Amiga><Amiga>).
+'         2. Open the Extras diskette, then the BasicDemos Drawer.
+'         3. Select and open the demo of your choice.  The information
+'                below will then be useful.
+' 
+' DEMO   How to interact with:
+' ======= =============================================================
+' SPEECH -- On a 1 drive system Basic will ask for the Workbench 
+'        diskette in order to access the Translator and Narrator
+'        devices.  Once loaded The demo will display and speak 
+'        instructions.
+'        
+'        There are 6 "slider" devices that control Pitch, Inflection,
+'        Rate, Voice, Tune, and Volume.  To the left side is "low",
+'        to the right is "high".  Note that Voice has only 2 positions,
+'        male and female.  See the manual (SAY command) for additional
+'        information.
+' 
+'        To exit select the close gadget in the upper left hand corner.
+' 
+'
+' MUSIC -- Displays a screen with lines in it as it plays a tune.  If
+'        you resize the window the lines will soon start to follow the 
+'        new boarders.  (You may see a little leftover line from time
+'        to tome.)
+' 
+'        To exit select the close gadget in the upper left hand corner.
+' 
+'
+' LIBRARY -- This demo prints some sample text in different type styles.
+'        To do this it uses calls to DOS and Graphics libraries.
+' 
+'        To exit select the close gadget in the upper left hand corner
+'        or type "system".
+' 
+'
+' SCREEN -- This demo requires 512k (or more).  If you do not have 512k you
+'        can exit by typing "system<RETURN>".
+'        
+'        To exit select the close gadget in the upper left hand corner
+'        or type "system<RETURN>".
+' 
+'
+' DEMO -- With 256k this demo is decidedly less interesting (than with
+'        512k) but still runs.  The 256k version just puts up one 
+'        window and bounces some small balls around.  If 512k is 
+'        available the demo puts up 4 windows and does something
+'        different in each.
+' 
+'        To exit this demo choose "Stop" from the run menu, then "Quit
+'        from the project menu.
+' 
+'
+' PICTURE -- This demo is described in detail in the tutorial portion of
+'        the manual.  It creates a "sphere" in the upper left hand part
+'        of the screen, then will move it to where ever you click the
+'        mouse.  You can also drag the mouse and move it that way.
+' 
+'        To exit select the close gadget in the upper left hand corner.
+' 
+'
+' PICTURE2 -- This demo is identical to Picture1 and provided as a backup
+'        of Picture.  See the tutorial section in the manual for 
+'        additional information.
+' 
+'
+' OBJEDIT -- This is an OBJect EDITor.  You can edit objects (BOBs and 
+'        sprites) for later use in your own animation.  This program
+'        is also documented in the manual.  On a 256k system the
+'        "paint" option is not supported.  This is because paint
+'        can take a lot of memory to execute.  The boundary color  of
+'        the object to be painted must be the same as the fill color.
+' 
+'        To exit this program use the second mouse (menu) button
+'        and choose Project-Quit.
+'
+' 
+' TERMINAL -- On a 1 drive system Basic will ask for the Workbench 
+'        diskette in order to access the Serial Device driver. This 
+'        "demo" will communicate with a terminal at 9600 baud.  It
+'        is a very simple program, try listing it.
+' 
+'        To exit select the close gadget in the upper left hand corner.
+' 
+'
+' CONVERTFD -- This "demo" is used to translate name.FD files into 
+'        name.bmap files so that Amiga BASIC can access libraries
+'        of machine language routines by name, via the LIBRARY
+'        statment.  This program should only be used by experienced
+'        programmers and developers that have access to .FD files.
+'        Most users will never use this program.
+' 
+'        To exit this demo choose "Stop" from the run menu, then "Quit
+'        from the project menu.
+' 
+'
+' GRAPHICS.BMAP --
+' DOS.BMAP --
+' BALL -- These 3 data files are used by other demo programs.  They
+'        are not demos in and of themselves.
+'
+'
+' 
+' Special Instructions for People with 256k Systems:
+' --------------------------------------------------
+' 
+' If you are using a 256k Amiga memory will be very tight for some of
+' these demos, this makes the following steps necessary:
+' 
+'         1. Power off your Amiga.
+'         2. Remove any external disk drives (floppy and hard disks).
+'                Buffers are allocated when the the Amiga notices that
+'                these drives are present.  This can allocate a 
+'                significant amount of memory.
+'         3. Power on your Amiga and boot using KickStart and Workbench.
+'         4. When the Workbench icon appears and the drive light goes 
+'                out eject the Workbench diskette.
+'         5. Insert the Extras diskette and open (double click) its icon.
+'         6. Open the BasicDemos drawer.
+'         7. Close the Extras window.  Closing windows frees memory.
+'         8. Drag the demo of interest outside the BasicDemos window.
+'         9. Close the BasicDemos window.  Closing windows frees memory.
+'        10. Open (double click) the demo Icon you have moved.

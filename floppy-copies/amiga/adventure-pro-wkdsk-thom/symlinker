@@ -1,0 +1,1 @@
+FROM obj/sym.o, obj/advsubs.o, obj/advprt.o, obj/cntable.o, obj/dataput.o

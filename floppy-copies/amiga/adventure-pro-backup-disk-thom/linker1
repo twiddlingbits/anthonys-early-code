@@ -1,0 +1,16 @@
+FROM obj/interp.o, obj/caseds.o, obj/sound1.o, obj/sound2.o, obj/sound3.o, *
+obj/caseloads.o, obj/caseplays.o, obj/casestops.o, obj/caseclears.o, *
+obj/caseacts.o, obj/caseends.o, obj/startrmsec.o, obj/endrmsec.o, *
+obj/casecrmg.o, obj/casewait.o, obj/casecrms.o, obj/caseifvarlt.o, *
+obj/casetype.o, obj/casecobjg.o, obj/casecon.o, obj/cleargrap.o, *
+obj/openlibs.o, obj/caseslave.o, obj/caseunslave.o, obj/casedg.o, *
+obj/casestoreg.o, obj/caseloadg.o, obj/caseassign.o, obj/caseinject.o, *
+obj/updatesec.o, obj/activate.o, obj/endsec.o, obj/startsec.o, *
+obj/objectclear.o, obj/showroomobjects.o, obj/e_roomobjects.o, *
+obj/caseinminus.o, obj/caseinplus.o, obj/advsubs.o, obj/advmem.o, *
+obj/getgraphic.o, obj/caseverb.o, obj/getlist1.o, obj/loadilbm.o, *
+obj/nwin.o, obj/screen.o, obj/getx.o, obj/printx.o, obj/printy.o, *
+obj/getx2.o, obj/caseopen.o, obj/caseclose.o, obj/caseread.o, *
+obj/newpointer.o, obj/printz.o, obj/casedone.o, obj/loadperm.o, *
+obj/casewrite.o, obj/casernd.o
+

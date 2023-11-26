@@ -1,0 +1,34 @@
+City Desk 2.0 Notes for Atlanta Comdex '88
+------------------------------------------
+
+Methods for demoing a GURU or TASK HELD message:
+
+1. Link objects together then move them off the page.
+
+2. Create a graphic in the graphic editor the re-edit it.
+
+3. In interlace, size the text editor window larger than half
+   the screen.
+
+
+Bugs:
+
+1. The grid dots don't seem to be where the snap to grid points are.
+2. Don't create graphics in the graphics editor.  It seems to be
+   fairly flaky.  Editing graphics loaded of disk seems to work ok.
+
+Suggestions:
+
+You can demo graphics by loading some grayscale pictures and some one
+bit plane line art (logo, etc.)  You can use the graphics editor to
+edit the line art, but don't try and edit the grayscale picture.
+
+After you load a picture, try using the text editor to write a caption
+and place it under the picture. Then use link objects to link them
+together. You can now have lots of fun moveing them together.
+
+Other fun things to do are create a default page with a letter head
+on it. Now open a few reqular pages.
+
+Set your printer to EpsonX 120 X 72 for good looking screen text.
+

@@ -1,0 +1,3 @@
+copy df0:a.out to df1:DEMO
+copy df0:symbol.adv to df1:symbol.adv
+

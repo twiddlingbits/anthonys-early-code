@@ -1,0 +1,3 @@
+handler.o+openlibraries.o+IO.o+Setup.o+interupt.o+messages.o+other.o*
+prog:studio/studiostub.o,*
+prog:gadlib/gadlibstub.o

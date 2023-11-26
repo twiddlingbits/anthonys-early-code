@@ -1,0 +1,10 @@
+1. Print shoould ask "Are you sure?"
+2. anything that will take along time (like printing) should
+   turn off the menus
+3. It get search string crashed once ? I had done a search before entering
+   the string
+4. Your not checking for errors when you print!
+5. Make sure you always check for an error on any write() or read()
+6. You need to change the color text is printed in to BLACK (see desk.h
+   in newsource)
+

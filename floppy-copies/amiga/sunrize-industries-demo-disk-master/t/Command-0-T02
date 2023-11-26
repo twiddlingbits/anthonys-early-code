@@ -1,0 +1,7 @@
+show -10 title.pic -5 shuttle.hpic -5 tribble.hpic
+show -5 cheetos.lpic -5 boing1.lpic
+show -5 astro.hpic -5 astro.pic  -5 chip.pic -5 lady.pic -5 type.pic
+show -5 scotty2.pic -5 spock1.pic -5 trek1.pic
+execute list
+
+

@@ -1,0 +1,14 @@
+openlibraries.o,utility.o,*
+//open/obj/show_error.o,*
+//gadlib/gadlibstub.o,*
+//studio/studiostub.o,*
+load8svx.o,*
+load16bitraw.o,*
+save16bitraw.o,*
+save8svx.o,*
+saveCDTV.o,*
+tr.o,*
+saveAIFF.o,*
+AIFF.o,*
+copy.o,*
+common.o

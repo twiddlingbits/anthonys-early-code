@@ -1,0 +1,82 @@
+[4;1mtrymain                 29-May-87 11:53:48  Hunk Section                Page 1-1[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+   1 <noname>       30 trymain.o        trymain. code            0    0
+   2 <noname>        4 trymain.o        trymain. datachip        0    0
+   3 text         1a54 LIB:c.o          c.o      code            0    0
+                       LIB:lc.lib       printf.o code          234    0
+                       LIB:lc.lib       _main.o  code          2bc    5
+                       LIB:lc.lib       _cxovf.o code          51c    0
+                       LIB:lc.lib       strncat. code          534    0
+                       LIB:lc.lib       exit.o   code          580    0
+                       LIB:lc.lib       cxovf.o  code          5e8    2
+                       LIB:lc.lib       cxbrk.o  code          650    0
+                       LIB:lc.lib       _exit.o  code          6b0    0
+                       LIB:lc.lib       _pfmt.o  code          6fc    0
+                       LIB:lc.lib       _flsbf.o code          c24    0
+                       LIB:lc.lib       dclose.o code          f7c    1
+                       LIB:lc.lib       strlen.o code          fa4    0
+                       LIB:lc.lib       memset.o code          fb8    0
+                       LIB:lc.lib       memcpy.o code          fd4    0
+                       LIB:lc.lib       stcd_i.o code         1000    0
+                       LIB:lc.lib       stcul_d. code         1098    0
+                       LIB:lc.lib       stcl_o.o code         10f4    0
+                       LIB:lc.lib       stcl_h.o code         1154    0
+                       LIB:lc.lib       strupr.o code         11b4    0
+                       LIB:lc.lib       _getbf.o code         11e8    0
+                       LIB:lc.lib       write.o  code         1250    0
+                       LIB:lc.lib       dread.o  code         12bc    2
+                       LIB:lc.lib       isdigit. code         131c    0
+                       LIB:lc.lib       strcpy.o code         1340    0
+                       LIB:lc.lib       toupper. code         1354    0
+                       LIB:lc.lib       getmem.o code         136c    0
+                       LIB:lc.lib       dwrite.o code         1470    1
+                       LIB:lc.lib       lseek.o  code         14cc    0
+                       LIB:lc.lib       mem1.o   code         1514    2
+                       LIB:lc.lib       dseek.o  code         16d4    1
+                       LIB:lc.lib       chkufb.o code         1788    0
+                       LIB:lc.lib       cxm33.o  code         17e8    0
+                       LIB:lc.lib       cxd33.o  code         1808    0
+                       LIB:lc.lib       rlsmem.o code         18cc    0
+                       LIB:lc.lib       chkabort code         19f4    1
+   4 __MERGED      264 LIB:c.o          c.o      data            0    0
+                       LIB:lc.lib       _main.o  data           70    0
+                       LIB:lc.lib       mathbase data           9c    0
+                       LIB:lc.lib       tranbase data           a0    0
+                       LIB:lc.lib       dosbase. data           a4    0
+                       LIB:lc.lib       _fmode.o data           a8    0
+                       LIB:lc.lib       cxovf.o  data           ac    0
+                       LIB:lc.lib       cxbrk.o  data          118    0
+                       LIB:lc.lib       _iob.o   data          1a8    0
+                       LIB:lc.lib       _pfmt.o  data          210    0
+                       LIB:lc.lib       _flsbf.o data          214    0
+                       LIB:lc.lib       intubase data          218    0
+                       LIB:lc.lib       stcl_h.o data          21c    0
+                       LIB:lc.lib       bufsiz.o data          230    0
+                       LIB:lc.lib       dseek.o  data          234    0
+[4;1mtrymain                 29-May-87 11:53:48  Hunk Section                Page 1-2[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:lc.lib       mstep.o  data          240    0
+                       LIB:lc.lib       _mneed.o data          244    0
+                       LIB:lc.lib       _ufbs.o  data          248    0
+                       LIB:lc.lib       error.o  data          24c    0
+                       LIB:lc.lib       _pool.o  data          250    0
+                       LIB:lc.lib       printf.o bss           264    0
+                       LIB:lc.lib       _main.o  bss           268    0
+                       LIB:lc.lib       mem1.o   bss           2f8    0
+                       LIB:lc.lib       _ufbs.o  bss           304    0
+   5 dos_lib        b4 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           1c    0
+                       LIB:amiga.lib    <noname> code           30    0
+                       LIB:amiga.lib    <noname> code           4c    0
+                       LIB:amiga.lib    <noname> code           68    0
+                       LIB:amiga.lib    <noname> code           78    0
+                       LIB:amiga.lib    <noname> code           88    0
+                       LIB:amiga.lib    <noname> code           a4    0
+   6 exec_lib       74 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           18    0
+                       LIB:amiga.lib    <noname> code           30    0
+                       LIB:amiga.lib    <noname> code           44    0
+                       LIB:amiga.lib    <noname> code           5c    0
+   7 intuitio       34 LIB:amiga.lib    <noname> code            0    0

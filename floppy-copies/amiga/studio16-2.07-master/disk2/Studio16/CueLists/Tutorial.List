@@ -1,0 +1,7 @@
+TQL
+00:00:02:00 , +0 ,DoorBell                                , 
+00:00:04:00 , +0 ,DoorBell                                , 
+00:00:04:15 , +0 ,DoorBell                                , 
+00:00:10:00 , +0 ,DoorKnock                               , 
+00:00:15:00 , +0 ,OpenDoor                                , 
+00:00:17:00 , +0 ,CloseDoor                               , 

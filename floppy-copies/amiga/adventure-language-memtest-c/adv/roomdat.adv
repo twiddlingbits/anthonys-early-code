@@ -1,0 +1,15 @@
+//Dead Men Tell No Tails Room Description information //
+// Room 1 -- hotel room //
+Your in a small hotel room.
+0,0,2,0,0,0
+frog knife $
+// 2 the hotel upstars hall way //
+Your in hallway that runs north/south.
+0,3,0,1,0,0
+$
+
+// 3 elevetor //
+Inside an elevator.
+1,0,0,0,0,0
+sword knife pan $
+                                  

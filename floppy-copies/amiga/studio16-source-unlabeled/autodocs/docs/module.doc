@@ -1,0 +1,58 @@
+
+(module.c)		AddModule
+----------------------------------------------------------------------------
+NAME
+	AddModule -
+SYNOPSIS
+	
+	struct Module *AddModule(nm)
+	struct NewModule *nm;
+FUNCTION
+	Allocate memory for a new module struct and links it into the
+	studioBase->modules chain.  All data from NewModule is
+	copied, including the name, so that NewModule may be
+	discarded. A port is also allocated to recieve broadcasted
+	messsages (module->notifyme).  The Modules __ModState struct
+	is also allocated and zereoed based on the passed size.
+INPUTS
+	pointer to module struct
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(module.c)		DeleteModule
+----------------------------------------------------------------------------
+NAME
+	DeleteModule -
+SYNOPSIS
+	
+	void DeleteModule(m)
+	struct Module *m;			/** Module to delete **/
+FUNCTION
+	Deallocates a module's memory and removes it from the module
+	list.  The passed module must be linked to studioBase->Modules.
+	The module's notifyme port is also closed and all any references
+	that will cause events to be sent to the specified module
+	are removed.
+INPUTS
+	pointer to struct Module
+RESULTS
+	NONE
+----------------------------------------------------------------------------
+
+(module.c)		FindModule
+----------------------------------------------------------------------------
+NAME
+	FindModule -
+SYNOPSIS
+	
+	struct Module *FindModule(name)
+	char *name;    /* module name to search for **/
+FUNCTION
+	Searchs the module list for a module with the passed name.
+	Treats upper and lower case the same.
+INPUTS
+	pointer to name to search for
+RESULTS
+	pointer to struct Module or NULL
+----------------------------------------------------------------------------

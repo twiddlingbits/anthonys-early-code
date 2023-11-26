@@ -1,0 +1,49 @@
+640,200,
+3,
+backgraphic1
+30,20,
+cave1
+cave2
+cave3
+cave6
+cave4
+cave5
+cave7
+cave8
+cave9
+cave10
+20,130,
+600,65,
+9,
+440,65,
+440,80,
+440,95,
+490,65,
+490,80,
+490,95,
+540,65,
+540,80,
+540,95,
+9,
+440,10,
+440,25,
+440,40,
+490,10,
+490,25,
+490,40,
+540,10,
+540,25,
+540,40,
+12,
+HARDHAT hardhat.g
+LAMP lamp.g
+DYNAMITE dynamite.g
+LENS lens.g
+CART cart.g
+GOBA goba.g
+GOBB gobb.g
+GOBC gobc.g
+GOBD gobd.g
+GOBE gobe.g
+GOBF gobf.g
+GOBG gobg.g

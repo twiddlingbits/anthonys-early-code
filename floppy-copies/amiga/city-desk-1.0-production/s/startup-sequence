@@ -1,0 +1,5 @@
+echo "Workbench disk.  Release 1.2 version 33.47"
+echo " "
+echo "Use Preferences tool to set date"
+LoadWb
+endcli > nil:

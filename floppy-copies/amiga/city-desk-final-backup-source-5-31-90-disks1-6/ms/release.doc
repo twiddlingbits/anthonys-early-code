@@ -1,0 +1,89 @@
+City Desk Version 2.01 Changes
+
+05-01-89
+========
+
+1."Autofonts" was always always downloading to ser:
+2. changed version number in title bar to 2.01
+3. Problems with linked objects fixed:
+   A. if you clicked on only one object when linking, there was
+      a bug that could cause a crash in some cases.
+   B. For some reason, that I may or may not have fixed, projects with
+      linked objects would not load correctly.  They now load
+      without causing a future crash, but the objects may unlink.
+
+4. Graphic dpi wasn't coming from default object (does now)
+5. CD Prefs postscript & virtual page buttons didn't work right
+6. strip printing is now the default
+7. Default object now saved with cd preferences
+8. Laser Utility can handle path names up to 160 characters now
+9. Hopefully fixed bug that would cause lu to crash after download error
+10. Texted now prints help page when help key pressed
+11. Texted was hanging on search/replease in some cases (avant ->avantgarde)
+12. I checked file sizes when saveing a one bit plane image.  It is large,
+    but not any larger than it used to be.  Its large because there is
+    no compression, this can make the files 10 times bigger than an IFF
+    file.  I may add compression in the future, but not real soon.
+13. CMR 12 works just fine one my printer.  Make sure you don't have
+    conflicting .hp files in laserfonts:  (such as f.hp & okidata.hp)
+14. I have tried to get TOP with hp to work, but I can't.  It should
+    be working the way I have it now, it just depends on how an hp
+    treats the "draw pattern/grayscale" command.  It may be that you
+    used a different printer for the manual page that worked. Try
+    it with the printer you used before that worked and call me.
+15. City Desk menus are now disabled when texted is called
+
+5-10-89
+=======
+
+1. Fixed bug that would cause a crash when loading a gray graphic and there
+   wasn't enough memory
+2. When you have the "TEXT" pointer, you can press the 'b' key on the
+   keyboard (for box) and then draw a box.  The text will then flow
+   into the box you drew.  This command was actually added in the last
+   version you received, I just forgot to document it.
+3. Modified Laser Utility so that it will generate .hp files for large
+   size soft fonts
+4. Fixed bug in print to Virtual Page that caused a crash
+5. Changed city desk so that it sent correct HP font change sequence to
+   printer.  To do this, I had to eliminate the first 5 entrys in the
+   .hp width tables.  This means that Any character below 5 won't work.
+   This should be ok, because these characters are normaly control
+   sequences.
+
+7-7-89
+======
+
+1. Added 'X' command to the autofonts file.  (see sample autofonts) allows
+   user to specify that font switching in HP mode be done with the font id.
+   This fixes the "bug" of not all hp laserjet compatibles acting the same
+   way to font switching commands.
+2. Took out check for PAL systems.  Should automaticlly work with pal
+   systems now.
+3. fixed bug that occured when linking objects and you clicked on the first
+   object twice in a row.
+4. TextEd now converts text files just like the city desk main program
+   when loading a new text file.
+5. Changed the save/load project routines so they handle bigger files
+   better.
+6. changed default object dpi to 300 from 150.
+
+8-1-89
+======
+
+1. Fixed spelling of "finished"
+2. When clicking on explode twice, can now till use right mouse button
+   to restore to previous window size and position
+3. Texted remebers previouse size and cursor position when you edit the
+   same file twice.
+4. Fixed bug in texted that cused cursor to jump when going to new line
+5. Fixed bug that caused cursor to jump when doing a cut
+6. changed icons for copy, erase in texted
+7. When you do "NEW" fist page is correctly set from autoprefs.  Before,
+   first page would be in the default two collumn format.  Now, autoprefs
+   is loaded and the default odd page format is used for page one.
+8. Note that the default stack size is not sufficiant for City Desk.  I
+   use a stack of 20,000 and this works ok.  To avoid strange crashes,
+   you must set the stack from the CLI when running from cli and with
+   the workbench info command when running from workbench.
+

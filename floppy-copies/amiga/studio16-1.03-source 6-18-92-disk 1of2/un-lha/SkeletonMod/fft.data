@@ -1,0 +1,20 @@
+
+
+static struct NewWindow NewWindowStructure1 = {
+   167,43,   /* window XY origin relative to TopLeft of screen */
+   275,106,   /* window width and height */
+   BLACK,WHITE,   /* detail and block pens */
+   CLOSEWINDOW+NEWSIZE,   /* IDCMP flags */
+   WINDOWDRAG+WINDOWDEPTH+WINDOWCLOSE+ACTIVATE+NOCAREREFRESH+WINDOWSIZING,   /* other window flags */
+   NULL,   /* first gadget in gadget list */
+   NULL,   /* custom CHECKMARK imagery */
+   "FFT",   /* window title */
+   NULL,   /* custom screen pointer */
+   NULL,   /* custom bitmap */
+   124,64,   /* minimum width and height */
+   640,200,   /* maximum width and height */
+   CUSTOMSCREEN   /* destination screen type */
+};
+
+
+/* end of PowerWindows source generation */

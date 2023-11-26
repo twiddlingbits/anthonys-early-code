@@ -1,0 +1,4 @@
+FROM LIB:c.o+"StudioWait.o"+"signal.o"+/studio/studiostub.o
+TO "Studio16:c/StudioWait"
+LIB LIB:lcnb.lib LIB:amiga.lib
+SD NODEBUG

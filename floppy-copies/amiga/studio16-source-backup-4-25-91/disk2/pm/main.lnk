@@ -1,0 +1,4 @@
+FROM LIB:c.o+"main.o"+pm.o
+TO "main"
+LIB LIB:lc.lib LIB:amiga.lib
+

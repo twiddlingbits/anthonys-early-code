@@ -1,0 +1,2 @@
+blink lib:c.o WITH objlist TO runtime:AD1012.handler LIB lib:lcmieee.lib+lib:lcnb.lib + lib:amiga.lib
+;NODEBUG

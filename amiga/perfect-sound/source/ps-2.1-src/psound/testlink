@@ -1,0 +1,3 @@
+alink from ram:lib/c.o,test.o,initpsjr.o,getpsjrbyte.o TO RAM:a.out LIB RAM:lib/lc.lib+RAM:lib/amiga.lib
+
+

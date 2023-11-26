@@ -42,6 +42,11 @@ Towards the end of high school I [purchased the super-cool Commodore 64](./aw-mi
 # macromedia flash
    - Space Invaders
 
-- 
+# Also...
+   - [AW Microcomputer History](aw-microcomputer-history.md)
+   - [AW Software](./awsoftware/readme.md)
+   - [Rejection/Acceptance Letters](./scans/)
+
+
 
 

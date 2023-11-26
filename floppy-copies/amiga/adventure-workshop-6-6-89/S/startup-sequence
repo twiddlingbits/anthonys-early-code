@@ -1,0 +1,14 @@
+c:run >NIL: c:SetAlert   ;patch system
+cd c:
+BindDrivers
+MakeDir Ram:T   ; set up logical T: directory for Execute
+Assign T: ram:T
+MakeDir Ram:Env   ; set up ENV: directory
+Assign ENV: ram:Env
+path sys:system ram: sys: s: add
+Sys:System/SetMap usa1
+LoadWb
+resident CLI L:Shell-Seg SYSTEM pure   ; activate Shell
+resident c:Execute pure   ; pre-load the Execute command
+mount newcon: ; mount the improved console handler
+endcli > nil:

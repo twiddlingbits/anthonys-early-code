@@ -1,0 +1,216 @@
+3546895
+000 First line 68000 clock freq divided by 2 (3579546 for NTSC)
+000 All lines starting with 000 are coments
+000 MAIN.c
+100 Willkommen zu PSound 3.21
+101 Operation Stop !
+102 Graf zeigt den LINKEN Kanal
+103 Graf zeigt den RECHTEN Kanal
+104 Sampel ist kein Instrument
+105 Oktave undefiniert
+106 Adresse nicht im zulässigen Bereich
+107 Länge ist nicht gerade !
+108 Länge zum Wiederholen ungerade
+109 Nur mono Sampels wiederholbar
+110 Nicht genügend Ram verfügbar
+111 Unmarkiert !
+112 Moment..
+113 Abschnitt vor dem Einfügen markieren
+114 Punkt zum Einfügen auswählen
+115 Einfügepunkt auswählen und Einfügeknopf drücken
+116 Einfügen
+117 Keine Markier.
+118 Einfügepunkt auswählen und den Einfügeknopf drücken
+119 Näher beschreiben zum Einschieben
+120 Gemischt
+121 Unmarkiert !
+122 Wähle Slot zum Anhängen aus
+123 Wähle Slot aus, an den angehängt wird
+124 Markierung im aktuel. Sampel setzen
+125 Fehler beim Versuch File umzubennen
+126 Gelöscht !
+127 Wenden...
+128 Unmarkiert
+130 Kein Bereich !
+133 Kein Sample ?!
+134 Markiere Mischpunkt und wähle Menüpunkt aus
+135 Wo soll vermischt werden ?
+137 Vergrößerungsansicht...linker Mausknopf
+138 Slot für linken Kanal ?
+139 Samp. muß mono sein
+140 Slot für rechten Kanal ?
+142 Sampels müssen in verschied. Slots
+143 Sampel jetzt stereo
+144 Samp. muß stereo sein
+145 Unterschiedliche Kanäle geschaffen
+146 Keine Slots
+147 Auf neue Rate resampelt
+148 Nicht genug Chip Ram
+149 Mark. gesetzt
+150 Keine Markier. gesetzt
+151 Oktavenlänge nicht in richtiger Größe
+152 SampelsPerHiCycle müssen doppelte Größe haben
+153 Instrument erzeugt
+154 Dieser Befehl arbeitet nicht in stereo
+156 Überwachung
+157 STOP  Mausknopf
+158 INT.  Oben/Unten
+159 INT.  'a' autom. Einstellung
+160 GRAF  'g' an/aus
+161 " ( INT. GESETZT)"
+162 FEHLER-code 1
+163 Aufnahme
+164 STOP  Mausknopf
+165 FEHLER-code 2
+166 Speicher voll
+167 Low pass output Filter ist angestellt
+168 Low pass output Filter ist abgeschaltet
+169 ps.title umbenannt
+170 Fehler beim Umbenennen von ps.title
+171 no_ps.title umbenannt
+172 Fehler beim Umbenennen von no_ps.title
+000 ************loadit.c..
+173 Fehler beim Öffnen
+174 Keine Abspielgeschw. bestimmt -- 10,000 sampel/sek
+175 IFF aber nicht 8SVX Format !
+176 Fehler beim IFF laden
+177 CHAN falsch
+178 Formatfehler-ungültig für VHDR
+179 File zu groß für freien Speicher
+181 Fehler beim Laden
+182 File komprimiert 'Fibonacci-delta'
+000 ************play.c..
+183 Ungült. Bereich-Überprüfe Markier.
+184 Port Fehler !
+000 *************savesamp.c..
+185 Fehler beim File Öffnen
+186 Fehler beim Speichern
+188 Dump speichern-keine Fehler
+000 **************saveiff.c..
+190 Byte verloren ! Länge muß gerade sein !
+192 Gespeichert...keine Fehler
+000  *************pickslot.c..
+193 Operation Stop !
+194 Nochmal Auswählen !
+000 ***************move.c..
+195 Keine Markier.
+196 Sampels nicht stereo
+000 ***********  nomem.c
+197 KEIN SPEICHER
+000 **************getslot.c..
+198 Keine Slots vorhanden-Lösche Sampel
+000 ********loadit.c..
+199 File Typ IFF-Abspielrate (sampel/sek.) ist %d
+200 File ist IFF Instrument mit %d Oktaven
+201 000 ******savesamp.c..
+202 Speic.: %s
+203 000 *******main.c..
+204 "Länge:    %d  sampels"
+205 "Geschw.:  %d  samp/sek"
+206 "Speich.:  %d  K"
+207 OneShotHiSampel %d  RepeatHiSampel %d No. Oktave %d
+208 Aufnahmegesch. geändert auf %d
+209 Stereo Aufn.Geschw. begrentzt auf %d samp/sek
+210 %d Bytes in Aufnahme verwendet
+212 "Startpunkt: keiner   "
+213 "Startpunkt: %-10d (%4d)"
+214 "Endpunkt:   keiner   "
+215 "Endpunkt:   %-10d (%4d)"
+216 "Einf.Punkt: keiner   "
+217 "Einf.Punkt: %-10d (%4d)"
+000 *********saveiff.c..
+218 File mit %d%% geänderten Sampels geschrieben
+000 *******loadsamp.c..
+219 Laden: %s
+0000 *******level.c..
+220 L: %3.3d %3.3d %3.3d  R: %3.3d %3.3d %3.3d   D: %4.4d  Klick
+221 Lin.: %3.3d   Rech.: %3.3d   Linker Mausknopf !
+222 (RECHTS)
+223  (LINKS)
+224 (STEREO)
+225 Label für den neuen Sampel ?
+226 Kein Name !
+227 Speichern
+228 File zu löschen ?
+229 Name des Instrumentes ?
+230 Faulpelz
+231 SamplesPerHiCycle ?
+232 Ladefehler !
+233 Klang nicht im chip Ram !
+234 Konvertieren ?
+235 Neue Abspielgeschw. (sampel/sek):
+236 Alle Sampels werden gelöscht !
+237 Ja ?
+238 Wirklich beenden ?
+239 Größe des Maßstabes ?
+240 Neue Abschnittsfreq.:
+241 Neue Sampelrate ?
+242 Neue Aufnahmegeschw. (samp./sek.):
+243 Sampel Laden
+244 Echtzeit Echo
+245 Echtzeit Verzög.
+246 Echolänge (millisek.):
+247 Verzögerungsgröße (millisek.)
+248 Funktion arbeitet nur mit PSound Hardware V 3.0
+249 PSound speichert Start/Endpunkt im Dumpfile
+250 Fileformat ist DUMP V 3.0, Start/Endpunkt=Anfangswert
+251 Loopstop ! Loops müssen kleiner 128K sein
+252 Playback speed must be less than 28,867 samp/sec. Use Resample.
+253 Finished Writing ASF.  Execute the file to hear it.
+254 This software will only work with Perfect Sound 3 hardware.
+255 Perfect Sound 3 is copyrighted and is NOT public domain.
+256 Not all sampling rates are available.  Only available rates are shown.
+257 PS 3 is rated up to 32,000 s/s in mono. Selected speed may not work.
+999
+1 48 IFF
+2 48 DUMP
+3 48 COMP
+48 48 ASF
+4 48 IFF
+5 48 DUMP
+6 48 COMP
+49 48 ASF
+7 56 Rechts
+8 56 Links
+9 64 Stereo
+10 64 Rechts
+11 64 Links
+12 123 Neu
+13 123 Öffnen
+14 123 Speichern
+15 123 Speichern als..
+16 123 Löschen
+17 123 ""
+18 123 Autor
+19 123 Ende
+20 195 Drehen
+21 195 Null füllen
+22 195 Einblenden
+23 195 Ausblenden
+24 195 Skala
+25 195 Mischen
+26 195 Vergrößern
+27 195 Markieren
+28 195 LP Filter Sampel
+29 195 Löschen
+30 195 In Stereo
+31 195 Kein Stereo
+32 195 Resampel
+33 231 Erzeug Instrument
+34 231 Freq=Freq*2
+35 231 Freq=Freq/2
+36 231 Aufnahmegeschw.
+37 231 Beobachte Signale
+38 231 Verfolge Digit.
+39 231 Aufnahme
+40 231 Filter An/Aus
+41 231 Demo Sounds Aus
+42 231 Demo Sounds An
+48 231 Echtzeit Echos
+49 231 Echtzeit Verzög.
+43 3 86 Projekt
+44 88 62 Edit
+45 149 110 Instrument
+46 258 94 Digital.
+47 351 62 Usw.
+999

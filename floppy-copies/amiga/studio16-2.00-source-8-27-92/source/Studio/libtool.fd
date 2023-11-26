@@ -1,0 +1,145 @@
+##base StudioBase *the name of our base used by C glue code and C PRAGMAS
+##name studio     *the name of our library 
+##vers 1          *version #
+##revs 0          *revision #
+##libid  Studio 16 library © 1991/1992 SunRize Industries
+##bias 30         *first function is always at an offset of -30 from lib base
+##init InitStudioLib
+##expu RemStudioLib
+*Here are all of the lib functions callable by an application
+##ret void
+ASStop(as)
+ASTrigger(as)
+BroadcastEventParms(type, arg1, arg2, arg3, arg4, arg5, flags)
+BroadcastEventParmsLessOne(type, thismod, arg1, arg2, arg3, arg4, arg5, flags)
+BroadcastEventParmsLessOnePort(type, port, arg1, arg2, arg3, arg4, arg5, flags)
+ClearNotifyList(type)
+DeleteSample(s)
+DeleteModule(m)
+DeleteModState(s)
+DeleteAudioHandler(ah)
+DeleteFileFilter(ff)
+FreeChan(key)
+IgnoreEvent(type, module)
+IgnoreEventPort(type, port)
+IgnoreCount(type, module)
+InitSharedSemaphore(ss)
+LoadDefaults(file)
+NotifyMeOnEvent(type, module)
+NotifyMeOnCount(type, module)
+NotifyMeOnEventPort(type, port)
+ObtainExclusiveSemaphore(ss)
+ObtainSharedSemaphore(ss)
+ReleaseSharedSemaphore(ss)
+ReleaseExclusiveSemaphore(ss)
+RestoreWindowParms(m,nw)
+SaveDefaults(file)
+SendMsg(module, type, arg1, arg2, arg3, arg4, arg5, flags)
+SendMsgToPort(port, type, arg1, arg2, arg3, arg4, arg5, flags)
+SetOriginalDefaults()
+UpdateStandardModState(m,w)
+WaitUntilListening(type, mod)
+DeleteSmpteSource(ss)
+DeleteSmpteSink(ss)
+InjectTimeCode(src,now)
+InjectTimeCodeError(src, error)
+ASWaitStop()
+ASQueueReads(as, num)
+MoveRequester(pr)
+SlowFreeMem(mem, size)
+##ret struct Module *
+AddModule(nm)
+FindModule(name)
+##ret struct StandardModState *
+AddModState(name,state_size)
+FindModState(name)
+##ret char *
+FindSample(name)
+AllocCompletePath(path, name)
+StrLastDir(char *path)
+StrFileName(char *path)
+##ret struct ChanKey *
+AllocChan(ah, cn)
+##ret struct AudioHandler *
+AddAudioHandler(nh)
+FindAudioHandler(last_han, flags, num_bits, name)
+##ret int
+ASClose(as)
+ASRead(as)
+ASWrite(as)
+GetEventID(name)
+LoadModule(name)
+LoadModState(file)
+SClose(fileptr)
+SOpen(name, mode)
+SRead(fileptr, buffer, length)
+SSeek(fileptr, position, mode)
+SWrite(fileptr, buffer, length)
+SQueryAlign(fileptr)
+SampleRead(sp, buffer, length)
+SampleReadTag(sp)
+SampleSeek(sp, rpos, mode)
+SampleWrite(sp, buffer, length)
+SampleWriteTag(sp)
+SampleClose(sp)
+SampleCopy(tosp, fromsp, length)
+StandardEnviroment()
+SaveModState(file)
+##ret short
+SampleGetOne(sp, i)
+##ret struct FileFilter *
+AddFileFilter(nff)
+##ret struct SampleFilePointer *
+SampleCreate(name)
+SampleOpen(ptr, flags)
+##ret struct ActiveSample *
+ASOpen(region, flags)
+##ret struct TimeCode
+AddTimeCode(tc1,tc2,type)
+SubTimeCode(tc1,tc2,type)
+IncTimeCode(tc1,tc2,type)
+QuerySmpteTime()
+##ret int
+TestTimeCode(tc,type)
+##ret struct SmpteSink
+AddSmpteSink(ns)
+##ret struct SmpteSource
+SetSmpteSource(name,unit)
+AddSmpteSource(ns)
+##ret int
+ASHandlerQueryRecordData(as, len, actual_len, data)
+ASHandlerQueryPlayData(as, len, actual_len, data)
+##ret int
+ASFlush(as, keep)
+ASPos(as)
+ASSeek(as, numsamps, mode)
+InitStudio16UserEnv(flags, myscreen, mybackwin)
+ASCountBlocks(as, flags)
+##ret struct ChanKey *
+AllocChanByKey(ck)
+##ret void
+ASTriggerList(as,flags)
+BroadcastAndLock(type, arg1, arg2, arg3, arg4, arg5, flags)
+UnlockedFreeMem(mem, size)
+##ret void
+AllocDmaMem(size)
+##ret char *
+StrPathFileCat(path,file)
+##ret int
+TCstr2int(TCstr)
+RenameSample(src_path,src_name,dest_path,dest_name)
+FindRegionBySfp(sfp, regionname, region)
+AddRegionBySfp(sfp, region)
+FindRegion(name, region)
+DeleteRegionBySfp(sfp, regionname)
+DiskSpaceAvail(vol)
+SampleSpaceAvail(vol)
+##ret void
+CloseAllModules(callerismodule)
+StackCheck(str)
+MarkStack()
+##ret unsigned long
+FindMaxStackSize()
+##ret char *
+StrRegionName(char *path)
+##end

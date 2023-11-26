@@ -1,0 +1,3 @@
+prog:dsp/pack/pack >prog:toast12hand2/StandardCode.h ram:ad1012.o Standard
+cc other
+ln

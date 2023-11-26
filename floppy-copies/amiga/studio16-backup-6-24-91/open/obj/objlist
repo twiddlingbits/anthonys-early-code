@@ -1,0 +1,6 @@
+loadit.o,loadsamp.o,openlibraries.o,open_list.o,saveiff.o,*
+savesamp.o,toddgadlib.o,*
+//studio/studiostub.o,*
+//gadlib/gadlibstub.o,//obj/cread.o,//obj/skip.o,*
+//obj/add.o,//obj/cwrite.o,//obj/newpointer.o,*
+//obj/show_error.o,//obj/even.o,//obj/filerequest.o,//obj/msg.o

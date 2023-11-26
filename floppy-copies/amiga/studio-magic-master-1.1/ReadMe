@@ -1,0 +1,54 @@
+
+
+               STUDIO MAGIC ERRATA FOR VERSION 1.1
+
+
+Copy Protection
+
+We have removed the copy protection from Studio Magic that was
+present in version 1.0. Feal free to make as many backups as you
+wish.  However, please do not pirate.
+
+
+FEATURES LEFT OUT OF THE MANUAL
+
+
+Delays
+
+This introduces a digital delay into the selected range.  The
+delays simulate the acoustics of a large room.  Fewer delays
+and longer intervals will produce an echo-like effect.  More
+delays and shorter intervals inject a richness into the sample.
+
+
+Flange
+
+This is the source of those screaming, spitting guitars "heavy
+metal" bands use.  Two samples are created, one being slightly
+faster than the other.  Then the slower sample is started,
+followed by the faster one.  The buzzing feedback is created as
+the faster sample catches and passes the slower.  This is a very
+versatile tool.
+
+
+Invert
+
+This takes each byte of the range bounded by the two sliders and
+flips it. 2 becomes -2, -120 becomes 120, and so on.  A sample
+overlaid on its inverse becomes all zeros.  Try overlaying the
+inverted sample after using other tools on it.
+
+
+Set MIDI Channel
+
+This sets the channel from which Studio Magic receives MIDI
+information.  The default is 1.  This is important in a MIDI
+set-up with several connected machines.
+
+
+Tempo Adjust
+
+This adjusts the tempo of the MIDI sequencing options.  It does
+not change the sequence itself, just the rate of the internal
+MIDI clock.
+

@@ -1,0 +1,19 @@
+Addbuffers df0: 10
+c:SetPatch >NIL: ;patch system functions
+cd c:
+echo "A500/A2000 Workbench disk.  Release 1.3 version 34.20*N"
+Sys:System/FastMemFirst ; move C00000 memory to last in list
+BindDrivers
+SetClock load
+resident CLI L:Shell-Seg SYSTEM pure add; activate Shell
+mount newcon:
+makedir ram:t
+assign T: ram:t ;set up T: directory for scripts
+makedir ram:env ; set up ENV: directory
+assign ENV: ram:env
+makedir ram:clipboards ;set up CLIPS: assign
+assign CLIPS: ram:clipboards
+SYS:System/SetMap usa1 ;Activate the ()/* on keypad
+path ram: c: sys:system sys:utilities s: add ;set path for Workbench
+LoadWB
+endcli >NIL:

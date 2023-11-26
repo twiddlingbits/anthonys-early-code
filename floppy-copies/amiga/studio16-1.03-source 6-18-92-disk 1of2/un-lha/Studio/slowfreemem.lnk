@@ -1,0 +1,4 @@
+FROM LIB:c.o+"slowfreemem.o"
+TO "slowfreemem"
+LIB LIB:lcnb.lib LIB:amiga.lib lib:debug.lib
+

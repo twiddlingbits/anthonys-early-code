@@ -1,0 +1,4 @@
+FROM LIB:c.o+time.o
+TO time
+LIB +lib:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib
+MAP time.map

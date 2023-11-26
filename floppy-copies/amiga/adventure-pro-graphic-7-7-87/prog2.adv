@@ -1,0 +1,34 @@
+
+
+
+v:do
+ty:hello2
+
+  n:it
+    ty: hello there. this line is to fil up sssspppppaaaaacccceeeee!!!!!!!
+    numa=6
+    numb=numa + 5 - numa
+    if numa=6
+      ty: zapppp!!!!!
+      endif
+    ty:numb is = ^
+    nty:numb
+    ty:.
+    done
+vend
+counta=counta + 1
+if counta>10
+  or
+  if RM$ hardhat
+    ty:or works!
+    endif
+ty:counta = ^
+nty:counta
+ty:.
+
+v:zap
+  ty:wham!!!!!
+  toroom 6
+  vend
+
+

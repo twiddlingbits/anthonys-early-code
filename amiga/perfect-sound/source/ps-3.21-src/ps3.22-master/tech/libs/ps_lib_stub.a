@@ -1,0 +1,47 @@
+   SECTION   text
+   XREF   _PSBase
+   XDEF   _ps_monitor
+   XDEF   _ps_record
+   XDEF   _real_echo
+   XDEF   _real_delay
+   XDEF   _inc_gain
+   XDEF   _dec_gain
+   XDEF   _set_plot_point
+   XDEF   _query_digi_type
+   XDEF   _round_ss
+   XDEF   _set_vid_clock
+   XDEF   _get_sample
+_ps_monitor:
+   move.l   _PSBase,a1
+   jmp   -30(a1)
+_ps_record:
+   move.l   _PSBase,a1
+   jmp   -36(a1)
+_real_echo:
+   move.l   _PSBase,a1
+   jmp   -42(a1)
+_real_delay:
+   move.l   _PSBase,a1
+   jmp   -48(a1)
+_inc_gain:
+   move.l   _PSBase,a1
+   jmp   -54(a1)
+_dec_gain:
+   move.l   _PSBase,a1
+   jmp   -60(a1)
+_set_plot_point:
+   move.l   _PSBase,a1
+   jmp   -66(a1)
+_query_digi_type:
+   move.l   _PSBase,a1
+   jmp   -72(a1)
+_round_ss:
+   move.l   _PSBase,a1
+   jmp   -78(a1)
+_set_vid_clock:
+   move.l   _PSBase,a1
+   jmp   -84(a1)
+_get_sample:
+   move.l   _PSBase,a1
+   jmp   -90(a1)
+   END

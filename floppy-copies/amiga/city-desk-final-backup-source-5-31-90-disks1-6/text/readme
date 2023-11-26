@@ -1,0 +1,251 @@
+This file should accompany "City Desk Beta .3"  "City Desk" is Copyright
+(C) 1987 by Microsearch.  "City Desk" is NOT public domain.
+
+
+"City Desk" is a desktop publishing program for the Amiga computer developed
+by SunRize Industries.
+
+Please direct all marketing questions to:
+
+            MicroSearch
+            9896 Soutwest Freeway
+            Houston, Texas 77074
+            (713) 988-2818
+
+Please direct all suggestion, comments, and Bugs to:
+
+            SunRize Industries
+            PO Box 1453
+            College Station, Texas 77841
+            (409) 846-1311
+
+
+Beta version .3 is the second public release of "City Desk." The program
+is still very much in development. The program will no doubt crash, and
+many functions that will be included in the final version are not included
+here. "City Desk" is being distributed in its early stages to give
+you, the user, a chance to mold its development.  We very much want to
+hear your comments. Please send features that you would like to see, Bugs,
+and comments to SunRize Industries at the above address. You are welcome
+to call; however, letters will have a more lasting effect.
+
+
+A Short Manual:
+---------------
+This brief introduction was written by PROGRAMMERS, so don't expect much...
+
+Some of the menu items are ghosted out.  This was deliberate, as some of the
+features aren't implemented yet, and others we didn't want to include in the
+demo.
+
+This version was designed to run under version 1.2 of Workbench. It will
+not run under version 1.1.  External "fast" ram is also supported.
+
+Brief summary of Toolbox icons:
+-------------------------------
+Hand          Arrow
+Resize        Crop
+Magnify       Text
+Page          Copy
+lines         boxes
+
+
+Note: When selecting a tool, you can use either the right or left mouse
+button. Clicking with the left mouse button causes your pointer to change--
+you are now using that tool.  Selecting a tool with the right mouse button
+causes default options to appear. You can now change defaults, such as line
+pattern and thickness on the line tool.
+
+
+
+Hand - This allows you to move objects between pages and the clipboard.  The
+clipboard is the background screen, behind the pages.  You should be able to
+move objects from one page to another regardless of magnification.
+
+Arrow - This allows you to move objects around on the current page.  You
+can't move things from one page to another, use Hand instead.
+
+Resize - Resizes text or graphics.  Click and hold the button down on the
+object to be resized, pull the rubber band box, and let go.  For graphics,
+the object gets bigger or smaller.  For text, the printable area changes,
+allowing more or fewer characters on a line.  The size of the characters
+does not change.  (change fonts for that). This tool has defaults (use
+right mouse button to change them.)
+
+Crop - Not implemented yet.
+
+Magnify - Sets the magnification for the current page, from 1 (full page on
+screen) to 6.  Most text is hard to read until about magnification 4 or 5.
+
+Text - Brings up a little requester for you to enter some text in.  You then
+get a TEXT pointer, and you point and click where you want the text to go.
+
+Page - Allows you to select a page number to view.  More than one page can
+be open at a time.  (Currently, you can only have two pages, this will of
+course be changed).
+
+Copy - Makes a copy of a graphic.  Use the hand or the pointer then to move
+the copy.
+
+lines - Allows you to draw horizontal or vertical rules on your page. The
+default option line thicknes has not been implemented on this version.
+
+boxes -- Not finished in this version
+
+
+Loading Graphics
+----------------
+When you select Load Graphics, you get a disk file requester.  Select a
+file, and you will get a "pick" pointer. Click where you want the newly
+loaded graphic to appear. The graphics should be in IFF format and,
+for best results, use only one bitplane (two colors.)
+IFF brushes or full screens can be loaded and any resolution is supported.
+
+
+
+Loading Text
+------------
+After you select a file, your pointer changes to TEXT.  Point to where you
+want the text to go, and click.  The text will flow into the column you
+select, starting at the pointer position and going down.  If all the text
+won't fit in the column, the pointer will stay TEXT.  Click where you want
+the continuation to go.  If you don't, and do something else instead, then
+click in the first part of the text again with the pointer and you will get
+another chance to place the rest of the text.
+
+Formatting Commands
+-------------------
+Formatting commands, such as changing text, margins, etc. may be embedded in
+the text.  All such embedded commands are enclosed in square brackets [].
+Multiple commands may be entered in the same brackets if you separate them
+by either commas or semicolons.  Commands are:
+
+[lj] - Left justify
+
+[rj] - Right justify
+
+[cj] - Center justify
+
+[fj] - Fill justify
+
+[lm n] - Set left margin (within the box) to n
+
+[rm n] - Set right margin (within the box) to n
+
+[indent n] - Set paragraph indent for left and fill justify.  The left
+   margin is NOT used.  Example:
+
+      This is lm 3 and
+   indent 6 characters.
+
+    (New paragraph) this is
+        lm 8 and indent 4, an
+        example of reverse indent.
+
+[leading n] - Sets line leading to n.  Line leading is the distance between
+   the baselines of the two lines.  Note that leading=0 is legal, and will
+   result in the lines overprinting each other on the same line.
+
+[spacing n] - Sets line spacing to n.  Line spacing is the distance from the
+   bottom of one line to the top of the next.  Note that leading and spacing
+   are mutually exclusive, i.e. you use only one method at a time.  Spacing
+   is most useful when making extensive font or size changes, as the
+   distance between lines will automatically adjust itself to the size of
+   the fonts on the line.
+
+[parspace n] - Sets the paragraph spacing to n.  This is the amount of
+   vertical space between paragraphs.  Note that it is added to the leading
+   or spacing.
+
+[mag f] - Sets the text magnification factor to f.  Mag 1 is normal size.
+   Both magnification (like mag 2.5) and shrinking (like mag .8) are
+   allowed.
+
+[magx f] - Sets text magnification in the horizontal direction only to f.
+
+[magy f] - Sets text magnification in the vertical direction only to f.
+
+[spacestretch n] - Sets the maximum space stretch to n.  When fill
+   justifying a paragraph, spaces must normally be stretched so the right
+   margin will line up.  If the amount of stretching exceeds this parameter,
+   then the space between characters will also be stretched.
+
+[it] or [italic] - Sets italics.
+
+[bd] or [bold] - Sets bold.  Both bold and italics can be set at the same
+   time.
+
+[un] or [under] or [underlined] - Sets underline.
+
+[compress] - Sets compressed mode.  Good only for laser fonts.
+
+[pl] or [p] or [plain] - Clears italic, bold, underline, and compress modes.
+
+[fsize n] - Sets font size to n.
+
+[font s] - Change font to s (s is a font name, like "topaz" or "roman").
+
+[font s n] - Change font to s and size to n.
+
+[s n] - Change font to s and size to n.  Shorthand for font command.
+
+
+If one of these commands is not found, a font name is assumed.  So you can
+use [topaz 8] or [diamond 20] or [emerald] as shorhands for
+[font=topaz,fsize=8] or [font=diamond 20] or [font=emerald].
+
+One other formatting command is available - the soft hyphen.  If you put a
+tilde (~) in the middle of a word, the program can then break the line at
+that point.  If the tilde does not appear near the end of the line, it will
+be ignored.  If it is near the end of the line, and it would help the line
+to have the word hyphenated, it will be replaced by a hyphen (a dash
+character) and the word will be continued on the next line.
+
+Numbers
+-------
+Numbers in the escape sequences can optionally have units following them.
+If no units are given, inches are assumed, except for font sizes, where
+points are assumed.  A number may have a decimal point.  Current valid
+units are:
+
+pt - point, = 1/72 of an inch
+in or " - inches
+ft or ' - feet
+pc - picas, = 12 points = 1/6 inch
+cm - centimeters
+mm - millimeters
+cb - cubits = 18 inches
+
+If you think of any other useful units to have, let us know.
+
+Examples:
+10pt        10 points
+2.54 cm     1 inch
+.5          half an inch (anywhere but font sizes)
+3"          3 inches
+
+
+Altering Text State From Menus
+------------------------------
+
+
+If you do not wish to imbed escape commands in your text, you can set
+the "default text state" (click right mouse button over ABC tool) to set
+text attributes. You may also select item "Edit Text Attributes" under
+"Edit" to change text attributes. When you get the "Pick" icon just select
+the text block to change.
+
+
+Cheap Editor
+------------
+
+This is an editor for quick changes to text blocks. The editor is made of a
+string gadget and a proportional gadget. Carrige Returns are changed to "\n"
+for the purposes of editing. You may enter a CR by entering "\n". In order
+to enter a backslash, use "\\".
+
+BUGS
+----
+
+Text flowing from one page to another is not working on this version.
+

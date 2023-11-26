@@ -1,0 +1,15 @@
+.Key file,opt1,opt2,opt3
+;           Compile a C program                       Version 4.00
+;           Works with Lattice version 3.02 and above
+;           modified to write -o to ram: 2-17-86 Anthony Wood
+assign lc: df1:c/
+if not exists <file$t1>.c
+   echo "File <file$t1>.c does not exist.  Try again."
+   skip END
+   endif
+
+LC:lc <opt1> <opt2> <opt3> -iDF1:include/lattice/ -iDF1:include/ -oDF0: <file$t1>
+
+LAB END
+
+

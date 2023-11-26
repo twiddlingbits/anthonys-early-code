@@ -1,0 +1,72 @@
+#define LISTCOLORS {BROWN,DARK_BROWN,WHITE,BROWN,LIGHT_BROWN,WHITE,BLACK}	
+#define KNOBCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,LIGHT_BROWN,BLACK,BLACK}
+#define BUTNCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,LIGHT_BLUE,BLACK,BLACK}
+#define DROPCOLORS {BROWN,WHITE,DARK_BROWN,LIGHT_BROWN,BROWN,WHITE,BLACK}
+static struct GadgetColors colors = {
+	LISTCOLORS,
+	KNOBCOLORS,
+	BUTNCOLORS,
+	BUTNCOLORS,
+	LISTCOLORS,
+	DROPCOLORS};
+
+static struct NewWindow NewWind = {
+   0,
+   12,
+   250,
+   88,
+   BLACK,
+   WHITE,
+   CLOSEWINDOW|NEWSIZE|ACTIVEWINDOW,
+   REPORTMOUSE|ACTIVATE|NOCAREREFRESH|WINDOWDRAG|WINDOWDEPTH|WINDOWCLOSE,
+   0,0,
+   " AD1012 Handler ", /** TITLE **/
+   0,0,
+   40,20,640,400,
+   CUSTOMSCREEN
+   };
+
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+static struct Gadget SIZEgad = { NULL,NULL,NULL,NULL,NULL,GADGHCOMP,GADGIMMEDIATE|RELVERIFY,SIZING,
+	NULL,NULL,NULL,NULL,NULL,NULL,NULL };
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+/*­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­·­*/
+struct ChanData
+	{
+	struct ActiveSample *PS;
+	};
+
+struct HandlerModState
+	{
+	struct StandardModState state;
+	int	sampling_rate;
+	int	filter;
+	int	input_gain;
+	struct	SampleInfo ChanParms[8];
+	int	PAD[32];
+	};
+/*
+struct HandData
+	{
+	USHORT *CardAddr;
+	USHORT CmdBuffPtr;
+	USHORT *DspCmd;
+	USHORT SoundOn;
+	};
+
+struct ChanData
+	{
+	struct HandData *data;
+	SHORT PlayCount;
+	};
+*/
+
+struct IntData
+	{
+	USHORT *CardAddr;
+	USHORT CmdBuffPtr;
+	USHORT *DspCmd;
+	USHORT SoundOn;
+	SHORT PlayCount[4];
+	};
