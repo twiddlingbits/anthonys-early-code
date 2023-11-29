@@ -1,0 +1,4 @@
+FROM LIB:c.o+main.o+delete_sample.o+load_file.o+cread.o+skip.o
+TO main
+LIB +lib:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib
+MAP main.map

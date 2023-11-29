@@ -1,0 +1,100 @@
+[4;1mmain                    25-Sep-90 13:41:56  Hunk Section                Page 1-1[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+   0 text         2f90 LIB:c.o          c        code            0    0
+                       lib:lcm881.lib   ulog.c   code          1a8    0
+                       lib:lcm881.lib   scanf.c  code          36c    2
+                       lib:lcm881.lib   printf.c code          4e0    0
+                       lib:lcm881.lib   matherr. code          550    1
+                       lib:lcm881.lib   frexp    code          57c    0
+                       lib:lcm881.lib   fpinit.c code          610    0
+                       lib:lcm881.lib   except.c code          61c    0
+                       lib:lcm881.lib   cxspc5   code          67c    0
+                       lib:lcm881.lib   cxren5   code          710    0
+                       lib:lcm881.lib   cxnrm5   code          774    0
+                       lib:lcm881.lib   cxferr.c code          820    2
+                       lib:lcm881.lib   usfmt.c  code          854    0
+                       lib:lcm881.lib   upfmt.c  code          d34    0
+                       lib:lcm881.lib   cxvfd    code         1628    0
+                       lib:lcm881.lib   cxfxt5   code         1a24    0
+                       LIB:lc.lib       uufbs.c  code         1af8    0
+                       LIB:lc.lib       upool.c  code         1af8    0
+                       LIB:lc.lib       ungetc.c code         1af8    0
+                       LIB:lc.lib       uiomode. code         1b70    0
+                       LIB:lc.lib       uiob.c   code         1b70    0
+                       LIB:lc.lib       ufmode.c code         1b70    0
+                       LIB:lc.lib       uflsbf.c code         1b70    1
+                       LIB:lc.lib       ufilbf.c code         1e14    0
+                       LIB:lc.lib       ucxovf   code         1f9c    1
+                       LIB:lc.lib       strupr.c code         1fb8    0
+                       LIB:lc.lib       strncat. code         1ff4    0
+                       LIB:lc.lib       strlen   code         204c    0
+                       LIB:lc.lib       stcu_d   code         2060    0
+                       LIB:lc.lib       stcl_o   code         2090    0
+                       LIB:lc.lib       stcl_h   code         20c0    0
+                       LIB:lc.lib       stcd_i   code         20fc    0
+                       LIB:lc.lib       open.c   code         2148    4
+                       LIB:lc.lib       lseek.c  code         22dc    0
+                       LIB:lc.lib       getml.c  code         2324    2
+                       LIB:lc.lib       exit.c   code         23ec    0
+                       LIB:lc.lib       error.c  code         2440    0
+                       LIB:lc.lib       dwrite.c code         2440    2
+                       LIB:lc.lib       dseek.c  code         2498    0
+                       LIB:lc.lib       dread.c  code         2514    0
+                       LIB:lc.lib       dopen.c  code         2560    0
+                       LIB:lc.lib       dcreatx. code         25a8    0
+                       LIB:lc.lib       dcreat.c code         260c    0
+                       LIB:lc.lib       dclose.c code         2674    0
+                       LIB:lc.lib       cxm33    code         2694    0
+                       LIB:lc.lib       cxd33    code         26b4    0
+                       LIB:lc.lib       ctype.c  code         2778    0
+                       LIB:lc.lib       chkufb.c code         2778    0
+                       LIB:lc.lib       bufsiz.c code         27b8    0
+                       LIB:lc.lib       memclean code         27b8    0
+                       LIB:lc.lib       lsbrk.c  code         27e8    2
+                       LIB:lc.lib       write.c  code         2858    0
+                       LIB:lc.lib       umain.c  code         28b8    3
+[4;1mmain                    25-Sep-90 13:41:56  Hunk Section                Page 1-2[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:lc.lib       ulautore code         2abc    0
+                       LIB:lc.lib       ugetbf.c code         2af0    1
+                       LIB:lc.lib       uexit.c  code         2b4c    0
+                       LIB:lc.lib       rlsml.c  code         2ba0    0
+                       LIB:lc.lib       read.c   code         2c90    0
+                       LIB:lc.lib       movmem   code         2cd8    0
+                       LIB:lc.lib       cxovf.c  code         2d00    1
+                       LIB:lc.lib       cxbrk.c  code         2db8    0
+                       LIB:lc.lib       close.c  code         2ef0    0
+                       LIB:lc.lib       chkabort code         2f38    0
+                       LIB:lc.lib       strcpy   code         2f80    0
+   1 <noname>      b3c main.o           main.c   code            0    6
+   2 <noname>      2c0 main.o           main.c   data            0    0
+   3 <noname>    1c390 main.o           main.c   bss             0    0
+   4 <noname>      110 delete_sample.o  delete_s code            0    3
+   5 <noname>      6f4 load_file.o      load_fil code            0   12
+   6 <noname>       10 load_file.o      load_fil data            0    0
+   7 <noname>       50 load_file.o      load_fil bss             0    0
+   8 <noname>      128 cread.o          cread.c  code            0    2
+   9 <noname>       20 cread.o          cread.c  data            0    0
+  10 <noname>       68 skip.o           skip.c   code            0    3
+  11 __MERGED      220 LIB:lc.lib       uufbs.c  data            0    0
+                       LIB:lc.lib       upool.c  data            4    0
+                       LIB:lc.lib       uiomode. data           18    0
+                       LIB:lc.lib       uiob.c   data           1c    0
+                       LIB:lc.lib       ufmode.c data           84    0
+                       LIB:lc.lib       mstep    data           88    0
+                       LIB:lc.lib       ctype.c  data           8c    0
+                       LIB:lc.lib       bufsiz.c data          190    0
+                       LIB:lc.lib       cxovf.c  data          194    0
+                       LIB:lc.lib       cxbrk.c  data          1d0    0
+                       LIB:c.o          c        bss           220    0
+                       lib:lcm881.lib   printf.c bss           26c    0
+                       lib:lcm881.lib   except.c bss           270    0
+                       LIB:lc.lib       uufbs.c  bss           290    0
+                       LIB:lc.lib       error.c  bss           3d0    0
+                       LIB:lc.lib       dosbase  bss           3d4    0
+                       LIB:lc.lib       memclean bss           3d8    0
+                       LIB:lc.lib       umain.c  bss           3e4    0
+  12 exec_lib       30 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           18    0

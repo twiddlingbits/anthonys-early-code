@@ -1,6 +1,0 @@
-DEBUG=SYMBOLFLUSH
-LINK
-INCLUDEDIR=/studio16/Source
-LIBRARY=/studio16/Source/studio/studiostub.o
-IGNORE=100
-GENPROTOFILE=theGen.h
