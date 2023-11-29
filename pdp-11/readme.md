@@ -13,15 +13,15 @@ I also remember fondly spending a bit of time writing my first game "Battle Star
 [As a text file](./battlestar-galactica.basic.txt)
 ![battlestar galactica](./battlestar-galactica.jpg)
 
-And others I wrote on the PDP/11:
+And others I wrote on the PDP-11:
 
    - [Master Mind](./mastermind-scan.jpg)
    - [Slot Machine](./slotmachine.jpg)
 
-My Paper Types:
+My Paper Tapes:
 
 ![papertapes](./paper-tapes.jpg)
 
-TODO hand coded "space invaders"
+**TODO hand coded "space invaders"**
 
 

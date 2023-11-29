@@ -3,11 +3,11 @@
 [BACK TO HOME README](readme.md)
 
 ## PDP-11 American School of the Hague, Netherlands
-For 8th grade (age 12/13, 1978/79) we moved from Houston to the Hague, Netherlands for a year or so.  While at the American Middle School of the Hague  I taught myself to program in the BASIC computer language.  I would go to the "computer museum" in downtown Hague via the tram, and use the time sharing terminals and the Commodore PETs they had there for the public.  But mostly, I would stay after school and use the single and old [PDP-11](https://en.wikipedia.org/wiki/PDP-11), which they named "Merlin".  The only computer class the school offered was "make Melvin draw" during which you would use punch cards to create ASCI art.  
+For 8th grade (age 12/13, 1978/79) we moved from Houston to the Hague, Netherlands for a year or so.  While at the American Middle School of the Hague  I taught myself to program in the BASIC computer language.  I would go to the "computer museum" in downtown Hague via the tram, and use the time sharing terminals and the Commodore PETs they had there for the public.  But mostly, I would stay after school and use the single and old [PDP-11](https://en.wikipedia.org/wiki/PDP-11), which they named "Merlin".  The only computer class the school offered was "make Melvin draw" during which you would use punch cards to create ASCI art [a smurf](./pdp-11/make-melvin-draw-smurf-result.jpg) 
 
 The primary program I wrote using the PDP-11, its teletype (with a paper tape reader-writer), and "EduSystem BASIC" was "Battle Star Galactica".  I modeled this after the popular Star Trek game of the day (you can play this Star Trek game in my classic-games collection in this repo).  
 
-[My pdp/11 software](./pdp-11/readme.md)
+[My pdp-11 software](./pdp-11/readme.md)
 
 ## TRS-80 Alief, Houston, Texas
 When we returned to Houston from the Hague I worked out a deal with my dad to buy one of the new 'microcomputers'.  I would pay half (cutting neighbors grass), and he would pay half.   He found two used ones at work for sale -- an Apple II and a TRS-80.  I am not sure why, but i picked the [TRS-80](https://en.wikipedia.org/wiki/TRS-80).  During high school I went through phases where I programmed, and when I didn't.  Initially my TRS-80 did not have floppy disk drives - software was saved to cassette tape.  At some point, my dad got me floppy disk drives and a printer!  Also at one point I 'blew up' my TRS-80 while attaching a sound board I designed (which obviously didn't work correctly.)  That broken TRS-80 was expensive to fix and set me back a while.  During this time I also started my first 'company' - [AW Software](./awsoftware/readme.md).

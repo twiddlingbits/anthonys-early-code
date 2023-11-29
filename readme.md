@@ -8,7 +8,7 @@ In 8th grade I learned to code after school at the American School of the Hague 
    - My first code and where coding clicked for me [BASIC Listing](/pdp-11/guess-500.jpg)
    - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [Printout Scan](./pdp-11/battlestar-galactica.jpg)
    - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
-   - Slot Machine [BASC Listing](./pdp-11/slotmachine.jpg)
+   - Slot Machine [BASIC Listing](./pdp-11/slotmachine.jpg)
    - ASCII Art [[plan](./pdp-11/make-melvin-draw-smurf-plan.jpg) | [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg)]
    - [My paper tapes](./pdp-11/paper-tapes.jpg)
 
