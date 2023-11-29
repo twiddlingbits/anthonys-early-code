@@ -1,14 +1,17 @@
 # Anthony J. Wood's Code Archive
 Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters.
 
-# American School of the Hague and the Computer Museum
-
 ![Anthony](./pdp-11/anthony-from-computer-museum.jpg)
 
-While attending 8th grade at the American School of the Hague I taught myself to program after school using the schools PDP-11,along with trips to the Hague's "computer museum" to use the time-sharing terminal and [Commodore Pet](https://en.wikipedia.org/wiki/Commodore_PET#/media/File:Commodore_2001_Series-IMG_0448b.jpg).
+# PDP-11
+In 8th grade learned to code after school at the American School of the Hague (and some trips to the Computer Museum)
+   - My first code and where coding clicked for me [BASIC Listing](/pdp-11/guess-500.jpg)
+   - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [Printout Scan](./pdp-11/battlestar-galactica.jpg)
+   - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
+   - Slot Machine [BASC Listing](./pdp-11/slotmachine.jpg)
+   - ASCII Art [[plan](./pdp-11/make-melvin-draw-smurf-plan.jpg) | [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg)]
+   - [My paper tapes](./pdp-11/paper-tapes.jpg)
 
-## PDP-11
-My first code, including: ["Battle Star Galactica"](/pdp-11/readme.md)
 
 # TRS-80
 Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
