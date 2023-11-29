@@ -1,10 +1,10 @@
 # Anthony J. Wood's Code Archive
-Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters.
+Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters from middle school to college. 
 
 ![Anthony](./pdp-11/anthony-from-computer-museum.jpg)
 
 # PDP-11
-In 8th grade learned to code after school at the American School of the Hague (and some trips to the Computer Museum)
+In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum)
    - My first code and where coding clicked for me [BASIC Listing](/pdp-11/guess-500.jpg)
    - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [Printout Scan](./pdp-11/battlestar-galactica.jpg)
    - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
@@ -17,7 +17,7 @@ In 8th grade learned to code after school at the American School of the Hague (a
 Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
 
    - The Endless Tomb [ReadMe](./TRS-80/tomb/readme.md) | [TOMB.BAS](./TRS-80/tomb/tomb.bas.txt) | [Rejection](./scans/1981-7-20-creative-computing-tomb.jpg) |  [Play on Windows](./Win/basic-classics/ReadMe.txt)
-   - Space Taxi
+   - Space Taxi [Screen Shot](./TRS-80/spacetaxi/spacetaxi-screenshot.png) | [SPACETAX.BAS](./TRS-80/spacetaxi/spacetax.basic.txt)
    - Micro Adventure System ReadMe
    - Ruins at Time's Edge [Rejection](./scans/1983-estimate-cload-ruins-at-times-edge.jpg)
    - Boot -n- Copy [ReadMe](./TRS-80/boot-n-copy/readme.md)
@@ -38,9 +38,9 @@ Towards the end of high school I [purchased the super-cool Commodore 64](./aw-mi
 
 
 # Amiga
-   - Perfect Sound
-   - City Desk
-   - Studio 16
+I purchased my Commodore Amiga in late 1985 with a loan from my parents, during my junior year of college.
+   - Perfect Sound - my first commercial success! [Overview](./amiga/perfect-sound/readme.md) | [Ver 2.3 UI](./amiga/perfect-sound/screenshots/ps2.3-ui.png) | [Ver 3.0 UI Video](./amiga/perfect-sound/screenshots/ps3.2-ui-demo.mp4)
+   - SunRize Industries 
 
 # Windows
    - Windows Maze
