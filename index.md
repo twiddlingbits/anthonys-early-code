@@ -45,6 +45,8 @@ I wrote several other text adventures including [TOMB.BAS](./TRS-80//tomb/readme
 
 Germany 1942 was a title from [AW Software](./awsoftware/readme.md)
 
+[Play with my TRS-80 Emulator](./win/trs-80-emulator/AWSoftware.exe)
+
 ## Game Art
 ![art](scans/germany-1942-art.jpg)
 
@@ -61,7 +63,7 @@ While in 8th grade in Holland I taught myself to program computers.  Mostly by u
 
 [Battle Star Galactica BASIC Code](pdp-11/battlestar-galactica.jpg)
 
-You can play Battle Star Galactica using my BASIC emulator.  Also with this emulator you can play many popular games from this time period.
+You can play Battle Star Galactica using my [classic BASIC for Windows](./win/basic-classics/).  Also with this program you can play many popular games from this time period.
 
 # More
 Those are some highlights!  For much more visit [my git hub code](https://github.com/ajwood1965/anthony-code-history/#readme)
