@@ -2,10 +2,10 @@
 
 [All of my early software and a more complete history](https://github.com/ajwood1965/anthony-code-history/#readme) is available on Git Hub.
 
-On this web site I have highlighted four of my favorite programs from this time. 
+Here I have highlighted four of my favorite programs from this time. 
    - Perfect Sound - Sound Sampler for Amiga - junior in college.
    - Lunar Lander - A Commodore 64 game I sold while a senior in high school.
-   - Germany 1942 - Text Adventure for TRS-80 - 10th grade (ish)
+   - Germany 1942 - Text Adventure for TRS-80 - 12th grade
    - Battle Star Galactica - game for PDP-11 -  8th grade
 
 # Perfect Sound
@@ -18,17 +18,17 @@ Perfect Sound was top selling 8-bit sound sampler for the Amiga computer that I 
 
 ## Version 2.3 Title Screen
 Here is the title screen and the UI from version 2.3.   Version 3.0 was more polished, but this was more fun.
-![title](./../amiga/perfect-sound/screenshots/ps2.3-startscreen.png)
+![title](amiga/perfect-sound/screenshots/ps2.3-startscreen.png)
 
 ## Version 2.3 User Interface
 ![UI](amiga/perfect-sound/screenshots/ps2.3-ui.png)
 
 Perfect Sound can be run in an Amiga Emulator.
 
-[Click here for more in-depth pictures](./../amiga/perfect-sound/readme.md)
+[Click here for more in-depth pictures](amiga/perfect-sound/readme.md)
 
 # Lunar Lander
-[Click here for more in-depth pictures and code](./../C64/lunar-lander/readme.md)
+[Click here for more in-depth pictures and code](C64/lunar-lander/readme.md)
 
 In late high school I wrote software for the Commodore 64 and sold some to Ahoy! Magazine.  The game I sold for the most money ($400!) is Lunar Lander inspired by the arcade game.   You can also see a much [more primitive version](./../TRS-80/spacetaxi/spacetaxi-screenshot.png) I wrote for the TRS-80 a couple years earlier here.
 
