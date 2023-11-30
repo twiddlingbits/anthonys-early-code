@@ -30,7 +30,7 @@ Perfect Sound can be run in an Amiga Emulator.
 # Lunar Lander
 [Click here for more in-depth pictures and code](C64/lunar-lander/readme.md)
 
-In late high school I wrote software for the Commodore 64 and sold some to Ahoy! Magazine.  The game I sold for the most money ($400!) is Lunar Lander inspired by the arcade game.   You can also see a much [more primitive version](./../TRS-80/spacetaxi/spacetaxi-screenshot.png) I wrote for the TRS-80 a couple years earlier here.
+In late high school I wrote software for the Commodore 64 and sold some to Ahoy! Magazine.  The game I sold for the most money ($400!) is Lunar Lander inspired by the arcade game.   You can also see a screenshot of a much [more primitive version](./../TRS-80/spacetaxi/spacetaxi-screenshot.png) I wrote for the TRS-80 a couple years earlier here.
 
 ![Screen Grab 2](C64/lunar-lander/screenshot02.png)
 
@@ -39,9 +39,11 @@ In late high school I wrote software for the Commodore 64 and sold some to Ahoy!
 Also playable in a C-64 emulator.
 
 # Germany 1942
-[Click here for more in-depth pictures and history](TRS-80/)
-
 While in high school I was interested in text adventure games, a type of puzzle game popular then.   I wrote a computer lanagage and set of tools for writing text adventures, and atempted to sell on of the games I wrote -- Germany 1942.
+
+I wrote several other text adventures including [TOMB.BAS](./TRS-80//tomb/readme.md),  [Quest for Fire](./TRS-80/quest-for-fire/),  [Space Hunt](./C64/space-hunt/readme.md)
+
+Germany 1942 was a title from [AW Software](./awsoftware/readme.md)
 
 ## Game Art
 ![art](scans/germany-1942-art.jpg)
