@@ -9,12 +9,12 @@ On this web site I have highlighted four of my favorite programs from this time.
    - Battle Star Galactica - game for PDP-11 -  8th grade
 
 # Perfect Sound
-[Click here for more in-depth pictures and code](./../amiga/perfect-sound/readme.md)
+[Click here for more in-depth pictures and code](/amiga/perfect-sound/readme.md)
 
 Perfect Sound was top selling 8-bit sound sampler for the Amiga computer that I developed while a Junior in college in 1986.  I designed the hardware, wrote the software, wrote the manual, and got people to sell it.
 
 ## Version 3.0 Package
-<img src="./../amiga/perfect-sound/pictures/box-front-4color-small.jpg" width="400">  <img src="./../amiga/perfect-sound/pictures/box-back-4color-small.jpg" width="400">
+<img src="/amiga/perfect-sound/pictures/box-front-4color-small.jpg" width="400">  <img src="/amiga/perfect-sound/pictures/box-back-4color-small.jpg" width="400">
 
 ## Version 2.3 Title Screen
 Here is the title screen and the UI from version 2.3.   Version 3.0 was more polished, but this was more fun.
