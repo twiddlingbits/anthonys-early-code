@@ -15,7 +15,7 @@ In the mid 80's computer magazines were popular that published programs and game
 Here are a few of my earliest programs that I remember fondly.
    - [Perfect Sound](./amiga/perfect-sound/readme.md) - Perfect Sound was top selling 8-bit sound sampler for the Amiga computer that I developed while a Junior in college in 1986.  I designed the hardware, wrote the software, wrote the manual, and got people to sell it.
    - [Lunar Lander](./C64/lunar-lander/readme.md) - A Commodore 64 game I sold while a senior in high school.  The same one in the above article.  But here you will find screen shots and code.
-   - TO DO - Germany 1942 - Text Adventure for TRS-80 - 12th grade
+   - [Germany 1942](./TRS-80/germany-1942/readme.md) - Text Adventure written an adventure language I crated, for TRS-80 - 12th grade
    - [Battle Star Galactica](./pdp-11/battlestar-galactica.jpg) - This is a BASIC game I wrote in 8th grade using our school's PDP-11 minicomputer. [All of my PDP-11 BASIC](./pdp-11/readme.md) 
 
 # Computer Emulators
