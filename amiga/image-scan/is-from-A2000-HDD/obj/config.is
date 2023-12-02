@@ -1,0 +1,25 @@
+; This is a sample Img Scan Printer Config file
+; As you can see, anything following a semi colon is a comment.
+;
+; I Initilization sequence to be sent before scan starts
+; V printer command to move up the smallest amount possible
+; H the horizontal move cmd.  0 for internal sequence
+; R the horizontal command to move back
+; D the number of the above commands needed to move one inch (dpi)
+; T time delay between samples
+; O offset from left edge to wait before scanning
+;
+; This file is for an star NX-1000 epson compatible
+;
+; reset, disable paper out, set bidirectional printing
+;
+I 27,64,27,56,27,85,0
+V 27,74,2
+H 0
+R 0
+D 108
+T 90
+O 500
+Z 70
+
+

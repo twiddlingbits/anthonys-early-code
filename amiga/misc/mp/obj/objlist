@@ -1,0 +1,1 @@
+FROM main.o, load_cell.o

@@ -1,0 +1,4 @@
+FROM LIB:c.o+icr.o
+TO icr
+LIB +LIB:lc.lib+LIB:amiga.lib
+MAP icr.map

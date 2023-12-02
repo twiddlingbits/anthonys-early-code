@@ -1,0 +1,3 @@
+FROM LIB:c.o+main.o+midi.o+handler.o
+TO main
+LIB LIB:lc.lib+LIB:amiga.lib

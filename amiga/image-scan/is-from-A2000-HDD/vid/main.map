@@ -1,0 +1,74 @@
+[4;1mmain                    20-May-89 01:24:22  Hunk Section                Page 1-1[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+   0 text         234c LIB:c.o          c        code            0    0
+                       digi_pix.o       digi_pix code          1d8    0
+                       LIB:lc.lib       autoreq  code          224    0
+                       LIB:lc.lib       chkufb.o code          258    4
+                       LIB:lc.lib       exit.o   code          2b8    1
+                       LIB:lc.lib       getmem.o code          31c    2
+                       LIB:lc.lib       isdigit. code          418    0
+                       LIB:lc.lib       lseek.o  code          43c    0
+                       LIB:lc.lib       mem1.o   code          484    5
+                       LIB:lc.lib       printf.o code          634    0
+                       LIB:lc.lib       read.o   code          6ac    1
+                       LIB:lc.lib       rlsmem.o code          6fc    0
+                       LIB:lc.lib       scanf.o  code          824    1
+                       LIB:lc.lib       stcd_i.o code          9d8    0
+                       LIB:lc.lib       stcl_h.o code          a74    0
+                       LIB:lc.lib       stcl_o.o code          af0    0
+                       LIB:lc.lib       stcul_d. code          b6c    0
+                       LIB:lc.lib       strncat. code          bd0    0
+                       LIB:lc.lib       strupr.o code          c30    0
+                       LIB:lc.lib       toupper  code          c64    0
+                       LIB:lc.lib       ungetc.o code          c7c    0
+                       LIB:lc.lib       write.o  code          d10    0
+                       LIB:lc.lib       ufilbf.o code          d78    0
+                       LIB:lc.lib       uflsbf.o code          f20    0
+                       LIB:lc.lib       ugetbf.o code         1218    1
+                       LIB:lc.lib       umain.o  code         127c    5
+                       LIB:lc.lib       upfmt.o  code         14ac    1
+                       LIB:lc.lib       usfmt.o  code         19c0    0
+                       LIB:lc.lib       cxd33    code         1f1c    0
+                       LIB:lc.lib       ucxovf   code         1fe0    0
+                       LIB:lc.lib       cxm33    code         1ff8    0
+                       LIB:lc.lib       memcpy   code         2018    0
+                       LIB:lc.lib       uexit.o  code         2044    0
+                       LIB:lc.lib       chkabort code         208c    0
+                       LIB:lc.lib       dread.o  code         20e0    0
+                       LIB:lc.lib       dwrite.o code         2130    0
+                       LIB:lc.lib       dseek.o  code         2180    0
+                       LIB:lc.lib       dclose.o code         2214    0
+                       LIB:lc.lib       cxovf.o  code         2234    2
+                       LIB:lc.lib       cxbrk.o  code         22c4    0
+   1 <noname>       88 main.o           main.o   code            0    6
+   2 __MERGED      354 LIB:c.o          c        data            0    0
+                       main.o           main.o   data           68    0
+                       LIB:lc.lib       bufsiz.o data           80    0
+                       LIB:lc.lib       ctype.o  data           84    0
+                       LIB:lc.lib       error.o  data          188    0
+                       LIB:lc.lib       stcl_h.o data          18c    0
+                       LIB:lc.lib       uflsbf.o data          1a0    0
+                       LIB:lc.lib       ufmode.o data          1a4    0
+                       LIB:lc.lib       uiob.o   data          1a8    0
+                       LIB:lc.lib       umain.o  data          210    0
+                       LIB:lc.lib       umneed.o data          224    0
+                       LIB:lc.lib       upfmt.o  data          228    0
+[4;1mmain                    20-May-89 01:24:22  Hunk Section                Page 1-2[0m
+
+[4m num[0m [4mhunk    [0m [4m    size[0m [4mfilename        [0m [4mpunit   [0m [4mtype    [0m [4m    base[0m [4m alv[0m
+                       LIB:lc.lib       upool.o  data          22c    0
+                       LIB:lc.lib       uufbs.o  data          240    0
+                       LIB:lc.lib       dosbase  data          244    0
+                       LIB:lc.lib       intubase data          248    0
+                       LIB:lc.lib       mathbase data          24c    0
+                       LIB:lc.lib       tranbase data          250    0
+                       LIB:lc.lib       mstep    data          254    0
+                       LIB:lc.lib       cxovf.o  data          258    0
+                       LIB:lc.lib       cxbrk.o  data          2c4    0
+                       LIB:lc.lib       mem1.o   bss           354    0
+                       LIB:lc.lib       printf.o bss           360    0
+                       LIB:lc.lib       umain.o  bss           364    0
+                       LIB:lc.lib       uufbs.o  bss           428    0
+   3 exec_lib       20 LIB:amiga.lib    <noname> code            0    0
+                       LIB:amiga.lib    <noname> code           10    0

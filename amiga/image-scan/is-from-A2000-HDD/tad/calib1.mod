@@ -1,0 +1,35 @@
+MODULE calib;
+
+IMPORT InOut, SYSTEM;
+
+VAR
+
+x :INTEGER;
+
+PROCEDURE port():INTEGER;
+BEGIN
+SYSTEM.CODE(13FCH,0000H,00BFH,0E301H,1039H,00BFH,0E101H,
+                          13FCH,00FFH,00BFH,0E301H,0E340H);
+RETURN INTEGER(SYSTEM.BYTE(SYSTEM.REGISTER(0)));
+
+END port;
+
+
+BEGIN
+
+FOR x:=1 TO 200 DO
+
+
+
+InOut.WriteString("value: ");
+
+InOut.WriteInt(port(),4);
+
+InOut.WriteLn;
+
+
+END;
+
+
+END calib.
+
