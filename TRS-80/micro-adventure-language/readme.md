@@ -1,6 +1,6 @@
 # Micro Adventure Language
 
-Anthony's text adventure creation language.  Written using a TRS-80 Level II BASIC for the tokenizer and title screen editor, and using TRS-80 Assembly for the runtime.  Last version was april 23, 1983.
+Anthony's text adventure creation language.  Written using TRS-80 Level II BASIC for the tokenizer and title screen editor, and using TRS-80 Assembly for the runtime.  Last version was april 23, 1983.
 
    - [micro-adventure.rtf](micro-adventure.rtf)  - document that I wrote in 1998 after recreating in my memory how the micro adventure system works.
    - [tokenizer](./source/microadv.bas.txt) - tokenizes the .ADV, .LOC, and .TIT files.
@@ -11,8 +11,8 @@ Anthony's text adventure creation language.  Written using a TRS-80 Level II BAS
 
 # TRS-80 Floppy Disk Copies
 The original source can be found on the floppy disk copies that I have included here verbatim.
-I have also pulled out what I believe are the final source files, and converted them to text files.
-There are a few different adventures that I wrote using the micro adventure langauge in the game folder.
+I have pulled out what I believe are the final source files and placed them in the source folder.
+There are a few different adventures that I wrote using the micro adventure language.  I placed them in the games folder.
 
 ## DISK # 9 "" 02/23/81
 	MOON/CMD	ADVENT/ASM	ADVENT/CMD	EDTASM/CMD
