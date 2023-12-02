@@ -10,8 +10,6 @@ In the mid 80's computer magazines were popular that published programs and game
    - [Space Hunt](./C64/space-hunt/space-hunt-ahoy-april-1985.pdf)
    - [Faster 64](./C64/faster64/faster64-ahoy-april-1985.pdf)
    - [Renumber](./C64/renumber/renumber-ahoy-july-1984.pdf)
-   - [Renum3](./C64/renumber/renumber-ahoy-july-1984.pdf)
-   - [Renum Graphics](./C64/renumber/article.png)
 
 # Code Highlights
 Here are a few of my earliest programs that I remember fondly.
