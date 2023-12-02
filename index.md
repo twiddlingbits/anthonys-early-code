@@ -1,10 +1,10 @@
 # Anthony's Early Software Code
-I recently spent some time recovering my old programs and archived them on github.  I created this small web site to highlight some of the pieces I am most proud of for my friends, family, and curious on lookers.
+I recently spent some time recovering my old programs.  I created this small web site to highlight some of the pieces I am most proud of for my friends, family, and curious on lookers.
 
-[Complete Collection on Git Hub](https://github.com/ajwood1965/anthony-code-history/#readme) 
+[My Complete Early software Collection on Git Hub](https://github.com/ajwood1965/anthony-code-history/#readme) 
 
 # C64 Ahoy! Magazine Articles
-In the mid 80's computer magazines were popular that published programs and games.   Readers would literally type them in.  After a couple years of [being rejected](./scans/1981-7-20-creative-computing-tomb.jpg), I was [able to sell](./scans/1984-6-15-ahoy-composite.jpg) five while in high school. Here are four of the articles scanned from Ahoy! Magazine.
+In the mid 80's computer magazines were popular that published programs and games.   Readers would literally type the program in.  After a couple years of [being rejected](./scans/1981-7-20-creative-computing-tomb.jpg), I was [able to sell](./scans/1984-6-15-ahoy-composite.jpg) five while in high school. Here are four of the articles scanned from Ahoy! Magazine.
 
    - [Lunar Lander](./C64/lunar-lander/lunar-lander-ahoy-april-1984.pdf)
    - [Space Hunt](./C64/space-hunt/space-hunt-ahoy-april-1985.pdf)
@@ -20,7 +20,7 @@ Here are a few of my earliest programs that I remember fondly.
 
 # Computer Emulators
 Modern computers can emulate the hardware and software of old microcomputers from the 1980s and 1990s.  You can use these emulators to run my software on your laptop.  The TRS-80 emulator and my BASIC interpreter are easy to download here and use since I wrote it and it is self contained. But it only runs on Windows.   The Amiga and C-64 emulators probably require you to purchase the emulator.  The actual emulators are free open source, but the original ROMs and operating system are not.  You need to buy and download the emulator, then load the appropriate disk image from [my git hub repo](https://github.com/ajwood1965/anthony-code-history/#readme).
-   - [My TRS-80 Emulator for Windows](https://1drv.ms/u/s!AmFZ0QYkZ-tXg7k302hEFUNUvaK5xg?e=MBv5EW) comes preloaded with some of my TRS-80 Software.
+   - [My TRS-80 Emulator for Windows](./Win/trs-80-emulator/AWSoftware.exe) comes preloaded with some of my TRS-80 Software.
    - [My BASIC for Windows](./Win/basic-classics/Classic%20Basic%20Games%20v1_0.zip) comes preloaded with some of my software (including Battle Star Galactica) as well as other examples of text games of the time.
    - A third party [Amiga Emulator](https://www.amigaforever.com/) can be used to run my Amiga software
    - A third party [Commodore 64](https://www.c64forever.com/) Emulator can be used to run my C-64 Software

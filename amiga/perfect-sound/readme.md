@@ -26,16 +26,16 @@ One of the hardest things to do on a very small budget and with no experience wa
 
 <img src="pictures/perfect-sound-gen4-c.jpg" width="450">
 
-### Software
+## Software
 There were many versions of the software, but the two primary ones were version 2.3 and 3.x.  I wrote the software, and my friend John Bruner, designed the opening title screens using Deluxe Paint.  When you launched Perfect sound it would play the message I recorded "Welcome to Perfect Sound" at several different sample rates, and then play my friend John saying "press the left mouse button to continue".
 
-#### Version 2.3
+### Version 2.3
 ![title screen](./screenshots/ps2.3-startscreen.png)
 
 ![ui](./screenshots/ps2.3-ui.png)
 
 
-#### Version 3.0
+### Version 3.0
 ![title screen](screenshots/ps3.2-startupscreen.png)
 
 <br>
@@ -47,8 +47,8 @@ There were many versions of the software, but the two primary ones were version 
 <img src="screenshots/ps3.2-about.2x.png" width="400">
 
 
-### Packaging
-The packaging also evolved from two colors versions that was designed by our original distributor "MicroSearch" in Houston, and then eventually to a four-color=process that SunRize Industries designed (third party designer, i think his name was Louis) and distributed ourselves.
+## Packaging
+The packaging also evolved from two-color versions that was designed by our original distributor "MicroSearch" in Houston, and then eventually to a four-color process that SunRize Industries designed (third party designer, I think his name was Louis) and distributed ourselves.
 
 ![packages](pictures/boxes.jpg)
 
@@ -60,7 +60,7 @@ The packaging also evolved from two colors versions that was designed by our ori
 
 
 ## MicroSearch
-In the early days of SunRize, I struck a deal with Microsearch to distribute Perfect Sound.  As sales increased and we had more cash, I took back distribution in house.
+In the early days of SunRize, I struck a deal with Microsearch to distribute Perfect Sound and later to Publish City Desk.  As sales increased and we had more cash, I took back Perfect Sound distribution in house.
 
 ![MicroSearch flyer](./pictures/Microsearch_1987.jpg)
 
