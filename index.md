@@ -15,7 +15,9 @@ In the mid 80's computer magazines were popular that published programs and game
 Here are a few of my earliest programs that I remember fondly.
    - [Perfect Sound](./amiga/perfect-sound/readme.md) - Perfect Sound was top selling 8-bit sound sampler for the Amiga computer that I developed while a Junior in college in 1986.  I designed the hardware, wrote the software, wrote the manual, and got people to sell it.
    - [Lunar Lander](./C64/lunar-lander/readme.md) - A Commodore 64 game I sold while a senior in high school.  The same one in the above article.  But here you will find screen shots and code.
-   - [Germany 1942](./TRS-80/germany-1942/readme.md) - Text Adventure written in an [adventure language I created](./TRS-80/micro-adventure-language/readme.md), for TRS-80, while in 12th grade.  You can play this game, its packaged with the TRS-80 emulator download below.
+   - [Germany 1942](./TRS-80/germany-1942/readme.md) - Text Adventure written in an [adventure language I created](./TRS-80/micro-adventure-language/readme.md), for TRS-80.  I worked on my adventure language for 2 or 3 years off and on while in high school.  The game Germany 1942 was done with the final version of the adventure language when I was a senior.  You can play this game on Windows, its packaged with the TRS-80 emulator download below.
+   - [Boot n Copy](./TRS-80/boot-n-copy/readme.md) - replaced the boot sector on a floppy disk.
+   - [Quest-for-fire](./TRS-80/quest-for-fire/readme.md) - a text adventure where I honed my z-80 assembly skills.
    - [Battle Star Galactica](./pdp-11/battlestar-galactica.jpg) - This is a BASIC game I wrote in 8th grade using our school's PDP-11 minicomputer. Also see [all of my PDP-11 BASIC code.](./pdp-11/readme.md). You can play this game, its packaged with my BASIC for windows download below.
 
 # Computer Emulators

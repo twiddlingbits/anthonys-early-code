@@ -44,6 +44,8 @@ There were many versions of the software, but the two primary ones were version 
   
 <br>
 
+For most of Perfect Sound's history the "about" window did not include my picture.  But for some reason I decided to add it towards the last version.  SunRize had started selling a video digitizer and an image scanner.  I think this picture was captured using our "Perfect Vision" video digitizer.
+
 <img src="screenshots/ps3.2-about.2x.png" width="400">
 
 
