@@ -1,13 +1,13 @@
 # Anthony J. Wood's Early Code
-Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters from middle school to college. 
+Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters I wrote or designed while in middle school to college. 
 
 # PDP-11
-In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum)
-   - My first code and where coding clicked for me [BASIC Listing](/pdp-11/guess-500.jpg)
+In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum to use their Commodore PET)
+   - [First Code](/pdp-11/guess-500.jpg)
    - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [Printout Scan](./pdp-11/battlestar-galactica.jpg)
    - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
    - Slot Machine [BASIC Listing](./pdp-11/slotmachine.jpg)
-   - ASCII Art [[plan](./pdp-11/make-melvin-draw-smurf-plan.jpg) | [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg)]
+   - [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg) and my [design on graph paper](./pdp-11/make-melvin-draw-smurf-plan.jpg) | 
    - [My paper tapes](./pdp-11/paper-tapes.jpg)
 
 
@@ -42,13 +42,13 @@ I purchased my Commodore Amiga in late 1985 with a loan from my parents, during 
    - SunRize Industries 
 
 # Windows
-   - Windows Maze
-   - AW Basic
-   - Classic Basic Games
-   - TRS-80 Emulator
+   - [Windows Maze](./win/amaze/)
+   - [AW Basic](./Win/awbasic/)
+   - [Classic Basic Games](./Win/basic-classics/ReadMe.txt)
+   - [TRS-80 Emulator](./Win/trs-80-emulator/)
 
 # macromedia flash
-   - Space Invaders
+   - [Space Invaders](./flash/spaceinvaders/)
 
 # Also...
    - [AW Microcomputer History](aw-microcomputer-history.md)
