@@ -44,13 +44,13 @@ I purchased my Commodore Amiga in late 1985 with a loan from my parents, during 
    - SunRize Industries 
 
 # Windows
-   - [Windows Maze](./win/amaze/)
+   - [Windows Maze](./Win/amaze/)
    - [AW Basic](./Win/awbasic/)
    - [Classic Basic Games](./Win/basic-classics/ReadMe.txt)
    - [TRS-80 Emulator](./Win/trs-80-emulator/)
 
 # macromedia flash
-   - [Space Invaders](./flash/spaceinvaders/)
+   - [Space Invaders](./Flash/spaceinvaders/)
 
 # Also...
    - [AW Microcomputer History](aw-microcomputer-history.md)
