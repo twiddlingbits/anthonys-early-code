@@ -1,9 +1,0 @@
-_main.o, main.o, menus.o, openlibraries.o, openscreen.o, openwindow.o, *
-telluser.o, scan.o, scan_control.o, histogram.o, show_raw.o, *
-newpointer.o, save_load.o, filerequest.o, add.o, show_error.o,*
-get_screen_size.o, edit_pic.o, change_screen.o, *
-pack_320_200.o, pack_320_400.o, pack_640_200.o, pack_640_400.o, *
-show_320_200.o, show_320_400.o, show_640_200.o, show_640_400.o, *
-pack2_320_200.o, pack2_640_200.o, *
-itemlist.o, scan_size.o, show_raw_data.o, *
-show_title_small.o, scan_area_help.o

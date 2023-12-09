@@ -1,1 +1,0 @@
-blink lib:c.o WITH objlist TO imgscan LIB lib:a.lib + lib:lcmffp.lib + lib:lc.lib + lib:amiga.lib + lib:iff.lib  + lib:itools1l.lib NODEBUG
