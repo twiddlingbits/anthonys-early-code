@@ -1,5 +1,0 @@
-FROM LIB:c.o+"studioclose.o"+/studio/studiostub.o
-TO "StudioClose"
-LIB LIB:lc.lib LIB:amiga.lib
-SD NODEBUG
-

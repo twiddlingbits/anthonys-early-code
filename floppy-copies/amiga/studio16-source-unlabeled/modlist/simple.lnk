@@ -1,4 +1,0 @@
-FROM LIB:c.o+"simple.o"+/studio/studiostub.o
-TO "simple"
-LIB LIB:lc.lib LIB:amiga.lib
-

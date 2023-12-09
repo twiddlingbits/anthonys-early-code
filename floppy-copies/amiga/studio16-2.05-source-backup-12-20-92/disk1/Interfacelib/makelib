@@ -1,6 +1,0 @@
-failat 20
-LibTool -lcmho ram:envir.asm inter.fd
-join ram:envir.asm end.txt as stub.asm
-a68k stub.asm -oInterfaceStub.o
-join inter.src end.txt as inter.asm
-a68k inter.asm -oobj/envir.o

@@ -1,4 +1,0 @@
-FROM LIB:c.o+"mywait.o"
-TO "mywait"
-LIB LIB:lc.lib LIB:amiga.lib
-

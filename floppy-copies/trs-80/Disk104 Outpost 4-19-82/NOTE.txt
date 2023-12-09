@@ -1,3 +1,0 @@
-2/3/98
-
-Contains Microsoft EdtAsm+ and 'outpost'.  The original disk also had TRS-DOS, which I didn't copy to PC.

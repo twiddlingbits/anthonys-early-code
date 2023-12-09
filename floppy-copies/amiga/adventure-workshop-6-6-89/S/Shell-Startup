@@ -1,3 +1,0 @@
-c:Prompt "%N.%S> "
-alias xcopy copy [] clone
-alias endshell endcli

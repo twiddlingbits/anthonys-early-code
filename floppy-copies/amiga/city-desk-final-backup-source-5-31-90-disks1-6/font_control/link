@@ -1,4 +1,0 @@
-FROM
-LIB:c.o+_main.o+main.o+menus.o+filerequest.o+hp.o+getint.o+newpointer.o+create_hp.o+create_ps.o+ps.o+itemlist.o+overwrite.o
-TO main
-LIB +LIB:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib

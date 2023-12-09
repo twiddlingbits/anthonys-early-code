@@ -1,4 +1,0 @@
-FROM LIB:c.o+"dp.o"
-TO "dp"
-LIB LIB:lc.lib LIB:amiga.lib
-

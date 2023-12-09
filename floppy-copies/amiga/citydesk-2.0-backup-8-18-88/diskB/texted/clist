@@ -1,4 +1,0 @@
-lc -o/obj/ cursorsubs.c linesubs.c makewin.c memsubs.c
-lc -o/obj/ ntextwin.c search.c texted.c textedldtxt.c textedmenus.c
-lc -o/obj/ txtedgetstr.c
-

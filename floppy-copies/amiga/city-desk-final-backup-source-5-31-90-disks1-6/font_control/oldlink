@@ -1,4 +1,0 @@
-blink LIB:c.o FROM main.o+menus.o
-TO a.out
-LIB lib:a.lib + LIB:lcmffp.lib + LIB:lc.lib + LIB:amiga.lib
-

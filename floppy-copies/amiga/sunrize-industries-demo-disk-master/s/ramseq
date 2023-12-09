@@ -1,9 +1,0 @@
-BindDrivers
-echo "SunRize Atlanta Comdex Demo 1988"
-echo "Hold On..."
-copy comdexdemo:#? ram: quiet
-assign comdex: ram:
-cd ram:
-projector demo.film
-
-

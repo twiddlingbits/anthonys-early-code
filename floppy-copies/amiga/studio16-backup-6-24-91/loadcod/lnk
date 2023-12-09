@@ -1,4 +1,0 @@
-FROM LIB:c.o+"loadcode.o"+ad1012/rp.o
-TO "loadcode"
-LIB LIB:lc.lib LIB:amiga.lib
-

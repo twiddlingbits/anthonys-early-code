@@ -1,8 +1,0 @@
-FROM erase.o, menuwin.o, scnreq.o, printxandy.o, draw.o, kitget.o,*
-initbitmap.o, disgraphic.o, magwin.o, pattern.o, undo.o,*
-setbox.o, circle.o, putbm2.o, line.o, nwin.o, blkwht.o, editmenu.o,*
-box.o, rotget.o, loadbrush.o, graphed.o, printmode.o,*
-changechecks.o, rotate.o, maged.o, clearmess.o, endstuff.o,*
-flip.o, savebrush.o, putbm.o, openkit.o, flipget.o, cleanup.o,*
-resize.o, setcolors.o, graphscreen.o
-

@@ -1,3 +1,0 @@
-
-df1:c/alink from df1:lib/c.o+inter.o+listen.o to listen lib df1:lib/lc.lib+df1:lib/amiga.lib
-

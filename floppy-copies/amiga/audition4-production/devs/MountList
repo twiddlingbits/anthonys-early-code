@@ -1,6 +1,0 @@
-
-NEWCON: 
-    Handler = L:Newcon-Handler
-    Priority = 5
-    StackSize = 1000
-#

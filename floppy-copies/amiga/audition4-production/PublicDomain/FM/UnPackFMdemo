@@ -1,6 +1,0 @@
-echo "Unpacking FMdemo to RAM: -- Please Wait."
-echo "After completion Open up RAM DISK."
-cd ram:
-makedir ram:Settings
-audition_4:c/LHARC -x x audition_4:PublicDomain/FM/FMdemo
-echo "Done."

@@ -1,1 +1,0 @@
-FROM obj/soundtest.o, obj/sound1.o, obj/sound2.o, obj/sound3.o, obj/loadnplay.o, obj/stwin.o

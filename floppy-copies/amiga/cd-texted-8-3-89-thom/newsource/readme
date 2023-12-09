@@ -1,6 +1,0 @@
-Note changes to desk.h
-
-1. struct graphic is now different... Please recompile graphed
-2. standard return  codes are up to the high 20's... Please change
-   def'n off JUSTQUIT etc.
-

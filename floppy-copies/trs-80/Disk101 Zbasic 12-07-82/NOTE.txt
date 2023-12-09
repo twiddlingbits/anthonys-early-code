@@ -1,2 +1,0 @@
-1/3/98
-This disk had Newdos-80 on it, which I didn't copy.  This disk appears to be ZBasic, probably for building Compac.  The orginal ZBasic disk also has CMDFILE/CMD on it, which this disk does not.

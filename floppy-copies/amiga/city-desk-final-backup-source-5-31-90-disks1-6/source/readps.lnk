@@ -1,4 +1,0 @@
-FROM LIB:c.o+readps.o
-TO readps
-LIB +LIB:lc.lib+LIB:amiga.lib
-MAP readps.map

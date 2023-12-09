@@ -1,2 +1,0 @@
-blink lib:cback.o WITH objlist TO runtime:Mixer LIB lib:lcmieee.lib+lib:lcnb.lib + lib:amiga.lib
-;NODEBUG

@@ -1,1 +1,0 @@
-blink lib:cback.o WITH objlist TO Studio16:Dormant/ModList LIB lib:lcnb.lib + lib:amiga.lib SD NODEBUG

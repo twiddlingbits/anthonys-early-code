@@ -1,5 +1,0 @@
-assign LC: df1:c
-assign INCLUDE: df1:
-assign LIB: df1:lib
-assign QUAD: RAM:
-path df1:c

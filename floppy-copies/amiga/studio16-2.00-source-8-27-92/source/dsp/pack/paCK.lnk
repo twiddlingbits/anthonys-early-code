@@ -1,4 +1,0 @@
-FROM LIB:c.o+"paCK.o"
-TO "paCK"
-LIB LIB:lc.lib LIB:amiga.lib
-

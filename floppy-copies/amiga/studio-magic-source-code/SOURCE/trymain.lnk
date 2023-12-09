@@ -1,4 +1,0 @@
-FROM LIB:c.o+trymain.o
-TO trymain
-LIB LIB:lcmffp.lib+LIB:lc.lib+LIB:amiga.lib
-MAP trymain.map

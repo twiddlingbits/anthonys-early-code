@@ -1,4 +1,0 @@
-FROM LIB:c.o+"killall.o"
-TO "killall"
-LIB LIB:lc.lib LIB:amiga.lib
-

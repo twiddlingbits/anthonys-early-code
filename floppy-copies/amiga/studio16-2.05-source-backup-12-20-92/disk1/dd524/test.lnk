@@ -1,4 +1,0 @@
-FROM LIB:c.o+"test.o"
-TO "test"
-LIB LIB:lcmieee.lib LIB:amiga.lib
-

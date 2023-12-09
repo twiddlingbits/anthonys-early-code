@@ -1,1 +1,0 @@
-blink libtool.o+gadlibasm.o+gadlib.o TO "libs:gadlib.library" LIB LIB:lcnb.lib+lib:amiga.lib NODEBUG

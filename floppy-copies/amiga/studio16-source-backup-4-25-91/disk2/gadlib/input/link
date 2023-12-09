@@ -1,4 +1,0 @@
-FROM LIB:c.o+"test.o"+"inhandler.o"
-TO "test"
-LIB LIB:lcnb.lib LIB:amiga.lib
-

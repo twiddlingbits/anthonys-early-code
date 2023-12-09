@@ -1,4 +1,0 @@
-vu.o+openlibraries.o+menu.o+data.o*
-prog:studio/studiostub.o,*
-prog:gadlib/gadlibstub.o,*
-prog:interfacelib/interfacestub.o

@@ -1,1 +1,0 @@
-blink lib:cback.o WITH objlist TO runtime:Quit LIB lib:lcnb.lib + lib:amiga.lib SD NODEBUG

@@ -1,1 +1,0 @@
-blink vd0:lib/c.o WITH objlist TO RAM:a.out LIB lib:lcmffp.lib + lib:lc.lib + lib:amiga.lib NODEBUG

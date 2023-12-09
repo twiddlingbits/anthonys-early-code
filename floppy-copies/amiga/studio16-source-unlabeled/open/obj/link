@@ -1,2 +1,0 @@
-blink lib:c.o WITH objlist TO runtime:OpenList LIB lib:lcmieee.lib+lib:lcnb.lib + lib:amiga.lib
-;NODEBUG

@@ -1,4 +1,0 @@
-FROM LIB:c.o+"StudioQuery.o"+/studio/studiostub.o
-TO "StudioQuery"
-LIB LIB:lc.lib LIB:amiga.lib
-SD NODEBUG

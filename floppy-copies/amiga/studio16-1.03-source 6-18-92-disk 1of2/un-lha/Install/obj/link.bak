@@ -1,1 +1,0 @@
-blink lib:c.o WITH objlist TO ram:ins LIB lib:lcnb.lib + lib:amiga.lib NODEBUG

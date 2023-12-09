@@ -1,4 +1,0 @@
-mount NEWCON:
-assign t: ram:
-LoadWB
-endcli >NIL:

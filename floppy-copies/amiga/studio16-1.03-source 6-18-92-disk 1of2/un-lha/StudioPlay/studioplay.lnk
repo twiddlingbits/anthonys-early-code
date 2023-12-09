@@ -1,5 +1,0 @@
-FROM LIB:c.o+"studioplay.o"+/studio/studiostub.o
-TO "StudioPlay"
-LIB LIB:lc.lib LIB:amiga.lib
-SD NODEBUG
-

@@ -1,4 +1,0 @@
-mix.o+openlibraries.o*
-prog:window/obj/windfunc.o,*
-prog:studio/studiostub.o,*
-prog:gadlib/gadlibstub.o

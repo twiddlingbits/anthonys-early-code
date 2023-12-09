@@ -1,9 +1,0 @@
-if exists sys:system
-   Path sys:system add
-endif
-echo "Workbench disk.  Release 1.2 version 33.47"
-echo " "
-echo "Use Preferences tool to set date"
-assign fonts: df1:fonts
-LoadWb
-endcli >nil:

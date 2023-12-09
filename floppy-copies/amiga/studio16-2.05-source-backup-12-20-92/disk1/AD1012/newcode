@@ -1,3 +1,0 @@
-prog:dsp/pack/pack >prog:ad1012/StandardCode.h ram:ad1012.o Standard
-cc other
-ln

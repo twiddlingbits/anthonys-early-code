@@ -1,4 +1,0 @@
-FROM LIB:c.o+"studioopen.o"+/studio/studiostub.o
-TO "Studio16:c/StudioOpen"
-LIB LIB:lc.lib LIB:amiga.lib
-SD NODEBUG

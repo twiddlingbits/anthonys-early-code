@@ -1,1 +1,0 @@
-blink lib:cback.o WITH objlist TO Studio16:ProjectMenu/Preferences LIB lib:lcnb.lib + lib:amiga.lib SC SD NODEBUG

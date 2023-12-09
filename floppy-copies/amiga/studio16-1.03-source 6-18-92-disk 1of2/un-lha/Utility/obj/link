@@ -1,1 +1,0 @@
-blink lib:cback.o WITH objlist TO runtime:Utility LIB lib:lcmieee.lib + lib:lcnb.lib + lib:amiga2.0.lib  SD NODEBUG

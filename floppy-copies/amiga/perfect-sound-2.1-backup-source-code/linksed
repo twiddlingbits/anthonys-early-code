@@ -1,1 +1,0 @@
-LC:alink FROM DF1:lib/c.o+sed.o+sed3.o+sed4.o+sedmenu.o TO sed LIB DF1:lib/lc.lib+DF1:lib/amiga.lib

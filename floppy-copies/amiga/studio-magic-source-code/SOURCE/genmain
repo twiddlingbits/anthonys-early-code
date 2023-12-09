@@ -1,3 +1,0 @@
-.Key fl,opt1,opt2,opt3
-LC:lc <opt1> <opt2> <opt3> -f -ad -qram: -Lf <fl>
-

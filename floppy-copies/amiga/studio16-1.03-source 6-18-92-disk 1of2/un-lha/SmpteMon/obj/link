@@ -1,1 +1,0 @@
-blink lib:cback.o WITH objlist TO runtime:SMPTEmonitor LIB lib:lcnb.lib + lib:amiga.lib SC SD NODEBUG

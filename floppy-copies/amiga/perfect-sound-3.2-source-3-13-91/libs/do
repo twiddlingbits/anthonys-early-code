@@ -1,1 +1,0 @@
-blink dummya.o dummyc.o more.o new_right.o new_left.o new_monright.o new_monleft.o new_stereo.o real_echo.o real_delay.o to psound.library library lib:lc.lib+lib:amiga.lib sc sd nd

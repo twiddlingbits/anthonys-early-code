@@ -1,3 +1,0 @@
-FROM libtool.o,studio.o,module.o,standardenviroment.o,*
-samples.o,add.o,semaphores.o,checkassign.o,timecodefunc.o,smpte.o*
-sio.o,sampleio.o,asio.o,slowfreemem.o,AllocDmaMem.o

@@ -1,1 +1,0 @@
-blink lib:c.o WITH objlist WITH textlist WITH graphiclist TO ram:a.out LIB lib:a.lib lib:lcmffp.lib + lib:lc.lib + lib:amiga.lib + lib:iff.lib NODEBUG

@@ -1,2 +1,0 @@
-         RectFill(wprint->WIN->RPort, wprint->X,wprint->Y,
-         wprint->X + wprint->W,wprint->Y + wprint->H);

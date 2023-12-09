@@ -1,1 +1,0 @@
-blink LIB:c.o+ps_lib_stub.o+ps_lib_test.o TO ps_lib_test LIB +LIB:lc.lib+LIB:amiga.lib

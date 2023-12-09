@@ -1,2 +1,0 @@
-FROM libtool.o,studio.o,module.o,standardenviroment.o,*
-low_level_io.o,samples.o,add.o

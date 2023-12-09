@@ -1,4 +1,0 @@
-openlibraries.o,modlist.o,*
-//studio/studiostub.o,*
-//gadlib/gadlibstub.o,*
-prog:interfacelib/interfacestub.o

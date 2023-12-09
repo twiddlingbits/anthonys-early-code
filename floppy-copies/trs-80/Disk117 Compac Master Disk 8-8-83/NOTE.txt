@@ -1,9 +1,0 @@
-12/29/97
-
-Boot/sys is normally a hiden file that must be at track 0, sector 0 - 9.
-
-To copy the whole file, I used SuperUt2 to change the boot/sys directory entry "Sector Length" from 5 to 10.  Then just accessed the file by its name: Boot/sys.  I changed a copy of the original disk.  There was a small bug in that the allocation length was correct, but the file length was wrong.  Of course since boot/sys is never normally accessed as a file, it still works fine.
-
-To reproduce the origtinal disk, boot/sys needs to be placed on the disk starting at track 0, sector 0.
-
- 

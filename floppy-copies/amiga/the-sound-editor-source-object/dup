@@ -1,4 +1,0 @@
-echo "Master goes in df0:"
-echo "Blank disk goes in df1:"
-diskcopy df0: to df1: name "Perfect Sound"
-

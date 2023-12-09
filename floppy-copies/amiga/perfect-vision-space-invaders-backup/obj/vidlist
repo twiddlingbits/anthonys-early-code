@@ -1,3 +1,0 @@
-FROM main.o, screen.o, grab_frame.o, new_grab.o, show.o, cycle.o,*
-slow_cycle.o,lace_cycle.o
-
