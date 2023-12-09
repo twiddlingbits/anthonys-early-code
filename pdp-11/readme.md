@@ -22,6 +22,10 @@ My Paper Tapes:
 
 ![papertapes](./paper-tapes.jpg)
 
+Probably done at the Computer Museum
+
+![Anthony](./pdp-11/anthony-from-computer-museum.jpg)
+
 **TODO hand coded "space invaders"**
 
 

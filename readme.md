@@ -1,7 +1,5 @@
-# Anthony J. Wood's Code History
+# Anthony J. Wood's Early Code
 Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters from middle school to college. 
-
-![Anthony](./pdp-11/anthony-from-computer-museum.jpg)
 
 # PDP-11
 In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum)
