@@ -6,7 +6,7 @@ Welcome to my early-years software collection.  Here you will find executable co
 # PDP-11
 In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum to use their Commodore PET)
    - [First Code](/pdp-11/guess-500.jpg)
-   - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [BASIC List Scan](./pdp-11/battlestar-galactica.jpg) | [Play on windows](./Win/basic-classics/ReadMe.txt)
+   - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [BASIC List Scan](./pdp-11/battlestar-galactica.jpg) | [Play on Windows](./Win/basic-classics/ReadMe.txt)
    - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
    - Slot Machine [BASIC Listing](./pdp-11/slotmachine.jpg)
    - [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg) and my [design on graph paper](./pdp-11/make-melvin-draw-smurf-plan.jpg)
