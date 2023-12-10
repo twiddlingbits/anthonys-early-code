@@ -35,7 +35,7 @@ Towards the end of high school I [purchased the super-cool Commodore 64](./aw-mi
    - Faster 64 [Readme](./C64/faster64/) | [Article PDF](./C64/faster64/faster64-ahoy-april-1985.pdf)
    - Banner [Readme](./C64/banner/readme.md)
    - 1541 Zip [Readme](./C64/1541zip/readme.md)
-   - STerm 64 [Manual](./scans/1984-sterm64-instructions.pdf) | [Rejection](./scans/1984-9-7-broderbund-sterm64.jpg)
+   - Sterm 64 [Manual](./scans/1984-sterm64-instructions.pdf) | [Rejection](./scans/1984-9-7-broderbund-sterm64.jpg)
 
 
 # Amiga
