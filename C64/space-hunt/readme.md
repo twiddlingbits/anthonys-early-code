@@ -3,7 +3,7 @@ This was another text adventure I wrote in BASIC for the Commodore 64.  It is no
 
 [Here is the Ahoy! Article with Source Code](space-hunt-ahoy-april-1985.pdf)
 
-[BASIC Source](space%20hunt.c64basic)
+[BASIC Source](space-hunt.c64basic.txt)
 
 [.d64 file playable in a C64 emulator](./space-hunt.d64)
 
