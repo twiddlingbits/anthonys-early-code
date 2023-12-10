@@ -15,7 +15,7 @@ In 8th grade I learned to code after school at the American School of the Hague 
 
 
 # TRS-80
-Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
+Back in Houston at the start of 9th grade I got [my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
 
    - The Endless Tomb [ReadMe](./TRS-80/tomb/readme.md) | [TOMB.BAS](./TRS-80/tomb/tomb.bas.txt) | [Rejection](./scans/1981-7-20-creative-computing-tomb.jpg) |  [Play on Windows](./windows/basic-classics/classic-basic-games-v1.0.zip)
    - Space Taxi [Screen Shot](./TRS-80/spacetaxi/spacetaxi-screenshot.png) | [SPACETAX.BAS](./TRS-80/spacetaxi/spacetax.basic.txt)
