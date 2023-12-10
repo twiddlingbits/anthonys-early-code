@@ -43,7 +43,7 @@ I purchased my Commodore Amiga in late 1985 with a loan from my parents, during 
    - Perfect Sound - my first commercial success! [Overview](./amiga/perfect-sound/readme.md) | [Ver 2.3 UI](./amiga/perfect-sound/screenshots/ps2.3-ui.png) | [Ver 3.0 UI Video](./amiga/perfect-sound/screenshots/ps3.2-ui-demo.mp4)
 
 # Windows
-These windows programs aren't technically "early".  THe Windows Maze is a port with enhancements of the maze I wrote for the Amiga.  And the Emulators and BASIC were written in part to run my early software on windows.
+These windows programs aren't technically "early".  The Windows Maze is a port with enhancements of the maze I wrote for the Amiga.  And the Emulators and BASIC were written in part to run my early software on windows.
 
    - [Windows amaze](./windows/amaze/)
    - [AW Basic](./windows/awbasic/)
@@ -51,6 +51,8 @@ These windows programs aren't technically "early".  THe Windows Maze is a port w
    - [TRS-80 Emulator](./windows/trs-80-emulator/)
 
 # macromedia flash
+I've been a fan of Space Invaders since I first played it at the "West World" arcade in the Hague. I hand wrote a [simple version](./pdp-11/space-invaders/space-invaders-hand-code-cbm-pet-1978-composite.jpg) for the PET, then partially completed an [Amiga Implementation](./amiga/space-invaders-unfinished/).  I wrote this Flash version to learn flash programming.  Its the only flash software I ever wrote, and IIRC it mostly worked.
+
    - [Space Invaders](./flash/spaceinvaders/)
 
 # Also...
