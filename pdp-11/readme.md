@@ -9,7 +9,7 @@ Below was one of my first, perhaps the first, program I wrote. I remember it was
 
 ![first](./guess-500.jpg)
 
-I also remember fondly spending a bit of time writing my first game "Battle Star Galactica". It was based on the popular Star Trek type games of the day.
+I remember fondly writing my first game "Battle Star Galactica". It was based on the popular Star Trek type games of the day.
 
 [View as a text file](./battlestar-galactica.basic.txt)
 
