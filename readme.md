@@ -50,7 +50,7 @@ I purchased my Commodore Amiga in late 1985 with a loan from my parents, during 
    - [TRS-80 Emulator](./windows/trs-80-emulator/)
 
 # macromedia flash
-   - [Space Invaders](./Flash/spaceinvaders/)
+   - [Space Invaders](./flash/spaceinvaders/)
 
 # Also...
    - [AW Microcomputer History](aw-microcomputer-history.md)
