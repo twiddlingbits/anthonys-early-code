@@ -1,7 +1,7 @@
 # Anthony's Early Software Code
 I recently spent some time recovering my old programs.  I created this small web site to highlight some of the pieces I am most proud of for my friends, family, and curious on lookers.
 
-[My Complete Early software Collection on Git Hub](https://github.com/ajwood1965/anthony-code-history/#readme) 
+[My Complete Early Software Collection on Git Hub](https://github.com/ajwood1965/anthony-code-history/#readme) 
 
 # C64 Ahoy! Magazine Articles
 In the mid 80's computer magazines were popular that published programs and games.   Readers would literally type the program in.  After a couple years of [being rejected](./scans/1981-7-20-creative-computing-tomb.jpg), I was [able to sell](./scans/1984-6-15-ahoy-composite.jpg) five while in high school. Here are four of the articles scanned from Ahoy! Magazine.
