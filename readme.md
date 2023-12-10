@@ -41,10 +41,11 @@ Towards the end of high school I [purchased the super-cool Commodore 64](./aw-mi
 # Amiga
 I purchased my Commodore Amiga in late 1985 with a loan from my parents, during my junior year of college.
    - Perfect Sound - my first commercial success! [Overview](./amiga/perfect-sound/readme.md) | [Ver 2.3 UI](./amiga/perfect-sound/screenshots/ps2.3-ui.png) | [Ver 3.0 UI Video](./amiga/perfect-sound/screenshots/ps3.2-ui-demo.mp4)
-   - SunRize Industries 
 
 # Windows
-   - [Windows Maze](./windows/amaze/)
+These windows programs aren't technically "early".  THe Windows Maze is a port with enhancements of the maze I wrote for the Amiga.  And the Emulators and BASIC were written in part to run my early software on windows.
+
+   - [Windows amaze](./windows/amaze/)
    - [AW Basic](./windows/awbasic/)
    - [Classic Basic Games](./windows/basic-classics/ReadMe.txt)
    - [TRS-80 Emulator](./windows/trs-80-emulator/)
