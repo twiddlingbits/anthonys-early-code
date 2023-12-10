@@ -30,7 +30,7 @@ Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-his
 Towards the end of high school I [purchased the super-cool Commodore 64](./aw-microcomputer-history.md) and wrote the following.
 
    - Lunar Lander [ReadMe](./C64/lunar-lander/readme.md) | [Article PDF with Source](./C64/lunar-lander/ahoy-april-1984-lunar-lander.pdf)
-   - Space Hunt [Readme](//C64/space-hunt/readme.md) | [Article PDF with Source](./C64/space-hunt/space-hunt-ahoy-april-1985.pdf)
+   - Space Hunt [Readme](./C64/space-hunt/readme.md) | [Article PDF with Source](./C64/space-hunt/space-hunt-ahoy-april-1985.pdf)
    - Renumber [Readme](./C64/renumber/readme.md) |  [Article PDF with Source](./C64/renumber/renumber-ahoy-july-1984.pdf)
    - Faster 64 [Readme](./C64/faster64/) | [Article PDF](./C64/faster64/faster64-ahoy-april-1985.pdf)
    - Banner [Readme](./C64/banner/readme.md)

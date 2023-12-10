@@ -14,7 +14,7 @@ I remember uploading TOMB.BAS to a local BBS in Houston to be a free download --
 
 Here is a screen shot from the windows interpreter:
 
- ![Endless Tomb Screen Grab](./Screenshot.png)
+ ![Endless Tomb Screen Grab](./screenshot.png)
 
 
 Anthony Wood
