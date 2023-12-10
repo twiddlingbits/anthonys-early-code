@@ -1,0 +1,15 @@
+
+                          QUEST FOR FIRE
+
+TRS-80 MOD I & III
+
+
+By Anthony Wood
+
+     Rumor has it that somewhere in the nearby forest is hidden the Emerald of Fire.  Through your amazing deductive abilities (and a little help from an inconspicuous copy of "Treasure Hunters Quarterly") you have located the Emerald of Fire with pinpoint acuracy.  It is beyond any doubt that the treasure lies nearby.  After all, THQ's accuracy is beyond question--its reputation is right up there with the "National Enquirer" and other reputable publications.
+     There is one slightly minor problem though; the article that first gave you this profound inspiration to seek the legendary Emarald of Fire was a little vague in its exact hidding place.  You know that the royal caravan carrying the emerald was lost in this region of the jungle.  It is also certain that the royal guards would have hidden the emerald in an easy to find spot before they met their doom.  However, it is just as certain that the guards would have set tricks and traps to foil any would be treasure hunters (yourself falling into this catagory).  But, hey, for an experienced treasure hunter like yourself, this will be no problem.  I do not even need to wish you good luck (but I will any way,  "Good Luck".) 
+    ANY RULES TO THIS GAME?
+
+      "Quest for Fire" is a standard adventure.  All commands must be one or two words.  The current room discription is displayed at the top of the screen, and your commands are entered on the bottom half of the screen.  The upper half of the screen is not updated after each command; however, pressing the clear key will clear the screen and reprint an updated room description at the top of the screen.
+     To move from place to place, enter a direction such as "north", or just "n".  Movement can also occur by other commands, such as "GO place."
+     A few verbs exist that will be helpful to know.  "EXAMINE" things to recieve more information about an object. Other helpful verbs are INVENTORY (or I), SAVE (to save a game to disk or tape), LOAD (to restore an old game), or QUIT to stop.  Only the first four letters of each word need be typed. "BREA COCO" is the same as "BREAK COCONUT."
