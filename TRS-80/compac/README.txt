@@ -1,4 +1,4 @@
-This file contains Compac, my communications package for
+This folder contains Compac, my communications package for
 the TRS-80 that supports DFT, XMODEM, and other Smart
 Terminal features.
 

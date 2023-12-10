@@ -23,7 +23,7 @@ Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-his
    - Ruins at Time's Edge [ReadMe](./TRS-80/ruins-at-times-edge/readme.md) | [Rejection](./scans/1983-estdate-cload-ruins-at-times-edge.jpg) 
    - Boot -n- Copy [ReadMe](./TRS-80/boot-n-copy/readme.md)
    - Quest for Fire [ReadMe](./TRS-80/quest-for-fire/readme.md)
-   - Compac ReadMe | [AWSoftware](./awsoftware/readme.md)
+   - Compac [ReadMe](./TRS-80/compac/README.txt) | [AWSoftware](./awsoftware/readme.md)
  
 
 # Commodore 64
