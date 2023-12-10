@@ -10,7 +10,7 @@ I remember uploading TOMB.BAS to a local BBS in Houston to be a free download --
  for publication.    
 
    -  [TOMB.BAS source code in BASIC](./tomb.bas.txt)
-   -  [play with my Windows BASIC interpreter](../../Win/basic-classics/Classic%20Basic%20Games%20v1_0.zip)
+   -  [play with my Windows BASIC interpreter](../../windows/basic-classics/classic-basic-games-v1.0.zip)
 
 Here is a screen shot from the windows interpreter:
 

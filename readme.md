@@ -6,7 +6,7 @@ Welcome to my early-years software collection.  Here you will find executable co
 # PDP-11
 In 8th grade I learned to code after school at the American School of the Hague (and some trips to the Computer Museum to use their Commodore PET)
    - [First Code](/pdp-11/guess-500.jpg)
-   - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [BASIC List Scan](./pdp-11/battlestar-galactica.jpg) | [Play on Windows](./Win/basic-classics/ReadMe.txt)
+   - Battle Star Galactica - fondly remembered first game -  [BASIC Text](./pdp-11/battlestar-galactica.basic.txt) | [BASIC List Scan](./pdp-11/battlestar-galactica.jpg) | [Play on Windows](./windows/basic-classics/ReadMe.txt)
    - Master Mind [BASIC Listing](./pdp-11/mastermind-scan.jpg)
    - Slot Machine [BASIC Listing](./pdp-11/slotmachine.jpg)
    - [Smurf ASCII Art](./pdp-11/make-melvin-draw-smurf-result.jpg) and my [design on graph paper](./pdp-11/make-melvin-draw-smurf-plan.jpg)
@@ -16,7 +16,7 @@ In 8th grade I learned to code after school at the American School of the Hague 
 # TRS-80
 Back in Houston at the start of 9th grade [I got my TRS-80](aw-microcomputer-history.md), and while in high school I wrote the following programs.  
 
-   - The Endless Tomb [ReadMe](./TRS-80/tomb/readme.md) | [TOMB.BAS](./TRS-80/tomb/tomb.bas.txt) | [Rejection](./scans/1981-7-20-creative-computing-tomb.jpg) |  [Play on Windows](./Win/basic-classics/Classic%20Basic%20Games%20v1_0.zip)
+   - The Endless Tomb [ReadMe](./TRS-80/tomb/readme.md) | [TOMB.BAS](./TRS-80/tomb/tomb.bas.txt) | [Rejection](./scans/1981-7-20-creative-computing-tomb.jpg) |  [Play on Windows](./windows/basic-classics/classic-basic-games-v1.0.zip)
    - Space Taxi [Screen Shot](./TRS-80/spacetaxi/spacetaxi-screenshot.png) | [SPACETAX.BAS](./TRS-80/spacetaxi/spacetax.basic.txt)
    - Micro Adventure Language [ReadMe](./TRS-80/micro-adventure-language/readme.md)
    - Germany 1942 [ReadMe](./TRS-80/germany-1942/readme.md) | [AWSoftware](./awsoftware/readme.md)
@@ -44,10 +44,10 @@ I purchased my Commodore Amiga in late 1985 with a loan from my parents, during 
    - SunRize Industries 
 
 # Windows
-   - [Windows Maze](./Win/amaze/)
-   - [AW Basic](./Win/awbasic/)
-   - [Classic Basic Games](./Win/basic-classics/ReadMe.txt)
-   - [TRS-80 Emulator](./Win/trs-80-emulator/)
+   - [Windows Maze](./windows/amaze/)
+   - [AW Basic](./windows/awbasic/)
+   - [Classic Basic Games](./windows/basic-classics/ReadMe.txt)
+   - [TRS-80 Emulator](./windows/trs-80-emulator/)
 
 # macromedia flash
    - [Space Invaders](./Flash/spaceinvaders/)

@@ -22,8 +22,8 @@ Here are a few of my earliest programs that I remember fondly.
 
 # Computer Emulators
 Modern computers can emulate the hardware and software of old microcomputers from the 1980s and 1990s.  You can use these emulators to run my software on your laptop.  The TRS-80 emulator and my BASIC interpreter are easy to download here and use since I wrote it and it is self contained. But it only runs on Windows.   The Amiga and C-64 emulators probably require you to purchase the emulator.  The actual emulators are free open source, but the original ROMs and operating system are not.  You need to buy and download the emulator, then load the appropriate disk image from [my git hub repo](https://github.com/ajwood1965/anthony-code-history/#readme).
-   - [My TRS-80 Emulator for Windows](./Win/trs-80-emulator/AWSoftware.exe) comes preloaded with some of my TRS-80 Software.
-   - [My BASIC for Windows](./Win/basic-classics/Classic%20Basic%20Games%20v1_0.zip) comes preloaded with some of my software (including Battle Star Galactica) as well as other examples of text games of the time.
+   - [My TRS-80 Emulator for Windows](./windows/trs-80-emulator/AWSoftware.exe) comes preloaded with some of my TRS-80 Software.
+   - [My BASIC for Windows](./windows/basic-classics/classic-basic-games-v1.0.zip) comes preloaded with some of my software (including Battle Star Galactica) as well as other examples of text games of the time.
    - A third party [Amiga Emulator](https://www.amigaforever.com/) can be used to run my Amiga software
    - A third party [Commodore 64](https://www.c64forever.com/) Emulator can be used to run my C-64 Software
 
