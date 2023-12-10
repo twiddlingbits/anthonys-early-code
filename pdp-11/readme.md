@@ -19,6 +19,7 @@ And others I wrote on the PDP-11:
 
    - [Master Mind](./mastermind-scan.jpg)
    - [Slot Machine](./slotmachine.jpg)
+   - [Smurf Art](./make-melvin-draw-smurf-result.jpg) - Created while taking "Make Melvin Draw" class.
 
 **My PDP-11 Paper Tapes:**
 
