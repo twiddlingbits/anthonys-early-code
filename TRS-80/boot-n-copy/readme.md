@@ -1,11 +1,13 @@
 # Boot -n- Copy Introduction
-Boot -n- Copy was designed to replace the boot sector on a floppy disk so that the floppy disk could boot without a DOS.  It would then copy files to a separate user disk that had TRS-DOS on it. 
+Boot -n- Copy was designed to replace the boot sector on a TRS-80 floppy disk so that the floppy disk could boot without a DOS.  It would then copy files to a separate user disk that had TRS-DOS on it. 
 
 A TRS-80 Floppy Disk Drive owner generally needed a floppy disk with the Disk Operating System (like TRS-DOS) in drive 0.  If you had two drives, you would keep TRS-DOS in drive 0, and your data disks in Drive 1.  Many owners of TRS-80s that had floppy disk drives had a single disk drive (they were expensive).   But you could not legally put TRS-DOS on a floppy disk that you sent to someone else, since TRS-DOS was copyrighted. This created a problem on how to legally distribute software on a floppy disk to TRS-80 owners that had a single disk drive.
 
 To solve this issue, I wrote Boot -n- Copy in Z-80 assembly.  After assembling (transform the .ASM to the .CMD file), the binary was installed on the boot sector of a floppy.  I did this with a disk sector editor to create the master disk.   Boot -n- copy controls the floppy disk drive controller hardware directly.   It also understands enough about the TRS-80 disk file system to correctly add the file to a DOS formatted floppy disk.
 
-I wrote boot-n-copy for use with my "AW Software" diskettes.
+I wrote boot-n-copy for use with my ["AW Software"](./../../awsoftware/readme.md) diskettes.
+
+[BC Z-80 Assembly](bc.asm.txt)
 
 
 # Converting .ASM EDTASM to text files -- Notes to Self

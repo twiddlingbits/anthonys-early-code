@@ -1,18 +1,15 @@
-This file contains Compac, a communications package for
+This file contains Compac, my communications package for
 the TRS-80 that supports DFT, XMODEM, and other Smart
 Terminal features.
 
-Although all of these files were created
-on a TRS-80 (except this one), the .pcl files
-can be opened and viewed in Word.
+The source code is writtin in ZBASIC, a third party 
+basic compiler for the TRS-80 from ~1983.
 
-Any contact info in the /pcl files is wrong.
+/PCL files are from "electric pencil" a word processor.
+Any contact info in the /PCL files is wrong.
 
-My contact info in 1998 is:
-Anthony J. Wood
-Palo Alto, CA
-ajw@best.com
+anthony wood
+2023
 
-These files are copyrighted by Anthony J. Wood.  It 
-is okay to distribute them for non-commercial purposes 
-as long as this notice is also distributed.
+
+
