@@ -1,0 +1,186 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include <windows.h>
+#include <ssmain.h>
+#include <scrnsave.h>
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+DLG_SCRNSAVECONFIGURE DIALOG DISCARDABLE  6, 18, 163, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Amaze! Screen Saver Settings"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Solve Speed",101,2,6,98,40
+    SCROLLBAR       ID_SPEED,5,31,89,10
+    LTEXT           "Fast",103,6,21,20,8
+    LTEXT           "Slow",104,75,21,20,8
+    PUSHBUTTON      "OK",ID_OK,117,10,40,14
+    PUSHBUTTON      "Cancel",ID_CANCEL,117,32,40,14
+    GROUPBOX        "Maze Complexity",102,2,53,98,40
+    SCROLLBAR       ID_CELLSIZE,7,77,89,10
+    LTEXT           "Complex",105,7,68,31,8
+    LTEXT           "Simple",106,73,68,24,8
+    LTEXT           "ajw@awsoftware.org",107,89,117,70,11,NOT WS_GROUP
+    CONTROL         "Black Background",IDC_BLACKBG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,2,101,75,10
+    CONTROL         103,IDC_STATIC,"Static",SS_BITMAP,117,70,39,49
+    CONTROL         "Show Maze Build",IDC_SLOWDRAW,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,2,114,71,10
+END
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include <windows.h>\r\n"
+    "#include <ssmain.h>\r\n"
+    "#include <scrnsave.h>\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,1,4,0
+ PRODUCTVERSION 1,1,4,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "www.awsoftware.org\0"
+            VALUE "CompanyName", " AW Software\0"
+            VALUE "FileDescription", "Amaze! Screen Saver\0"
+            VALUE "FileVersion", "1, 1, 4, 0\0"
+            VALUE "InternalName", "Amaze!\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "amaze!.scr\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Amaze! Screen Saver\0"
+            VALUE "ProductVersion", "1.1 build 4\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DNARROW             BITMAP  DISCARDABLE     "inarrow.bmp"
+IDB_CYBERMAN            BITMAP  DISCARDABLE     "cyberman.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "ssmaze.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DESCRIPTION         "Amaze!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    idsIniFile              "amaze_ss.ini"
+    idsAppName              "MazeScreenSaver"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,80 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ScreenSaver - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/ssdialog.res" /d "NDEBUG" "D:\My Documents\Anthony's Documents\MyProjects\Winmaze\ScreenSaver\ssdialog.rc"" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP397.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\Maze.c"
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\ScreenSaver\ssmain.c"
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\stack.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP397.tmp" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP398.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib comctl32.lib Scrnsave.lib Sehprolg.obj /nologo /version:1.1 /subsystem:windows /incremental:no /pdb:"Release/Amaze!.pdb" /machine:I386 /out:"Release/Amaze!.scr" 
+".\Release\Maze.obj"
+".\Release\ssmain.obj"
+".\Release\stack.obj"
+".\Release\ssdialog.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP398.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Maze.c
+ssmain.c
+stack.c
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Amaze!.scr - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ScreenSaver - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ssdialog.res" /d "_DEBUG" "D:\My Documents\Anthony's Documents\MyProjects\Winmaze\ScreenSaver\ssdialog.rc"" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP39A.tmp" with contents
+[
+/nologo /ML /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\Maze.c"
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\ScreenSaver\ssmain.c"
+"D:\My Documents\Anthony's Documents\MyProjects\Winmaze\stack.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP39A.tmp" 
+Creating temporary file "C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP39B.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib comctl32.lib Scrnsave.lib Sehprolg.obj /nologo /version:1.1 /subsystem:windows /incremental:yes /pdb:"Debug/Amaze!.pdb" /debug /machine:I386 /out:"Debug/Amaze!.scr" /pdbtype:sept 
+".\Debug\Maze.obj"
+".\Debug\ssmain.obj"
+".\Debug\stack.obj"
+".\Debug\ssdialog.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Anthony\LOCALS~1\Temp\RSP39B.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Maze.c
+ssmain.c
+stack.c
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/ScreenSaver.bsc"  ".\Debug\Maze.sbr" ".\Debug\ssmain.sbr" ".\Debug\stack.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Amaze!.scr - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
