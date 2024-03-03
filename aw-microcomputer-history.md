@@ -1,7 +1,7 @@
 # A Brief History of Anthony's Microcomputers
 
 ## PDP-11 American School of the Hague, Netherlands
-For 8th grade (age 12/13, 1978/79) we moved from Houston to the Hague, Netherlands for a year or so.  While at the American Middle School of the Hague  I taught myself to program in the BASIC computer language.  I would go to the "computer museum" in downtown Hague via the tram, and use the time sharing terminals and the Commodore PETs they had there for the public.  But mostly, I would stay after school and use the single and old [PDP-11](https://en.wikipedia.org/wiki/PDP-11), which they named "Merlin".  The only computer class the school offered was "make Melvin draw" during which you would use punch cards to create ASCI art [a smurf](./pdp-11/make-melvin-draw-smurf-result.jpg) 
+For 8th grade (age 12/13, 1978/79) we moved from Houston to the Hague, Netherlands for a year or so.  While at the American Middle School of the Hague  I taught myself to program in the BASIC computer language.  I would go to the "computer museum" in downtown Hague via the tram, and use the time sharing terminals and the Commodore PETs they had there for the public.  But mostly, I would stay after school and use the single and old [PDP-11](https://en.wikipedia.org/wiki/PDP-11), which they named "Merlin".  The only computer class the school offered was "make Melvin draw" during which you would use punch cards to create ASCI art. I made [a smurf](./pdp-11/make-melvin-draw-smurf-result.jpg) 
 
 The primary program I wrote using the PDP-11, its teletype (with a paper tape reader-writer), and "EduSystem BASIC" was "Battle Star Galactica".  I modeled this after the popular Star Trek game of the day (you can play this Star Trek game in my classic-games collection in this repo).  
 
