@@ -1,5 +1,5 @@
 # Anthony J. Wood's Early Code
-Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters I wrote or designed while in middle school to college. I created this repo mostly lfor myself, but a little bit for my friends and family.
+Welcome to my early-years software collection.  Here you will find executable code, source code, magazine articles, notes, and rejection/acceptance letters I wrote or designed while in middle school to college. I created this repo mostly for myself and as an archive/backup, but a little bit for my friends and family.
 
 [Summary Here](./index.md)
 
